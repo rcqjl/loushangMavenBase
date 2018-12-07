@@ -1,0 +1,20 @@
+<!--流程监控者定义规则配置-->
+	<participant-option>
+		<!--针对组织机构配置选项-->
+		<select-item key="proc-commonly" display-name="一般" use-mode="organization">
+			<select-type key="unit" name="组织机构" select-type="radio" select-url="wfStruCmd.cmd?method=getSelectRootForService&amp;organType=1,2,6,8&amp;isCheckBox=0&amp;isIncludeSelf=0&amp;isTree=1&amp;rootId=1" select-url-forNode="wfStruCmd.cmd?method=getHelpTreeNodeForService&amp;organType=1,2,6,8&amp;isCheckBox=0&amp;isIncludeSubCorporation=1&amp;isIncludeStruPath=null&amp;isExact=null&amp;showOrganType=null&amp;rootId=" is-applet-win="1"/>
+			<select-type key="organType" name="组织类型" select-url="wfOrganTypeForService.cmd?" is-applet-win="1"/>
+		</select-item>	
+		<!--针对创建人配置选项-->	
+		<select-item key="proc-creator" display-name="创建人" use-mode="organization">
+			<select-type key="self" name="创建人本人" select-url=""/>
+			<select-type key="directleader" name="创建人经理" select-url=""/>
+			<select-type key="allUpperLeading" name="创建人所有上级部门领导" select-url=""/>
+			<select-type key="corpOrganType" name="创建人所属法人下组织类型【人】" select-url="wfOrganTypeForService.cmd?" is-applet-win="1"/>
+			<select-type key="upperCorpOrganType" name="创建人所属法人的上级法人下组织类型【人】" select-url="wfOrganTypeForService.cmd?" is-applet-win="1"/>
+		</select-item>		
+		<!--其它配置选项-->
+		<select-item key="proc-other" display-name="其它" use-mode="organization">
+			<select-type key="startActPartyCorpOrgan" name="起始环节参与者所属法人下组织机构" select-type="radio" select-url="wfStruCmd.cmd?method=getSelectRootForService&amp;organType=1,2,6,8&amp;isCheckBox=0&amp;isIncludeSelf=0&amp;isTree=1&amp;rootId=1" select-url-forNode="wfStruCmd.cmd?method=getHelpTreeNodeForService&amp;organType=1,2,6,8&amp;isCheckBox=0&amp;isIncludeSubCorporation=1&amp;isIncludeStruPath=null&amp;isExact=null&amp;showOrganType=null&amp;rootId=" is-applet-win="1"/>
+		</select-item>	
+	</participant-option>

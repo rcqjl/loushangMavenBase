@@ -1,0 +1,89 @@
+html,body{
+	font-size: 12px;
+	text-align: center;
+	font-family:"宋体";
+}
+
+.right{
+	float:left;
+	margin: 0 auto;
+    position: relative;
+    top: 20px;
+    width: 100%;
+}
+
+.rightBottom{
+	width:93%;
+	height:355px;
+	border:solid 1px #dcdcdc;
+	overflow: auto;
+	margin:0px auto;
+}
+.hide{
+	display:none;
+}
+table{
+	 border-collapse: collapse; 
+	 border-bottom:#dcdcdc solid 1px;
+}
+th{
+	width:116px;
+}
+thead tr{
+	height: 30px;
+	color:#333;
+	background-color: #ebebeb;
+}
+tbody tr{
+	height: 30px;
+	cursor: pointer;
+	color:#666;
+	background-color: #fafafa;
+	border-top:1px solid #dcdcdc;
+}
+tbody tr:hover{
+	background-color:#f0f0f0;
+}
+th,td{
+	padding:2px;
+	font-weight: normal;
+}
+.selected{
+	color:#333 !important;
+	background-color: #FFF !important;
+}
+input[type="checkbox"]{
+	cursor: pointer;
+	bottom: -2.5px;
+	position: relative;
+	margin-right: 5px;
+}
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	margin: 0px 5px 0px 0px;
+	color: #fff;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.buttonArea{
+	text-align: right;
+	position: absolute;
+	bottom: 20px;
+	right: 15px;
+}

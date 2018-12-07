@@ -1,0 +1,81 @@
+/*demo距离顶部的外边距*/
+.topdist {
+	margin-top: 10px;
+}
+
+/*表单中日期组件图标样式配覆盖width:auto*/
+.date-input-btn {
+	width: 1%;
+}
+
+/*设置“新增用户 修改用户”标题的文字样式*/
+.htext {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/*设置条件查询区域的样式*/
+.form-inline{
+	margin-left: 0px;
+	margin-bottom: 5px;
+}
+.searchBtn {
+	margin-left:-5px;
+}
+
+/*设置分割线的上下间距*/
+hr.fenge{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*重写页面中row的样式*/
+.row {
+	margin: 0px;
+}
+/*datatables无记录时的显示样式*/
+.table>tbody>tr>td.dataTables_empty {
+	height: 200px;
+	vertical-align: middle;
+}
+
+/*datatables表头中单元格底部边框的粗细设置*/
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+	border-bottom-width: 1px;
+}
+
+/*datatables表头中单元格底部边框的粗细设置*/
+.dbtn {
+	border-style: none;
+	background: transparent;
+}
+
+/*多条件搜索文字与图标距离的设置*/
+a > i {
+	margin-left: 5px;
+}
+
+/*高级搜索弹出框的大小*/
+div.popover {
+	min-width: 500px;
+}
+
+/*表单中表单组间距*/
+.form-group {
+	margin-bottom: 10px !important;
+}
+
+/*重写分页插件的背景颜色*/
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover {
+	background-color: #32a5e6;
+	border-color: #32a5e6;
+}
+
+.Validform_checktip {
+	font-size: 14px;
+}

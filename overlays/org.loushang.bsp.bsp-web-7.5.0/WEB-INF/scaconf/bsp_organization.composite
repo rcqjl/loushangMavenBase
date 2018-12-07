@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="organ" xmlns="http://www.loushang.com/sca/1.0">
+	<description>organ module</description>
+
+	<component name="OrganDao">
+		<service name="OrganDao">
+			<interface.java interface="org.loushang.bsp.organ.dao.IPubOrganDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java impl="org.loushang.bsp.organ.dao.jdbc.OrganDao" />
+	</component>
+
+	<component name="OrganTypeDao">
+		<service name="OrganTypeDao">
+			<interface.java interface="org.loushang.bsp.organ.dao.IPubOrganTypeDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java impl="org.loushang.bsp.organ.dao.jdbc.OrganTypeDao" />	
+	</component>
+	
+	<component name="PubOrganParmsTypeDao">
+    	<service name="PubOrganParmsTypeDao">
+    	    <interface.java
+                interface="org.loushang.bsp.organ.dao.IPubOrganParmsTypeDao" />
+            <binding.sca />
+    	</service>
+    	<property name="dataSourceConf" value="dataSource" />
+    	<implementation.java impl="org.loushang.bsp.organ.dao.jdbc.PubOrganParmsTypeDao" />
+    </component>
+    
+    <component name="OrganParamDao">
+		<service name="OrganParamDao">
+			<interface.java interface="org.loushang.bsp.organ.dao.IPubOrganParmsDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.organ.dao.jdbc.PubOrganParmsDao" />
+	</component>
+	
+	<component name="StruDao">
+		<service name="StruDao">
+			<interface.java interface="org.loushang.bsp.organ.dao.IPubStruDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java impl="org.loushang.bsp.organ.dao.jdbc.StruDao" />
+	</component>
+
+	<component name="PubStruTypeDao">
+		<service name="PubStruTypeDao">
+			<interface.java interface="org.loushang.bsp.organ.dao.IPubStruTypeDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.organ.dao.jdbc.PubStruTypeDao" />
+	</component>
+	
+	<component name="PubStruRuleDao">
+		<service name="PubStruRuleDao">
+			<interface.java interface="org.loushang.bsp.organ.dao.IPubStruRuleDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.organ.dao.jdbc.PubStruRuleDao" />
+	</component>
+	
+	<component name="StruExtDao">
+		<service name="StruExtDao">
+			<interface.java interface="org.loushang.bsp.organ.dao.IStruExtDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java impl="org.loushang.bsp.organ.dao.jdbc.StruExtDao" />
+	</component>
+	
+	<component name="PositionDao">
+		<service name="PositionDao">
+			<interface.java interface="org.loushang.bsp.organ.dao.IPositionDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.organ.dao.jdbc.PositionJdbcDao" />
+	</component>
+	
+	<component name="UserEmployeeDao">
+		<service name="UserEmployeeDao">
+			<interface.java
+				interface="org.loushang.bsp.organ.dao.IUserEmployeeDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.organ.dao.jdbc.UserEmployeeDao" />
+	</component>
+	
+	<component name="UserEmployeeDomain">
+		<service name="UserEmployeeDomain">
+			<interface.java
+				interface="org.loushang.bsp.organ.domain.IUserEmployeeDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.UserEmployeeDomainImpl" />
+	</component>
+	
+	<component name="UserDataDao">
+		<service name="UserDataDao">
+			<interface.java
+				interface="org.loushang.bsp.organ.dao.IUserDataDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.organ.dao.jdbc.UserDataJdbcDao" />
+	</component>
+	
+	<component name="UserDataPermitDao">
+		<service name="UserDataPermitDao">
+			<interface.java
+				interface="org.loushang.bsp.organ.dao.IUserDataPermitDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.organ.dao.jdbc.UserDataPermitJdbcDao" />
+	</component>
+	
+			
+	<component name="OrganDomain">
+		<service name="OrganDomain">
+			<interface.java
+				interface="org.loushang.bsp.organ.domain.IOrganDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.OrganDomainImpl" />
+		<reference name="organDao" target="OrganDao/OrganDao"/>
+	</component>
+	
+	<component name="OrganTypeDomain">
+		<service name="OrganTypeDomain">
+			<interface.java
+				interface="org.loushang.bsp.organ.domain.IOrganTypeDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.OrganTypeDomain" />
+		<reference name="organDao" target="OrganDao/OrganDao"/>
+        <reference name="organTypeDao" target="OrganTypeDao/OrganTypeDao"/>
+        <reference name="struRuleDao" target="PubStruRuleDao/PubStruRuleDao"/>
+	</component>
+	
+	<component name="OrganParamsDomain">
+		<service name="OrganParamsDomain">
+			<interface.java interface="org.loushang.bsp.organ.domain.IOrganParamsDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java impl="org.loushang.bsp.organ.domain.support.OrganParamsDomainImpl" />
+	</component>
+	
+	<component name="OrganParmsTypeDomain">
+		<service name="OrganParmsTypeDomain">
+			<interface.java interface="org.loushang.bsp.organ.domain.IOrganParmsTypeDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java impl="org.loushang.bsp.organ.domain.support.OrganParmsTypeDomain" />
+		<reference name="pubOrganParmsTypeDao" target="PubOrganParmsTypeDao/PubOrganParmsTypeDao" />
+		<reference name="paramsDao" target="OrganParamDao/OrganParamDao" />
+	</component>
+
+	<component name="StruDomain">
+		<service name="StruDomain">
+			<interface.java interface="org.loushang.bsp.organ.domain.IStruDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java impl="org.loushang.bsp.organ.domain.support.StruDomain" />
+		<reference name="struDao" target="StruDao/StruDao" />
+		<reference name="OrganDao" target="OrganDao/OrganDao" />
+		<reference name="StruRuleDomain" target="StruRuleDomain/StruRuleDomain" />
+		<reference name="OrganTypeDao" target="OrganTypeDao/OrganTypeDao" />
+		<reference name="PubStruTypeDao" target="PubStruTypeDao/PubStruTypeDao" />
+		<reference name="StruExtDao" target="StruExtDao/StruExtDao" />
+		<reference name="userDomain" target="UserDomain/UserDomain" />
+		<reference name="userEmployeeDao" target="UserEmployeeDao/UserEmployeeDao" />
+	</component>
+
+	<component name="StruTypeDomain">
+		<service name="StruTypeDomain">
+			<interface.java
+				interface="org.loushang.bsp.organ.domain.IStruTypeDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.StruTypeDomain" />
+		<reference name="organDao" target="OrganDao/OrganDao"/>
+        <reference name="organTypeDao" target="OrganTypeDao/OrganTypeDao"/>
+        <reference name="struTypeDao" target="PubStruTypeDao/PubStruTypeDao"/>
+        <reference name="struDao" target="StruDao/StruDao"/>
+        <reference name="struRuleDao" target="PubStruRuleDao/PubStruRuleDao"/>
+	</component>
+
+	<component name="StruRuleDomain">
+		<service name="StruRuleDomain">
+			<interface.java
+				interface="org.loushang.bsp.organ.domain.IStruRuleDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.StruRuleDomain" />
+		<reference name="pubStruRuleDao" target="PubStruRuleDao/PubStruRuleDao" />
+		<reference name="struTypeDao" target="PubStruTypeDao/PubStruTypeDao" />
+		<reference name="OrganTypeDao" target="OrganTypeDao/OrganTypeDao" />
+		<reference name="struDao" target="StruDao/StruDao" />
+	</component>
+	
+	<component name="StruExtDomain">
+		<service name="StruExtDomain">
+			<interface.java
+				interface="org.loushang.bsp.organ.domain.IStruExtDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.StruExtDomainImpl" />
+	</component>
+	
+	<component name="PositionDomain">
+		<service name="PositionDomain">
+			<interface.java interface="org.loushang.bsp.organ.domain.IPositionDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.PositionDomainImpl" />
+					<reference name="positionDao" target="PositionDao/PositionDao" />
+		<reference name="organDao" target="OrganDao/OrganDao" />
+		<reference name="struDao" target="StruDao/StruDao" />
+	</component>
+	
+	
+	<component name="UserDataDomain">
+		<service name="UserDataDomain">
+			<interface.java interface="org.loushang.bsp.organ.domain.IUserDataDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.UserDataDomainImpl" />
+	</component>
+	
+	<component name="UserDataPermitDomain">
+		<service name="UserDataPermitDomain">
+			<interface.java interface="org.loushang.bsp.organ.domain.IUserDataPermitDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.organ.domain.support.UserDataPermitDomainImpl" />
+	</component>
+
+
+	<component name="OrganService">
+		<service name="OrganService">
+			<interface.java interface="org.loushang.bsp.api.organ.IOrganService" />
+			<binding.sca />
+		</service>
+		<implementation.java impl="org.loushang.bsp.apisupport.organ.OrganServiceImpl" />
+	</component>
+	
+	<component name="OrganMgmtService">
+		<service name="OrganMgmtService">
+			<interface.java interface="org.loushang.bsp.api.organ.IOrganMgmtService" />
+			<binding.sca />
+		</service>
+		<implementation.java impl="org.loushang.bsp.apisupport.organ.OrganMgmtServiceImpl" />
+	</component>
+	
+	<component name="UserDataPermitService">
+		<service name="UserDataPermitService">
+			<interface.java interface="org.loushang.bsp.api.organ.IUserDataPermitService" />
+			<binding.sca />
+		</service>
+		<implementation.java impl="org.loushang.bsp.apisupport.organ.UserDataPermitServiceImpl" />
+	</component>
+	
+	<component name="PositionService">
+		<service name="PositionService">
+			<interface.java interface="org.loushang.bsp.api.organ.IPositionService" />
+			<binding.sca />
+		</service>
+		<implementation.java impl="org.loushang.bsp.apisupport.organ.PositionServiceImpl" />
+	</component>
+	
+</composite>

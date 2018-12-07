@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.loushang.framework.demo.user.dao.ArchiveMapper">
+
+	<select id="getArchiveById" resultType="org.loushang.framework.demo.user.data.UserArchive" parameterType="String">
+        SELECT * FROM demo_archives WHERE id = #{id} 
+    </select>
+    
+</mapper>

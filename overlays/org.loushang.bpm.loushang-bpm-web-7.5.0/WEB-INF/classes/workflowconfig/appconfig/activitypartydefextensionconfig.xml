@@ -1,0 +1,10 @@
+<!--环节参与者定义规则配置，供项目扩展使用-->
+<participant-option mode="add/override">
+        <!--示例如下
+        <select-item key="commonly" display-name="一般" use-mode="organization">
+			<select-type key="unit" name="组织机构" select-type="radio" select-url="wfStruCmd.cmd?method=getSelectRootForService&amp;organType=1,2,6,8&amp;isCheckBox=0&amp;isIncludeSelf=0&amp;isTree=1&amp;rootId=1" select-url-forNode="wfStruCmd.cmd?method=getHelpTreeNodeForService&amp;organType=1,2,6,8&amp;isCheckBox=0&amp;isIncludeSubCorporation=1&amp;isIncludeStruPath=null&amp;isExact=null&amp;showOrganType=null&amp;rootId=" is-applet-win="1"/>
+			<select-type key="organType" name="组织类型" select-url="wfOrganTypeForService.cmd?" is-applet-win="1"/>
+		</select-item>	
+		注：select-item元素表示一个分组项，use-mode的值固定为"organization"；select-type元素表示分组中的一项，select-type的值为radio或checkbo，表示单选或多选，select-url表示弹出窗口的访问url，is-applet-win的值为1或0，1表示使用applet窗口显示弹出页面，0表示使用js显示弹出页面。
+		-->
+</participant-option>

@@ -1,0 +1,3 @@
+PROC_DEF_BUTTON_CONF_SET_PROC_TYPE=0:N,1:Y
+PROC_DEF_PERMISSION_CONFIG=0:No Authority Control,1:Authority Control In The Unit,2:Authority Control Of The Unit And It is Parent Unit,3:Authority Control Of The Unit And It is Subordinate Unit,4:Authority Control Of BSP,5:Authority Control Of Multi-tenant
+XML_PARSER_TYPE=0:Local,1:HSF

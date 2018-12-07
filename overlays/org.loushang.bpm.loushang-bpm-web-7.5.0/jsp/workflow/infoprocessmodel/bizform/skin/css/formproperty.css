@@ -1,0 +1,35 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+}
+.propertyBodyArea {
+	padding: 5px 10px 5px 10px;
+}
+.prop{
+	width:100%;
+	margin:5px 0px 8px 0px;
+}
+.prop label{
+	margin-right:5px;
+}
+.prop input[type="text"]{
+	height: 24px;
+	line-height: 24px;
+	vertical-align: middle;
+	border: 1px solid #B6B6B6;
+	width:160px;
+}
+.prop input[type="button"]{
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	background: url('../images/skin_icons.png') no-repeat scroll -62px -128px #EEE;
+	border: 1px solid #B6B6B6;
+	position: absolute;
+	right: 16px;
+}

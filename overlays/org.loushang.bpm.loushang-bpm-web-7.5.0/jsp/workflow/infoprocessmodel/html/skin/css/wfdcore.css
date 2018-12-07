@@ -1,0 +1,221 @@
+html,body {
+	margin:0;
+	height:100%;
+    font-size: 12px;
+    color:#666;
+    font-family: "宋体";
+}
+body{
+	overflow: hidden;
+}
+img{
+	cursor: pointer;
+}
+/* 设计区栏 */
+.wfdBaseArea {
+    position : absolute;
+    left:61px;
+    top:0px;
+    width:100%;
+    height:100%;
+    overflow-x:auto;
+    overflow-y:auto;
+    border:0px solid #00f;
+}
+.wfdDesignColumn {
+    position : relative;
+    width : 100%;
+    height:100%;
+    background-color: #fff;
+}
+/* 组件栏 */
+.wfdToolArea {
+    position: absolute;
+	width:60px;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    background: #EEE;
+    border-right:1px solid #CACACA;
+}
+.wfdToolAreaHead {
+    position:relative;
+    height:30px;
+    line-height:30px;
+    text-align: center;
+    background:url(../images/bg.png) repeat-x 0 0;
+    border-bottom:1px solid #CACACA;
+}
+.wfdToolAreaMain {
+    position:relative;
+    cursor: default;
+    background: #EEE;
+}
+.wfdToolComponent {
+    position:relative;
+    width:100%;
+    height:72px;
+    cursor:pointer;
+    border-bottom:1px solid #CACACA;
+}
+.wfdIconDesc {
+	padding-top:12px;
+    height:20px;
+    line-height:20px;
+    text-align: center;
+}
+.wfdIcon {
+	position:relative;
+    left:13px;
+    top:10px;
+    width:34px;
+    height:34px;
+}
+.wfdIconMouse {
+	background:url(../images/tool.png) no-repeat 0px 0px;
+}
+.wfdIconLine {
+    background:url(../images/tool.png) no-repeat -34px 0px;
+}
+.wfdIconTask {
+    background:url(../images/tool.png) no-repeat -68px 0px;
+}
+.wfdIconGateway {
+    background:url(../images/tool.png) no-repeat -102px 0px;
+}
+.wfdIconStart {
+    background:url(../images/tool.png) no-repeat 0px -34px;
+}
+.wfdIconEnd {
+    background:url(../images/tool.png) no-repeat -34px -34px;
+}
+.wfdIconSubProc {
+    background:url(../images/tool.png) no-repeat -68px -34px;
+}
+.wfdToolHover{
+    cursor:pointer;
+    background: #CFCFCF;
+}
+.wfdToolSelected{
+    background: #CFCFCF;
+}
+.wfdTaskNameDiv {
+    position:absolute;
+    resize:none;
+    width: 80px;
+    height: 40px;
+    background: transparent;
+}
+.wfdTaskNameDiv textarea {
+    position:relative;
+    resize:none;
+    overflow:hidden;
+    padding-top:6px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border:0px;
+    text-align:center;
+    vertical-align:middle;
+}
+.wfdDeleteOperation {
+    position:absolute;
+    top:10px;
+    right:10px;
+    width: 12px;
+    height: 12px;
+    background:url(../images/skin_icons.png) no-repeat 0px -62px;
+}
+.wfdDeleteOperation:hover {background-position:-12px -62px}
+.wfdDeleteOperation:active {background-position:-12px -62px}
+/*属性栏*/
+.propertyShrink{
+    position:absolute;
+	top:200px;
+	right:248px;
+	width:22px;
+	height:50px;
+    background:url(../images/skin_icons.png) no-repeat -60px -78px;
+    z-index:2;
+}
+.wfdPropShrinkRight{
+    background-position:-60px -78px;
+}
+.wfdPropShrinkLeft{
+    background-position:-84px -78px;
+}
+.shrinkDiv{
+	float:right;
+	margin-right:18px;
+	margin-top:12px;
+	width:9px;
+	height:5px;
+	background:url(../images/skin_icons.png) no-repeat -110px -62px;
+}
+.shrinkUp{
+	background-position:-110px -62px;
+}
+.shrinkDown{
+	background-position:-110px -68px;
+}
+.wfdPropertyArea{
+	position:absolute;
+	overflow:auto;
+	top:0px;
+    right: 0px;
+	width: 247px;
+	height:100%;
+    background: #EEE;
+    border-left:1px solid #CACACA;
+    overflow: hidden;
+}
+/* 池名称的css */
+.wfdLaneNameDiv {
+    position:absolute;
+    resize:none;
+    width: 300px;
+    height: 30px;
+    background: #F5F5F5;
+}
+.wfdLaneNameDiv textarea {
+    position:relative;
+    resize:none;
+    overflow:hidden;
+    padding-top:6px;
+    width: 98%;
+    height: 100%;
+    background: transparent;
+    border:0px;
+    text-align:center;
+    vertical-align:middle;
+}
+.wfdLaneNameDiv_delete {
+    position:absolute;
+    top:5px;
+    right:6px;
+    width: 12px;
+    height: 12px;
+    background:url(../images/skin_icons.png) no-repeat 0px -62px;
+}
+.wfdLaneNameDiv_delete:hover {background-position:-12px -62px;}
+.wfdLaneNameDiv_delete:active {background-position:-12px -62px;}
+.wfdLaneNameDiv_vertical {
+    position:absolute;
+    resize:none;
+    width: 30px;
+    height: 300px;
+    background: #F5F5F5;
+}
+.wfdLaneNameDiv_vertical textarea {
+    position:relative;
+    resize:none;
+    overflow:hidden;
+    top:20px;
+    width: 100%;
+    height: 80%;
+    background: transparent;
+    border:0px;
+    text-align:center;
+    vertical-align:middle;
+    padding-top:10px;
+}

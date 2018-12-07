@@ -1,0 +1,161 @@
+html,body {
+	font-size: 12px;
+	font-family: "宋体", sans-serif;
+	overflow: hidden;
+	height: 100%;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+
+/*表单标题*/
+.formtitle{
+	height: 40px;
+	padding-left: 20px;
+	font-family: "Microsoft Yahei", "微软雅黑", Arial, sans-serif;
+	font-size: 20px;
+	color: #fff;
+	line-height: 40px;
+	vertical-align: middle;
+}
+/*工具条*/
+.toolbar {
+	height: 65px;
+	border-bottom: 1px solid #ddd;
+	background-color: #fafafa;
+}
+.toolbar ul li{
+	list-style: none;
+	display: inline;
+	float: left;
+	cursor: pointer;
+	margin: 4px 6px;
+	border: 1px solid #fafafa;
+}
+.toolbar a{
+	display: block;
+	padding: 10px 4px 6px;
+	text-align: center;
+}
+/*按钮居中*/
+.centeredBtn{
+}
+.toolbar .savebtn{
+	width: 189px;
+	height: 100%;
+	float: left;
+}
+.ui-tabs{
+	margin-left: 190px;
+	border-left: 1px solid #ddd;
+}
+.ui-tabs .ui-tabs-panel {
+	width: 100%;
+	height: 65px;
+}
+
+.ui-tabs .ui-tabs-hide {
+	display: none;
+}
+
+/*标签页导航条*/
+.tabnav{
+	height: 30px;
+	background-image: url(../images/toolbar/btn.png);
+	background-repeat: no-repeat;
+	background-position: 0px -150px;
+	font-weight: bold;
+	background-color: #3e99ff
+}
+.tabnav ul{
+	margin-left: 190px;
+	list-style: none;
+	border-left: 1px solid #3e99ff;
+}
+.tabnav li{
+	position: relative;
+	display: block;
+	width: 100px;
+	height: 30px;
+	float: left;	
+	text-align: center;
+	line-height: 30px;
+	vertical-align: middle;
+	cursor: pointer;
+	color: #fff;
+}
+.tabnav li.ui-tabs-selected {
+	height: 30px;
+	background-color: #fafafa;
+	color: #3e99ff;
+}
+
+.designColumn, .widgetColumn{
+}
+/* 组件栏*/
+.widgetColumn{
+	position: relative;
+	float: left;
+	width: 190px;
+	background-color: #fafafa;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+/* 设计区栏*/
+.designColumn{
+	margin-left: 191px;
+	border-left: 1px solid #fff;
+}
+.designView {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 0px auto;
+}
+.padDesignView{
+	position: relative;
+	width: 910px;
+	height: 620px;
+	margin: 5px auto;
+	background: url(../images/widget/ipad.png) no-repeat left bottom;
+}
+.phoneDesignView{
+	position: relative;
+	width: 322px;
+	height: 611px;
+	margin: 0 auto;
+	background: url(../images/widget/phone.png) no-repeat 50% 50%;
+}
+.designFrame{
+	width: 100%;
+	height: 100%;
+}
+
+.padDesignIframe{
+	width: 705px;
+	height: 512px;
+	position: absolute;
+	top: 60px;
+	left: 100px;
+}
+.phoneDesignIframe{
+	width: 276px;
+	height: 411px;
+	position: absolute;
+	left: 26px;
+	top: 100px;
+}
+
+#sourceView {
+	display: none;
+	overflow-y:hidden;
+	width: 100%;
+	height: 100%;
+}
+
+#sourceCode {
+	width: 100%;
+	height: 100%;
+	overflow-y:auto;
+}

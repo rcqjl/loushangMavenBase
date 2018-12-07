@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsplocation" xmlns="http://www.loushang.com/sca/1.0">
+    <description>location module</description>
+     
+    <component name="LocationDomain">
+	    <service name="LocationDomain">
+	    	<interface.java interface="org.loushang.bsp.location.domain.ILocation"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.location.domain.Location"/>
+        <reference name="organExtDao" target="OrganExtDao/OrganExtDao"/>
+        <reference name="workplaceDao" target="WorkplaceDao/WorkplaceDao"/>
+        <reference name="cantDao" target="CantDao/CantDao"/>
+        
+    </component>
+       <component name="OrganExtDao">
+	    <service name="OrganExtDao">
+	    	<interface.java interface="org.loushang.bsp.location.dao.IOrganExtDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.location.dao.impl.OrganExtDao"/>
+    </component>
+       <component name="WorkplaceDao">
+	    <service name="WorkplaceDao">
+	    	<interface.java interface="org.loushang.bsp.location.dao.IWorkplaceDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.location.dao.impl.WorkplaceDao"/>
+    </component>
+    <component name="CantDao">
+	    <service name="CantDao">
+	    	<interface.java interface="org.loushang.bsp.location.dao.ICantDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.location.dao.impl.CantDao"/>
+    </component>
+    <component name="CanTypeDao">
+    	<service name="CanTypeDao">
+    		<interface.java interface="org.loushang.bsp.location.dao.ICantTypeDao"/>
+    		<binding.sca/>
+    	</service>
+    	<property name="dataSourceConf" value="dataSource"/>
+    	<implementation.java impl="org.loushang.bsp.location.dao.impl.CantTypeDao"/>
+    </component>
+    <component name="CountryDao">
+    	<service name="CountryDao">
+    		<interface.java interface="org.loushang.bsp.location.dao.ICountryDao"/>
+    		<binding.sca/>
+    	</service>
+    	<property name="dataSourceConf" value="dataSource"/>
+    	<implementation.java impl="org.loushang.bsp.location.dao.impl.CountryDao"/>
+    </component>
+    
+    <component name="locationService">
+	    <service name="locationService"> 
+	    	<interface.java interface="org.loushang.bsp.api.location.ILocationService"/>
+	    	<binding.sca/>
+	    </service>
+	    <implementation.java impl="org.loushang.bsp.apisupport.location.LocationServiceImpl"/>
+    </component>
+    
+</composite>

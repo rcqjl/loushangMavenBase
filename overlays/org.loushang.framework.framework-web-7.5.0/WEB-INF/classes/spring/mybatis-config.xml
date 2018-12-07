@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"classpath:/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="callSettersOnNulls" value="true" />
+        <setting name="logImpl" value="LOG4J" />    
+    </settings>
+	<plugins>
+		<plugin interceptor="org.loushang.framework.mybatis.PageInterceptor">
+			<!-- 是否返回总条数，默认为false，若设置为true可能会影响性能 -->
+			<property name="totalCount" value="true" />
+		</plugin>
+		<plugin interceptor="org.loushang.framework.mybatis.RestlutMapInterceptor">
+			<!-- 返回类型为Map时，key统一为大写（upper）、小写（lower） -->
+			<!-- <property name="upperOrLower" value="lower" /> -->
+		</plugin>
+		<plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
+			<property name="mappers" value="org.loushang.framework.mybatis.mapper.EntityMapper" />
+		</plugin>
+	</plugins>
+</configuration>

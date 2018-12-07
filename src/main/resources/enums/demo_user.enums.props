@@ -1,0 +1,3 @@
+USER.STATUS=N:启用,X:停用
+USER.GENDER=M:男,F:女,N:未知
+USER.EDUCATION=0:本科,1:硕士,2:博士

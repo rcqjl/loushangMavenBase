@@ -1,0 +1,122 @@
+html,body{
+	font-size: 12px;
+	text-align: center;
+	font-family:"宋体";
+}
+
+.left{
+	width: 20%;
+	height: 445px;
+	text-align: left;
+	padding-top: 10px;
+	position:relative;
+	background-color:#fafafa;
+	border-right:1px solid #dcdcdc;
+}
+.left > ul{
+	position: relative;
+	left:-12px;
+}
+.right{
+	width: 79.8%;
+}
+
+.left,.right{
+	float:left;
+}
+
+.rightTop{
+	width:93%;
+	text-align: left;
+	padding: 25px 0px 15px 0px;
+}
+
+.rightTop label{
+	margin: auto 5px auto 20px;
+}
+
+.rightTop input[type="text"]{
+	padding-left:5px;
+	height:24px;
+	border:solid 1px #C2C2C2;
+	width:168px;
+	line-height: 24px;
+}
+.rightBottom{
+	width:93%;
+	height:320px;
+	border:solid 1px #dcdcdc;
+	overflow: auto;
+	margin:0px auto;
+}
+.hide{
+	display:none;
+}
+table{
+	 border-collapse: collapse; 
+	 border-bottom:#dcdcdc solid 1px;
+}
+th{
+	width:110px;
+}
+thead tr{
+	height: 30px;
+	color:#333;
+	background-color: #ebebeb;
+}
+tbody tr{
+	height: 30px;
+	cursor: pointer;
+	color:#666;
+	background-color: #fafafa;
+	border-top:1px solid #dcdcdc;
+}
+tbody tr:hover{
+	background-color:#f0f0f0;
+}
+th,td{
+	padding:2px;
+	font-weight: normal;
+}
+.odd{
+	/* background-color: #F2F2F2; */
+}
+.selected{
+	color:#333 !important;
+	background-color: #FFF !important;
+}
+input[type="checkbox"]{
+	margin-right:3px;
+	cursor: pointer;
+	bottom: -2.5px;
+	position: relative;
+}
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	margin: 0px 5px 0px 0px;
+	color: #fff;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.buttonArea{
+	text-align: right;
+	position: absolute;
+	bottom: 20px;
+	right: 15px;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="processType" xmlns="http://www.loushang.com/sca/1.0">
+	<description>workflow module</description>
+	<component name="processTypeDao">
+		<service name="processTypeDao">
+			<interface.java interface="org.loushang.workflow.processtype.dao.IProcessTypeDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processtype.dao.jdbc.ProcessTypeJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processTypeDomain">
+		<service name="processTypeDomain">
+			<interface.java interface="org.loushang.workflow.processtype.domain.IProcessType"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processtype.domain.support.ProcessTypeImpl"/>
+		<reference name="processTypeDao" target="processTypeDao/processTypeDao"/>
+	</component>
+</composite>

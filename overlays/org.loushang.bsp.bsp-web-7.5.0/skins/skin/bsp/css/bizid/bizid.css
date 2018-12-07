@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.bodyHeader{
+	margin-left:5px;
+	margin-right:5px;
+}
+.input-group{
+	width:250px;
+}
+.row{
+	padding-left: 15px;
+    padding-right: 15px
+}
+#saveForm{
+	margin-top:30px;
+}
+.bizid-left {
+	width: 75%;
+	border: 0px;
+	float: left;
+}
+.Validform_input {
+	width:50%;
+}
+.bizid-right {
+    width: 25%;
+    font-size: 14px;
+    font-family: 微软雅黑;
+    color: #666;
+    border-left: 1px #D6CCCC solid;
+    padding: 15px;
+    height: 100%;
+    overflow: visible;
+    float: right;
+}

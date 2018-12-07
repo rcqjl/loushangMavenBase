@@ -1,0 +1,5 @@
+INSERT INTO CP_WIDGET VALUES ('lineCharts', '降雨量', '降雨量', '/jsp/cportal/demo/widgets/lineCharts.jsp', 'author', '/jsp/cportal/demo/images/lineCharts.png', 315, '0', NULL, 'ZhuYeWeiJian', '20150929 15:57:31', '20151117 15:57:46', '');
+INSERT INTO CP_WIDGET VALUES ('barCharts', '网络销售情况', '网络销售情况',  '/jsp/cportal/demo/widgets/barCharts.jsp', 'author', '/jsp/cportal/demo/images/barCharts.png', 315, '0', NULL, 'ZhuYeWeiJian', '20150929 15:44:08', '20151117 15:57:03', '');
+INSERT INTO CP_WIDGET VALUES ('pieCharts', '任务结构', '任务结构', '/jsp/cportal/demo/widgets/pieCharts.jsp', 'author', '/jsp/cportal/demo/images/pieCharts.png', 315, '0', NULL, 'ZhuYeWeiJian', '20150929 15:58:46', '20151105 13:43:40', '');
+INSERT INTO CP_WIDGET VALUES ('RiChangDaiBan', '日常待办', '日常待办',  '/jsp/cportal/demo/widgets/link.jsp', 'author', '/jsp/cportal/demo/images/link.png', 360, '0', NULL, 'ZhuYeWeiJian', '20150929 15:33:54', '20151105 13:44:05', '');
+INSERT INTO CP_WIDGET VALUES ('WoDeLiuCheng', '我的流程', '我的流程',  '/jsp/cportal/demo/widgets/table.jsp', 'author', '/jsp/cportal/demo/images/table.png', 315, '0', NULL, 'ZhuYeWeiJian', '20150929 16:30:02', '20151105 13:44:23', '');

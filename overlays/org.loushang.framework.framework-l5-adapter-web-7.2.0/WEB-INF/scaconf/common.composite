@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="common" xmlns="http://www.loushang.com/sca/1.0">
+    <description>通用技术构件</description>
+    
+    <component name="Enum">
+	    <service name="EnumService">
+	    	<interface.java interface="org.loushang.next.commons.nenum.EnumService"/>
+        	<binding.sca/>
+        </service>
+        <property name="loadLib" value="true"/>
+        <implementation.java impl="org.loushang.next.commons.nenum.EnumServiceSupport"/>	
+    </component>
+    <!-- 
+    <component name="Preferences">
+	    <service name="PreferencesService">
+	    	<interface.java interface="org.loushang.next.commons.prefs.PreferencesService"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.next.commons.prefs.PreferencesServicePropsImpl"/>	
+    </component>    
+     -->
+</composite>

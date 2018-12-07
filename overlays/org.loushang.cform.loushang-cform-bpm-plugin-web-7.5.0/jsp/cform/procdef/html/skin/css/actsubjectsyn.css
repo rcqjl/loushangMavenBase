@@ -1,0 +1,125 @@
+html,body{
+	font-size: 12px;
+	text-align: center;
+	font-family:"宋体";
+}
+.context{
+	height:280px;
+	border:solid 1px #dcdcdc;
+	overflow: auto;
+	margin:0px auto;
+}
+.hide{
+	display:none;
+}
+.synHead{
+	width: 530px;
+	margin: 20px;
+	float:left;
+    position: relative;
+}
+.synHead table{
+	float:left;
+	width:100%;
+	border-collapse: collapse; 
+	border-bottom:#dcdcdc solid 1px;
+}
+.synHead th{
+	text-align: left;
+	padding-left: 10px;
+}
+.actTh{
+	width: 150px;
+}
+.conTh{
+	width: 360px;
+}
+.synHead thead tr{
+	float: left;
+	height: 30px;
+	color:#333;
+	background-color: #ebebeb;
+}
+.synHead tbody tr{
+	height: 30px;
+	cursor: pointer;
+	color:#666;
+	background-color: #fafafa;
+	border-top:1px solid #dcdcdc;
+}
+.synHead tbody tr:hover{
+	background-color:#f0f0f0;
+}
+.synHead th, .synHead td{
+	padding:5px 2px 2px 10px;
+	text-align:left;
+	font-weight: normal;
+}
+.selected{
+	color:#333 !important;
+	background-color: #FFF !important;
+}
+input[type="checkbox"]{
+	margin-right: 3px;
+	cursor: pointer;
+	bottom: -2.5px;
+	position: relative;
+}
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	margin: 0px 5px 0px 0px;
+	color: #fff;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.buttonArea{
+	text-align: right;
+	position: absolute;
+	bottom: 20px;
+	right: 15px;
+}
+.txtTitle{
+	margin: 20px 0 0 20px;
+	float: left;
+}
+.txtTitle label{
+	float: left;
+	height:22px;
+	line-height:22px;
+}
+.txtTitle div{
+	float:left;
+	width:330px;
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	white-space:nowrap;
+	overflow: hidden;
+	margin-left:10px;
+}
+.actTxtContext{
+	float:left;
+	width:350px;
+	height:24px;
+	line-height:24px;
+	text-align:left;
+	white-space:nowrap;
+	overflow: hidden;
+}
+ 

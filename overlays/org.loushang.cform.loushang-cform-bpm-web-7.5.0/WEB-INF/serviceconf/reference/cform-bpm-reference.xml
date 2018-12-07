@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="bpm" description="bpm服务引用">
+	<!-- 流程关联表单操作服务-->
+	<reference id="cfProcFormService" serviceName="cfProcFormService" interface="org.loushang.cform.api.IProcForm" />
+	<!-- 流程关联表单查询服务-->
+	<reference id="cfProcFormQueryService" serviceName="cfProcFormQueryService" interface="org.loushang.cform.api.IProcFormQuery" />
+	<!-- flex查询表单数据 服务-->
+	<reference id="cfProcFormUtilQueryService" serviceName="cfProcFormUtilQueryService" interface="org.loushang.cform.procdef.util.IProcFormUtil" />
+	<!--CForm表单核心模块解析发布类 服务-->
+	<reference id="cfCommonXmlParserAndLoaderService" serviceName="cfCommonXmlParserAndLoaderService" interface="org.loushang.workflow.infoprocessmodel.transform.IAbstractXmlHandler" />
+	<!--流程定义删除事件监听  服务-->
+	<reference id="cfProcessDefDeleteEventService" serviceName="cfProcessDefDeleteEventService" interface="org.loushang.workflow.manage.event.IEventHandler" />
+	<!--流程实例删除事件监听  服务-->
+	<reference id="cfProcessDeleteEventService" serviceName="cfProcessDeleteEventService" interface="org.loushang.workflow.manage.event.IEventHandler" />
+	<!--流程建模定义  服务-->
+	<reference id="cfProcDefService" serviceName="cfProcDefService" interface="org.loushang.cform.procdef.html.domain.IProcDef" />
+	<!--流程定义导入导出  服务-->
+	<reference id="cfProcDefExchangeService" serviceName="cfProcDefExchangeService" interface="org.loushang.workflow.infoprocessmodel.exchange.IModelExchange" />
+</module>

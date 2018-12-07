@@ -1,0 +1,53 @@
+<!--环节参与者定义规则配置-->
+<participant-option>
+		<!--针对组织机构配置选项-->
+	<select-item key="commonly" display-name="一般" use-mode="organization">
+		<select-type key="unit" name="组织机构" select-type="radio"
+			select-url="wfStruCmd.cmd?method=getSelectRootForService&amp;organType=1,2,6,8&amp;isCheckBox=0&amp;isIncludeSelf=0&amp;isTree=1&amp;rootId=1"
+			select-url-forNode="wfStruCmd.cmd?method=getHelpTreeNodeForService&amp;organType=1,2,6,8&amp;isCheckBox=0&amp;isIncludeSubCorporation=1&amp;isIncludeStruPath=null&amp;isExact=null&amp;showOrganType=null&amp;rootId="
+			is-applet-win="1" />
+		<select-type key="organType" name="组织类型"
+			select-url="wfOrganTypeForService.cmd?" is-applet-win="1" />
+		<select-type key="role" name="角色" select-type="radio" select-url="wFEmployeeSeeRoleCmd.cmd?method=choicerootForService" select-url-forNode="wFEmployeeSeeRoleCmd.cmd?method=choicenodeForService" is-applet-win="1" />
+	</select-item>		
+		<!--针对创建人配置选项-->
+	<select-item key="creator" display-name="创建人" use-mode="organization">
+		<select-type key="self" name="创建人本人" select-url="" />
+		<select-type key="directleader" name="创建人经理" select-url="" />
+		<select-type key="directunderling" name="创建人下属"
+			select-url="" />
+		<select-type key="allUpperLeading" name="创建人所有上级部门领导"
+			select-url="" />
+		<select-type key="corpOrganType" name="创建人所属法人下组织类型【人】"
+			select-url="wfOrganTypeForService.cmd?" is-applet-win="1" />
+		<select-type key="upperCorpOrganType" name="创建人所属法人的上级法人下组织类型【人】"
+			select-url="wfOrganTypeForService.cmd?" is-applet-win="1" />
+		<select-type key="lowerCorpOrganType" name="创建人所属法人的下级法人下组织类型【人】"
+			select-url="wfOrganTypeForService.cmd?" is-applet-win="1" />
+	</select-item>	
+		<!--针对发送人配置选项-->
+	<select-item key="sender" display-name="发送人" use-mode="organization">
+		<select-type key="self" name="发送人本人" select-url="" />
+		<select-type key="directleader" name="发送人经理" select-url="" />
+		<select-type key="directunderling" name="发送人下属"
+			select-url="" />
+		<select-type key="allUpperLeading" name="发送人所有上级部门领导"
+			select-url="" />
+		<select-type key="deptOrganType" name="发送人所属部门下组织类型"
+			select-url="wfOrganTypeForService.cmd?" is-applet-win="1" />
+		<select-type key="upperCorpOrganType" name="发送人所属法人的上级法人下组织类型【人】"
+			select-url="wfOrganTypeForService.cmd?" is-applet-win="1" />
+		<select-type key="lowerCorpOrganType" name="发送人所属法人的下级法人下组织类型【人】"
+			select-url="wfOrganTypeForService.cmd?" is-applet-win="1" />
+		<select-type key="corpOrganParamOrganType" name="发送人所属法人机构参数(WF_ORGAN_REF)对应组织机构下组织类型"
+			select-url="wfOrganTypeForService.cmd?" is-applet-win="1" />
+	</select-item>				
+		<!--针对历史环节配置选项-->
+	<select-item key="historyactselect" display-name="历史环节处理人"
+		use-mode="historyact">
+		<select-type key="self" name="处理人本人" select-url="" />
+		<select-type key="leader" name="处理人上级" select-url="" />
+		<select-type key="underling" name="处理人下属" select-url="" />
+		<select-type key="corpOrganType" name="处理人所属法人下组织类型" />
+	</select-item>
+</participant-option>

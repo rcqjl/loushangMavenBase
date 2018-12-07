@@ -1,0 +1,148 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+html,body{
+	font-size: 12px;
+	text-align: left;
+	font-family:"宋体";
+	overflow:hidden;
+}
+.mainArea{
+	height:360px;
+	text-align: right;
+}
+.mainDiv{
+	text-align: left;
+	height: 305px;
+	overflow: auto;
+	width: 93%;
+	margin: 20px auto;
+	border: solid 1px #dcdcdc;
+}
+.header{
+	height: 15px;
+	background-color: rgb(245, 245, 245);
+	color: #333;
+	text-align: left;
+	margin-bottom: 5px;
+	height:30px;
+	line-height:30px;
+	border-bottom: solid 1px #dcdcdc;
+	border-top:solid 1px #dcdcdc;
+}
+.labelDown{
+	display: inline-block;
+	height: 14px;
+	width: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -32px -16px transparent;
+	margin: 0px 10px;
+	position:relative;
+	top:3px;
+}
+.labelUp{
+	background-position: -24px -62px;
+}
+.ruleArea{
+	padding: 10px 0px 10px 40px;
+	display:none;
+}
+.ruleArea button{
+	margin-right: 10px;
+	width: 60px;
+	height: 25px;
+	border : 1px solid #C9C9C9;
+	background-color:#F5F5F5;
+}
+.ruleArea input[type='button']{
+	text-align:left;
+	width:150px;
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	border: 1px solid #C3C3C3;
+	color: rgb(122, 122, 122);
+	height: 24px;
+	vertical-align: middle;
+}
+.ruleArea input[type='text']{
+	text-align:left;
+	width:150px;
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	border: 1px solid #C3C3C3;
+	color: rgb(122, 122, 122);
+	height: 23px;
+	line-height:23px;
+	vertical-align: middle;
+}
+.ruleArea select{
+	text-align:left;
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	border: 1px solid #C3C3C3;
+	color: rgb(122, 122, 122);
+	height: 24px;
+	width:70px;
+	position: relative;
+	margin: 0px 5px;
+	vertical-align: middle;
+}
+.ruleArea input[type='radio']{
+	position:relative;
+	top:2px;
+	margin:20px 0px;
+}
+.ruleArea label{
+	margin-right: 20px;
+}
+.ruleArea textarea{
+	width: 455px;
+	height: 55px;
+	resize: none;
+	border: solid 1px #c3c3c3;
+	margin-top: 10px;
+	white-space: normal;
+}
+.confirm,.cancel{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	color: #fff;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+	
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.rconfirm{
+	background-color: #538FD8;
+}
+.rreset{
+	background-color: #AAAAAA;
+}
+.addImg{
+	width: 11px;
+	height: 11px;
+	background: url("../images/skin_icons.png") no-repeat scroll -40px -62px transparent;
+	margin: 0px auto;
+	display: inline-block;
+	position: relative;
+	top: 1px;
+	left:5px;
+	cursor: pointer;
+}
+.btnArea{
+	right: 20px;
+	position: relative;
+	bottom: 10px;
+}

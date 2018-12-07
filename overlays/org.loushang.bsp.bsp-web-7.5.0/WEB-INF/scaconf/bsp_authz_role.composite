@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_authz_role" xmlns="http://www.loushang.com/sca/1.0">
+
+	<!-- 角色 -->
+	<component name="RoleDao">
+		<service name="RoleDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.role.dao.IRoleDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.role.dao.jdbc.RoleJdbcDao" />
+	</component>
+	<component name="RoleDomain">
+		<service name="RoleDomain">
+			<interface.java interface="org.loushang.bsp.permit.pap.role.domain.IRoleDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.role.domain.support.RoleDomainImpl" />
+		<reference name="iroleDao" target="RoleDao/RoleDao" />
+		<reference name="inheritRoleDao" target="InheritRoleDao/InheritRoleDao" />
+		<reference name="roleOperationDao" target="RoleOperationJdbcDao/RoleOperationJdbcDao" />
+		<reference name="roleTargetDao" target="RoleTargetJdbcDao/RoleTargetJdbcDao" />
+		<reference name="confRoleDao" target="ConfRoleDao/ConfRoleDao" />
+	</component>
+	<component name="BspRoleService">
+        <service name="BspRoleService">
+            <interface.java interface="org.loushang.bsp.api.role.service.IRoleService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.role.RoleServiceImpl" />
+    </component>
+	
+	<!-- 角色继承 -->
+	<component name="InheritRoleDao">
+		<service name="InheritRoleDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.role.dao.IInheritRoleDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.role.dao.jdbc.InheritRoleJdbcDao" />
+	</component>
+	
+	<!-- 角色赋权 -->
+	<component name="RoleAuthorizeDomain">
+		<service name="RoleAuthorizeDomain">
+			<interface.java interface="org.loushang.bsp.permit.pap.role.domain.IRoleDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.role.domain.support.RoleAuthorizeDomainImpl" />
+		<reference name="iroleDao" target="RoleDao/RoleDao" />
+		<reference name="inheritRoleDao" target="InheritRoleDao/InheritRoleDao" />
+		<reference name="roleOperationDao" target="RoleOperationJdbcDao/RoleOperationJdbcDao" />
+		<reference name="roleTargetDao" target="RoleTargetJdbcDao/RoleTargetJdbcDao" />
+		<reference name="confRoleDao" target="ConfRoleDao/ConfRoleDao" />
+	</component>
+
+	<!-- 不相容角色集 -->
+	<component name="ConfRoleSetDao">
+		<service name="ConfRoleSetDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.confrole.dao.IConfRoleSetDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.confrole.dao.ConfRoleSetJdbcDao" />
+	</component>
+	<component name="ConfRoleDao">
+		<service name="ConfRoleDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.confrole.dao.IConfRoleDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.confrole.dao.ConfRoleJdbcDao" />
+	</component>
+	<component name="ConfRoleSetDomain">
+		<service name="ConfRoleSetDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.confrole.domain.IConfRoleSet" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.confrole.domain.ConfRoleSetDomain" />
+		<reference name="confRoleSetDao" target="ConfRoleSetDao/ConfRoleSetDao" />
+		<reference name="confRoleDao" target="ConfRoleDao/ConfRoleDao" />
+	</component>
+	
+	<!-- 角色功能资源 -->
+	<component name="RolePermitTreeDomain">
+		<service name="RolePermitTreeDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.role.domain.IRolePermitTreeDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.role.domain.support.RolePermitTreeDomainImpl" />
+		<reference name="userDomain" target="UserDomain/UserDomain" />
+		<reference name="roleDao" target="RoleDao/RoleDao" />
+	</component>
+	<component name="RoleOperationJdbcDao">
+		<service name="RoleOperationJdbcDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.role.dao.IRoleOperationDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.role.dao.jdbc.RoleOperationJdbcDao" />
+	</component>
+
+	<component name="RoleTargetJdbcDao">
+		<service name="RoleTargetJdbcDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.role.dao.IRoleTargetDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.role.dao.jdbc.RoleTargetJdbcDao" />
+	</component>
+
+</composite>

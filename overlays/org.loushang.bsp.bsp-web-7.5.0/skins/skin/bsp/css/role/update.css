@@ -1,0 +1,10 @@
+.container {
+	width: 90%;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 15px;
+}
+
+.form-horizontal .control-label {
+	float: left;
+}

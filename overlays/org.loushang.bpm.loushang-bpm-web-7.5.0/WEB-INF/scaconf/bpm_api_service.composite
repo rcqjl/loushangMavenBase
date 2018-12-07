@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+	<component name="wfQueryContext">
+		<service name="wfQueryContext">
+			<interface.java interface="org.loushang.workflow.api.IWfQueryContext"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.api.WfQueryContext"/>
+	</component>	
+	
+	<component name="wfTaskContext">
+		<service name="wfTaskContext">
+			<interface.java interface="org.loushang.workflow.api.IWfTaskContext"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.api.WfTaskContext"/>
+	</component>
+	
+</composite>

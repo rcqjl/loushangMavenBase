@@ -1,0 +1,395 @@
+.toolbar div.btnIcon, .toolbar div.designBtnIcon {
+	height: 24px;
+	width: 24px;
+	margin: 0px auto 4px;
+	background-image: url(../images/toolbar/btn.png);
+	background-repeat: no-repeat;
+}
+
+.toolbar a.btn:hover {
+	color: #3e99ff;
+}
+
+/*======================保存=============================*/
+/*保存*/
+#btn_save .btnIcon {
+	background-position: 0 0;
+}
+
+/*另存为新表单*/
+#btn_saveasnewform .btnIcon {
+	background-position: -24px 0;
+}
+
+/*保存并发布*/
+#btn_saveandrelease .btnIcon {
+	background-position: -48px 0;
+}
+#btn_widgetAttr .btnIcon{
+    background-position: -96px -276px;
+}
+#btn_navigator .btnIcon{
+	background-position: -168px -276px;
+}
+/*======================表单属性=============================*/
+/*表单属性*/
+#btn_formattr .btnIcon, #btn_dynRowAttr .btnIcon {
+	background-position : 0px -180px;
+}
+
+/*表单-业务模型映射*/
+#btn_formtosysbizmodel .btnIcon, #btn_formtobizmodel .btnIcon {
+	background-position: -24px -276px;
+}
+
+/*上行映射*/
+#btn_upbizmodelmap .btnIcon {
+	background-position: -24px -276px;
+}
+
+/*可编辑列表、下行映射*/
+#btn_edittogridmapping .btnIcon, #btn_downbizmodelmap .btnIcon {
+	background-position: -48px -276px;
+}
+
+/*业务含义*/
+#btn_fieldBizMean .btnIcon {
+	background-position: -168px -276px;
+}
+
+/*源代码编辑*/
+#btn_srcedit .btnIcon {
+	background-position: -96px -180px;
+}
+#btn_srcedit a.btn:hover .btnIcon {
+	background-position: -96px -204px;
+}
+
+/*设计模式*/
+#btn_srcedit .designBtnIcon {
+	background-position: -48px -228px!important;
+}
+#btn_srcedit a.btn:hover .designBtnIcon {
+	background-position: -48px -252px!important;
+}
+
+/*自定义js*/
+#btn_customedjs .btnIcon {
+	background-position: -72px -276px;
+}
+
+/*表单预览*/
+#btn_formpreview .btnIcon {
+	background-position: -72px -180px;
+}
+
+/*表单域属性批量修改*/
+#btn_attrPreview .btnIcon {
+	background-position: -24px -180px;
+}
+
+/*主题*/
+#btn_theme .btnIcon {
+	background-position: -48px -180px;
+}
+
+/*======================表格=============================*/
+/*表格属性*/
+#btn_layoutAttr .btnIcon {
+	background-position: 0px -48px;
+}
+
+/*行属性*/
+#btn_trattr .btnIcon {
+	background-position: -24px -48px;
+}
+
+/*列属性*/
+#btn_columnattr .btnIcon, #btn_dynRowColAttr .btnIcon {
+	background-position: -192px -276px;
+}
+
+/*合并单元格*/
+#btn_merge .btnIcon {
+	background-position: -48px -48px;
+}
+
+/*拆分单元格*/
+#btn_split .btnIcon {
+	background-position: -72px -48px;
+}
+
+/*在上方添加一行*/
+#btn_addrow .btnIcon {
+	background-position: -96px -48px;
+}
+/*在下方添加一行*/
+#btn_addrowBelow .btnIcon {
+	background-position: -144px -48px;
+}
+
+/*删除一行*/
+#btn_delrow .btnIcon {
+	background-position: -192px -48px;
+}
+/*添加一列*/
+#btn_addcol .btnIcon, #btn_dynRowAddCol .btnIcon {
+	background-position: -120px -48px;
+}
+/*右侧添加一列*/
+#btn_addcolRight .btnIcon, #btn_dynRowAddColRight .btnIcon {
+	background-position: -168px -48px;
+}
+
+/*删除一列*/
+#btn_delcol .btnIcon, #btn_dynRowDelCol .btnIcon {
+	background-position: -216px -48px;
+}
+
+/*======================节=============================*/
+#btn_fieldsetattr .btnIcon {
+	background-position: -96px -276px;
+}
+
+#btn_addfieldset .btnIcon {
+	background-position: -120px -276px;
+}
+
+#btn_addfieldsetbelow .btnIcon {
+	background-position: -144px -276px;
+}
+
+/*======================字体样式=============================*/
+.selectwrapper {
+	position: relative;
+	top: 15px;
+}
+
+/*粗体*/
+#btn_bold .btnIcon {
+	background-position: -24px -96px;
+}
+
+
+/*斜体*/
+#btn_italic .btnIcon {
+	background-position: -48px -96px;
+}
+
+/*下划线*/
+#btn_underline .btnIcon {
+	background-position: -72px -96px;
+}
+
+/*左对齐*/
+#btn_left .btnIcon {
+	background-position: -96px -96px;
+}
+
+/*居中*/
+#btn_center .btnIcon {
+	background-position: -120px -96px;
+}
+
+/*右对齐*/
+#btn_right .btnIcon {
+	background-position: -148px -96px;
+}
+
+/*字体颜色*/
+#btn_fontcolor .btnIcon {
+	background-position: 0px -96px;
+}
+
+/*====================子表单==================================*/
+/*动态行属性*/
+#btn_dynRowAttr .btnIcon {
+	background-position: 0px -228px;
+}
+/*动态表格属性*/
+#btn_dyntableattr .btnIcon {
+	background-position: -24px -228px;
+}
+
+/*组件类别、主题栏头部*/
+.widgetType,.themeHeader {
+	position: relative;
+	top: -1px;
+	height: 30px;
+	font-weight: bold;
+	background-color: #f5f5f5;
+	border-bottom: 1px solid #ddd;
+}
+
+.widgetType .widgetTitle,.themeHeader .barTitle {
+	display: inline-block;
+	height: 30px;
+	padding-left: 20px;
+	padding-top: 7px;
+}
+
+.widgetType .widgetFold, .widgetType .widgetUnfold {
+	position: absolute;
+	top: 10px;
+	right: 18px;	
+	width: 9px;
+	height: 9px;
+}
+/*组件类别、主题栏渐变背景*/
+.widgetGradualBg,.themeHeader .barBg{
+	position: absolute;
+	right: 0px;
+	width: 10px;
+	height: 30px;
+}
+/*收起*/
+.widgetType .widgetFold {
+	background: url(../images/widget/uparrow.png) no-repeat 0 0;
+}
+/*展开*/
+.widgetType .widgetUnfold {
+	background: url(../images/widget/downarrow.png) no-repeat 0 0;
+}
+.widgetType .widgetTitle select {
+	position: relative;
+	top: -3px;
+	font-weight: bold;
+	background-color: #cfdadb;
+	margin-left: -3px;
+}
+.selectDiv {
+	width: 110px;
+	height: 17px;
+	overflow: hidden;
+	border: 1px solid #b3b3b4;
+}
+
+/*关闭主题栏*/
+.themeHeader .closeBar{
+	position: absolute;
+	top: 10px;
+	right: 18px;	
+	width: 12px;
+	height: 12px;
+	background: url(../images/themebar/closetheme.png) no-repeat 0 0;
+}
+
+.themeHeader .closeBarHover{
+	background-position:-13px 0px;
+}
+
+.widgets,.themeBody{
+	overflow: auto;
+	margin-bottom: 1px;
+	border-bottom: 1px solid #ddd;
+}
+
+/*组件*/
+.widget{
+	margin-top: 8px;
+	margin-left: 6px;
+	width: 40%;
+	list-style-type: none;
+	font-family: 宋体;
+	font-size: 12px;
+	border: none;
+	float: left;
+	text-align: center;
+	line-height: 25px;
+	display: inline-block;
+	border: 1px solid #fafafa;
+}
+
+/*主题*/
+.theme{
+	margin-top: 8px;
+	margin-left: 10px;
+	width: 40%;
+	list-style-type: none;
+	font-family: 宋体;
+	font-size: 12px;
+	border: none;
+	float: left;
+	text-align: center;
+	line-height: 25px;
+}
+
+.widget span{
+	display: block;
+	height: 35px;
+	width: 35px;
+	margin: 2px auto;
+}
+
+.theme span {
+	display: block;
+	height: 70px;
+	width: 70px;
+	margin: 2px auto;
+	border:1px solid transparent;
+}
+
+/*鼠标滑过组件*/
+.widgetHover {
+	cursor:pointer;
+	border-color: #3e99ff;
+}
+
+/*鼠标滑过主题*/
+.themeHover{
+	border:1px solid #aaaaaa !important;
+	cursor:pointer;
+}
+
+.fieldAttrOpen {
+	border: 1px solid #3e99ff!important;
+}
+
+/*主题选中状态*/
+.themeSelected{
+	position: absolute;
+	bottom: -5px;
+	right: -5px;	
+	width: 24px;
+	height: 24px;
+	background: url(../images/themebar/selected.png) no-repeat 0 0;
+}
+
+#flyDiv {
+	position: absolute;
+	display: none;
+	background-color: #cbedfd;
+	width: 90px;
+}
+
+#fieldAttr {
+	position: absolute;
+	display: none;
+	background-color: #ffffff;
+	width: 200px;
+	border: 1px solid #ddd
+}
+
+.bg_selected {
+	background-color: #fffbc4;
+	border: 2px solid #ffcc62;
+}
+
+a.littleBtn { /*	padding: 6px 3px 0px 1px;  */
+	top: -3px;
+}
+
+a.littleBtn:hover,a.littleBtn:focus,a.littleBtn:active,a.littleBtn:visited
+	{ /*	padding: 7px 2px 0px 0px;  */
+	margin: 4px 0 0 10 px;
+}
+
+a.littleBtn:before {
+	top: 0px;
+	width: 18px;
+	height: 18px;
+}
+
+
+
+

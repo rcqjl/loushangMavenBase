@@ -1,0 +1,28 @@
+.title{
+	font-size: 16px;
+    font-family: "Microsoft YaHei";
+    color: #333;
+    line-height: 30px
+}
+.form-inline{
+	margin : 10px 0 0 0px;
+}
+.btn-group.pull-right {
+	margin-top: 0px; 
+    margin-left: 7px;
+}
+.form-inline .input-group{
+	margin-bottom: 10px;
+}
+#userList {
+	width: auto !important;
+}
+table.dataTable>tbody>tr>td a:focus, 
+table.dataTable>tbody>tr>td a:hover{
+	text-decoration : none;
+}
+@media (min-width: 728px){
+	#userList{
+		width:100%!important;
+	}
+}

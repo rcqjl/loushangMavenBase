@@ -1,0 +1,241 @@
+html,body,tbody,a,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td
+{
+	margin: 0;
+	padding: 0;
+}
+
+/**
+* ��������ʽ
+*/
+#SD_HideSelect 
+{
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:999;
+	width:100%;
+	height:100%;
+	background:#FFFFFF;
+	border:none;
+	filter:alpha(opacity=0);
+	-moz-opacity:0;opacity:0;
+}
+* html #SD_HideSelect 
+{
+	position:absolute;
+	height:expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+#SD_overlay 
+{
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:1000;
+	width:100%;
+	height:100%;
+}
+* html #SD_overlay 
+{
+	position:absolute;
+	height:expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+#SD_content{
+	height:100%;
+}
+.SD_overlayBG 
+{
+	background:#000000;
+	filter:alpha(opacity=50);
+	-moz-opacity:0.50;opacity:0.50;
+}
+.SD_overlayBG2 
+{
+	background:#000;
+	filter:alpha(opacity=20);
+	-moz-opacity:0.20;
+	opacity:0.20;
+}
+.SD_bg 
+{
+	filter:alpha(opacity=0);
+	-moz-opacity:0.30;
+	opacity:0.30;
+	overflow:hidden;
+}
+#SD_window 
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:1000;
+	overflow:hidden;
+	display:none;
+	border: 3px solid #aaa;
+	background-color: #fff;
+}
+#SD_container 
+{
+	position:relative;
+	z-index:1005;
+	background:#FFFFFF;
+}
+#SD_container h3 
+{
+	height:40px;
+	line-height:40px;
+	text-indent:10px;
+	color:#333333;
+	font-family: microsoft Yahei;
+	font-size:16px;
+	font-weight:bold;
+	cursor:move;
+}
+#SD_body 
+{
+	padding:25px 15px;
+	white-space:normal;
+	font-size: 12px;
+}
+#SD_body, #SD_body div, #SD_body p, #SD_body td 
+{
+	color:#000000;
+}
+.SD_table{
+	height: 100%;
+	width: 100%;
+}
+#SD_button 
+{
+	padding:4px 0px;
+	background:#F6F6F6;
+	text-align:right;
+	display:none;
+	border-top:1px solid #C5C5C5;
+}
+#SD_confirm:hover {
+	background-color: #76bdf5;
+}
+#SD_button a 
+{
+	margin-right:10px;
+	padding:4px 10px 3px;
+	background:#3e99ff;
+	border-width:1px;
+	border-style:solid;
+	border-color:#D8DFEA;
+	white-space:nowrap;
+	display:inline-block;
+	color:#FFFFFF;
+	font-size:12px;
+	text-align:center;
+	cursor:pointer;
+}
+#SD_button a:hover 
+{
+	text-decoration:none;
+}
+#SD_close 
+{
+	position:absolute;
+	top:11px;
+	right:11px;
+	z-index:1005;
+	width:15px;
+	height:15px;
+	border:none;
+	background:url(../images/help/help.png) no-repeat -80px 0px;
+	display:none;
+}
+#SD_close:hover 
+{
+	background-position:-60px 0px;
+}
+#LD_HideSelect 
+{
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:999;
+	width:100%;
+	height:100%;
+	background:#FFFFFF;
+	border:none;
+	filter:alpha(opacity=0);
+	-moz-opacity:0;
+	opacity:0;
+}
+* html #LD_HideSelect 
+{
+	position:absolute;
+	height:expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+#LD_overlay 
+{
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:1000;
+	width:100%;
+	height:100%;
+}
+* html #LD_overlay 
+{
+	position:absolute;
+	height:expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+.LD_overlayBG 
+{
+	background:#000000;
+	filter:alpha(opacity=50);
+	-moz-opacity:0.50;
+	opacity:0.50;
+}
+.LD_bg 
+{
+	background:#333333;
+	filter:alpha(opacity=30);
+	-moz-opacity:0.30;
+	opacity:0.30;
+	width:9px;
+	height:9px;
+	overflow:hidden;
+}
+#LD_window 
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:1001;
+	overflow:hidden;
+	display:none;
+}
+#LD_container 
+{
+	position:relative;
+	z-index:1006;
+	background:#FFFFFF url(../images/help/loading.gif) no-repeat 10px 10px;
+	border:1px solid #888888;
+	float:left;
+	padding:10px;
+	white-space:nowrap;
+	display:inline-block;
+}
+#LD_message 
+{
+	height:16px;
+	padding-left:20px;
+	color:#000000;
+	font:12px "sans serif",tahoma,verdana,helvetica;
+}
+#LD_message 
+{
+	height:15px\9;padding-top:1px\9;
+}
+#LD_message 
+{
+	*height:16px;*padding-top:0px;
+}
+#LD_message 
+{
+	_height:16px;_padding-top:0px;
+}

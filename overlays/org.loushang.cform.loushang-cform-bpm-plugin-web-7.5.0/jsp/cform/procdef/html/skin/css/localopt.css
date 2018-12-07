@@ -1,0 +1,314 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family:"宋体";
+    text-align: center;
+}
+body{
+	overflow: hidden;
+}
+#tab0,#tab1,#tab2,#tab3{
+	float: left;
+	width: 120px;
+	margin: 0px;
+	text-align: center;
+}
+#tabContainer a {
+	color:#A3A3A3;
+	display: block;
+	text-decoration: none;
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+}
+#tabContainer{
+	height: 80%;
+}
+#tabContainer a{
+	color:#333;
+}
+#tabContainer a.on {
+	color:#538fd8;
+	font-weight:bold;
+}
+
+#tabs {
+	position:relative;
+	left:20px;
+	margin: 0px;
+	padding: 0px;
+	width: 92%;
+	height:36px;
+	border-bottom:1px solid #dcdcdc;
+}
+a:link,a:visited,a:hover,a:active {
+	color: black;
+}
+.con{
+	padding: 0px;
+	height: 90%;
+	/* margin:20px auto; */
+	width:100%
+}
+.left{
+	height: 250px;
+	margin:0px auto;
+}
+.right{
+	height:95px;
+	border: solid 1px #dcdcdc;
+	margin:15px auto;
+}
+.left,.right{
+	width: 93%;
+	
+}
+.table thead{
+	position: fixed;
+	top: 87px;
+	z-index: 5;
+}
+.table{
+	height:180px !important;
+	height:210px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	border: solid 1px #dcdcdc;
+	padding-top:30px;
+	/* 
+    scrollbar-arrow-color: #ddd; 三角箭头的颜色
+    scrollbar-face-color: #ddd; 立体滚动条的颜色（包括箭头部分的背景色）
+    scrollbar-3dlight-color: #ddd; 立体滚动条亮边的颜色
+    scrollbar-highlight-color: #ddd; 滚动条的高亮颜色（左阴影）
+    scrollbar-shadow-color: #ddd; 立体滚动条阴影的颜色
+    scrollbar-darkshadow-color: #ddd; 立体滚动条外阴影的颜色
+    scrollbar-track-color: #ddd; 立体滚动条背景颜色
+    scrollbar-base-color: #ddd; 滚动条的基色 */
+	
+}
+.table table{
+	width:100%;
+	border-collapse:collapse; 
+}
+
+.table th,td{
+	padding:2px 0px 2px 10px;
+	text-align:left;
+	border:none;
+	width:92.5px;
+}
+.table td{
+	border-top: solid 1px #dcdcdc;
+}
+.table thead tr th:nth-child(1){
+	width:133px !important;
+	width:143px;
+}
+.table thead tr th:nth-child(2){
+	width:240px !important;
+	width:250px;
+}
+.table thead tr th:nth-child(3){
+	width:91px !important;
+	width:101px;
+}
+.table tbody tr td:nth-child(1){
+	width:133px !important;
+	width:143px;
+}
+.table tbody tr td:nth-child(2){
+	width:240px !important;
+	width:250px;
+}
+.table tbody tr td:nth-child(3){
+	width:101px;
+	padding: 2px 0px 2px 10px;
+}
+.table tr{
+	/* border-top:1px solid #D9D9D9;
+	border-bottom:1px solid #D9D9D9; */
+	height: 30px;
+}
+.table tbody tr{
+	background-color:#FAFAFA; 
+	color:#666;
+	cursor: pointer;
+}
+.table thead tr{
+	background-color:#ebebeb;
+	border-top:1px solid #dcdcdc;
+	border-bottom:1px solid #dcdcdc;
+}
+.table tbody tr:hover{
+	background-color:#f0f0f0;
+}
+.table tbody{
+	height: 80%;
+	display: block;
+	position: relative;
+}
+.odd{
+	background-color: #FAFAFA;
+}
+.selected{
+	color:#333 !important;
+	background-color: #FFF !important; 
+}
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	margin: 0px 5px 0px 0px;
+	color: #fff;
+}
+.buttonArea{
+	text-align: right;
+	position: absolute;
+	right: 15px;
+	bottom: 20px;
+}
+.center > div {
+	position: relative;
+	top: 100px;
+}
+.header{
+	height:30px;
+	background-color:#F5F5F5;
+	color:#333;
+	font-weight:bold;
+	text-align:left;
+	line-height: 30px;
+	padding-left:10px;
+	border-bottom:1px solid #dcdcdc;
+}
+.selectArea{
+	height:40px;
+	background-color:#FFF;
+	font-size: 14px;
+	text-align:left;
+	line-height: 40px;
+}
+.selectArea label{
+	margin: 0px 10px 0px 0px;
+}
+.labell{
+	display: none;
+	height: 14px;
+	width: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -32px -16px transparent;
+	margin: 0px 10px;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.addImage{
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll 0px -16px transparent;
+	margin-left: 0px;
+}
+.opt{
+	height: 16px;
+	width: 56px;
+}
+.delImage{
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -80px -16px transparent;
+	float:left;
+}
+.delImage:Hover{
+	background-position: -80px 0px;
+}
+.upImage{
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -64px -16px transparent;
+	float:left;
+	margin: 0px 4px;
+}
+.upImage:Hover{
+	background-position:-64px 0px;
+}
+.downImage{
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -48px -16px transparent;
+	float:left;
+	
+}
+.downImage:Hover{
+	background-position: -48px 0px ;
+	
+}
+.addImage:Hover{
+	background-position: 0px 0px ;
+}
+.triangle{
+	width:20px;
+	height:9px;
+	background: url("../images/skin_icons.png") no-repeat scroll -110px -78px transparent;
+	position:absolute;
+	left:189px;
+	top:28px;
+}
+.select{
+	display: inline-block;
+	background-color: #FFF;
+}
+.select select{
+	height:25px;
+	background-color: #FFF;
+	color:#A3A3A3;
+	width: 100px;
+	border:1px solid #D6D5D1;
+}
+.confirmArea{
+	height:60px;
+}
+.delImage{
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -96px -16px transparent;
+	margin:0px auto;
+	float:right;
+	position: relative;
+	top: 7px;
+	cursor: pointer;
+}
+.delImage:HOVER{
+	background-position: -96px 0px;
+}
+.comfirmArea > div{
+	float:left;
+	text-align: left;
+	height:30px;
+	line-height:30px;
+	margin-left:10px;
+	color:#666;
+	cursor: move;
+}
+.comfirmArea > div:HOVER{
+	color:#333;
+}
+.ui-sortable{
+	height:60px;
+	overflow-y:scroll;
+}

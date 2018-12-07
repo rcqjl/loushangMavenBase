@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.inspur.zrzy.share.dao.ShareMapper">
+
+
+    <select id="findAll" resultType="com.inspur.zrzy.share.data.Share" parameterType="map">
+        SELECT 
+            *
+        FROM NRDY  
+    	<where>
+    	 1=1 
+			<if test="ZRZYDYMC != null">
+			 	AND ZRZYDYMC like '%${ZRZYDYMC}%'
+			</if>
+			<if test="XZQMC != null and XZQMC != '' ">
+			 	and XZQMC like '%${XZQMC}%'
+			</if>
+			<if test="DJDYLX != null and DJDYLX != '' ">
+			 	and DJDYLX like '%${DJDYLX}%'
+			</if>
+			<if test="SYQR != null and SYQR != '' ">
+			 	and SYQR like '%${SYQR}%'
+			</if>
+		</where>
+        <if test="orderfield != null" >
+         order by 
+        	<choose>    
+                <when test="orderfield == 'XZQDM'">    
+                    XZQDM ${orderdir} 
+                </when>  
+            </choose>    
+        </if>
+    </select>
+
+</mapper>

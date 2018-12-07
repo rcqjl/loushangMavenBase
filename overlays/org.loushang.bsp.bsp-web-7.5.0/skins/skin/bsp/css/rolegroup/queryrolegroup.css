@@ -1,0 +1,25 @@
+
+.container {
+	width: 100%;
+}
+
+.row {
+	margin: 0px;
+}
+
+/* 添加角色组模态框样式 */
+.modal-content{
+	border-radius:0px;
+	height: 422px;
+}
+.ui-popup-modal {
+	z-index: 1060!important;
+}
+
+.ui-popup-backdrop {
+	z-index: 1059!important;
+}
+
+.form-group.field {
+	display: none;
+}

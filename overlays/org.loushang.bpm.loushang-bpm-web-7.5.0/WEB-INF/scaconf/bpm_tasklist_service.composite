@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+	<description>workflow module</description>
+	
+	<component name="daiBanTaskQuery">
+		<service name="daiBanTaskQuery">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.service.IDaiBanTaskQueryService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.service.support.DaiBanTaskQueryServiceImpl"/>
+	</component>
+	
+	<component name="bizDaiBanTaskDao">
+	    <service name="bizDaiBanTaskDao">
+	    	<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.IBizDaiBanTaskDao"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.BizDaiBanTaskJdbcDao"/>
+        <property name="dataSourceConf" value="dataSource"/>
+    </component>
+    
+	<component name="daiBanTask">
+		<service name="daiBanTask">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.service.IDaiBanTaskService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.service.support.DaiBanTaskServiceImpl"/>
+		<reference name="bizDaiBanTaskDao" target="bizDaiBanTaskDao/bizDaiBanTaskDao"/>
+	</component>
+	
+	<component name="yiBanTaskQuery">
+		<service name="yiBanTaskQuery">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.service.IYiBanTaskQueryService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.service.support.YiBanTaskQueryServiceImpl"/>
+	</component>
+	
+	<component name="bizYiBanTaskDao">
+	    <service name="bizYiBanTaskDao">
+	    	<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.IBizYiBanTaskDao"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.BizYiBanTaskJdbcDao"/>
+        <property name="dataSourceConf" value="dataSource"/>
+    </component>
+    
+	<component name="yiBanTask">
+		<service name="yiBanTask">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.service.IYiBanTaskService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.service.support.YiBanTaskServiceImpl"/>
+		<reference name="bizYiBanTaskDao" target="bizYiBanTaskDao/bizYiBanTaskDao"/>
+	</component>
+</composite>

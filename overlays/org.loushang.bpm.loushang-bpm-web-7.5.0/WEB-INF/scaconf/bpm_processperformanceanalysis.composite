@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="processperformanceanalysis" xmlns="http://www.loushang.com/sca/1.0">
+	<description>workflow module</description>
+	<component name="participantPerformanceAnalysisDao">
+		<service name="participantPerformanceAnalysisDao">
+			<interface.java interface="org.loushang.workflow.analysis.dao.IParticipantPerformanceAnalysisDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.dao.support.ParticipantPerformanceAnalysisJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="participantPerformanceAnalysisDomain">
+		<service name="participantPerformanceAnalysisDomain">
+			<interface.java interface="org.loushang.workflow.analysis.domain.IParticipantPerformanceAnalysis"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.domain.support.ParticipantPerformanceAnalysisImpl"/>
+		<reference name="participantPerformanceAnalysisDao" target="participantPerformanceAnalysisDao/participantPerformanceAnalysisDao"/>
+	</component>
+</composite>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_api" xmlns="http://www.loushang.com/sca/1.0">
+
+    <!-- 安全服务接口 -->
+    <component name="securityProvider">
+        <service name="securityProvider">
+            <interface.java interface="org.loushang.bsp.share.permit.security.provider.ISecurityProvider" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.sharesupport.permit.security.provider.SecurityProviderImpl" />
+    </component>
+    
+    <!-- 菜单服务接口 -->
+    <component name="MenuProvider">
+        <service name="MenuProvider">
+            <interface.java interface="org.loushang.bsp.share.menu.provider.IMenuProvider" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.sharesupport.permit.security.provider.MenuProviderImpl" />
+    </component>
+
+    <!-- 业务流水号服务接口 -->
+    <component name="IdProvider">
+        <service name="IdProvider">
+            <interface.java interface="org.loushang.bsp.share.id.provider.IIdProvider" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.sharesupport.id.provider.IdProviderImpl" />
+    </component>
+    <component name="pubIdTableProvider">
+        <service name="pubIdTableProvider">
+            <interface.java interface="org.loushang.bsp.id.domain.IPubIdTableProvider" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.sharesupport.id.domain.support.PubIdTableProviderImpl" />
+    </component>
+ 
+     <!-- 工作日历服务接口 -->
+    <component name="WorkdayProvider">
+        <service name="WorkdayProvider">
+            <interface.java interface="org.loushang.bsp.share.workCalendar.provider.IWorkdayProvider" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.sharesupport.workCalendar.provider.WorkdayProviderImpl" />
+    </component>
+    
+    <!-- 组织服务接口 -->
+    <component name="OrganProvider">
+        <service name="OrganProvider">
+            <interface.java interface="org.loushang.bsp.share.organization.provider.IOrganProvider" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.sharesupport.organization.provider.OrganProviderImpl" />
+    </component>
+    
+    <!-- 字典接口 -->
+ 	<component name="dictProvider">
+        <service name="dictProvider">
+            <interface.java interface="org.loushang.bsp.share.dict.provider.IDictProvider" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.sharesupport.dict.provider.DictProviderImpl" />
+    </component>
+      
+</composite>

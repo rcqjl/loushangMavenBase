@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                    http://www.springframework.org/schema/mvc
+                    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+					http://www.springframework.org/schema/aop 
+					http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+                    ">
+     <!-- spring上下文工具 -->                
+    <bean class="org.loushang.framework.util.SpringContextHolder" lazy-init="false" />
+
+	<!-- 异常统一处理 -->
+	<bean id="exceptionResolver"
+		class="org.loushang.framework.exception.BusinessExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.loushang.framework.exception.BusinessException">public/errorpage</prop>
+				<prop key="java.lang.Exception">public/500</prop>
+				<prop key="java.lang.Throwable">public/500</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 模块化异常日志拦截器-->
+	<!--
+	<bean id="aspectBean" class="org.loushang.framework.exception.ExceptionLogAspect" />
+		
+	<aop:config>  
+        <aop:aspect id="logAspect" ref="aspectBean">  
+            <aop:pointcut id="businessService" expression="execution(* com.inspur..*.*(..))" />  
+            <aop:after-throwing pointcut-ref="businessService" method="doThrowing" throwing="ex"/>  
+        </aop:aspect>  
+    </aop:config> -->
+
+	<!-- 配置国际化资源文件路径 -->
+    <bean id="messageSource" class="org.loushang.framework.i18n.ServerResourceBundleMessageSource" scope="prototype">
+		<property name="basenames">
+			 <list>
+				<value>messages/message</value>
+			</list>
+		</property>
+		<!-- 添加以下注释property将从环境变量中读取serverLocale的环境变量配置 -->
+		<!-- <property name="serverLocale" value="${serverLocale}" /> -->
+	</bean>
+		
+	<!-- 基于Cookie的本地化解析器 -->
+	<!--
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+       <property name="cookieMaxAge" value="604800"/>
+       <property name="defaultLocale" value="en_US"/>
+       <property name="cookieName" value="Language"></property>
+    </bean>-->
+
+</beans>

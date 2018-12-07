@@ -1,0 +1,38 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+}
+.propertyBodyArea{
+	padding:10px 10px 5px 10px;
+}
+.subprocCon label{
+	height: 18px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.subprocCon{
+	margin-bottom: 8px;
+}
+.subprocCon input{
+    text-align: left;
+    height: 24px;
+}
+.subprocCon input[type='text']{
+	width:140px;
+    background:#fff;
+    border:1px solid #CACACA;
+}
+.subprocCon input[type='button']{
+    position:absolute;
+    right:16px;
+    width:26px;
+    height:26px;
+    line-height:26px;
+    background:#EEE url(../images/skin_icons.png) no-repeat -62px -128px;
+    border:1px solid #B6B6B6;
+}

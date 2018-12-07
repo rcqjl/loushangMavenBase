@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.loushang.cportal:loushang-cportal-web:war:7.5.0">
+    <CLASSES>
+      <root url="jar://E:/loushangRepository/org/loushang/cportal/loushang-cportal-web/7.5.0/loushang-cportal-web-7.5.0.war!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://E:/loushangRepository/org/loushang/cportal/loushang-cportal-web/7.5.0/loushang-cportal-web-7.5.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://E:/loushangRepository/org/loushang/cportal/loushang-cportal-web/7.5.0/loushang-cportal-web-7.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

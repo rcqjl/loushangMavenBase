@@ -1,0 +1,180 @@
+<!-- saved from url=(0014)about:internet -->
+<html lang="en">
+
+<!-- 
+Smart developers always View Source. 
+
+This application was built using Adobe Flex, an open source framework
+for building rich Internet applications that get delivered via the
+Flash Player or to desktops via Adobe AIR. 
+
+Learn more about Flex at http://flex.org 
+// -->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!--  BEGIN Browser History required section -->
+<link rel="stylesheet" type="text/css" href="history/history.css" />
+<!--  END Browser History required section -->
+
+<title></title>
+<script src="AC_OETags.js" language="javascript"></script>
+
+<!--  BEGIN Browser History required section -->
+<script src="history/history.js" language="javascript"></script>
+<!--  END Browser History required section -->
+
+<style>
+body { margin: 0px; overflow:hidden }
+</style>
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 9;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 124;
+// -----------------------------------------------------------------------------
+// -->
+var ids=["rootUrl","procDefUniqueId","processId","assignmentId","pkDataField"];
+var vals="&";
+for(i=0;i<ids.length;i++)
+{
+	var ele=parent.document.getElementById(ids[i]);
+	if(ele!=null&&ele!=undefined&&ele!="undefined")
+	{
+		vals+=ids[i]+"="+ele.value+"&";	
+	}		
+}
+var isShowOrderCounterSign=parent.document.getElementById("isShowOrderCounterSign").value;
+var isShowParallelCounterSign=parent.document.getElementById("isShowParallelCounterSign").value;
+var isShowSplit=parent.document.getElementById("isShowSplit").value;
+var isShowJoin=parent.document.getElementById("isShowJoin").value;
+var isShowSubflow=parent.document.getElementById("isShowSubflow").value;
+
+var isShowActPropertyUrl=parent.document.getElementById("isShowActPropertyUrl").value;
+var actionType=parent.document.getElementById("actionType").value;
+var isShowActInfoByMouseOver=parent.document.getElementById("isShowActInfoByMouseOver").value;
+var isShowStartEndNode=parent.document.getElementById("isShowStartEndNode").value;
+var isShowIconDetailPanel=parent.document.getElementById("isShowIconDetailPanel").value;
+var isShowSimpleFlowView=parent.document.getElementById("isShowSimpleFlowView").value;
+var isShowProcessInfo=parent.document.getElementById("isShowProcessInfo").value;
+var isShowBackBtn=parent.document.getElementById("isShowBackBtn").value;
+var isShowparentFlowViewButton=parent.document.getElementById("isShowparentFlowViewButton").value;
+var LIMIT_TIME="common";
+
+function initFlowView()
+{
+	FlowView.flowViewAppInit(isShowOrderCounterSign,isShowParallelCounterSign,isShowSplit,isShowJoin,isShowSubflow,
+	isShowActPropertyUrl,actionType,isShowActInfoByMouseOver,
+	LIMIT_TIME,isShowStartEndNode,isShowIconDetailPanel,isShowSimpleFlowView,isShowProcessInfo,
+	isShowBackBtn,isShowparentFlowViewButton);
+}
+
+function back(actsString)
+{
+	var acts=eval(actsString);
+	window.returnValue=acts;
+	window.close();
+}
+
+function backToUrl()
+{
+	parent.window.back();
+}
+function getLocale(){
+	if (parent.document.getElementById('locale') != null) {
+		return parent.document.getElementById('locale').value;
+	}
+	return "";
+}
+</script>
+</head>
+
+<body scroll="no">
+<script language="JavaScript" type="text/javascript">
+
+// Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
+var hasProductInstall = DetectFlashVer(6, 0, 65);
+
+// Version check based upon the values defined in globals
+var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+
+if ( hasProductInstall && !hasRequestedVersion ) {
+	// DO NOT MODIFY THE FOLLOWING FOUR LINES
+	// Location visited after installation is complete if installation is required
+	var MMPlayerType = (isIE == true) ? "ActiveX" : "PlugIn";
+	var MMredirectURL = window.location;
+    document.title = document.title.slice(0, 47) + " - Flash Player Installation";
+    var MMdoctitle = document.title;
+
+	AC_FL_RunContent(
+		"src", "playerProductInstall",
+		"FlashVars", "MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+vals,
+		"width", "100%",
+		"height", "100%",
+		"align", "middle",
+		"id", "FlowView",
+		"quality", "high",
+		"bgcolor", "#b7cafe",
+		"name", "FlowView",
+		"allowScriptAccess","sameDomain",
+		"allowFullScreen","true",
+		"type", "application/x-shockwave-flash",
+		"pluginspage", "http://www.adobe.com/go/getflashplayer",
+		"wmode", "transparent"
+	);
+} else if (hasRequestedVersion) {
+	// if we've detected an acceptable version
+	// embed the Flash Content SWF when all tests are passed
+	AC_FL_RunContent(
+			"src", "FlowView",
+			"FlashVars","MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+vals,
+			"width", "100%",
+			"height", "100%",
+			"align", "middle",
+			"id", "FlowView",
+			"quality", "high",
+			"bgcolor", "#b7cafe",
+			"name", "FlowView",
+			"allowScriptAccess","sameDomain",
+			"allowFullScreen","true",
+			"type", "application/x-shockwave-flash",
+			"pluginspage", "http://www.adobe.com/go/getflashplayer",
+			"wmode", "transparent"
+	);
+  } else {  // flash is too old or we can't detect the plugin
+    var alternateContent = 'Alternate HTML content should be placed here. '
+  	+ 'This content requires the Adobe Flash Player. '
+   	+ '<a href=http://www.adobe.com/go/getflash/>Get Flash</a>';
+    document.write(alternateContent);  // insert non-flash content
+  } 
+</script>
+<noscript>
+  	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+			id="FlowView" width="100%" height="100%"
+			codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+			<param name="movie" value="FlowView.swf" />
+			<param name="quality" value="high" />
+			<param name="bgcolor" value="#b7cafe" />
+			<param name="allowScriptAccess" value="sameDomain" />
+			<param name="wmode" value="transparent"/>
+			<embed src="FlowView.swf" quality="high" bgcolor="#b7cafe"
+				width="100%" height="100%" name="FlowView" align="middle"
+				play="true"
+				loop="false"
+				quality="high"
+				allowScriptAccess="sameDomain"
+				allowFullScreen="true"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer"
+				wmode="transparent">
+			</embed>
+	</object>
+</noscript>
+</body>
+</html>

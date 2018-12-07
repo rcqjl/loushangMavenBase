@@ -1,0 +1,6 @@
+#跳转url任务类型
+JSP_FORM.DEVICE_TYPE=4:All types,0:PC Form,1:Mobile Form,2:PAD Form
+#任务列表跳转url类型
+JSP_FORM.TASK_LIST_FORWARD_TYPE=0:System default,1:Process type
+#跳转url任务类型
+JSP_FORM.ISENABLED=0:N,1:Y

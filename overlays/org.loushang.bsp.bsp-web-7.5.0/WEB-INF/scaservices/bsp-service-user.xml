@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+
+    <!-- 用户服务 -->
+    <service interface="org.loushang.bsp.api.user.IUserService" refScaComponent="BspUserService.BspUserService" />
+     
+</SCAServices>

@@ -1,0 +1,267 @@
+.propertyArea{
+    background-color: #F0F0F0;
+}
+.wfPropertyBodyArea{
+    padding:5px 10px 5px 10px;
+    width:100%;
+}
+.headArea{
+    height:30px;
+    line-height:30px;
+    background:url(../images/bg.png) repeat-x 0 0;
+    border-bottom:1px solid #C7C7C7;
+    border-top:1px solid #C7C7C7;
+}
+.wfdFirstHeadArea {
+    border-top:0px solid #C7C7C7;
+}
+.headArea img{
+    display:inline-block;
+    float:right;
+    height: 18px;
+    width: 20px;
+    right:5px;
+}
+.headArea span{
+    margin-left: 10px;
+}
+.property{
+    margin-bottom:8px;
+}
+.property label{
+    height: 18px;
+    line-height: 18px;
+    width: 42px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+}
+.wfdProp textarea{
+    width:153px;
+    height: 45px;
+    overflow: auto;
+    resize:none;
+    border:1px solid #B6B6B6;
+    white-space: normal;
+}
+
+.property span {
+    width: 36px;
+}
+.wfdProp select{
+    vertical-align: middle;
+    height:24px;
+    text-align:left;
+    background-color: #fff;
+    padding-top:2px;
+    border:1px solid #B6B6B6;
+}
+.txtDiv{
+    width:180px;
+    height:24px;
+    line-height:24px;
+    vertical-align: middle;
+    border:1px solid #B6B6B6;
+}
+.limitSel{
+    margin-left:5px;
+}
+.wfdProp {
+    margin-bottom: 8px;
+}
+.wfdProp label{
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+    line-height: 18px;
+    text-align: right;
+    margin-right: 5px;
+}
+.describe label,.chk{
+    display: inline-block;
+    vertical-align: top;
+}
+.wfdActProp label {
+	width: 42px;
+}
+.wfdActProp1 label {
+	width: 60px;
+}
+.wfdProp input[type='text'],.wfdProp .select{
+    width:178px;
+    height:24px;
+    line-height:24px;
+    background:#FFF;
+    border:1px solid #B6B6B6;
+    readonly:readonly;
+}
+.wfdActProp input[type='text'] {
+    width: 172px;
+}
+.wfdActProp .select {
+    width: 174px;
+}
+.wfdProp input[type='button']{
+    position:absolute;
+    right:16px;
+    width:26px;
+    height:26px;
+    line-height:26px;
+    line-height:26px;
+    background:#EEE;
+    border:1px solid #B6B6B6;
+}
+.wfdPropWithButton label{
+     /* margin-right:0px; */
+}
+.wfdPropWithButton input[type='text']{
+     width:162px;
+}
+.gateWay input[type='text']{
+     width:125px;
+}
+.wfdPropWithButton input[type='button'] {
+	width:26px;
+    height:26px;
+    line-height:26px;
+    background:#EEE url(../images/skin_icons.png) no-repeat -62px -128px;
+    border:1px solid #B6B6B6;
+}
+.dataObj label{
+	width:60px;
+}
+.dataObj input[type='text']{
+	width:125px;
+}
+.dataObj input[type='button']{
+	right:41px;
+}
+.btnDiv{
+	height:24px;
+	line-height:24px;
+	vertical-align: middle;
+	text-align: left;
+	margin: 0px;
+	background:#fff;
+	border:1px solid #B6B6B6;
+	color:#7A7A7A;
+}
+.radioDiv{
+	float:left;
+	width:20px;
+	position: relative;
+	margin-left:-10px;
+}
+.span {
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 6px;
+    cursor: default;
+}
+.testInput {
+    position:relative;
+    width: 120px;
+    height: 30px;
+    line-height:30px;
+}
+select{
+    position:relative;
+    display:inline-block;
+    top:0px;
+}
+#divergeRule div,#convergeRule div,#divergeRule div input,#divergeRule div label,#convergeRule div input,#convergeRule div label{
+    display: inline-table;
+    vertical-align:top;
+}
+.chk input{
+	height: 13px; 
+	line-height: 13px; 
+	vertical-align: middle;
+    width: 13px;
+    margin-left:8px;
+    margin-right:5px;
+}
+.chk label{
+    text-align:left;
+    width: 150px;
+	height: 22px; 
+	line-height: 22px; 
+	vertical-align: middle;
+}
+#dispatcher select{
+    width:180px;
+}
+#forkActivity select{
+    width:120px;
+}
+#forkAct label, #forkActivity label{
+    width:95px;
+}
+#taskRule label, #joinRule label{
+	width:60px;
+}
+#taskRule select, #joinRule select{
+	width:131px;
+}
+#activityLimit select{
+	width:97px;
+}
+#forkAct select{
+	width:95px;
+}
+#activityLimit input, #activityWarn input{
+	width:52px;
+}
+.wfPropertyBodyArea ul {
+    list-style:none;
+}
+.wfPropertyBodyArea li {
+    float: left;
+    margin-bottom: 10px;
+}
+.wfPropertyBodyArea a {
+    color:#A3A3A3;
+    display: block;
+    padding:5px 6px 0px 6px;
+    height:20px;
+    border-bottom: 1px solid #CACACA;
+    text-decoration: none;
+}
+.wfPropertyBodyArea a.on {
+    color:#464646;
+    background: #EEE;
+    border: 1px solid #CACACA;
+    border-bottom: 0px solid #CACACA;
+}
+.wfdPropTabs,.wfdActPropTabs {
+    margin: 0px 5px 5px 5px;
+    padding: 0px;
+    width: 92%;
+}
+.wfdPropBaseArea,.wfdActPropBaseArea {
+    text-align:center;
+    width: 22%;
+}
+.wfdPropAdvArea,.wfdActPropAdvArea {
+    text-align: left;
+    width: 73%;
+}
+#gwJoinRule select{
+	width:156px;
+}
+#actBranch .formBtnDiv{
+	right: 41px;
+	background:#EEE url(../images/skin_icons.png) no-repeat -62px -128px;
+}
+#actBranch .formTxtDiv{
+	width: 110px;
+}
+.callAct label{
+	width:60px;
+}
+.callAct input[type='text']{
+	width:140px;
+}
+.callAct select{
+	width:156px;
+}

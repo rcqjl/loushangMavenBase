@@ -1,0 +1,179 @@
+/*页面项部的信息弹框*/
+.ue-sticky.success {
+	margin-top: 5px;
+}
+.ue-sticky-close {
+	top: 4px;
+}
+.ue-sticky-note {
+	padding: 4px 40px 4px 20px;
+}
+
+.ue-menu-wrap {
+	top: 0px;
+}
+
+/*页面右侧div*/
+.ue-menu-right {
+	overflow: auto;
+}
+
+.ue-menu-left {
+    overflow: visible;
+}
+
+.ztree {
+	padding: 68px 0px 0px 0px;
+}
+
+.row {
+	margin: 0px;
+	padding: 5px;
+}
+.form-inline {
+	height: 30px;
+}
+
+/*表格左上角的标题*/
+.form-inline span.tableTitle {
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: 5px;
+	font-size: 16px;
+	font-family: arial, "microsoft yahei", simsun, simhei, sans-serif;
+}
+
+/*必填符号*/
+.required {
+	top: 0;
+}
+
+/*排序弹窗的个性化样式*/
+.sort .ui-dialog-body {
+	padding: 0;
+}
+
+/***********增加组织机构的弹窗样式**************************************/
+.ui-popup-modal {
+	z-index: 1060!important;
+}
+.modal-content {
+	border-radius: 0;
+}
+.modal-footer {
+	height: 185px;
+	padding: 10px;
+}
+.modal-footer span.organTitle {
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: 5px;
+	float: left;
+}
+.modal-footer .form-inline a {
+	padding: 2px;
+}
+.modal-footer .form-inline a:first-child {
+	
+}
+.modal-footer table.dataTable thead>tr>th,
+.modal-footer .table-bordered>tbody>tr>td{
+	height: 30px;
+	line-height: 30px;
+}
+
+/*********************选择“负责人”弹窗**********************/
+.ui-popup-backdrop {
+	z-index: 1059!important;
+}
+.modal-dialog {
+	top: 50px;
+}
+
+.form-group.field {
+	display: none;
+}
+
+.select-stru-type {
+	height: 35px;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	text-align: left;
+	font-size: 16px;
+	font-family: arial, "microsoft yahei", simsun, simhei, sans-serif;
+	line-height: 22px;
+	background: #fbfbfb;
+	cursor: pointer;
+	position: absolute;
+	text-align: center;
+}
+.select-stru-type:hover {
+	background: #f0f0f0;
+}
+.select-stru-type .stru-type-name {
+	display: inline-block;
+    width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    float: left;
+}
+.select-stru-type .fa-angle-right {
+	float: right;
+	margin-top: 2px;
+	margin-right: 5px;
+}
+.popover {
+	max-width: 800px;
+}
+.popover a {
+	float: right;
+	color: #3e99ff;
+}
+.popover-content {
+	padding: 0px 14px;
+}
+.stru-container {
+	width: 570px;
+}
+@media(max-width:768px){
+	.stru-container {
+		width: 420px;
+	}
+	
+}
+.stru-type {
+	height: 50px;
+	width: 120px;
+	border: 1px solid #ddd;
+	background-color: #fafafa;
+	margin: 10px;
+	text-align: center;
+	line-height: 50px;
+	float: left;
+	cursor: pointer;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.stru-type:hover {
+	border-color: #0be;
+	color: #0be;
+}
+
+/******************搜索框********************************/
+.searchContainer{
+	width: 242px;
+	height: 45px;
+	background: #ffffff;
+	position: absolute;
+	top:35px;
+	left:0px;
+}
+.searchDiv{
+	width:240px;
+	margin-top: 5px;
+}
+.modal-body{
+	padding: 20px;
+}

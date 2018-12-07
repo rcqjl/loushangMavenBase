@@ -1,0 +1,41 @@
+/*复选框*/
+.phone_widget_checkbox input[type=checkbox] {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("check.png") no-repeat scroll
+		center transparent;
+	border-radius: 0px;
+	margin: 0 5px 0 0;
+	text-shadow: 0 1px 0 rgb(240, 240, 240);
+	top: 0px;
+	border: 0px solid white;
+	bottom: 0px;
+	height: 25px;
+	position: relative;
+	vertical-align: middle;
+	width: 25px;
+	cursor: pointer;
+}
+/*复选框选中*/
+.phone_widget_checkbox input[type=checkbox]:checked::before {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("checked.png") no-repeat left
+		transparent;
+	content: '';
+	display: block;
+	height: 25px;
+	width: 25px;
+}
+
+.phone_widget_checkbox .checkboxContainer label {
+	position: relative;
+	margin-right: 7px;
+}
+
+.phone_widget_checkbox .checkboxContainer {
+	display: inline-block;
+	width: 65%;
+	height: 54px;
+	font-size: 18px;
+}

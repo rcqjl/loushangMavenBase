@@ -1,0 +1,54 @@
+html,body{
+	font-size: 12px;
+	font-family:"宋体";
+}
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	color: #fff;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.buttonArea{
+	text-align: right;
+	position: absolute;
+	bottom: 20px;
+	right: 15px;
+	display: block;
+	border: none;
+}
+.inputArea{
+	height: 30px;
+	line-height: 30px;
+	width: 80%;
+	margin: 20px auto 0px auto;
+}
+.mainArea{
+	width:100%;
+	height:100%;
+}
+.inputArea label{
+	
+}
+.inputArea input{
+	height: 26px;
+	line-height: 26px;
+	margin-left: 5px;
+	border: 1px solid #dcdcdc;
+	width:180px;
+}

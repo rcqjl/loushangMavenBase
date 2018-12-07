@@ -1,0 +1,19 @@
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+    margin:0px;
+	height:100%; 
+}
+.cfdCore-Area {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+#cformProperty{
+	position:fixed;
+	right:6px;
+	bottom:2px;
+	z-index: 1;
+	border:1px #aaa solid;
+	background-color: #fff;
+}

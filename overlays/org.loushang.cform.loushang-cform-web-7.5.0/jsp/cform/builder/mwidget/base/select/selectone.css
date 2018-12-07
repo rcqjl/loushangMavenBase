@@ -1,0 +1,12 @@
+.phone_widget_selectone select {
+	width: 65%;
+	min-height: 54px;
+	border: 0;
+	margin-left: 1px;
+	font-size: 18px;
+	background: inherit;
+}
+
+.phone_widget_selectone select option {
+	font-size: 18px;
+}

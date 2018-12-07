@@ -1,0 +1,25 @@
+/* CSS file */
+global
+{
+	fontFamily:Arial; 
+    fontSize:12;
+}
+.customTextAlignLabel {
+   textAlign: left;
+}
+
+ToolTip{
+	fontSize:14;
+}
+.editPanelLbl{
+	font-size:10;
+	text-align:left;
+	padding-left:0;
+	padding-right:6;
+}
+.editPanelBtn{
+	button-height:15;
+	button-width:10;
+	padding-left:0;
+	padding-right:0;
+}

@@ -1,0 +1,145 @@
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+	margin:0px;
+	height:100%; 
+	padding:0px;
+	overflow:hidden;
+}
+input,textarea{
+	white-space : nowrap;
+	overflow : hidden;
+	text-overflow : ellipsis;
+}
+.cfdBaseArea {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+/*    border :1px soild #00f;*/
+    background-color: #fff;
+}
+
+.cfdHandleArea {
+    position : relative;
+	width:100%;
+    height:40px;
+    background-color: #EEE;
+    border:1px solid #CACACA;
+    line-height:40px;
+}
+.cfdHandleArea ul {
+    list-style:none;
+    vertical-align:middle;
+    padding:0px;
+    margin:0px;
+    height: 40px;
+	width: 250px;
+	float: right;
+}
+.cfdHandleArea li {
+	padding:0px;
+    margin:0px;
+    right:0px;
+    left:0px;
+    float:right;
+    line-height:40px;
+    cursor: pointer;
+}
+.cfBtnSaveLi {
+	width : 66px;
+}
+.cfBtnReleaseLi {
+    width : 93px;
+}
+.cfBtnSaveAsLi {
+    width : 90px;
+}
+.cfBtnModelLi {
+    width : 83px;
+}
+.cfProcTitle{
+	font-size:20px;
+	display: inline-block;
+	margin-left:10px;
+	float:left;
+	font-family:"微软雅黑";
+}
+.cfdHandleArea span{
+}
+.cfdButton {
+    border-left:1px solid #CACACA;
+    height:40px;
+}
+.cfdHandleArea div {
+    text-align:center;
+}
+.cfdHandleArea div:HOVER{
+	background-color:#CFCFCF;
+}
+.cfdButtonImg {
+	position:relative;
+	float:left;
+	top:12px;
+	width:16px;
+	height:16px;
+	border:none;
+}
+.cfdBtnSave {
+    left:10px;
+    background:url(../images/skin_icons.png) no-repeat -60px -62px;
+}
+.cfdBtnRelease {
+    left:6px;
+	background:url(../images/skin_icons.png) no-repeat -76px -62px;
+}
+.cfdBtnSaveAs {
+    left:6px;
+    background:url(../images/skin_icons.png) no-repeat -92px -62px;
+}
+.cfdBtnModel {
+    left:6px;
+	background:url(../images/skin_icons.png) no-repeat -86px -132px;
+}
+.cfdBottomColumn {
+    position : relative;
+    height: 80%;
+    width: 80%;
+/*    border:1px soild #00f;*/
+    background-color: #fff;
+}
+.wfdSourceColumn {
+    position : relative;
+    width : 99%;
+    height:89%;
+    border:2px soild #00f;
+}
+#bpmnSource,#cformSource{
+	position: relative;
+	left: 28px;
+}
+#cformSource{
+	background: #eee;
+}
+#saveAsNewVersion,#saveAsNewProcess{
+	position: fixed;
+	width: 93px;
+	text-decoration: none;
+	background-color:#cfcfcf;
+	border:none;
+	display:none;
+	height:30px
+	line-height:30px;
+	font-size:15px;
+}
+#saveAsNewVersion:HOVER,#saveAsNewProcess:HOVER{
+	text-decoration: underline;
+}
+
+#saveAsNewVersion{
+	top: 75px;
+}
+#saveAsNewProcess{
+	top: 40px;
+}

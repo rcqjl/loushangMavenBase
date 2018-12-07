@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+
+	<component name="businessProcessDefModelDao">
+		<service name="businessProcessDefModelDao">
+			<interface.java interface="org.loushang.workflow.businessprocessmodel.definition.dao.IBusinessProcessDefModelDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.businessprocessmodel.definition.dao.support.BusinessProcessDefModelJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="businessProcActivityDefDao">
+		<service name="businessProcActivityDefDao">
+			<interface.java interface="org.loushang.workflow.businessprocessmodel.definition.dao.IBusinessProcActivityDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.businessprocessmodel.definition.dao.support.BusinessProcActivityDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="businessProcDefModelRefDao">
+		<service name="businessProcDefModelRefDao">
+			<interface.java interface="org.loushang.workflow.businessprocessmodel.definition.dao.IBusinessProcDefModelRefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.businessprocessmodel.definition.dao.support.BusinessProcDefModelRefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="businessProcessTemplateTypeDao">
+		<service name="businessProcessTemplateTypeDao">
+			<interface.java interface="org.loushang.workflow.businessprocessmodel.definition.dao.IBusinessProcessTemplateTypeDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.businessprocessmodel.definition.dao.support.BusinessProcessTemplateTypeJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="businessProcessDefModelDomain">
+		<service name="businessProcessDefModelDomain">
+			<interface.java interface="org.loushang.workflow.businessprocessmodel.definition.domain.IBusinessProcessDefModel"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.businessprocessmodel.definition.domain.support.BusinessProcessDefModeImpl"/>
+		<reference name="businessProcessDefModelDao" target="businessProcessDefModelDao/businessProcessDefModelDao"/>
+		<reference name="businessProcActivityDefDao" target="businessProcActivityDefDao/businessProcActivityDefDao"/>
+		<reference name="businessProcDefModelRefDao" target="businessProcDefModelRefDao/businessProcDefModelRefDao"/>
+		<reference name="businessProcessTemplateTypeDao" target="businessProcessTemplateTypeDao/businessProcessTemplateTypeDao"/>
+	</component>
+</composite>

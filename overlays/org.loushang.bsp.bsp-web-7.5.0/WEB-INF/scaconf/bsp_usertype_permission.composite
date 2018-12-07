@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_user" xmlns="http://www.loushang.com/sca/1.0">
+	<description>usertype_permission</description>
+	<component name="BspUserTypePermissionDao">
+		<service name="BspUserTypePermissionDao">
+			<interface.java interface="org.loushang.bsp.authority.usertype.dao.IUserTypePermissionDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.authority.usertype.dao.jdbc.UserTypePermissionJdbcDao" />
+	</component>
+	
+	<component name="BspUserTypePermissionDomain">
+		<service name="BspUserTypePermissionDomain">
+			<interface.java interface="org.loushang.bsp.authority.usertype.domain.IUserTypePermissionDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.authority.usertype.domain.support.UserTypePermissionDomain" />
+	</component>
+	
+	<!-- 用户类型权限接口 -->
+    <component name="BspUserTypePermissionService">
+        <service name="BspUserTypePermissionService">
+            <interface.java interface="org.loushang.bsp.api.authority.IUserTypePermissionService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.authority.UserTypePermissionServiceImpl" />
+    </component>
+    
+</composite>

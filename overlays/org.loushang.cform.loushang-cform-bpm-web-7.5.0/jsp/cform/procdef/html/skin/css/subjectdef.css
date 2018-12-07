@@ -1,0 +1,197 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+}
+
+label {
+	display: inline-block;
+	width: 60px;
+	margin-left: 4px;
+}
+
+span {
+	width: 32px;
+}
+
+
+.propertyBodyArea{
+	width:100%;
+	/* overflow: hidden; */
+}
+
+.mainArea{
+	height: 350px;
+	width: 100%;
+	padding-top: 20px;
+	text-align: right;
+}
+.defTable table{
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.defTable thead{
+	width:600x;
+	/* position:fixed; */
+	/* top:60px; */
+}
+.defTable thead tr th{
+	text-align:left;
+}
+.defTable thead tr{
+	height: 30px;
+	width:600px;
+	/* border:1px solid #D9D9D9; */
+}
+.defTable tbody{
+	/* display: block; */
+	margin-top: 50px;
+}
+.defTable tbody tr{
+	height: 30px;
+	line-height:30px;
+	width:568px;
+	background: #fafafa;
+	border:1px solid #dcdcdc; 
+	cursor: pointer;
+}
+.odd{
+	background-color: #fafafa; 
+}
+.selected{
+	background-color: #FFF;
+}
+input[type="checkbox"]{
+	cursor: pointer;
+	display: inline-block;
+	top:4px;
+	position:relative;
+}
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	margin: 0px 5px 0px 0px;
+	color: #fff;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+	width: 65px;
+	display:inline;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+	width: 65px;
+	display:inline;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.addImg1{
+	width: 11px;
+	height: 11px;
+	background: url("../images/skin_icons.png") no-repeat scroll -40px -62px transparent;
+	margin: 0px auto;
+	display: inline-block;
+	position: relative;
+	top: 1px;
+	cursor: pointer;
+}
+#add{
+	border:none;
+	margin-bottom: 10px;
+	margin-right:20px;
+	display: inline-block;
+	color: blue;
+	cursor: pointer;
+}
+.buttonArea{
+	text-align: right;
+	position: absolute;
+	bottom: 20px;
+	right: 15px;
+}
+.defTable{
+	text-align: right;
+	width: 93%;
+	height:305px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow-x:hidden;
+	overflow-y:auto;
+	border:solid 1px #dcdcdc;
+}
+.defTable thead tr{
+	background-color:#ebebeb;
+}
+.defTable tbody tr:hover,.hover{
+	background-color:#f0f0f0;
+}
+ input{
+	text-align: center;
+	background-color: #fafafa;
+	border:0px;
+	display: block;
+	cursor: pointer;
+	
+}
+input[type='text']{
+	line-height:30px;
+	height: 30px;
+	width: 100%;
+	text-align: left;
+}
+.addImg{
+	position: absolute;
+	right:25px;
+	cursor: pointer;
+}
+.delImage{
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -80px -16px transparent;
+	float:left;
+}
+.delImage:Hover{
+	background-position: -80px 0px;
+}
+
+.upImage{
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -64px -16px transparent;
+	float:left;
+	margin: 0px 14px;
+}
+.upImage:Hover{
+	background-position:-64px 0px;
+}
+.downImage{
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -48px -16px transparent;
+	float:left;
+	
+}
+.downImage:Hover{
+	background-position: -48px 0px ;
+	
+}
+
+td>div{
+	display:inline-block;
+}
+td>div>label{
+	width:55px;
+}

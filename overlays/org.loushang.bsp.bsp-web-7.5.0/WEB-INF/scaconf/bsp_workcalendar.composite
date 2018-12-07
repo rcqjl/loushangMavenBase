@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="demo" xmlns="http://www.loushang.com/sca/1.0">
+    <description>organization module</description>
+
+    <component name="WorkCalendarDao">
+        <service name="WorkCalendarDao">
+            <interface.java interface="org.loushang.bsp.workcalendar.dao.IWorkCalendarDao" />
+            <binding.sca />
+        </service>
+        <property name="dataSourceConf" value="dataSource" />
+        <implementation.java impl="org.loushang.bsp.workcalendar.dao.support.WorkCalendarDao" />
+    </component>
+
+    <component name="WorkCalendarDomain">
+        <service name="WorkCalendarDomain">
+            <interface.java interface="org.loushang.bsp.workcalendar.domain.IWorkCalendarDomain" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.workcalendar.domain.support.WorkCalendarDomain" />
+    </component>
+    
+        <component name="WorkCalendarService">
+        <service name="WorkCalendarService">
+            <interface.java interface="org.loushang.bsp.api.workcalendar.IWorkCalendarService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.workcalendar.WorkCalendarService" />
+    </component>
+
+</composite>

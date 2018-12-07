@@ -1,0 +1,4 @@
+#任务列表跳转url类型
+CFORM_BPM.TASK_LIST_FORWARD_TYPE=0:Default,1:Workflow
+#跳转url任务类型
+CFORM_BPM.FORWARD_TASK_TYPE=0:Create Task,1:To Do Task,2:Done Task,3:End Task,4:Monitor Task,-1:All

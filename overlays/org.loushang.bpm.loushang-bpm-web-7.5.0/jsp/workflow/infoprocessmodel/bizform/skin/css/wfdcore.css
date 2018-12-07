@@ -1,0 +1,12 @@
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+    color:#666;
+    margin:0px;
+	height:100%;
+}
+.wfdCore-Area {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}

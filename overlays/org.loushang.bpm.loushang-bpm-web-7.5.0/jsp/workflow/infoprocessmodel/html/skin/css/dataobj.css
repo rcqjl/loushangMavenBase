@@ -1,0 +1,177 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+}
+
+label {
+	display: inline-block;
+	width: 60px;
+	margin-left: 4px;
+}
+
+span {
+	width: 32px;
+}
+
+
+.propertyBodyArea{
+	width:100%;
+	/* overflow: hidden; */
+}
+
+.mainArea{
+	height: 100%;
+	width: 100%;
+	padding-top: 20px;
+	text-align: right;
+}
+.defTable table{
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.defTable thead{
+	width:600x;
+	/* position:fixed; */
+	/* top:60px; */
+}
+.defTable th,.defTable td{
+	padding-left:10px;
+	width:250px;
+	text-align:left;	
+}
+.defTable thead tr{
+	height: 30px;
+	width:340px;
+}
+.defTable tbody{
+	margin-top: 50px;
+}
+.tr{
+	height: 30px;
+	line-height:30px;
+	width:340px;
+	background: #fafafa;
+	border:1px solid #dcdcdc; 
+	cursor: pointer;
+}
+.odd{
+	background-color: #fafafa; 
+}
+.selected{
+	background-color: #FFF;
+}
+input[type="checkbox"]{
+	cursor: pointer;
+	display: inline-block;
+	top:4px;
+	position:relative;
+}
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	margin: 0px 5px 0px 0px;
+	color: #fff;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+	width: 65px;
+	display:inline;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+	width: 65px;
+	display:inline;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.img{
+	background: url("../images/skin_icons.png") no-repeat scroll transparent;
+	margin: 0px auto;
+	display: inline-block;
+	position: relative;
+	top: 1px;
+	cursor: pointer;
+}
+.addImg{
+	width: 11px;
+	height: 11px;
+	background-position: -40px -62px ;
+	margin-right:5px;
+}
+.delImg{
+	width: 16px;
+	height: 16px;
+	background-position: -80px -16px;
+}
+.delImg:HOVER{
+	background-position: -80px 0px;
+}
+.opt{
+	border:none;
+	margin-bottom: 10px;
+	margin-right:20px;
+	display: inline-block;
+	color: blue;
+	cursor: pointer;
+}
+.buttonArea{
+	text-align: right;
+	position: absolute;
+	bottom: 20px;
+	right: 15px;
+}
+.defTable{
+	text-align: right;
+	width: 290px;
+	height:216px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow-x:hidden;
+	overflow-y:auto;
+	border:solid 1px #dcdcdc;
+}
+.defTable thead tr{
+	background-color:#ebebeb;
+}
+.defTable tbody tr:hover,.hover{
+	background-color:#f0f0f0;
+}
+.selected{
+	background-color:#f0f0f0;
+}
+ input{
+	text-align: center;
+	background-color: #fafafa;
+	border:0px;
+	display: block;
+	cursor: pointer;
+	
+}
+input[type='text']{
+	line-height:30px;
+	height: 30px;
+	width: 100%;
+	text-align: left;
+}
+
+
+td>div{
+	display:inline-block;
+}
+td>div>label{
+	width:55px;
+}

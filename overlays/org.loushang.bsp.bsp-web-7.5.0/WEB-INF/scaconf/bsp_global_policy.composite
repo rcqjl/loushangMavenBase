@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_global_policy" xmlns="http://www.loushang.com/sca/1.0">
+	<description>globalpolicy</description>
+	
+	<component name="GlobalPolicyJdbcDao">
+		<service name="GlobalPolicyJdbcDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.user.dao.IGlobalPolicyDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.user.dao.jdbc.GlobalPolicyJdbcDao" />
+	</component>
+
+	<component name="PwdHistJdbcDao">
+		<service name="PwdHistJdbcDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.user.dao.IPwdHistDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.user.dao.jdbc.PwdHistJdbcDao" />
+	</component>
+	
+	<component name="GlobalPolicyDomainImpl">
+		<service name="GlobalPolicyDomainImpl">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.user.domain.IGlobalPolicyDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.user.domain.support.GlobalPolicyDomainImpl" />
+		<reference name="globalPolicyDao" target="GlobalPolicyJdbcDao/GlobalPolicyJdbcDao" />
+		<reference name="pwdHistDao" target="PwdHistJdbcDao/PwdHistJdbcDao" />
+	</component>
+	
+	<!-- 全局策略接口 -->
+    <component name="BspGlobalPolicyService">
+        <service name="BspGlobalPolicyService">
+            <interface.java interface="org.loushang.bsp.api.globalpolicy.IGlobalPolicyService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.globalpolicy.GlobalPolicyServiceImpl" />
+    </component>
+
+</composite>

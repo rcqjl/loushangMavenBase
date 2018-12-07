@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+	<component name="wfInformationProcDefRefDomain">
+		<service name="wfInformationProcDefRefDomain">
+			<interface.java interface="org.loushang.workflow.ecgapprocdef.ext.IInformationProcDefRef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.ecgapprocdef.ext.Impl"/>
+	</component>
+	<component name="wfMonitorSystemSynDomain">
+	<service name="wfMonitorSystemSynDomain">
+		<interface.java interface="org.loushang.workflow.ecgapprocdef.ext.IMonitorSystemSyn"/>
+		<binding.sca/>
+	</service>
+	<implementation.java impl="org.loushang.workflow.ecgapprocdef.ext.SynImpl"/>
+	</component>
+	
+	<component name="tableColumnMetaTypeDao">
+		<service name="tableColumnMetaTypeDao">
+			<interface.java interface="org.loushang.workflow.ecgapprocdef.ext.ITableColumnMetaTypeDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.ecgapprocdef.ext.TableColumnMetaTypeJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+</composite>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow_manage" xmlns="http://www.loushang.com/sca/1.0">
+	<description>workflow manage module</description>
+
+	<component name="processDefManageDomain">
+		<service name="processDefManageDomain">
+			<interface.java interface="org.loushang.workflow.manage.processdef.domain.IProcessDefManage"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.manage.processdef.domain.support.ProcessDefManageImpl"/>
+		<reference name="processDefDao" target="processDefDao/processDefDao"/>
+		<reference name="processDefinitionDomain" target="processDefinitionDomain/processDefinitionDomain"/>
+		<reference name="infoProcPermissionConfigDomain" target="infoProcPermissionConfigDomain/infoProcPermissionConfigDomain"/>
+	</component>
+	<component name="processManageDomain">
+		<service name="processManageDomain">
+			<interface.java interface="org.loushang.workflow.manage.process.domain.IProcessManage"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.manage.process.domain.support.ProcessManageImpl"/>
+		<reference name="engineExecutionDomain" target="engineExecutionDomain/engineExecutionDomain"/>
+		<reference name="processManageDao" target="processManageDao/processManageDao"/>
+		<reference name="activityDefDao" target="activityDefDao/activityDefDao"/>
+		<reference name="dataFieldDao" target="dataFieldDao/dataFieldDao"/>
+	</component>
+	<component name="activityManageDomain">
+		<service name="activityManageDomain">
+			<interface.java interface="org.loushang.workflow.manage.activity.domain.IActivityManage"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.manage.activity.domain.support.ActivityManageImpl"/>
+		<reference name="engineExecutionDomain" target="engineExecutionDomain/engineExecutionDomain"/>
+		<reference name="activityDao" target="activityDao/activityDao"/>
+		<reference name="activityDefDao" target="activityDefDao/activityDefDao"/>
+		<reference name="processDefDao" target="processDefDao/processDefDao"/>
+		<reference name="daiBanTaskDomain" target="daiBanTaskDomain/daiBanTaskDomain"/>
+	</component>
+	<component name="assignmentManageDomain">
+		<service name="assignmentManageDomain">
+			<interface.java interface="org.loushang.workflow.manage.assignment.domain.IAssignmentManage"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.manage.assignment.domain.support.AssignmentManageImpl"/>
+		<reference name="assignmentDao" target="assignmentDao/assignmentDao"/>
+		<reference name="daiBanTaskDomain" target="daiBanTaskDomain/daiBanTaskDomain"/>
+
+	</component>
+	<component name="processEndManageDomain">
+		<service name="processEndManageDomain">
+			<interface.java interface="org.loushang.workflow.manage.processend.domain.IProcessEndManage"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.manage.processend.domain.support.ProcessEndManageImpl"/>
+		<reference name="engineExecutionDomain" target="engineExecutionDomain/engineExecutionDomain"/>
+		<reference name="processEndManageDao" target="processEndManageDao/processEndManageDao"/>
+		<reference name="dataFieldEndDao" target="dataFieldEndDao/dataFieldEndDao"/>
+		<reference name="activityDefDao" target="activityDefDao/activityDefDao"/>
+		<reference name="endTaskDomain" target="endTaskDomain/endTaskDomain"/>
+		<reference name="yiBanTaskDomain" target="yiBanTaskDomain/yiBanTaskDomain"/>
+	</component>
+	<component name="activityEndManageDomain">
+		<service name="activityEndManageDomain">
+			<interface.java interface="org.loushang.workflow.manage.activityend.domain.IActivityEndManage"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.manage.activityend.domain.support.ActivityEndManageImpl"/>
+		<reference name="activityEndManageDao" target="activityEndManageDao/activityEndManageDao"/>
+	</component>
+	<component name="assignmentEndManageDomain">
+		<service name="assignmentEndManageDomain">
+			<interface.java interface="org.loushang.workflow.manage.assignmentend.domain.IAssignmentEndManage"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.manage.assignmentend.domain.support.AssignmentEndManageImpl"/>
+		<reference name="assignmentEndDao" target="assignmentEndDao/assignmentEndDao"/>
+	</component>
+	<component name="processEndManageDao">
+		<service name="processEndManageDao">
+			<interface.java interface="org.loushang.workflow.manage.processend.dao.IProcessEndManageDao"/>
+			<binding.sca/>
+		</service>
+	<implementation.java impl="org.loushang.workflow.manage.processend.dao.support.ProcessEndManageJdbcDao"/>
+	<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="assignmentManageDao">
+		<service name="assignmentManageDao">
+			<interface.java interface="org.loushang.workflow.manage.assignment.dao.IAssignmentManageDao"/>
+			<binding.sca/>
+		</service>
+	<implementation.java impl="org.loushang.workflow.manage.assignment.dao.support.AssignmentManageJdbcDao"/>
+	<property name="dataSourceConf" value="dataSource"/>
+	</component>
+
+	<component name="processManageDao">
+		<service name="processManageDao">
+			<interface.java interface="org.loushang.workflow.manage.process.dao.IProcessManageDao"/>
+			<binding.sca/>
+		</service>
+	<implementation.java impl="org.loushang.workflow.manage.process.dao.support.ProcessManageJdbcDao"/>
+	<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="activityEndManageDao">
+		<service name="activityEndManageDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.activityend.dao.IActivityEndDao"/>
+			<binding.sca/>
+		</service>
+	<implementation.java impl="org.loushang.workflow.engine.hist.activityend.dao.support.ActivityEndJdbcDao"/>
+	<property name="dataSourceConf" value="dataSource"/>
+	</component>
+
+</composite>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="helpUrl" xmlns="http://www.loushang.com/sca/1.0">
+    <description>统一通用帮助</description>
+    
+	<component name="HelpUrlDao">
+	    <service name="HelpUrlDao">
+	    	<interface.java interface="org.loushang.util.help.dao.IHelpUrlDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.util.help.dao.jdbc.HelpUrlJdbcDao"/>	
+    </component>
+    
+    <component name="HelpModuleDao">
+	    <service name="HelpModuleDao">
+	    	<interface.java interface="org.loushang.util.help.dao.IHelpModuleDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.util.help.dao.jdbc.HelpModuleJdbcDao"/>	
+    </component>
+    
+    <component name="HelpUrlDomain">
+	    <service name="HelpUrlDomain">
+	    	<interface.java interface="org.loushang.util.help.domain.IHelpUrlDomain"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.util.help.domain.support.HelpUrlDomain"/>	
+        <reference name="helpModuleDao" target="HelpModuleDao.HelpModuleDao"/>
+        <reference name="helpUrlDao" target="HelpUrlDao.HelpUrlDao"/>
+    </component>
+</composite>

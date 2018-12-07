@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+	<description>workflow module</description>
+	<component name="monitorTaskDao">
+		<service name="monitorTaskDao">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.IMonitorTaskDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.MonitorTaskJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="procTypeTaskListPageBtnDefDao">
+		<service name="procTypeTaskListPageBtnDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.tasklistpagebtndef.dao.IProcTypeTaskListPageBtnDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.tasklistpagebtndef.dao.support.ProcTypeTaskListPageBtnDefDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="newTaskDao">
+		<service name="newTaskDao">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.INewTaskDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.NewTaskJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="endTaskDao">
+		<service name="endTaskDao">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.IEndTaskDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.EndTaskJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="yiBanTaskDao">
+		<service name="yiBanTaskDao">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.IYiBanTaskDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.YiBanTaskJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="yiBanAndEndTaskDao">
+		<service name="yiBanAndEndTaskDao">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.IYiBanAndEndTaskDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.YiBanAndEndTaskJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="taskQueryDao">
+		<service name="taskQueryDao">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.ITaskQueryDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.TaskQueryJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="daiBanTaskDao">
+		<service name="daiBanTaskDao">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.dao.IDaiBanTaskDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.dao.support.DaiBanTaskJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="endTaskDomain">
+		<service name="endTaskDomain">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.domain.IEndTask"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.domain.support.EndTaskImpl"/>
+		<reference name="endTaskDao" target="endTaskDao/endTaskDao"/>
+		<reference name="sysSubjectDefDomain" target="sysSubjectDefDomain/sysSubjectDefDomain"/>
+			<reference name="procTypeSubjectDefDomain" target="procTypeSubjectDefDomain/procTypeSubjectDefDomain"/>
+		<reference name="procSubjectDefDomain" target="procSubjectDefDomain/procSubjectDefDomain"/>
+		<reference name="propertyConfigDomain" target="propertyConfigDomain/propertyConfigDomain"/>
+		<reference name="processTypeDao" target="processTypeDao/processTypeDao"/>
+<reference name="defaultSubjectDefDomain" target="defaultSubjectDefDomain/defaultSubjectDefDomain"/>
+	</component>
+	<component name="yiBanTaskDomain">
+		<service name="yiBanTaskDomain">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.domain.IYiBanTask"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.domain.support.YiBanTaskImpl"/>
+		<reference name="yiBanTaskDao" target="yiBanTaskDao/yiBanTaskDao"/>
+		<reference name="activityDao" target="activityDao/activityDao"/>
+		<reference name="assignmentDao" target="assignmentDao/assignmentDao"/>
+		<reference name="sysSubjectDefDomain" target="sysSubjectDefDomain/sysSubjectDefDomain"/>
+		<reference name="procTypeSubjectDefDomain" target="procTypeSubjectDefDomain/procTypeSubjectDefDomain"/>
+		<reference name="procSubjectDefDomain" target="procSubjectDefDomain/procSubjectDefDomain"/>
+		<reference name="propertyConfigDomain" target="propertyConfigDomain/propertyConfigDomain"/>
+		<reference name="processTypeDao" target="processTypeDao/processTypeDao"/>
+		<reference name="defaultSubjectDefDomain" target="defaultSubjectDefDomain/defaultSubjectDefDomain"/>
+	</component>
+	<component name="taskQueryDomain">
+		<service name="taskQueryDomain">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.domain.ITaskQuery"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.domain.support.TaskQueryImpl"/>
+		<reference name="taskQueryDao" target="taskQueryDao/taskQueryDao"/>
+	</component>
+	<component name="yiBanAndEndTaskDomain">
+		<service name="yiBanAndEndTaskDomain">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.domain.IYiBanAndEndTask"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.domain.support.YiBanAndEndTaskImpl"/>
+		<reference name="yiBanAndEndTaskDao" target="yiBanAndEndTaskDao/yiBanAndEndTaskDao"/>
+		<reference name="activityDao" target="activityDao/activityDao"/>
+		<reference name="assignmentDao" target="assignmentDao/assignmentDao"/>
+		<reference name="sysSubjectDefDomain" target="sysSubjectDefDomain/sysSubjectDefDomain"/>
+		<reference name="procTypeSubjectDefDomain" target="procTypeSubjectDefDomain/procTypeSubjectDefDomain"/>
+		<reference name="procSubjectDefDomain" target="procSubjectDefDomain/procSubjectDefDomain"/>
+		<reference name="propertyConfigDomain" target="propertyConfigDomain/propertyConfigDomain"/>
+		<reference name="processTypeDao" target="processTypeDao/processTypeDao"/>
+		<reference name="defaultSubjectDefDomain" target="defaultSubjectDefDomain/defaultSubjectDefDomain"/>
+	</component>
+	<component name="daiBanTaskDomain">
+		<service name="daiBanTaskDomain">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.domain.IDaiBanTask"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.domain.support.DaiBanTaskImpl"/>
+		<reference name="activityDao" target="activityDao/activityDao"/>
+		<reference name="assignmentDao" target="assignmentDao/assignmentDao"/>
+		<reference name="transitionDao" target="transitionDao/transitionDao"/>
+		<reference name="daiBanTaskDao" target="daiBanTaskDao/daiBanTaskDao"/>
+		<reference name="sysSubjectDefDomain" target="sysSubjectDefDomain/sysSubjectDefDomain"/>
+		<reference name="procTypeSubjectDefDomain" target="procTypeSubjectDefDomain/procTypeSubjectDefDomain"/>
+		<reference name="procSubjectDefDomain" target="procSubjectDefDomain/procSubjectDefDomain"/>
+		<reference name="defaultSubjectDefDomain" target="defaultSubjectDefDomain/defaultSubjectDefDomain"/>
+		
+		<reference name="processLimitDao" target="processLimitDao/processLimitDao"/>
+		<reference name="processWarnDao" target="processWarnDao/processWarnDao"/>
+		<reference name="actSetLimitDao" target="actSetLimitDao/actSetLimitDao"/>
+		<reference name="actSetWarnDao" target="actSetWarnDao/actSetWarnDao"/>
+		<reference name="activityLimitDao" target="activityLimitDao/activityLimitDao"/>
+		<reference name="activityWarnDao" target="activityWarnDao/activityWarnDao"/>
+		<reference name="activityLimitDefDao" target="activityLimitDefDao/activityLimitDefDao"/>
+		<reference name="actSetLimitDefDao" target="actSetLimitDefDao/actSetLimitDefDao"/>
+		
+		<reference name="processSuspendEventDao" target="processSuspendEventDao/processSuspendEventDao"/>
+		<reference name="processResumeEventDao" target="processResumeEventDao/processResumeEventDao"/>
+		<reference name="activitySuspendEventDao" target="activitySuspendEventDao/activitySuspendEventDao"/>
+		<reference name="activityResumeEventDao" target="activityResumeEventDao/activityResumeEventDao"/>
+		<reference name="activityExternalDefDao" target="activityExternalDefDao/activityExternalDefDao"/>
+		<reference name="processDefinitionDomain" target="processDefinitionDomain/processDefinitionDomain"/>
+		<reference name="propertyConfigDomain" target="propertyConfigDomain/propertyConfigDomain"/>
+		<reference name="processTypeDao" target="processTypeDao/processTypeDao"/>
+		<reference name="processDefDao" target="processDefDao/processDefDao"/>
+	</component>
+	<component name="newTaskDomain">
+		<service name="newTaskDomain">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.domain.INewTask"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.domain.support.NewTaskImpl"/>
+		<reference name="newTaskDao" target="newTaskDao/newTaskDao"/>
+		<reference name="processTypeDao" target="processTypeDao/processTypeDao"/>
+	</component>
+	<component name="monitorTaskDomain">
+		<service name="monitorTaskDomain">
+			<interface.java interface="org.loushang.workflow.tasklist.taskinfo.domain.IMonitorTask"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.taskinfo.domain.support.MonitorTaskImpl"/>
+		<reference name="monitorTaskDao" target="monitorTaskDao/monitorTaskDao"/>
+		<reference name="processTypeDao" target="processTypeDao/processTypeDao"/>
+	</component>
+	<component name="procTypeTaskListPageBtnDefDomain">
+		<service name="procTypeTaskListPageBtnDefDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.tasklistpagebtndef.domain.IProcTypeTaskListPageBtnDefDomain"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.tasklistpagebtndef.domain.support.ProcTypeTaskListPageBtnDefDomain"/>
+		<reference name="procTypeTaskListPageBtnDefDao" target="procTypeTaskListPageBtnDefDao/procTypeTaskListPageBtnDefDao"/>
+	</component>
+	
+	<component name="taskListDispatcher">
+		<service name="taskListDispatcher">
+			<interface.java interface="org.loushang.workflow.tasklist.forward.service.ITaskListDispatcherService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.tasklist.forward.service.support.TaskListDispatcherService"/>
+	</component>
+</composite>

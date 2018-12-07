@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+	<component name="processMonitorQuery">
+		<service name="processMonitorQuery">
+			<interface.java interface="org.loushang.workflow.engine.processmonitor.service.IProcessMonitorQueryService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.processmonitor.service.support.ProcessMonitorQueryServiceImpl"/>
+		<reference name="processMonitorDao" target="processMonitorDao/processMonitorDao"/>
+	</component>
+	
+	<component name="bizProcessMonitorDao">
+		<service name="bizProcessMonitorDao">
+			<interface.java interface="org.loushang.workflow.engine.processmonitor.dao.IBizProcessMonitorDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.processmonitor.dao.support.BizProcessMonitorJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processMonitor">
+		<service name="processMonitor">
+			<interface.java interface="org.loushang.workflow.engine.processmonitor.service.IProcessMonitorService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.processmonitor.service.support.ProcessMonitorServiceImpl"/>
+		<reference name="bizProcessMonitorDao" target="bizProcessMonitorDao/bizProcessMonitorDao"/>
+	</component>
+	
+	<component name="bizTripProxyAssignmentDao">
+		<service name="bizTripProxyAssignmentDao">
+			<interface.java interface="org.loushang.workflow.engine.assignment.dao.IBizTripProxyAssignmentDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.assignment.dao.support.BizTripProxyAssignmentJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="bizTripProxyAssignment">
+		<service name="bizTripProxyAssignment">
+			<interface.java interface="org.loushang.workflow.engine.assignment.service.IBizTripProxyAssignmentService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.assignment.service.support.BizTripProxyAssignmentService"/>
+		<reference name="bizTripProxyAssignmentDao" target="bizTripProxyAssignmentDao/bizTripProxyAssignmentDao"/>
+	</component>
+	
+	<component name="bizTripProxyAssignmentQuery">
+		<service name="bizTripProxyAssignmentQuery">
+			<interface.java interface="org.loushang.workflow.engine.assignment.service.IBizTripProxyAssignmentQueryService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.assignment.service.support.BizTripProxyAssignmentQueryService"/>
+	</component>
+	
+	<component name="bizTripProxyAssignmentEndDao">
+		<service name="bizTripProxyAssignmentEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.assignmentend.dao.IBizTripProxyAssignmentEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.assignmentend.dao.support.BizTripProxyAssignmentEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="bizTripProxyAssignmentEnd">
+		<service name="bizTripProxyAssignmentEnd">
+			<interface.java interface="org.loushang.workflow.engine.hist.assignmentend.service.IBizTripProxyAssignmentEndService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.assignmentend.service.support.BizTripProxyAssignmentEndService"/>
+		<reference name="bizTripProxyAssignmentEndDao" target="bizTripProxyAssignmentEndDao/bizTripProxyAssignmentEndDao"/>
+	</component>
+	
+	<component name="bizTripProxyAssignmentEndQuery">
+		<service name="bizTripProxyAssignmentEndQuery">
+			<interface.java interface="org.loushang.workflow.engine.hist.assignmentend.service.IBizTripProxyAssignmentEndQueryService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.assignmentend.service.support.BizTripProxyAssignmentEndQueryService"/>
+	</component>
+	
+</composite>

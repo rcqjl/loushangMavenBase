@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+
+    <!-- 业务流水号服务 -->
+    <service interface="org.loushang.bsp.api.bizid.IBizIdService" refScaComponent="IdService.IdService" />
+     
+</SCAServices>

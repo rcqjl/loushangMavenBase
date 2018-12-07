@@ -1,0 +1,106 @@
+﻿.pager
+{
+	float:left;
+	position:relative;
+	left: 20px;
+    width: 50%;
+    height: 32px;
+    padding: 0;
+    margin-right:auto;
+    margin-left:auto;/*border-radius: 8px; 	-moz-border-radius: 8px;*/
+    position:absolute;
+    bottom:20px;
+}
+.pager div.short
+{
+    float: right;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    width: 74px;
+    display:none;
+}
+.pager div.short input
+{
+    width: 28px;
+    height: 18px;
+    border: none;
+    margin-left: 8px;
+    float: left;
+}
+.pager ul
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+    margin-right: 4px;
+}
+.pager ul li
+{
+    display: inline;
+}
+.pager ul li a
+{
+    text-decoration: none;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height:30px;
+    text-align: center;
+}
+
+.pager span
+{
+    margin-left: 4px;
+    color: White;
+    float: left;
+    display:none;
+}
+.pager .btn
+{
+    display: block;
+    width: 40px;
+    text-align: center;
+    float: left;
+    padding: 0;
+    margin: 0;
+    margin-left: 4px;
+    cursor: pointer;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.pager .disabled
+{
+    color: #A0A0A0 !important;
+    text-shadow: 1px 1px 1px #FFFFFF;
+}
+.black
+{
+    background-color: #FFF;
+}
+.black.normal
+{
+    background-color: #FFF;
+    color: #3C87C1;
+    border: solid 1px #E3E3E3;
+}
+.black.active
+{
+    background-color: #3C87C1;
+    color: #FFF;
+    border: solid 1px #3C87C1;
+}
+.pager.black .btn
+{
+    background-color: #bbb;
+	color: #333;
+	border: 1px solid #bbb;
+}

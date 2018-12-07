@@ -1,0 +1,183 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family:"宋体";
+    text-align: center;
+}
+body{
+	overflow: hidden;
+}
+#tab0,#tab1,#tab2,#tab3{
+	float: left;
+	width: 120px;
+	margin: 0px;
+	text-align: center;
+}
+#tabContainer a {
+	color:#A3A3A3;
+	display: block;
+	text-decoration: none;
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+}
+#tabContainer{
+	height: 80%;
+}
+#tabContainer a{
+	color:#333;
+}
+#tabContainer a.on {
+	color:#538fd8;
+	font-weight:bold;
+}
+
+#tabs {
+	position:relative;
+	left:20px;
+	margin: 0px;
+	padding: 0px;
+	width: 92%;
+	height:36px;
+	border-bottom:1px solid #dcdcdc;
+}
+a:link,a:visited,a:hover,a:active {
+	color: black;
+}
+.con{
+	padding: 0px;
+	height: 90%;
+	/* margin:20px auto; */
+	width:100%
+}
+.left{
+	height: 250px;
+	width:410px;
+	margin:0px auto;
+}
+.table thead{
+	position: fixed;
+	top: 50px;
+	z-index: 5;
+}
+.table{
+	height:240px !important;
+	height:270px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	border: solid 1px #dcdcdc;
+	padding-top:30px;
+	top: 10px;
+	position: relative;	
+}
+.table table{
+	width:100%;
+	border-collapse:collapse; 
+}
+
+.table th,td{
+	padding-left:5px;
+	text-align:left;
+	border:none;
+	width:200px;
+}
+.table td{
+	border-top: solid 1px #dcdcdc;
+	border-bottom: 1px solid #DCDCDC;
+}
+.table tr{
+	height: 30px;
+}
+.table tbody tr{
+	background-color:#FAFAFA; 
+	color:#666;
+	cursor: pointer;
+}
+.table thead tr{
+	background-color:#ebebeb;
+	border-top:1px solid #dcdcdc;
+	border-bottom:1px solid #dcdcdc;
+}
+.table tbody tr:hover{
+	background-color:#f0f0f0;
+}
+.table tbody{
+	height: 80%;
+	display: block;
+	position: relative;
+}
+.odd{
+	background-color: #FAFAFA;
+}
+.selected{
+	color:#333 !important;
+	background-color: #FFF !important; 
+}
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	margin: 0px 5px 0px 0px;
+	color: #fff;
+}
+.buttonArea{
+	text-align: right;
+	position: absolute;
+	right: 15px;
+	bottom: 20px;
+}
+.header{
+	height:30px;
+	background-color:#F5F5F5;
+	color:#333;
+	font-weight:bold;
+	text-align:left;
+	line-height: 30px;
+	padding-left:10px;
+	border-bottom:1px solid #dcdcdc;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+.triangle{
+	width:20px;
+	height:9px;
+	background: url("../images/skin_icons.png") no-repeat scroll -110px -78px transparent;
+	position:absolute;
+	left:70px;
+	top:28px;
+}
+#theadTop{
+	top:50px;
+}
+.con select{
+	width: 200px;
+	border:none;
+	background-color:#FAFAFA;
+}
+.con option{
+	border:none;
+}
+.hover select{
+	background-color:#f0f0f0; 
+}
+.con select:hover{
+	/* background-color:#f0f0f0; */
+}

@@ -1,0 +1,97 @@
+div[data_widgetid=RiChangDaiBan] .panel-heading{
+	display:none;
+}
+div[data_widgetid=RiChangDaiBan] .panel-body{
+	padding:0px;
+}
+.first {
+    width: 100%;
+    height: 180px;
+}
+.second{
+	width: 100%;
+    height: 180px;
+    padding-top: 10px;
+}
+p {
+	margin: 0;
+}
+
+.bar {
+	width: 100%;
+	height: 360px;
+}
+
+.box-content {
+	font-size: 16px;
+	color: #666666;
+	height: 170px;
+	width: 33.3%;
+	float: left;
+}
+
+.box-top {
+	text-align: center;
+	height: 130px;
+	width: 100%;
+}
+
+.box-top div:first-child {
+	height: 80px;
+}
+
+.content {
+	height: 360px;
+	width: 100%;
+	background-color: #e7e9ee;
+}
+
+.p-mes-sum {
+	font-size: 18px;
+	font-family: microsoft yahei;
+	font-weight: bold;
+	color: #fff;
+}
+
+.p-mes {
+	font-size: 12px;
+	font-family: simsun;
+	color: #fff;
+}
+
+.p-content {
+	height: 40px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.p-title {
+	padding: 8px;
+	font-size: 14px;
+	font-family: microsoft yahei;
+	color: #666;
+}
+
+div#sx {
+	background: url("../images/sx.png") no-repeat center;
+}
+
+div#bj {
+	background: url("../images/bj.png") no-repeat center;
+}
+
+div#sf {
+	background: url("../images/sf.png") no-repeat center;
+}
+
+div#pj {
+	background: url("../images/pj.png") no-repeat center;
+}
+
+div#kq {
+	background: url("../images/kq.png") no-repeat center;
+}
+
+div#kh {
+	background: url("../images/kh.png") no-repeat center;
+}

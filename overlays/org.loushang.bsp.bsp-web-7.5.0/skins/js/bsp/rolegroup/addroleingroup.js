@@ -1,0 +1,160 @@
+//////////////////////////////////////////////校验///////////////////////////////////////////
+var count_role = 0;
+var Validform;
+$(function() {
+	initValidform();
+	
+	//初始化岗位下拉列表
+	$.ajax({
+		url:context+"/service/bsp/role/queryAllPositionType",
+		dataType:"json",
+		success:initPositionTypeList
+	});
+	//查看所有
+	$(".queryAllroles").click(function() {
+		window.location.href = context + "/service/bsp/rolegroup/queryRoleListByRoleGroupId?roleGroupId=" + roleGroupId;
+	});
+	//取消按钮
+	$("#returnBtn").click(function() {
+		window.location.href = context + "/service/bsp/rolegroup/queryRoleListByRoleGroupId?roleGroupId=" + roleGroupId;
+	});
+});
+//初始化表单校验
+function initValidform(){
+	//表单校验
+	    Validform = $("#saveForm").Validform({
+		btnSubmit:"#saveBtn",
+		tiptype:function(msg,o,cssctl){
+				var objtip=o.obj.siblings(".Validform_checktip");
+			    cssctl(objtip,o.type);
+			    objtip.text(msg);
+		},
+		datatype:{
+			"code": ValidAccount
+		},
+		callback:function(form){
+			var isGlobal = $("input[type=radio]:checked").val();
+			var relationName  = $("#relationName").val()
+			isGlobal == "0"&&relationName=="" ? tip():save();
+		}
+	});	
+};
+function ValidAccount(gets, obj, curform, regxp){
+	var isExist;
+	if(gets == null || gets == ""){
+		return false;
+	}
+	if(gets.length >30){
+		obj.attr("errormsg",L.getLocaleMessage("bsp.role.014","不能超过30个字符"));
+		return false;
+	}
+	$.ajax({
+		url: context + "/service/bsp/role/isExistRoleCode?roleCode="+gets,
+		type: "post",
+		async: false,
+		success: function(result){
+			if(result == "true"){
+				obj.attr("errormsg",L.getLocaleMessage("bsp.role.034","角色编码已经存在"));
+				isExist = true;
+			}else{
+				isExist = false;
+			}
+		}
+	});
+	
+	return !isExist;
+}
+//初始化岗位下拉列表
+function initPositionTypeList(positionTypeList){
+	for(index in positionTypeList){
+		var option ='<option value='+positionTypeList[index].code+'>'+positionTypeList[index].name+'</option>'
+		$("#positionType").append(option);
+	}
+}
+//保存表单实例
+function save(){
+	var url=context+"/service/bsp/role/addrole";
+	
+	//判断是否存在角色组模块 定义角色传来的角色id信息
+	if(roleGroupId!=null){
+		url=context+"/service/bsp/role/addrole?roleGroupId="+roleGroupId+"&corporation="+corporation+"&roleGroupName="+roleGroupName;
+	}
+	$("#saveForm").ajaxSubmit({
+		url:url,
+		type:"POST",
+		success: showTable
+	});
+}
+//新增角色后显示表格
+function showTable(returnVal){
+	var roleData = returnVal.roleId
+	if(roleData!=null){
+	count_role++
+	var isGlobal = $("input[type=radio]:checked").val();
+	var positionType =$("#positionType option:selected").val();
+	var trTplData ={
+			roleId:roleData,
+			roleCode:$("#roleCode").val(),
+			roleName:$("#roleName").val(),
+			positionType:positionType == "" ? "":$("#positionType option:selected")[0].text,
+			isGlobal:isGlobal == "1" ? L.getLocaleMessage("bsp.role.056","全局") :$("#relationName").val()
+	}
+	var trTpl = template('trTpl', trTplData);
+	$("#roleList tbody").append(trTpl);
+	$(".rolesum").text(L.getLocaleMessage("bsp.role.057","已添加了{0}个角色", count_role));
+	$(".addreturn").show();
+	Validform.resetForm();//表单重置
+	}else{
+		$(".Validform_span").text("");
+		var expMsg = returnVal.expMsg
+		$.dialog({
+			type:"alert",
+			content:expMsg});
+	}
+
+}
+
+function renderstatus(data,type,full){
+	if(data != "" || data != null)
+	{
+	  if(data == "1"){
+		  data = L.getLocaleMessage("bsp.role.056","全局");
+	  }
+	  if(data == "0"){
+		  data = L.getLocaleMessage("bsp.role.058","机构");
+	  }			    		    			  
+	}
+	return data;
+};
+
+function roleAuthrize(data){
+	$.dialog({
+		type:"iframe",
+		url:context+"/jsp/bsp/permit/pap/role/roleauthrize.jsp?roleId="+data,
+		title:L.getLocaleMessage("bsp.role.025","角色授权"),
+		width:580,
+		height:440,
+		onclose:function(){}
+	});
+	$(".ui-dialog-body").css("padding","0px");
+};
+//批量用户授权
+function roleBatchAuthorize(data){
+	$.dialog({
+		type:"iframe",
+		url:context+"/jsp/bsp/permit/pap/role/rolebatchauthorize.jsp?roleId="+data,
+		title:L.getLocaleMessage("bsp.role.043","将角色批量授权给用户"),
+		width:750,
+		height:470,
+		onclose:function(){}
+	});
+	$(".ui-dialog-body").css("padding","0px");
+};
+
+function tip(){
+	$.dialog({
+		type:"alert",
+		content:L.getLocaleMessage("bsp.role.049","请选择所属组织！"),
+		autofouse:true
+	});
+}

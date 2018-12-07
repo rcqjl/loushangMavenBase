@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+    <component name="processSubjectDao">
+		<service name="processSubjectDao">
+			<interface.java interface="org.loushang.workflow.engine.subject.dao.IProcessSubjectDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.subject.dao.support.ProcessSubjectJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processDao">
+		<service name="processDao">
+			<interface.java interface="org.loushang.workflow.engine.process.dao.IProcessDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.process.dao.support.ProcessJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processLimitDao">
+		<service name="processLimitDao">
+			<interface.java interface="org.loushang.workflow.engine.limit.dao.IProcessLimitDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.limit.dao.support.ProcessLimitJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processLimitEndDao">
+		<service name="processLimitEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.limit.dao.IProcessLimitEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.limit.dao.support.ProcessLimitEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processWarnEndDao">
+		<service name="processWarnEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.limit.dao.IProcessWarnEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.limit.dao.support.ProcessWarnEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actSetEndDao">
+		<service name="actSetEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.actsetend.dao.IActSetEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.actsetend.dao.support.ActSetEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>	
+	<component name="actSetLimitEndDao">
+		<service name="actSetLimitEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.limit.dao.IActSetLimitEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.limit.dao.support.ActSetLimitEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actSetWarnEndDao">
+		<service name="actSetWarnEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.limit.dao.IActSetWarnEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.limit.dao.support.ActSetWarnEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actSetRefEndDao">
+		<service name="actSetRefEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.actsetend.dao.IActSetRefEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.actsetend.dao.support.ActSetRefEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processWarnDao">
+		<service name="processWarnDao">
+			<interface.java interface="org.loushang.workflow.engine.limit.dao.IProcessWarnDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.limit.dao.support.ProcessWarnJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processEndDao">
+		<service name="processEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.processend.dao.IProcessEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.processend.dao.support.ProcessEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="freedomProcessEndDao">
+		<service name="freedomProcessEndDao">
+			<interface.java interface="org.loushang.workflow.engine.freedom.dao.IFreedomProcessEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.freedom.dao.support.FreedomProcessEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actSetDao">
+		<service name="actSetDao">
+			<interface.java interface="org.loushang.workflow.engine.actset.dao.IActSetDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.actset.dao.support.ActSetJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actSetLimitDao">
+		<service name="actSetLimitDao">
+			<interface.java interface="org.loushang.workflow.engine.limit.dao.IActSetLimitDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.limit.dao.support.ActSetLimitJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actSetWarnDao">
+		<service name="actSetWarnDao">
+			<interface.java interface="org.loushang.workflow.engine.limit.dao.IActSetWarnDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.limit.dao.support.ActSetWarnJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actSetRefDao">
+		<service name="actSetRefDao">
+			<interface.java interface="org.loushang.workflow.engine.actset.dao.IActSetRefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.actset.dao.support.ActSetRefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityDao">
+		<service name="activityDao">
+			<interface.java interface="org.loushang.workflow.engine.activity.dao.IActivityDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.activity.dao.support.ActivityJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityLimitDao">
+		<service name="activityLimitDao">
+			<interface.java interface="org.loushang.workflow.engine.limit.dao.IActivityLimitDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.limit.dao.support.ActivityLimitJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityWarnDao">
+		<service name="activityWarnDao">
+			<interface.java interface="org.loushang.workflow.engine.limit.dao.IActivityWarnDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.limit.dao.support.ActivityWarnJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityLimitEndDao">
+		<service name="activityLimitEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.limit.dao.IActivityLimitEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.limit.dao.support.ActivityLimitEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityWarnEndDao">
+		<service name="activityWarnEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.limit.dao.IActivityWarnEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.limit.dao.support.ActivityWarnEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityEndDao">
+		<service name="activityEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.activityend.dao.IActivityEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.activityend.dao.support.ActivityEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="assignmentDao">
+		<service name="assignmentDao">
+			<interface.java interface="org.loushang.workflow.engine.assignment.dao.IAssignmentDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.assignment.dao.support.AssignmentJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="assignmentEndDao">
+		<service name="assignmentEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.assignmentend.dao.IAssignmentEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.assignmentend.dao.support.AssignmentEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="tripProxyAssignmentEndDao">
+		<service name="tripProxyAssignmentEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.assignmentend.dao.ITripProxyAssignmentEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.assignmentend.dao.support.TripProxyAssignmentEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+    <component name="assignNextDao">
+		<service name="assignNextDao">
+			<interface.java interface="org.loushang.workflow.engine.assignnext.dao.IAssignNextDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.assignnext.dao.support.AssignNextJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="transitionDao">
+		<service name="transitionDao">
+			<interface.java interface="org.loushang.workflow.engine.track.dao.ITransitionDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.track.dao.support.TransitionJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="transitionEndDao">
+		<service name="transitionEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.transitionend.dao.ITransitionEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.transitionend.dao.support.TransitionEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="dataFieldDao">
+		<service name="dataFieldDao">
+			<interface.java interface="org.loushang.workflow.engine.datafield.dao.IDataFieldDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.datafield.dao.support.DataFieldJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+    <component name="dataFieldEndDao">
+		<service name="dataFieldEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.datafieldend.dao.IDataFieldEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.datafieldend.dao.support.DataFieldEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processMonitorDao">
+		<service name="processMonitorDao">
+			<interface.java interface="org.loushang.workflow.engine.processmonitor.dao.IProcessMonitorDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.processmonitor.dao.support.ProcessMonitorJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processResumeEventDao">
+		<service name="processResumeEventDao">
+			<interface.java interface="org.loushang.workflow.engine.event.ProcessResumeEvent.dao.IProcessResumeEventDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.event.ProcessResumeEvent.dao.support.ProcessResumeEventJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processSuspendEventDao">
+		<service name="processSuspendEventDao">
+			<interface.java interface="org.loushang.workflow.engine.event.ProcessSuspendEvent.dao.IProcessSuspendEventDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.event.ProcessSuspendEvent.dao.support.ProcessSuspendEventJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processResumeEventEndDao">
+		<service name="processResumeEventEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.event.ProcessResumeEventEnd.dao.IProcessResumeEventEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.event.ProcessResumeEventEnd.dao.support.ProcessResumeEventEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processSuspendEventEndDao">
+		<service name="processSuspendEventEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.event.ProcessSuspendEventEnd.dao.IProcessSuspendEventEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.event.ProcessSuspendEventEnd.dao.support.ProcessSuspendEventEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityResumeEventDao">
+		<service name="activityResumeEventDao">
+			<interface.java interface="org.loushang.workflow.engine.event.ActivityResumeEvent.dao.IActivityResumeEventDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.event.ActivityResumeEvent.dao.support.ActivityResumeEventJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activitySuspendEventDao">
+		<service name="activitySuspendEventDao">
+			<interface.java interface="org.loushang.workflow.engine.event.ActivitySuspendEvent.dao.IActivitySuspendEventDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.event.ActivitySuspendEvent.dao.support.ActivitySuspendEventJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityResumeEventEndDao">
+		<service name="activityResumeEventEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.event.ActivityResumeEventEnd.dao.IActivityResumeEventEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.event.ActivityResumeEventEnd.dao.support.ActivityResumeEventEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activitySuspendEventEndDao">
+		<service name="activitySuspendEventEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.event.ActivitySuspendEventEnd.dao.IActivitySuspendEventEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.event.ActivitySuspendEventEnd.dao.support.ActivitySuspendEventEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="transitionBackDao">
+		<service name="transitionBackDao">
+			<interface.java interface="org.loushang.workflow.engine.transitionback.dao.ITransitionBackDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.transitionback.dao.support.TransitionBackJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="transitionBackEndDao">
+		<service name="transitionBackEndDao">
+			<interface.java interface="org.loushang.workflow.engine.hist.transitionbackend.dao.ITransitionBackEndDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.hist.transitionbackend.dao.support.TransitionBackEndJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="splitInstJoinDao">
+		<service name="splitInstJoinDao">
+			<interface.java interface="org.loushang.workflow.engine.gateway.dao.ISplitInstJoinDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.gateway.dao.support.SplitInstJoinJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="assignPreDao">
+		<service name="assignPreDao">
+			<interface.java interface="org.loushang.workflow.engine.assignpre.dao.IAssignPreDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.assignpre.dao.jdbc.AssignPreJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="assignPreDomain">
+		<service name="assignPreDomain">
+			<interface.java interface="org.loushang.workflow.engine.assignpre.domain.IAssignPre"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.assignpre.domain.support.AssignPreImpl"/>
+		<reference name="assignPreDao" target="assignPreDao/assignPreDao"/>
+	</component>
+	<component name="processMergeDao">
+		<service name="processMergeDao">
+			<interface.java interface="org.loushang.workflow.engine.processmerge.dao.IProcessMergeDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.processmerge.dao.jdbc.ProcessMergeJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="procSysSubjectDao">
+		<service name="procSysSubjectDao">
+			<interface.java interface="org.loushang.workflow.engine.procsyssubject.dao.IProcSysSubjectDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.procsyssubject.dao.jdbc.ProcSysSubjectJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="scriptManagerDomain">
+		<service name="scriptManagerDomain">
+			<interface.java interface="org.loushang.workflow.engine.script.IScriptManager"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.script.support.ScriptManagerImpl"/>
+	</component>
+	<component name="activityPartyParseManagerDomain">
+		<service name="activityPartyParseManagerDomain">
+			<interface.java interface="org.loushang.workflow.engine.participant.activityparty.manager.IActivityPartyParseManager"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.participant.activityparty.manager.support.ActivityPartyParseManagerImpl"/>
+		<reference name="processDefinitionDomain" target="processDefinitionDomain/processDefinitionDomain"/>
+	</component>
+	<component name="processMonitorParseManagerDomain">
+		<service name="processMonitorParseManagerDomain">
+			<interface.java interface="org.loushang.workflow.engine.participant.processmonitor.manager.IProcessMonitorParseManager"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.participant.processmonitor.manager.support.ProcessMonitorParseManagerImpl"/>
+		<reference name="processDefinitionDomain" target="processDefinitionDomain/processDefinitionDomain"/>
+	</component>
+	<component name="engineExecutionDomain">
+		<service name="engineExecutionDomain">
+			<interface.java interface="org.loushang.workflow.engine.execution.IEngineExecution"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.execution.support.EngineExecutionImpl"/>
+		<reference name="processDao" target="processDao/processDao"/>
+		<reference name="processLimitDao" target="processLimitDao/processLimitDao"/>
+		<reference name="processWarnDao" target="processWarnDao/processWarnDao"/>
+		<reference name="processEndDao"  target="processEndDao/processEndDao"/>
+		<reference name="freedomProcessEndDao"  target="freedomProcessEndDao/freedomProcessEndDao"/>
+		<reference name="actSetLimitDefDao" target="actSetLimitDefDao/actSetLimitDefDao"/>
+		<reference name="actSetDao" target="actSetDao/actSetDao"/>
+		<reference name="actSetLimitDao" target="actSetLimitDao/actSetLimitDao"/>
+		<reference name="actSetWarnDao" target="actSetWarnDao/actSetWarnDao"/>
+		<reference name="actSetRefDao" target="actSetRefDao/actSetRefDao"/>
+		
+		<reference name="activityDao" target="activityDao/activityDao"/>
+		<reference name="activityLimitDao" target="activityLimitDao/activityLimitDao"/>
+		<reference name="activityWarnDao" target="activityWarnDao/activityWarnDao"/>
+		<reference name="activityEndDao" target="activityEndDao/activityEndDao"/>
+		
+		<reference name="assignmentDao" target="assignmentDao/assignmentDao"/>
+		<reference name="transitionDao" target="transitionDao/transitionDao"/>
+		<reference name="transitionEndDao" target="transitionEndDao/transitionEndDao"/>
+		<reference name="processMonitorDao" target="processMonitorDao/processMonitorDao"/>
+		<reference name="assignmentEndDao" target="assignmentEndDao/assignmentEndDao"/>
+		<reference name="assignNextDao" target="assignNextDao/assignNextDao"/>
+		<reference name="processDefinitionDomain" target="processDefinitionDomain/processDefinitionDomain"/>
+		<reference name="propertyConfigDomain" target="propertyConfigDomain/propertyConfigDomain"/>
+		<reference name="scriptManagerDomain" target="scriptManagerDomain/scriptManagerDomain"/>
+		<reference name="activityPartyParseManagerDomain" target="activityPartyParseManagerDomain/activityPartyParseManagerDomain"/>
+		<reference name="processMonitorParseManagerDomain" target="processMonitorParseManagerDomain/processMonitorParseManagerDomain"/>		
+		<reference name="dataFieldDao" target="dataFieldDao/dataFieldDao"/>
+		<reference name="dataFieldEndDao" target="dataFieldEndDao/dataFieldEndDao"/>
+		<reference name="processSuspendEventDao" target="processSuspendEventDao/processSuspendEventDao"/>
+		<reference name="processResumeEventDao" target="processResumeEventDao/processResumeEventDao"/>
+		<reference name="processSuspendEventEndDao" target="processSuspendEventEndDao/processSuspendEventEndDao"/>
+		<reference name="processResumeEventEndDao" target="processResumeEventEndDao/processResumeEventEndDao"/>
+		<reference name="activitySuspendEventDao" target="activitySuspendEventDao/activitySuspendEventDao"/>
+		<reference name="activityResumeEventDao" target="activityResumeEventDao/activityResumeEventDao"/>
+		<reference name="activitySuspendEventEndDao" target="activitySuspendEventEndDao/activitySuspendEventEndDao"/>
+		<reference name="activityResumeEventEndDao" target="activityResumeEventEndDao/activityResumeEventEndDao"/>
+		<reference name="transitionBackDao" target="transitionBackDao/transitionBackDao"/>
+		<reference name="transitionBackEndDao" target="transitionBackEndDao/transitionBackEndDao"/>
+		<reference name="assignPreDomain" target="assignPreDomain/assignPreDomain"/>
+		<reference name="processMergeDao" target="processMergeDao/processMergeDao"/>
+	</component>
+	<component name="TripProxyProcDef">
+	    <service name="TripProxyProcDef">
+	    	<interface.java interface="org.loushang.workflow.tripproxy.domain.ITripProxyProcDef"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.tripproxy.domain.support.TripProxyProcDefImpl"/>
+    </component>
+    <description>TripProxyOperationDef</description>
+    <component name="TripProxyOperationDef">
+	    <service name="TripProxyOperationDef">
+	    	<interface.java interface="org.loushang.workflow.tripproxy.domain.ITripProxyOperationDef"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.tripproxy.domain.support.TripProxyOperationDefImpl"/>
+    </component>
+    <component name="TripProxyAssignmentDao">
+	    <service name="TripProxyAssignmentDao">
+	    	<interface.java interface="org.loushang.workflow.engine.assignment.dao.ITripProxyAssignmentDao"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.engine.assignment.dao.support.TripProxyAssignmentJdbcDao"/>
+   <property name="dataSourceConf" value="dataSource"/>
+    </component>
+     <component name="TripProxyProcDefDao">
+	    <service name="TripProxyProcDefDao">
+	    	<interface.java interface="org.loushang.workflow.tripproxy.dao.ITripProxyProcDefDao"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.tripproxy.dao.support.TripProxyProcDefJdbcDao"/>
+        <property name="dataSourceConf" value="dataSource"/>
+    </component>
+    <component name="multiInstanceRuleParseManager">
+	    <service name="multiInstanceRuleParseManager">
+	    	<interface.java interface="org.loushang.workflow.engine.participant.activityparty.manager.IMultiInstanceRuleParseManager"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.engine.participant.activityparty.manager.support.MultiInstanceRuleParseManagerImpl"/>
+    </component>
+     <component name="complexGatewayRuleParseManager">
+	    <service name="complexGatewayRuleParseManager">
+	    	<interface.java interface="org.loushang.workflow.engine.gateway.manager.IComplexGatewayRuleParseManager"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.engine.gateway.manager.support.ComplexGatewayRuleParseManagerImpl"/>
+    </component>
+    <component name="tripProxyOperationDefDao">
+	    <service name="tripProxyOperationDefDao">
+	    	<interface.java interface="org.loushang.workflow.tripproxy.dao.ITripProxyOperationDefDao"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.tripproxy.dao.support.TripProxyOperationDefJdbcDao"/>
+   <property name="dataSourceConf" value="dataSource"/>
+    </component>
+    
+    <component name="ProcessTimerEventDao">
+	    <service name="ProcessTimerEventDao">
+	    	<interface.java interface="org.loushang.workflow.engine.event.processtimerevent.dao.IProcessTimerEventDao"/>
+        	<binding.sca/>
+           </service>
+        <implementation.java impl="org.loushang.workflow.engine.event.processtimerevent.dao.support.ProcessTimerEventJdbcDao"/>
+   <property name="dataSourceConf" value="dataSource"/>
+    </component>
+    
+    <component name="endProcessInstanceModelDao">
+		<service name="endProcessInstanceModelDao">
+			<interface.java interface="org.loushang.workflow.engine.endprocessinstancemodel.dao.IEndProcessInstanceModelDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.endprocessinstancemodel.dao.support.EndProcessInstanceModelJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processInstanceModelDomain">
+		<service name="processInstanceModelDomain">
+			<interface.java interface="org.loushang.workflow.engine.processinstancemodel.domain.IProcessInstanceModel"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.processinstancemodel.domain.support.ProcessInstanceModelImpl"/>
+	</component>
+	<component name="sqlEvaluatorDao">
+		<service name="sqlEvaluatorDao">
+			<interface.java interface="org.loushang.workflow.engine.script.IEvaluator"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.engine.script.support.SqlEvaluator"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+</composite>

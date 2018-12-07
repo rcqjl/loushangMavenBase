@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_user_policy" xmlns="http://www.loushang.com/sca/1.0">
+	<description>userproxy</description>
+	
+	<component name="UserProxyDomain">
+		<service name="UserProxyDomain">
+			<interface.java interface="org.loushang.bsp.permit.pap.userproxy.domain.IUserProxyDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.userproxy.domain.impl.UserProxyDomain" />
+		<reference name="userProxyDao" target="UserProxyDao/UserProxyDao" />
+		<reference name="proxyPermissionDao" target="ProxyPermissionDao/ProxyPermissionDao" />
+		<reference name="proxyPermissionItemDao"
+			target="ProxyPermissionItemDao/ProxyPermissionItemDao" />
+	</component>
+
+	<component name="UserProxyDao">
+		<service name="UserProxyDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.userproxy.dao.IUserProxyDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.userproxy.dao.jdbc.UserProxyDao" />
+	</component>
+
+	<component name="ProxyPermissionDao">
+		<service name="ProxyPermissionDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.userproxy.dao.IProxyPermissionDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.userproxy.dao.jdbc.ProxyPermissionDao" />
+	</component>
+	
+	<component name="ProxyPermissionItemDao">
+		<service name="ProxyPermissionItemDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.userproxy.dao.IProxyPermissionItemDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.userproxy.dao.jdbc.ProxyPermissionItemDao" />
+	</component>
+	
+	<!-- 用户代理接口 -->
+    <component name="BspUserProxyService">
+        <service name="BspUserProxyService">
+            <interface.java interface="org.loushang.bsp.api.userproxy.IUserProxyService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.userproxy.UserProxyServiceImpl" />
+    </component>
+
+</composite>

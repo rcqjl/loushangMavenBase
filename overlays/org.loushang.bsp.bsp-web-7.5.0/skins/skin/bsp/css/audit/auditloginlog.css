@@ -1,0 +1,77 @@
+﻿.ue-menu-wrap {
+	top: 0px;
+}
+
+.ztree li span.button.add {
+	margin-right: 2px;
+	background-position: -142px 0px;
+	vertical-align: top;
+}
+.table-bordered>tbody>tr>td {
+	height: 38px;
+    line-height: 38px;
+}
+.container {
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 5px;
+}
+
+.popover {
+	min-width: 360px;
+}
+
+.form-group {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.col-md-3 {
+	width: 40%;
+}
+
+.col-md-8 {
+	width: 60%;
+}
+
+.label-border {
+	padding-right: 20px;
+	padding-left: 0px;
+	margin-top: 5px;
+}
+
+.search-border {
+	margin-top: 2px;
+}
+
+.search-text {
+	margin-left: 81px;
+	margin-top: 10px;
+	padding-left: 3px;
+}
+
+.ue-menu-right {
+	overflow: auto;
+}
+
+.search-label {
+	float: left;
+	margin-left: 20px;
+	padding-right: 0px;
+}
+
+.search-input {
+	padding-left: 0px;
+}
+.max-width {
+	width: 230px;
+	float: left;
+}
+
+.text-right {
+	margin-left: 10px;
+}
+.datetimepicker table tr td span{
+    font-size: 13px;
+}

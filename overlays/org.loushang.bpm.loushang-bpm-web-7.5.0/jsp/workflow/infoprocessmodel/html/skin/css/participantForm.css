@@ -1,0 +1,413 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+div{
+	float:left;
+	width:100%;
+}
+html,body{
+	font-size: 12px;
+	text-align: center;
+	font-family:"宋体";
+	overflow: visible;
+}
+#showArea{
+	margin-left:20px;
+	height:60px;
+	overflow-x:hidden;
+	overflow-y:auto;
+	border:1px solid #DEDEDE;
+	border-top:0px solid #DEDEDE;
+}
+
+a{
+	text-decoration:none;
+	color: black;
+}
+.contextArea{
+	margin-left:20px;
+	margin-right:20px;
+	float:left;
+	width: 598px;
+	position:relative;
+	overflow:hidden;
+	border:1px solid #DEDEDE;
+}
+#selectArea{
+	margin-top:20px;
+}
+#tabsArea {
+	padding: 0px;
+	height:30px;
+	background-color: #F5F5F5;
+	border-bottom:1px solid #DEDEDE;
+}
+#tabsArea ul{
+	width:600px;
+}
+#tabsArea div{
+	cursor:pointer;
+	height:30px;
+	line-height:30px;
+}
+#optionArea{
+	height:252px;
+	overflow:auto;
+}
+
+.selectedDiv{
+	position:relative;
+	text-align: left;
+	height:30px;
+	line-height:30px;
+	vertical-align: middle;
+	margin-left:10px;
+	float:left;
+	width:auto;
+	max-width:570px;
+	overflow:hidden;
+}
+.historyAct{
+	text-align: left;
+	height:22px;
+	line-height: 22px;
+	vertical-align: middle;
+	margin-right:5px;
+	float:left;
+	border:1px solid #B6B6B6;
+}
+.struType{
+	text-align: left;
+	height:22px;
+	line-height: 22px;
+	vertical-align: middle;
+	margin-left:15px;
+	float:left;
+	max-width: 100px;
+	border:1px solid #B6B6B6;
+}
+
+.delArea {
+	position:absolute;
+	right:0;
+	top:7px;
+    width:14px;
+    height:14px;
+	background: url("../images/skin_icons.png") no-repeat scroll -98px -16px transparent;
+}
+.delArea:hover {
+    background-position:-98px -0px;
+}
+
+#tabsArea li {
+	float: left; 
+	width: 120px;
+	height: 30px;
+/*	display: inline;*/
+}
+#tabsArea a {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	width:100%;
+	text-align:center;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.on {
+	color:#538fd8;
+	font-weight:bold;
+}
+.on a{
+	color:#538fd8;
+}
+.triangle{
+	width:20px;
+	height:9px;
+	background: url("../images/skin_icons.png") no-repeat scroll -110px -78px transparent;	position:absolute;
+	left:10px;
+	top:22px;
+}
+.frameDiv{
+	width:100%; 
+	height:100%; 
+	border: 0px ;  
+	float:left; 
+	display:none;
+	overflow: hidden;
+}
+.buttonArea{
+	position:relative;
+	margin:15px 20px 0 20px;
+	width:600px;
+	text-align: right;
+}
+.buttonArea input, .button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	width:60px;
+	color: #fff;
+	border:none;
+}
+#roleBtnArea, #typeBtnArea{
+	display: none;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+}
+.confirm:hover{
+	background-color: #5596E1;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.cancel:hover{
+	background-color: #B4B4B4;
+}
+#showAreaHead{
+	margin-top:15px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #EBEBEB;
+	border: 1px solid #DEDEDE;
+}
+
+#showAreaHead label{
+	margin-left:8px;
+	font-weight: 700;
+	font-color: #333;
+	float:left;
+	text-align: left;
+	color:#333;
+}
+.divTable label{
+	float:left;
+	height:22px;
+	line-height:22px;
+	vertical-align: middle;
+	margin-left: 15px;
+}
+.divTable input{
+	border: 1px solid #B6B6B6;
+	background:#fff;
+	color:#7A7A7A;
+	float:left;
+	max-width:100px;
+	vertical-align: middle;
+}
+.hBtnSet, .cBtnSet, .sBtnSet, .typeBtnSet{
+	height:20px;
+	line-height:20px;
+}
+.divTable{
+	width: 600px;
+}
+.divTable table{
+	width: 100%;
+	border-collapse: collapse;
+	cellspacing: 0;
+	cellpadding: 2px;
+}
+.divTable thead tr{
+	height: 30px;
+	background-color: #EBEBEB;
+	border:1px solid #DEDEDE;
+}
+.divTable tbody tr{
+	height:30px;
+}
+
+.divTable th{
+	padding: 2px 0px 2px 20px;
+	font-weight: bold;
+	font-color: #333;
+	border:none;
+	text-align: left;
+}
+.divTable td{
+	padding-left: 20px;
+	font-weight: normal;
+	font-color: #666;
+	border:none;
+	text-align: left;
+}
+#roleTable tbody tr, #typeTable tbody tr{
+	background-color: #FAFAFA;
+	cursor: pointer;
+	border:1px solid #DEDEDE;
+}
+#roleTable tbody tr:hover, #typeTable tbody tr:hover{
+	background-color: #F0F0F0;
+}
+#contextDiv{
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#contextDiv table{
+	margin: 10px 0px 10px 0px;
+}
+.odd{
+	background-color: #F2F2F2;
+}
+.addPic{
+	width:16px; 
+	height:16px;
+	margin:0 auto;
+	background: url(../images/skin_icons.png) no-repeat scroll 0 -16px transparent;
+	*vertical-align:middle;
+}
+.addPic:hover{
+	background-position:0px 0px;
+}
+.ontr{
+	background-color: #EBEBEB;
+}
+#historyAct{
+	float: left;
+	height:30px;
+	line-height:30px;
+	margin:15px 20px 20px 11px;
+	width:80%;
+}
+#historyAct label{
+	float:left;
+	height: 22px
+}
+#historyAct select{
+	float:left;
+	width:auto;
+	margin-left: 5px;
+	height: 22px;
+	margin-top: 4px;
+}
+.searchArea{
+	width: 90%;
+	height: 30px;
+	line-height: 30px;
+	margin: 12px 0px 18px 20px;
+	text-align: left;
+	border: solid 1px #fff;
+}
+.searchArea label{
+	height:24px;
+	width:35px;
+	float: left;
+	vertical-align: middle;
+}
+.txtDiv{
+	height:24px;
+	width:160px;
+	float: left;
+	margin-right: 10px;
+	line-height:24x;
+	vertical-align: middle;
+	border:1px solid #B6B6B6;
+}
+#roleSearchBtn, #typeSearchBtn{	
+	height: 26px;
+	width:60px;
+	background-color: #538FD8;
+	border:none;
+	color:#FFF;
+}
+#roleSearchBtn:hover, #typeSearchBtn:hover{
+	background-color: #5596E1;
+}
+.pagetool{
+	float:right;
+	position:relative;
+	right: 20px;
+	top: -30px;
+	width: auto;
+	height: 10px;
+}
+.preAndNext{
+	display:none;
+	float:left;
+	width:50px;
+}
+.preDiv{
+	width: 18px;
+	height: 18px;
+	border: 1px solid #E5E5E5;
+	float:left;
+}
+.nextDiv{
+	width: 18px;
+	height: 18px;
+	border: 1px solid #E5E5E5;
+	border-left: 0px solid #E5E5E5;
+	float:left;
+	margin-right:10px;
+}
+.pageNum{
+	width: auto;
+	height: 20px;
+	border: 0px solid #E5E5E5;
+	float:left;
+	line-height: 20px;
+}
+.preAndNext span{
+	margin:5px;
+	width:10px;
+	height:10px;
+	float:left;
+	display: block;
+	*vertical-align:middle;
+}
+.preSpan{
+	background: url(../../skin/images/skin_icons.png) no-repeat scroll -80px -32px transparent;
+}
+.nextSpan{
+	background: url(../../skin/images/skin_icons.png) no-repeat scroll -96px -32px transparent;
+}
+.disPreSpan{
+	background: url(../../skin/images/skin_icons.png) no-repeat scroll -80px -41px transparent;
+}
+.disNextSpan{
+	background: url(../../skin/images/skin_icons.png) no-repeat scroll -96px -41px transparent;
+}
+.treeDiv{
+	width:100%;
+	height:100%;
+	overflow-x: hidden;
+	overflow-y:auto;
+}
+.td1{
+	width:20px;
+}
+.td2{
+	width:260px;
+}
+.td2 span{
+	float:left;
+	height: 20px;
+	line-height: 20px;
+}
+.dField{
+	margin:0px 5px 0px 5px;
+	height:20px;
+	line-height:20px;
+}
+.tableHeadDiv{
+	height:32px;
+}
+#typeTable thead{
+	position: fixed;
+	top: 65px;
+	margin-left: -1px;
+}
+#typeTable{
+	height: 210px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid #DEDEDE;
+}

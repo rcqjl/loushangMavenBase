@@ -1,0 +1,94 @@
+@media(max-width:768px) {
+	.input-group {
+		width:200px;
+		float: left;
+	}
+	
+	form.form-inline {
+		overflow: auto;
+	}
+}
+
+.hint-div {
+	width:259px;
+	height:35px;
+	background:#fbfbfb;
+	border-bottom:1px solid #dddddd;
+	position:fixed;
+	left:0;
+	top:0;
+	margin-bottom:0;
+	font-size:12px;
+	color:#777;
+	line-height:35px;
+	padding-left:16px;
+}
+
+.hint-ico {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 0 none;
+}
+
+.ztree { /*重写ztree样式*/
+	padding-top:35px;
+}
+.ztree li span.button.app_ico_open, 
+.ztree li span.button.app_ico_close,
+.ztree li span.button.app_ico_docu,
+.hint-app-ico {
+	background: url(../../img/function_tree.png);
+}
+.ztree li span.button.module_ico_open, 
+.ztree li span.button.module_ico_close,
+.ztree li span.button.module_ico_docu,
+.hint-module-ico {
+	background: url(../../img/function_tree.png) -16px 0px;
+}
+.ztree li span.button.function_ico_open, 
+.ztree li span.button.function_ico_close,
+.ztree li span.button.function_ico_docu,
+.hint-function-ico {
+	background: url(../../img/function_tree.png) -32px 0px;
+}
+.ztree li span.button.operation_ico_docu,
+.hint-operation-ico {
+	background: url(../../img/function_tree.png) -48px 0px;
+}
+
+/**/
+.ue-sticky.success {
+	margin-top: 5px;
+}
+.ue-sticky-close {
+	top: 4px;
+}
+.ue-sticky-note {
+	padding: 4px 40px 4px 20px;
+}
+
+.ue-menu-wrap {
+	top: 0px;
+}
+
+.container {
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.ztree li span.button.add{
+	margin-right: 2px;
+	background-position: -142px 0px;
+	vertical-align: top;
+}
+.ue-menu-right{
+	overflow:auto;
+}
+
+.row {
+	margin: 0px;
+	padding: 5px;
+}

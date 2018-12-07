@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bpm_cform_config" xmlns="http://www.loushang.com/sca/1.0">
+	<description>bpm cform</description>
+	<!-- 环节表单关联-->
+	<component name="cfActFormDao">
+		<service name="cfActFormDao">
+			<interface.java interface="org.loushang.cform.procdef.dao.IActFormDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.dao.jdbc.ActFormJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 环节表单按钮-->
+	<component name="cfActFormBtnDao">
+		<service name="cfActFormBtnDao">
+			<interface.java interface="org.loushang.cform.procdef.dao.IActFormBtnDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.dao.jdbc.ActFormBtnJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 环节表单域控制-->
+	<component name="cfActFormAclDao">
+		<service name="cfActFormAclDao">
+			<interface.java interface="org.loushang.cform.procdef.dao.IActFormAclDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.dao.jdbc.ActFormAclJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="cfActFormAclDomain">
+		<service name="cfActFormAclDomain">
+			<interface.java interface="org.loushang.cform.procdef.domain.IActFormAcl"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.domain.support.ActFormAclImpl"/>
+	</component>
+	
+	<!-- 环节业务URL-->
+	<component name="cfTaskListForwardUrlDao">
+		<service name="cfTaskListForwardUrlDao">
+			<interface.java interface="org.loushang.cform.procdef.dao.ITaskListForwardUrlDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.dao.jdbc.TaskListForwardUrlJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 流程定义层次任务列表cform表单域来源定义 -->
+	<component name="cfProcSubjectScFieldDefDao">
+		<service name="cfProcSubjectScFieldDefDao">
+			<interface.java interface="org.loushang.cform.procdef.dao.IProcSubjectScFieldDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.cform.procdef.dao.jdbc.ProcSubjectScFieldDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 流程类型层次任务列表cform表单域来源定义 -->
+	<component name="cfProcTypeSubjectScFieldDefDao">
+		<service name="cfProcTypeSubjectScFieldDefDao">
+			<interface.java interface="org.loushang.cform.procdef.dao.IProcTypeSubjectScFieldDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.cform.procdef.dao.jdbc.ProcTypeSubjectScFieldDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+
+	<!-- 流程实例表单业务主键关联-->
+	<component name="cfProcFormDataDao">
+		<service name="cfProcFormDataDao">
+			<interface.java interface="org.loushang.cform.process.dao.IProcFormDataDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.process.dao.jdbc.ProcFormDataJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="cfProcFormDataDomain">
+		<service name="cfProcFormDataDomain">
+			<interface.java interface="org.loushang.cform.process.domain.IProcFormData"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.process.domain.support.ProcFormDataImpl"/>
+		<reference name="procFormDataDao" target="cfProcFormDataDao/cfProcFormDataDao"/>
+	</component>
+	
+	<!-- 工作流操作domain层-->
+	<component name="cfActionDomain">
+		<service name="cfActionDomain">
+			<interface.java interface="org.loushang.cform.tasklist.domain.IAction"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.tasklist.domain.support.ActionImpl"/>
+	</component>
+	
+	<!-- 按钮-->
+	<component name="cfBtnDao">
+		<service name="cfBtnDao">
+			<interface.java interface="org.loushang.cform.btn.dao.IBtnDao" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.btn.dao.jdbc.BtnJdbcDao" />
+		<property name="dataSourceConf" value="dataSource" />
+	</component>
+	<component name="cfBtnDomain">
+		<service name="cfBtnDomain">
+			<interface.java interface="org.loushang.cform.btn.domain.IButton" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.btn.domain.support.ButtonImpl" />
+		<reference name="btnDao" target="cfBtnDao/cfBtnDao" />
+		<reference name="btnSetDefDao" target="btnSetDefDao/btnSetDefDao" />
+	</component>
+	
+	<component name="cfBtnSetDefDomain">
+		<service name="cfBtnSetDefDomain">
+			<interface.java interface="org.loushang.cform.btn.domain.IBtnSetDef" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.btn.domain.support.BtnSetDefImpl" />
+		<reference name="btnDao" target="cfBtnDao/cfBtnDao" />
+		<reference name="btnSetDefDao" target="btnSetDefDao/btnSetDefDao" />
+	</component>
+	
+	<component name="btnSetDefDao">
+		<service name="btnSetDefDao">
+			<interface.java interface="org.loushang.cform.btn.dao.IBtnSetDefDao" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.btn.dao.jdbc.BtnSetDefJdbcDao" />
+		<property name="dataSourceConf" value="dataSource" />
+	</component>
+	
+	<!-- 流程关联表单操作服务-->
+	<component name="cfProcForm">
+		<service name="cfProcForm">
+			<interface.java interface="org.loushang.cform.api.IProcForm" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.api.procform.ProcFormImpl" />
+	</component>
+	
+	<!-- 流程关联表单查询服务-->
+	<component name="cfProcFormQuery">
+		<service name="cfProcFormQuery">
+			<interface.java interface="org.loushang.cform.api.IProcFormQuery" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.api.procform.ProcFormQueryImpl" />
+	</component>
+
+	<!-- flex查询表单数据 服务-->
+	<component name="cfProcFormUtilQuery">
+		<service name="cfProcFormUtilQuery">
+			<interface.java interface="org.loushang.cform.procdef.util.IProcFormUtil" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.util.support.ProcFormUtil" />
+	</component>
+
+	<!--CForm表单核心模块解析发布类 服务-->
+	<component name="cfCommonXmlParserAndLoader">
+		<service name="cfCommonXmlParserAndLoader">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.transform.IAbstractXmlHandler" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.xpdl.common.CommonXmlParserAndLoaderImpl" />
+	</component>
+
+	<!--流程定义删除事件监听  服务-->
+	<component name="cfProcessDefDeleteEvent">
+		<service name="cfProcessDefDeleteEvent">
+			<interface.java interface="org.loushang.workflow.manage.event.IEventHandler" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.event.ProcessDefDeleteEvent" />
+	</component>
+	
+	<!--流程实例删除事件监听  服务-->
+	<component name="cfProcessDeleteEvent">
+		<service name="cfProcessDeleteEvent">
+			<interface.java interface="org.loushang.workflow.manage.event.IEventHandler" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.process.event.ProcessDeleteEvent" />
+	</component>
+	
+	<component name="cfBtnTypeDao">
+		<service name="cfBtnTypeDao">
+			<interface.java interface="org.loushang.cform.btn.dao.IBtnTypeDao" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.btn.dao.jdbc.BtnTypeJdbcDao" />
+		<property name="dataSourceConf" value="dataSource" />
+	</component>
+	
+	<component name="cfBtnTypeDomain">
+		<service name="cfBtnTypeDomain">
+			<interface.java interface="org.loushang.cform.btn.domain.IBtnType" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.btn.domain.support.BtnTypeImpl" />
+		<reference name="btnTypeDao" target="cfBtnTypeDao/cfBtnTypeDao" />
+	</component>
+
+	<component name="cfSubjectScFieldDefDao">
+		<service name="cfSubjectScFieldDefDao">
+			<interface.java interface="org.loushang.cform.procdef.dao.ISubjectScFieldDefDao" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.dao.jdbc.DefaultSubjectScFieldDefJdbcDao" />
+		<property name="dataSourceConf" value="dataSource" />
+	</component>
+	<!--html流程设计工具-->
+	<component name="cfProcDefModelDao">
+		<service name="cfProcDefModelDao">
+			<interface.java interface="org.loushang.cform.procdef.html.model.dao.IProcDefModelDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.html.model.dao.jdbc.ProcDefModelJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="cfProcDefModelDomain">
+		<service name="cfProcDefModelDomain">
+			<interface.java interface="org.loushang.cform.procdef.html.model.domain.IProcDefModel" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.procdef.html.model.domain.support.ProcDefModelImpl" />
+		<reference name="cfProcDefModelDao" target="cfProcDefModelDao/cfProcDefModelDao" />
+	</component>
+	
+	<component name="cfProcDefDomain">
+        <service name="cfProcDefDomain">
+            <interface.java interface="org.loushang.cform.procdef.html.domain.IProcDef" />
+            <binding.sca />
+        </service>
+        <implementation.java
+            impl="org.loushang.cform.procdef.html.domain.support.ProcDefImpl" />
+        <reference name="cfProcDefModelDomain" target="cfProcDefModelDomain/cfProcDefModelDomain" />
+    </component>
+    
+    <component name="cfProcDefExchange">
+        <service name="cfProcDefExchange">
+            <interface.java interface="org.loushang.workflow.infoprocessmodel.exchange.IModelExchange" />
+            <binding.sca />
+        </service>
+        <implementation.java
+            impl="org.loushang.cform.procdef.html.cmd.FormExchange" />
+        <reference name="cfProcDefDomain" target="cfProcDefDomain/cfProcDefDomain" />
+    </component>
+    
+    <!-- 委派ID表单实例数据关联-->
+	<component name="cfAssignFormDataDao">
+		<service name="cfAssignFormDataDao">
+			<interface.java interface="org.loushang.cform.assign.dao.IAssignFormDataDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.assign.dao.jdbc.AssignFormDataJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="cfAssignFormDataDomain">
+		<service name="cfAssignFormDataDomain">
+			<interface.java interface="org.loushang.cform.assign.domain.IAssignFormData"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.cform.assign.domain.support.AssignFormDataImpl"/>
+		<reference name="assignFormDataDao" target="cfAssignFormDataDao/cfAssignFormDataDao"/>
+	</component>
+</composite>

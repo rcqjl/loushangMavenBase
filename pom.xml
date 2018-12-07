@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.inspur.demo</groupId>
+  <artifactId>loushang</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
+  <dependencies>
+		<!-- 框架 -->
+		<dependency>
+			<groupId>org.loushang.framework</groupId>
+			<artifactId>loushang-framework</artifactId>
+			<version>7.5.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- L5适配接口，主要用于BPM、CForm、Cportal，L5后端对应V7前端 -->
+		<dependency>
+			<groupId>org.loushang.framework</groupId>
+			<artifactId>loushang-l5-adapter</artifactId>
+			<version>7.2.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- BSP -->
+		<dependency>
+			<groupId>org.loushang.bsp</groupId>
+			<artifactId>loushang-bsp-full</artifactId>
+			<version>7.5.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- HSF -->
+		<!-- <dependency>
+			<groupId>com.inspur.hsf</groupId>
+			<artifactId>hsf</artifactId>
+			<version>1.0.0</version>
+			<type>pom</type>
+		</dependency> -->
+		<!-- BPM -->
+		<dependency>
+			<groupId>org.loushang.bpm</groupId>
+			<artifactId>loushang-bpm</artifactId>
+			<version>7.5.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- CForm -->
+		<dependency>
+			<groupId>org.loushang.cform</groupId>
+			<artifactId>loushang-cform</artifactId>
+			<version>7.5.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- CFORM-BPM -->
+		<dependency>
+			<groupId>org.loushang.cform</groupId>
+			<artifactId>loushang-cform-bpm</artifactId>
+			<version>7.5.0</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.loushang.cform</groupId>
+			<artifactId>loushang-cform-bpm-plugin</artifactId>
+			<version>7.5.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- CPortal -->
+		<dependency>
+			<groupId>org.loushang.cportal</groupId>
+			<artifactId>loushang-cportal</artifactId>
+			<version>7.5.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- 样板主题，主要提供登录页、主页、SQL初始化页面等 -->
+		<dependency>
+			<groupId>org.loushang.theme</groupId>
+			<artifactId>loushang-theme</artifactId>
+			<version>7.2.0</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+	  <!-- oracle driver -->
+	  <dependency>
+		  <groupId>com.oracle</groupId>
+		  <artifactId>ojdbc6</artifactId>
+		  <version>11.2.0.1.0</version>
+	  </dependency>
+
+	</dependencies>
+
+
+	
+	<build>
+		<finalName>loushang</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/.svn/*</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/.svn/*</exclude>
+				</excludes>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+</project>

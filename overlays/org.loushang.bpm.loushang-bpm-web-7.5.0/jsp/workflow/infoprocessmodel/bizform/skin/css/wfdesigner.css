@@ -1,0 +1,135 @@
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+	margin:0px;
+    height:100%; 
+    padding:0px;
+    overflow:hidden;
+}
+.wfd_BaseArea {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #fff;
+}
+
+.wfd_HandleArea {
+    position : relative;
+    width:100%;
+    height:40px;
+    background-color: #EEE;
+    border:1px solid #CACACA;
+    line-height:40px;
+}
+.wfd_HandleArea ul {
+    list-style:none;
+    vertical-align:middle;
+    padding:0px;
+    margin:0px;
+    height: 40px;
+    width: 250px;
+    float: right;
+}
+.wfd_HandleArea li {
+    padding:0px;
+    margin:0px;
+    right:0px;
+    left:0px;
+    float:right;
+    line-height:40px;
+    cursor: pointer;
+}
+.wfBtnSaveLi {
+    width : 66px;
+}
+.wfBtnReleaseLi {
+    width : 93px;
+}
+.wfBtnSaveAsLi {
+    width : 90px;
+}
+.wfBtnModelLi {
+    width : 83px;
+}
+.wfProcTitle{
+    font-size:20px;
+    display: inline-block;
+    margin-left:10px;
+    float:left;
+    font-family:"微软雅黑";
+}
+.wfd_HandleArea div {
+    text-align:center;
+}
+.wfd_HandleArea div:HOVER{
+    background-color:#CFCFCF;
+}
+.wfdButton {
+    border-left:1px solid #CACACA;
+    height:40px;
+}
+.wfdButtonImg {
+    position:relative;
+    float:left;
+    top:12px;
+    width:16px;
+    height:16px;
+    border:none;
+}
+.wfdBtnSave {
+    left:10px;
+    background:url(../images/skin_icons.png) no-repeat -60px -62px;
+}
+.wfdBtnRelease {
+    left:6px;
+    background:url(../images/skin_icons.png) no-repeat -76px -62px;
+}
+.wfdBtnSaveAs {
+    left:6px;
+    background:url(../images/skin_icons.png) no-repeat -92px -62px;
+}
+.wfdBtnModel {
+    left:6px;
+    background:url(../images/skin_icons.png) no-repeat -86px -132px;
+}
+.wfd_DesignColumn {
+    position : relative;
+    height: 80%;
+    width: 80%;
+    background-color: #fff;
+}
+.wfd_SourceColumn {
+    position : relative;
+    width : 100%;
+    height:90%;
+    border:2px soild #00f;
+}
+.wfd_procModelArea,.wfd_formModelArea{
+	position: relative;
+	left: 28px;
+}
+.wfd_formModelArea{
+	background: #eee;
+}
+.saveAsNewVersion,.saveAsNewProcess{
+    position: fixed;
+    width: 93px;
+    text-decoration: none;
+    background-color:#cfcfcf;
+    border:none;
+    display:none;
+    height:30px
+    line-height:30px;
+    font-size:15px;
+}
+.saveAsNewVersion{
+    top: 75px;
+}
+.saveAsNewProcess{
+    top: 40px;
+}
+.saveAsNewVersion:HOVER,.saveAsNewProcess:HOVER{
+    text-decoration: underline;
+}

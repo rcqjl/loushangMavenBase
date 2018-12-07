@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+
+	<component name="monitorPropertyConfigDao">
+		<service name="monitorPropertyConfigDao">
+			<interface.java interface="org.loushang.workflow.monitor.config.dao.IMonitorPropertyConfigDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.monitor.config.dao.support.MonitorPropertyConfigJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+
+    <component name="monitorPropertyConfigDomain">
+		<service name="monitorPropertyConfigDomain">
+			<interface.java interface="org.loushang.workflow.monitor.config.domain.IMonitorPropertyConfig"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.monitor.config.domain.support.MonitorPropertyConfigImpl"/>
+		<reference name="monitorPropertyConfigDao" target="monitorPropertyConfigDao/monitorPropertyConfigDao"/>
+	</component>
+	    
+</composite>

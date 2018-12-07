@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+
+    <!-- 角色服务 -->
+    <service interface="org.loushang.bsp.api.role.service.IRoleService" refScaComponent="BspRoleService.BspRoleService" />
+     
+</SCAServices>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+	<component name="businessProcessDefModelService">
+		<service name="businessProcessDefModelService">
+			<interface.java interface="org.loushang.workflow.businessprocessmodel.service.IBusinessProcessDefModelService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.businessprocessmodel.service.support.BusinessProcessDefModelServiceImpl"/>
+	</component>
+</composite>

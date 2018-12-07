@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+
+	<component name="infoProcessDefModelDao">
+		<service name="infoProcessDefModelDao">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.definition.dao.IInfoProcessDefModelDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.definition.dao.support.InfoProcessDefModelJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="infoProcDataRefDefDao">
+		<service name="infoProcDataRefDefDao">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.datarefdef.dao.IInfoProcDataRefDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.datarefdef.dao.support.InfoProcDataRefDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="infoProcDataRefDefDomain">
+		<service name="infoProcDataRefDefDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.datarefdef.domain.IInfoProcDataRefDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.datarefdef.domain.support.InfoProcDataRefDefImpl"/>
+		<reference name="infoProcDataRefDefDao" target="infoProcDataRefDefDao/infoProcDataRefDefDao"/>
+	</component>
+	
+	<component name="infoProcPluginDefDao">
+		<service name="infoProcPluginDefDao">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.plugintypedef.dao.IInfoProcPluginDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.plugintypedef.dao.support.InfoProcPluginDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="infoProcPluginDefDomain">
+		<service name="infoProcPluginDefDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.plugintypedef.domain.IInfoProcPluginDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.plugintypedef.domain.support.InfoProcPluginDefImpl"/>
+		<reference name="infoProcPluginDefDao" target="infoProcPluginDefDao/infoProcPluginDefDao"/>
+	</component>
+		
+    <component name="infoProcPageButtonDefDao">
+		<service name="infoProcPageButtonDefDao">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.pagebuttondef.dao.IInfoProcPageButtonDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.pagebuttondef.dao.support.InfoProcPageButtonDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="infoProcPageButtonDefDomain">
+		<service name="infoProcPageButtonDefDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.pagebuttondef.domain.IInfoProcPageButtonDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.pagebuttondef.domain.support.InfoProcPageButtonDefImpl"/>
+		<reference name="infoProcPageButtonDefDao" target="infoProcPageButtonDefDao/infoProcPageButtonDefDao"/>
+	</component>
+	
+	<component name="infoProcPermissionConfigDao">
+		<service name="infoProcPermissionConfigDao">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.permissionconfig.dao.IInfoProcPermissionConfigDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.permissionconfig.dao.support.InfoProcPermissionConfigJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="infoProcPermissionConfigDomain">
+		<service name="infoProcPermissionConfigDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.permissionconfig.domain.IInfoProcPermissionConfig"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.permissionconfig.domain.support.InfoProcPermissionConfigImpl"/>
+		<reference name="infoProcPermissionConfigDao" target="infoProcPermissionConfigDao/infoProcPermissionConfigDao"/>
+	</component>
+	
+	<component name="infoProcessDefModelDomain">
+		<service name="infoProcessDefModelDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.definition.domain.IInfoProcessDefModel"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.definition.domain.support.InfoProcessDefModelImpl"/>
+		<reference name="infoProcessDefModelDao" target="infoProcessDefModelDao/infoProcessDefModelDao"/>
+		<reference name="infoProcDataRefDefDomain" target="infoProcDataRefDefDomain/infoProcDataRefDefDomain"/>
+		<reference name="infoProcPluginDefDomain" target="infoProcPluginDefDomain/infoProcPluginDefDomain"/>
+		<reference name="infoProcPermissionConfigDomain" target="infoProcPermissionConfigDomain/infoProcPermissionConfigDomain"/>
+		<reference name="processDefTransformDomain" target="processDefTransformDomain/processDefTransformDomain"/>
+		<reference name="processCreateDataRefDao" target="processCreateDataRefDao/processCreateDataRefDao"/>
+		<reference name="processDefinitionDomain" target="processDefinitionDomain/processDefinitionDomain"/>
+	</component>
+	
+	<component name="processDefTransformDomain">
+		<service name="processDefTransformDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.transform.IProcessDefTransform"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.transform.ProcessDefTransform"/>
+	</component>
+	
+	<component name="procDefTransformDomain">
+		<service name="procDefTransformDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.transform.IProcDefTransform"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.transform.ProcDefTransformImpl"/>
+	</component>
+	
+	<component name="wfFormModelDomain">
+        <service name="wfFormModelDomain">
+            <interface.java interface="org.loushang.workflow.infoprocessmodel.form.domain.IFormModel"/>
+            <binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.workflow.infoprocessmodel.form.domain.support.FormModelImpl"/>
+        <reference name="infoProcessDefModelDomain" target="infoProcessDefModelDomain/infoProcessDefModelDomain"/>
+        <reference name="procDefTransformDomain" target="procDefTransformDomain/procDefTransformDomain"/>
+    </component>
+    
+    <component name="wfBizFormModelDomain">
+        <service name="wfBizFormModelDomain">
+            <interface.java interface="org.loushang.workflow.infoprocessmodel.bizform.domain.IFormModel"/>
+            <binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.workflow.infoprocessmodel.bizform.domain.support.FormModelImpl"/>
+        <reference name="infoProcessDefModelDomain" target="infoProcessDefModelDomain/infoProcessDefModelDomain"/>
+        <reference name="procDefTransformDomain" target="procDefTransformDomain/procDefTransformDomain"/>
+    </component>
+	
+	<component name="infoProcessDefModelExchangeDomain">
+		<service name="infoProcessDefModelExchangeDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.exchange.domain.IInfoProcessDefModelExchange"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.exchange.domain.support.InfoProcessDefModelExchangeImpl"/>
+		<reference name="infoProcessDefModelDomain" target="infoProcessDefModelDomain/infoProcessDefModelDomain"/>
+		<reference name="processTypeDomain" target="processTypeDomain/processTypeDomain"/>
+	</component>
+	
+	<component name="abstractXmlLoader">
+		<service name="abstractXmlLoader">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.transform.loader.IAbstractXmlLoader"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.transform.loader.AbstractXmlLoaderService"/>
+	</component>	
+	
+	<component name="jspFormWithPKCommonXmlHandler">
+		<service name="jspFormWithPKCommonXmlHandler">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.transform.IAbstractXmlHandler"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.transform.xpdl.jspformwithpkcommon.JspFormWithPKCommonXmlHandler"/>
+	</component>
+	<component name="partUrlDefDao">
+		<service name="partUrlDefDao">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.parturldef.dao.IPartUrlDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.parturldef.dao.support.PartUrlDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="partUrlDefDomain">
+		<service name="partUrlDefDomain">
+			<interface.java interface="org.loushang.workflow.infoprocessmodel.parturldef.domain.IPartUrlDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.infoprocessmodel.parturldef.domain.support.PartUrlDefImpl"/>
+		<reference name="partUrlDefDao" target="partUrlDefDao/partUrlDefDao"/>
+	</component>
+</composite>

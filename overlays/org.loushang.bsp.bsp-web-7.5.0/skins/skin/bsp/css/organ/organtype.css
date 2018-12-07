@@ -1,0 +1,52 @@
+.ue-menu-wrap{
+	top:1px;
+}
+
+.select-stru-type{
+	display: inline-block;
+    width: 260px;
+    font-size:16px;
+    font-family:"微软雅黑";
+    text-align:center;
+    background: #fbfbfb;
+    border-bottom: 1px solid #ddd;
+}
+
+.input-group{
+	margin-top:15px;
+	margin-right:15px;
+}
+
+.fa-angle-right:before {
+    content: "";
+}
+
+
+.pull-right{
+	margin-top:5px;
+	margin-bottom:10px;
+}
+
+.ue-menu-right{
+    padding-left: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.row{
+	margin-right:0px;
+}
+th,td{
+	text-align:-webkit-center
+}
+
+.tableTitle{
+	position:absolute;
+	top:15px;
+	font-size:16px;
+	font-family:"微软雅黑";
+}  
+
+.table-bordered>tbody>tr>td{
+	text-align:-webkit-center
+}

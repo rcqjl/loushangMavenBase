@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Forms xmlns="http://bean.jspform.workflow.loushang.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Form id="demo" name="jsp表单示例" tableName="CLBX" primaryKey="CodeId">
+		<Requests>
+	         <Request id="forinsert" name="增加" url="jsp/demo/workflow/order/forinsert.jsp"></Request>
+	         <Request id="forupdate" name="修改" url="jsp/demo/workflow/order/forupdate.jsp"></Request>
+	         <Request id="detail" name="明细" url="jsp/demo/workflow/order/detail.jsp"></Request>
+	    </Requests> 
+		<Fields>
+		        <Field id="bxr"  name="报销人"  dataType="String" description="" columnName="BXR" fieldType="text">
+		        </Field>	
+		        <Field id="department"  name="部门" dataType="String" description="" columnName="DEPARTMENT" fieldType="text">
+		        </Field>
+		        <Field id="txrs"  name="同行人数"  dataType="Long" description="" columnName="TXRS" fieldType="text">
+		        </Field>
+		        <Field id="cfd"  name="出发地"  dataType="String" description="" columnName="CFD" fieldType="text">
+		        </Field>
+		        <Field id="bxsum"  name="报销金额"  dataType="Float" description="" columnName="BXSUM" fieldType="text">
+		        </Field>	
+		        <Field id="ccsy"  name="出差事由" dataType="String" description="" columnName="CCSY" fieldType="text">
+		        </Field>
+		</Fields>
+		<Buttons>
+			<Button id="direforward" name="发送" funName="" description="直接发送"/>
+			<Button id="forward" name="发送" funName="" description="发送"/>
+			<Button id="reject" name="驳回" funName="" description="驳回"/>
+			<Button id="transmit" name="转发" funName="" description="转发"/>
+			<Button id="remove" name="删除" funName="" description="删除"/>
+			<Button id="finish" name="结束" funName="" description="结束"/>
+		</Buttons>
+	</Form>
+</Forms>

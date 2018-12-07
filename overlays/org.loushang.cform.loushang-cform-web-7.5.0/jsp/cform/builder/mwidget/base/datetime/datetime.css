@@ -1,0 +1,11 @@
+/*日期时间框  */
+.phone_widget_datetime input {
+	background: url(time.png);
+	background-position: 98% 50%;
+	background-repeat: no-repeat;
+	width: 65%;
+	height: 54px;
+	border: 0;
+	font-size: 20px;
+	float: right;
+}

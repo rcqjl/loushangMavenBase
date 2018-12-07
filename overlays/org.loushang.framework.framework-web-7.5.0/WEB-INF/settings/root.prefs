@@ -1,0 +1,19 @@
+#Mon Sep 28 21:02:33 CST 2009
+/jsonlimitlength=800
+/preventSqlInjection=true
+/preventScriptInjection=false
+/upload.sizeMax=5M 
+#productModel true:product model,false:development model
+/productModel=false
+# true:use relative path, false: use absolute path
+/useRelativePath=false
+#Language zh_CN(default) en_US
+#/serverLocale=en_US
+# Query the database using precompiled
+/usePreQuery=false
+# Supports the use of wildcards to query the database
+/supportWildcards=true
+# deploy of static resource appserver(default) webserver 
+/assetDeploy=appserver
+# skintype skin(default) skin1 skin2...
+/skinType=skin

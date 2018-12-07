@@ -1,0 +1,116 @@
+﻿.ue-menu-wrap {
+	top: 0px;
+}
+
+.container {
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.ztree li span.button.add{
+	margin-right: 2px;
+	background-position: -142px 0px;
+	vertical-align: top;
+}
+.ue-menu-left{
+	overflow: inherit;
+}
+.ue-menu-right{
+	overflow: auto;
+}
+
+.row {
+	margin: 0px;
+	padding: 5px;
+}
+#menuName {
+	z-index: 0;
+}
+
+.select-menu-type {
+	height: 35px;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	text-align: left;
+	font-size: 18px;
+	line-height: 22px;
+	background: #fbfbfb;
+	cursor: pointer;
+	position: absolute;
+	text-align: center;
+}
+.select-menu-type:hover {
+	background: #f0f0f0;
+}
+.select-menu-type .menu-type-name {
+	display: inline-block;
+    width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    float: left;
+}
+.select-menu-type .fa-angle-right {
+	float: right;
+	margin-top: 2px;
+	margin-right: 5px;
+}
+
+.popover {
+	max-width: 800px;
+}
+.popover a {
+	float: right;
+}
+.popover-content {
+	padding: 0px 14px;
+}
+.menu-container {
+	width: 570px;
+}
+@media(max-width:768px){
+	.menu-container {
+		width: 420px;
+	}
+	
+}
+.menu-type {
+	height: 50px;
+	width: 120px;
+	border: 1px solid #ddd;
+	background-color: #fafafa;
+	margin: 10px;
+	text-align: center;
+	line-height: 50px;
+	float: left;
+	cursor: pointer;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.menu-type:hover {
+	border-color: #0be;
+	color: #0be;
+}
+.ztree {
+	padding-top: 30px;
+}
+
+.ue-sticky.success {
+	margin-top: 5px;
+}
+.ue-sticky-close {
+	top: 4px;
+}
+.ue-sticky-note {
+	padding: 4px 40px 4px 20px;
+}
+
+.form-inline span.tableTitle {
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: 5px;
+	font-family: 微软雅黑;
+	font-size: 20px;
+}

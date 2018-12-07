@@ -1,0 +1,4 @@
+#任务列表跳转url类型
+CFORM_BPM.TASK_LIST_FORWARD_TYPE=0:系统默认,1:流程类型
+#跳转url任务类型
+CFORM_BPM.FORWARD_TASK_TYPE=0:新建任务,1:待办任务,2:已办任务,3:办结任务,4:监控任务,-1:所有任务

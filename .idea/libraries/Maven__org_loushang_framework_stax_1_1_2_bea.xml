@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.loushang.framework:stax:1.1.2-bea">
+    <CLASSES>
+      <root url="jar://E:/loushangRepository/org/loushang/framework/stax/1.1.2-bea/stax-1.1.2-bea.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://E:/loushangRepository/org/loushang/framework/stax/1.1.2-bea/stax-1.1.2-bea-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://E:/loushangRepository/org/loushang/framework/stax/1.1.2-bea/stax-1.1.2-bea-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

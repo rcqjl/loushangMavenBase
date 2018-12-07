@@ -1,0 +1,22 @@
+table.table {
+	border: 1px solid #dddddd;
+}
+
+.table-bordered>tbody>tr>td {
+	line-height: 42px;
+	height: 42px
+}
+
+.table-bordered>tbody>tr:nth-child(odd) {
+	background-color: #f6f6f6;
+}
+
+.table>thead>tr>th {
+	color: #666;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+div[data_widgetid=WoDeLiuCheng] .panel-heading {
+	border-bottom: 2px solid #3aaed8;
+}

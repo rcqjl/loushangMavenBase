@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="demo" xmlns="http://www.loushang.com/sca/1.0">
+    <description>organization module</description>
+
+    <component name="PubIdtableDao">
+	    <service name="PubIdtableDao"> 
+	    	<interface.java interface="org.loushang.bsp.bizid.dao.IPubIdtableDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource" />
+        <implementation.java impl="org.loushang.bsp.bizid.dao.support.PubIdtableDao"/>
+    </component>
+
+     <component name="IIdtableDomain">
+	    <service name="IIdtableDomain"> 
+	    	<interface.java interface="org.loushang.bsp.bizid.domain.IBizIdDomain"/>
+        	<binding.sca/>
+        </service>
+         <!-- 此处的dataSource与DAO层的dataSourceConf有所不同 -->
+        <property name="dataSource" value="dataSource" />
+        <implementation.java impl="org.loushang.bsp.bizid.domain.support.BizIdDomainImpl"/>
+    </component>
+    
+    <component name="IdService">
+	    <service name="IdService"> 
+	    	<interface.java interface="org.loushang.bsp.api.bizid.IBizIdService"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource" />
+        <implementation.java impl="org.loushang.bsp.apisupport.bizid.BizIdServiceImpl"/>
+    </component>
+
+</composite>

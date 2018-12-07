@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_user_base" xmlns="http://www.loushang.com/sca/1.0">
+	<description>userbase</description>
+	
+	<!-- 用户基本属性 -->
+	<component name="UserBaseAttrDomain">
+		<service name="UserBaseAttrDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.userbase.domain.IUserBase" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.userbase.domain.support.UserBaseImpl" />
+		<reference name="userBaseDao" target="UserBaseAttrDao/UserBaseAttrDao" />
+	</component>
+	<component name="UserBaseAttrDao">
+		<service name="UserBaseAttrDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.userbase.dao.IUserBaseDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.userbase.dao.jdbc.UserBaseJdbcDao" />
+	</component>
+	
+	<!-- 用户基本属性接口 -->
+    <component name="BspUserBaseService">
+        <service name="BspUserBaseService">
+            <interface.java interface="org.loushang.bsp.api.userbase.IUserBaseService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.userbase.UserBaseServiceImpl" />
+    </component>
+
+</composite>

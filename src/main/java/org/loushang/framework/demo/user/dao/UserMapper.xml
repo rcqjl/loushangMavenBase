@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.loushang.framework.demo.user.dao.UserMapper">
+
+    <resultMap type="org.loushang.framework.demo.user.data.User" id="userResultMap">
+    	<id property="id" column="id" />
+    	<collection property="archive" column="id" select="org.loushang.framework.demo.user.dao.ArchiveMapper.getArchiveById" ></collection>
+    </resultMap>
+	
+    <select id="findAll" resultType="org.loushang.framework.demo.user.data.User" parameterType="map">
+        SELECT 
+            id,
+            user_id,
+            user_name,
+            nickname,
+            act_status
+        FROM demo_user  
+    	<where>
+			<if test="userId != null">
+			 	user_id like '%${userId}%'
+			</if>
+			<if test="userName != null and userName!= '' ">
+			 	and user_name like '%${userName}%'
+			</if>
+		</where>
+        <if test="orderfield != null" >
+         order by 
+        	<choose>    
+                <when test="orderfield == 'userName'">    
+                    user_name ${orderdir} 
+                </when>  
+                 <when test="orderfield == 'nickname'">    
+                    nickname ${orderdir} 
+                </when>  
+                <when test="orderfield == 'status'">    
+                    act_status ${orderdir}
+                </when> 
+                <otherwise> 
+               		user_id ${orderdir}   
+                </otherwise>    
+            </choose>    
+        </if>
+    </select>
+
+</mapper>

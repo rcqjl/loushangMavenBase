@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_user_policy" xmlns="http://www.loushang.com/sca/1.0">
+	<description>userpolicy</description>
+	
+	<component name="UserPolicyJdbcDao">
+		<service name="UserPolicyJdbcDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.userpolicy.dao.IUserPolicyDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.userpolicy.dao.jdbc.UserPolicyJdbcDao" />
+	</component>
+
+	
+	<!-- 用户策略接口 -->
+    <component name="BspUserPolicyService">
+        <service name="BspUserPolicyService">
+            <interface.java interface="org.loushang.bsp.api.userpolicy.IUserPolicyService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.userpolicy.UserPolicyServiceImpl" />
+    </component>
+
+</composite>

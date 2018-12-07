@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+}
+.formPropArea {
+    padding: 5px 10px 5px 10px;
+}
+.formPropArea label{
+    height: 18px;
+    line-height: 18px;
+    width: 60px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.formPropArea select {
+    width: 156px;
+    vertical-align: middle;
+    height:24px;
+    border:1px solid #B6B6B6;
+    text-align:left;
+    background-color: #fff;
+}
+.formPropArea div{
+    margin-bottom:8px;
+}
+
+.prop{
+    width:100%;
+    margin:5px 0px 8px 0px;
+}
+.prop label{
+    margin-right:5px;
+}
+.prop input,.prop select{
+    height: 24px;
+    line-height: 24px;
+    vertical-align: middle;
+    border: 1px solid #B6B6B6;
+    width:155px;
+}
+.formBtnDiv{
+    position: absolute;
+    right: 16px;
+    width:26px;
+    height: 26px;
+    line-height: 26px;
+    background: url('../images/skin_icons.png') no-repeat scroll -62px -128px #EEE;
+    border:1px solid #B6B6B6;
+}
+.formTxtDiv{
+    width:140px;
+    height:24px;
+    line-height:24px;
+    vertical-align: middle;
+    border:1px solid #B6B6B6;
+}
+#procFormName{
+    margin-buttom:8px;
+}
+.procCon input[type="button"] {
+    position: absolute;
+    right: 16px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    background: url('../images/skin_icons.png') no-repeat scroll -62px -128px #EEE;
+    border: 1px solid #B6B6B6;
+}
+.wfPropertyBodyArea ul {
+    list-style:none;
+}
+#divProcessFormPropertyBody li {
+    float: left;
+    margin-bottom: 2px;
+}
+#procTab1{
+    text-align:center;
+    width: 22%;
+}
+#procTab2{
+    text-align: left;
+    width: 73%;
+}
+#divProcessFormPropertyBody a {
+    color:#A3A3A3;
+    display: block;
+    padding:5px 6px 0px 6px;
+    height:20px;
+    border-bottom: 1px solid #CACACA;
+    text-decoration: none;
+}
+
+#divProcessFormPropertyBody a.on {
+    color:#464646;
+    background: #EEE;
+    border: 1px solid #CACACA;
+    border-bottom: 0px solid #CACACA;
+}
+
+#procTabs {
+    margin: 0px 5px 5px 5px;
+    padding: 0px;
+    width: 100%;
+}

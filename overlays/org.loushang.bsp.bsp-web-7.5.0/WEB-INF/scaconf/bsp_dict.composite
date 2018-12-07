@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bspdict" xmlns="http://www.loushang.com/sca/1.0">
+    <description>dict module</description>
+
+     <component name="dictItemDao">
+	    <service name="dictItemDao"> 
+	    	<interface.java interface="org.loushang.bsp.dict.dao.IDictItemDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource" />
+        <implementation.java impl="org.loushang.bsp.dict.dao.jdbc.DictItemDao"/>
+    </component>
+    <component name="dictDao">
+	    <service name="dictDao"> 
+	    	<interface.java interface="org.loushang.bsp.dict.dao.IDictDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource" />
+        <implementation.java impl="org.loushang.bsp.dict.dao.jdbc.DictDao"/>
+    </component>
+    <component name="dictService">
+	    <service name="dictService"> 
+	    	<interface.java interface="org.loushang.bsp.api.dict.IDictService"/>
+	    	<binding.sca/>
+	    </service>
+	    <implementation.java impl="org.loushang.bsp.apisupport.dict.DictServiceImpl"/>
+		<reference name="dictDao" target="dictDao/dictDao" />
+		<reference name="dictItemDao" target="dictItemDao/dictItemDao" />
+    </component>
+</composite>

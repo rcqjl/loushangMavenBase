@@ -1,0 +1,319 @@
+@CHARSET "UTF-8";
+html{
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: #fafafa;
+	border: 1px solid #ddd;
+}
+body{
+	font-size: 14px;
+	font-family: "宋体", sans-serif;
+	border: 0;
+	margin: 0;
+}
+/*标签*/
+.cfLabel {
+	border: none;
+	color: #333;
+	display: block;
+	line-height: 2em;
+	padding: 13px 0px 0px 0px;
+	text-align: left;
+}
+
+/*单行文本框*/
+.cfText {
+	width: 90%;
+	height: 25px;
+	border: 1px;
+	border-style: double solid solid solid;
+	border-color: #CCC;
+	cursor: default;
+	display: inline;
+	color: #747474;
+}
+/*多行文本*/
+.cfTextArea {
+	width: 90%;
+	height: 80px;
+	border: 1px;
+	border-style: double solid solid solid;
+	border-color: #CCC;
+	color: #747474;
+}
+/*单选框*/
+.cfRadio {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("../../mwidget/radio/radiobox.png") no-repeat scroll
+		center top transparent;
+	border-radius: 0px;
+	border: 0px solid white;
+	margin: 0 5px 0 0px;
+	text-shadow: 0 1px 0 rgb(240, 240, 240);
+	top: 0px;
+	border-radius: 100%;
+	bottom: 0px;
+	height: 25px;
+	position: relative;
+	vertical-align: middle;
+	width: 25px;
+	cursor: pointer;
+}
+
+/*复选框*/
+.cfCheckBox {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("../../mwidget/checkbox/check.png") no-repeat scroll center
+		top transparent;
+	border-radius: 0px;
+	margin: 0 5px 0 0;
+	text-shadow: 0 1px 0 rgb(240, 240, 240);
+	top: 0px;
+	border: 0px solid white;
+	bottom: 0px;
+	height: 25px;
+	position: relative;
+	vertical-align: middle;
+	width: 25px;
+	cursor: pointer;
+}
+/*单选框选中*/
+.cfRadio:checked::before {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("../../mwidget/radio/radioed.png") no-repeat scroll center
+		bottom transparent;
+	content: '';
+	display: block;
+	height: 25px;
+	width: 25px;
+}
+
+/*复选框选中*/
+.cfCheckBox:checked::before {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("../../mwidget/checkbox/checked.png") no-repeat top left
+		transparent;
+	content: '';
+	display: block;
+	height: 25px;
+	width: 25px;
+}
+
+/*下拉框*/
+.cfSelectOne {
+	height: 30px;
+	width: 90%;
+	border: 1px solid #CCC;
+	color: #747474;
+	background: white;
+	line-height: 25px;
+}
+/*最外层容器ul样式*/
+.cfContainer {
+	list-style: none;
+	margin: 0px;
+	padding: 0;
+	text-align: left;
+}
+/*表单标题*/
+.cfTitle {
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	font-size: 24px;
+	font-family: 微软雅黑;
+	color: #333;
+}
+
+/*日期时间框*/
+.cfDateTime {
+	background-image: url(../images/widget/datetime.png);
+	background-position: 98% 50%;
+	background-repeat: no-repeat;
+	width: 90%;
+	height: 25px;
+	border: 1px;
+	border-style: double solid solid solid;
+	border-color: #CCC;
+	cursor: default;
+	display: inline;
+	color: #747474;
+}
+
+/*日期框*/
+.cfDate {
+	background-image: url(../images/widget/datetime.png);
+	background-position: 98% 50%;
+	background-repeat: no-repeat;
+	width: 90%;
+	height: 25px;
+	border: 1px;
+	border-style: double solid solid solid;
+	border-color: #CCC;
+	cursor: default;
+	display: inline;
+	color: #747474;
+}
+
+/*加粗*/
+.cfBold {
+	font-weight: bold;
+}
+
+/*斜体*/
+.cfItalic {
+	font-style: italic;
+}
+
+/*下划线*/
+.cfUnderline {
+	text-decoration: underline;
+}
+
+/*组件*/
+.phone_widget {
+	border: 1px solid #fafafa;
+	border-top-color: #ddd;
+	min-height: 54px;
+	line-height: 54px;
+	padding-right: 1px;
+	cursor: move;
+	background: #fff;
+}
+.phone_widget:last-child {
+	border-bottom-color: #ddd;
+}
+
+.phone_widget *:not(.field_name) {
+	cursor: move;
+	position: absolute;
+	right: 1px;
+}
+
+.phone_widget:hover {
+	background-color: #ffe0cc;
+	border: 1px dashed #ff6600;
+}
+
+.phone_widget_required {
+	border-left: 3px solid red!important;
+}
+
+/*组件左侧名称域*/
+.phone_widget .field_name {
+	display: inline-block;
+	min-height: 54px;
+	width: 30%;
+	font-size: 18px;
+	padding-left: 15px;
+	font-family: 微软雅黑;
+}
+
+/*组件的操作按钮*/
+.widget_opt_btn {
+	height: 100%;
+	width: 80px;
+	float: right;
+	cursor: default;
+}
+
+.phone_widget span.del-btn {
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	margin: 20px 20px 0 0;
+	float: right;
+	background-image: url(../images/mwidget/delbtn.png);
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	right: 0px;
+}
+
+/*设计器底部按钮*/
+.footer {
+	position: fixed;
+	height: 60px;
+	clear: both;
+	bottom: 20;
+	width: 100%;
+	display: none;
+}
+
+.footer .confirm-btn {
+	display: inline-block;
+	position: relative;
+	width: 270px;
+	height: 50px;
+	font-size: 20px;
+	text-align: center;
+	line-height: 50px;
+	text-decoration: none;
+	background-color: #0be;
+	left: 40px;
+	color: #fff;
+	font-weight: bolder;
+	border-radius: 5px;
+}
+
+/*移动组件时所用的容器*/
+.removable-box {
+	width: 100%;
+	height: 30px;
+	background-color: #ddd;
+}
+/* ////手机版动态行//// */
+.cfDynRow{
+	    padding: 5px 0;
+}
+.cfDynRowTableContainer {
+    border: 1px solid #ddd;
+}
+.dynRowTh{
+    color: #333;
+    display: block;
+    height: 25px;
+    padding: 5px;
+}
+.dynRowTr{
+	background-color: #fff;
+}
+.dynRowTd{
+	min-height: 3em;
+	border-top: 1px solid #ddd;
+	padding-bottom: 13px;
+}
+.cfAddAndDelTd input[type=button] {
+    cursor: pointer;
+    font-size: 13px;
+    color: #32a5e6;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 4px;
+    -moz-outline: 0 none;
+    outline: 0 none;
+    margin-right: 2px;
+}
+.cfAddAndDelTd{
+	float: right;
+}
+.dynRowName{
+	float: left;
+	line-height: 25px;
+}
+.dynRowNum{
+	line-height: 25px;
+}
+.pageBarContainer{
+	text-align:center; 
+	padding:1em;
+	border:1px solid #ddd;
+	border-top:0px;
+}

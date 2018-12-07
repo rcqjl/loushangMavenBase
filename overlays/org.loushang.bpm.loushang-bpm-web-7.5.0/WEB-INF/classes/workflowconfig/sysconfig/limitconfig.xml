@@ -1,0 +1,4 @@
+<!--流程、环节限时执行类配置-->
+	<limit>
+		<agent id="submit" name="自动提交" agent-class="org.loushang.workflow.engine.limit.agent.support.AutoSubmitLimitAgent"  description="自动提交到下一环节" />		
+	</limit>

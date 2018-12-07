@@ -1,0 +1,114 @@
+.content {
+	height: 440px;
+}
+
+.head {
+	position: relative;
+	height: 40px;
+}
+
+.head-left {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 50%;
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 5px 10px 10px;
+}
+
+.head-right {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 50%;
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+	padding: 5px 10px 0 10px;
+	font-family: microsoft yahei;
+	font-size: 15px;
+	line-height: 35px;
+}
+
+.body {
+	position: absolute;
+	top: 40px;
+	width: 100%;
+	height: 390px;
+	border-bottom: 1px solid #ddd;
+}
+
+.body-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 47%;
+	height: 100%;
+	padding: 0px 5px 0px 10px;
+	overflow-y: auto;
+}
+
+.body-center {
+	position: absolute;
+	top: 0;
+	left: 47%;
+	width: 6%;
+	height: 100%;
+}
+
+.body-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 47%;
+	height: 100%;
+	padding: 0px 10px 0px 5px;
+	overflow-y: auto;
+}
+
+.foot {
+	padding: 6px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.movebtns {
+	position: absolute;
+	top: 100px;
+}
+
+.movebtns button {
+	margin-bottom: 35px;
+}
+
+.input-group {
+	width: 180px;
+}
+
+table.dataTable thead>tr {
+	height: 30px;
+}
+
+table.dataTable thead>tr>th {
+	line-height: 30px;
+	height: 30px;
+}
+
+.table-bordered>tbody>tr>td {
+	height: 30px;
+	line-height: 30px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.pagination>li>a,.pagination>li>span {
+	height: 30px;
+	line-height: 30px;
+	padding: 0px 4px;
+}
+
+div.dataTables_length select {
+	width: 65px;
+}

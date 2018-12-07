@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+ <web-app>	
+	<!-- 指定Web应用的定义名称 -->
+	<display-name>loushang</display-name>
+
+	<!-- 配置需要装载的Spring配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:/spring/datasource.xml
+		    classpath*:/spring/spring-context.xml
+			classpath*:/spring/mybatis-context.xml
+			classpath*:/spring/service/*
+			classpath*:/spring/dao/*
+		</param-value>
+	</context-param>
+	
+	<!-- Spring字符编码过滤器配置，处理中文乱码 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<!-- druid监控配置 -->
+	<filter>  
+        <filter-name>DruidWebStatFilter</filter-name>  
+        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>  
+        <init-param>  
+            <param-name>exclusions</param-name>  
+            <param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>  
+        </init-param>  
+    </filter>      
+
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- druid监控配置 -->	
+	<filter-mapping>  
+        <filter-name>DruidWebStatFilter</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping> 
+	
+	<!-- Spring监听配置，Web容器启动自动装配ApplicationContext的配置信息-->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Spring Servlet配置 -->
+	<servlet>
+		<servlet-name>springServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:/spring/mvc-context.xml,classpath*:/spring/controller/*</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- druid监控页面 -->
+	<servlet>  
+        <servlet-name>DruidStatView</servlet-name>  
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>  
+    </servlet>  
+	
+	<!-- 云支撑平台拦截路径-->
+	<servlet-mapping>
+        <servlet-name>springServlet</servlet-name>
+        <url-pattern>/v2/*</url-pattern>
+    </servlet-mapping>
+    <!-- 楼上默认拦截路径 -->
+	<servlet-mapping>
+		<servlet-name>springServlet</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	
+  	<!-- druid监控页面 -->
+    <servlet-mapping>  
+        <servlet-name>DruidStatView</servlet-name>  
+        <url-pattern>/druid/*</url-pattern>  
+    </servlet-mapping>
+
+	<!--指定对应的格式的浏览器处理方式-->
+	<mime-mapping>
+		<extension>xml</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
+
+	<!-- 默认登录页配置 -->
+	<welcome-file-list>
+		<welcome-file>jsp/public/home.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 错误页面的跳转配置 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp/public/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/jsp/public/500.jsp</location>
+	</error-page>
+
+	<taglib>
+		<taglib-uri>/tags/loushang-web</taglib-uri>
+		<taglib-location>/WEB-INF/tld/loushang-web.tld</taglib-location>
+	</taglib>
+
+</web-app>

@@ -1,0 +1,3187 @@
+<html>
+    <head>
+        <meta http-equiv="charset" content="gb2312">
+        <style type="text/css" media="screen">
+            #tabs 
+            {
+                float:left; 
+                position:relative; 
+                font-size:0.9em; 
+                list-style:none; 
+                margin:0; 
+                z-index:25; 
+                padding:0; 
+                padding-right:1px;
+            }
+
+            #tabs li 
+            {
+                float:left; 
+                border:1px solid #b2b2b2; 
+				border-bottom:0px solid #fff; 
+                padding:0.3em 0.35em; 
+                background-color:#fff; 
+                margin:0 0.4em -1px 0; 
+                position:relative; 
+                z-index:50;
+            }
+			
+            #tabs li.active 
+            {
+				background:#EBEBEB;         
+                color:#1a88de; 
+                padding-bottom:0.4em;
+            }
+			
+            #tabs li a 
+            {
+                color:#000000; 
+                text-decoration:none; 
+                font-size:14px;
+            }
+
+            .canvas
+            {
+                clear:left;  
+                width:100%;
+                height:100%;
+                border:1px solid #b2b2b2; 
+                position:relative; 
+                margin-bottom:0.5em;
+            }
+            
+            #canvasContainer
+            {
+                font-size: 14px; 
+                width: 100%; 
+                height:100%;
+                background-color:#FFFFFF;	
+                margin:2 0; 
+                padding: 0;
+            }
+            
+            #iconList img
+            {
+                width:18px;
+                height:18px;
+				vertical-align:middle;
+             }
+			 #detailList{
+			 	background:#EEF2FB;
+			 }
+			 #detailList div{
+				 float:left;
+				 padding-top:3px;
+				 vertical-align:middle;
+			 }
+             .icon_desc
+             {
+                font-size:12px;
+                color:#000000;  
+                vertical-align:middle;
+                position:relative;
+                top:4px;
+                margin-right:8px;
+             }
+             
+             .divbtn 
+             {
+	            padding:4px 2px 4px 2px;
+	            color:#666666;
+	            font-size:12px;
+	            margin-right:2px;
+	            text-align:center;
+	            position:relative;
+	            top:-4px;
+	            cursor:pointer;
+	            width:70px;
+            }
+            
+            #canvasContainer div[state]
+            {
+                background-color:#8ed587;
+                width:260;
+                height:120;    
+                border-radius:5px;
+            }
+            
+            #canvasContainer div[state="done"]
+            {
+                background-color:#dedfcf;   
+            }
+            
+            #canvasContainer div[state="undone"]
+            {
+                background-color:#8ed587;    
+            }
+            
+            #canvasContainer div[state="doing"]
+            {
+                background-color:#fbc048;    
+            }
+            
+            #canvasContainer div[state="back"]
+            {
+                background-color:#db6ab8;    
+            }
+            
+            #canvasContainer table
+            {
+                border:1px solid #cc;    
+                background-color:transparent;
+                font-size:12px;
+                color:#1a88de;
+            }
+            
+            #canvasContainer table td:nth-child(odd)
+            {
+                text-align:right;
+                width:65px;
+            }
+            
+            .propertyUrl
+            {
+                z-index:999;    
+                font-size:12px;
+                color:#585858;
+                cursor:pointer;
+            }
+            
+            #showSelectedBackActInfoContainer{
+                display:none;               
+                position:absolute;
+                width:700px;
+                height:20px;
+                z-index:9999;
+                top:59;
+                right:0px;
+                font-size:14px;
+                color:#1a88de;
+                border:2px solid #1a88de;
+                float:left;
+            }
+            #showSelectedBackActInfo
+            { 
+                font-size:14px;
+                color:red;
+                text-align:left;
+                float:left;
+                width:480;
+                height:100%;
+            }
+            
+            #backSuggestMessage
+            {
+                width:100;    
+                float:left;
+                height:100%;
+            }
+            
+            .backBtn
+            {
+                border:2px solid #1a88de;
+                width:50px;
+                float:left;   
+                height:100%; 
+                border-bottom:0px;
+                border-top:0px;
+                border-right:0px;
+                text-align:center;
+                cursor:pointer;
+            }
+            
+            .processDiv{
+            	border:1px dotted #666666;
+            	width:98%;
+            	height:20;
+            	z-index:999;
+            	font-size:14px;
+            	color:#1a88de;
+            	top:5;
+            	left:5;
+            	text-align:left;
+            	vertical-align:middle;
+            	position:absolute;
+            	padding-top:3px;
+            }
+            
+        </style>
+    	<script type="text/javascript">
+           
+            var $ = function (id) { return document.getElementById(id); }
+            var P$ = function (id) { return parent.document.getElementById(id); }
+
+            var ArrayList = function () { this.collection = []; };
+            ArrayList.prototype.size=function(){
+                return this.collection.length;
+            };
+            ArrayList.prototype.getItem = function (index) {
+                return this.collection[index];
+            };
+            ArrayList.prototype.getAllItem = function () {
+                return this.collection;
+            };
+            ArrayList.prototype.removeAllItem = function () {
+                this.collection = [];
+            };
+            ArrayList.prototype.addItem = function (item) {
+                this.collection[this.collection.length] = item;
+            };
+            ArrayList.prototype.removeItem = function (item) {
+                var itemIndex = getItemIndex(item);
+                if (itemIndex == -1) return;
+                this.collection.splice(itemIndex, 1);
+            };
+            ArrayList.prototype.getItemIndex = function (item) {
+                var itemIndex = -1;
+                for (var i = 0; i < this.collection.length; i++) {
+                    if (this.collection[i] == item) {
+                        itemIndex = i;
+                        break;
+                    }
+                };
+                return itemIndex;
+            };
+            ArrayList.prototype.contains=function(item){
+                return this.getItemIndex(item)!=-1;
+            };
+
+
+            var Map = function () { this.collection = {}; this.keys = []; };
+            Map.prototype.put = function (key, value) {
+                if (!this.collection[key]) {
+                    this.collection[key] = new ArrayList();
+                    this.keys[keys.length] = key;
+                }
+                this.collection[key].addItem(value);
+            };
+            Map.prototype.get = function (key) {
+                return this.collection[key];
+            };
+            Map.prototype.getAllKeyArray = function () {
+                return this.keys;
+            };
+
+            function Process() {
+                this.id = "";
+				this.procDefId = "";
+                this.name = "";
+                this.sourceType = "";
+                this.processId = "";
+                this.createTime = "";
+                this.endTime = "";
+                this.reqOrganName = "";
+                this.reqProcId = "";
+                this.reqProcName = "";
+                this.isSubFlow = "";
+                this.Activities = new ArrayList();
+                this.Transitions = new ArrayList();
+                this.StartGraphs = new ArrayList();
+                this.EndGraphs = new ArrayList();
+//                this.TransitionInstances = new ArrayList(); 
+			    this.BackTransitionInstances = new ArrayList();
+                this.ActivityDic={};
+                this.TransitionInstanceDic = {};
+				//新添加
+                this.procCurrentState = ""; 
+                this.reqProcDefId = "";
+				this.reqProcDefUniqueId = "";
+				this.isLane=false;
+            }
+
+            function Activity(xml,procId,procName,type,x,y) {
+                this.x = "";
+                this.y = "";
+                this.defUniqueId = "";
+                this.defId = "";
+                this.name = "";
+                this.type = "";
+                this.isEndAct=false;
+                this.typeCode = "";
+                this.splitCode = "";
+                this.isMultiInstance=false;
+                this.instanceId = "";
+                this.limitTimeInfo = "";
+                this.state = "";
+                this.beginTime = "";
+                this.endTime = "";
+                this.limitTime = "";
+                this.leftTime = "";
+                this.participantNames = "";
+                this.doneOrganNames = "";
+                this.doingOrganNames = "";
+                this.undoneOrganNames = "";
+                this.subProcessId = "";
+                this.subProcessName = "";
+				this.subProcessDefId = "";
+                this.subProcessDefUniqueId = "";
+                this.procDefUniqueId = procId;
+                this.procDefName = procName;
+				this.procDefId = "";
+                if(type){
+                	this.defUniqueId=type;
+				    this.defId=type;
+				    this.name="";
+				    this.type=type;
+				    this.x=x;
+				    this.y=y;
+                }
+            }
+
+            function Transition() {
+                this.id = "";
+                this.toActId = "";
+                this.fromActId = "";
+            }
+
+            function StartGraph() {
+				this.ActDefId = "";
+                this.toActId = "";
+                this.x = "";
+                this.y = "";
+                this.type = "beginNodeType";
+            }
+
+            function EndGraph() {
+             	this.ActDefId = "";
+			    this.fromActId = "";
+                this.x = "";
+                this.y = "";
+                this.type = "endNodeType";
+            }
+
+            function TransitionInstance() {
+                this.value = "";
+            }
+
+            function BackTransitionInstance() {
+                this.value = "";
+            }
+
+            var LimitTimeUtil = {};
+            LimitTimeUtil.getYearMonthDayInfo=function(time){
+			    return time.substr(0,4)+ConstantUtils.YEAR+time.substr(4,2)+ConstantUtils.MONTH+time.substr(6,2)+ConstantUtils.DAY;
+		    };
+
+		    LimitTimeUtil.getHourMinitueInfo = function (time) {
+		        return time.substr(9, 2) + ConstantUtils.HOUR + time.substr(12, 2) + ConstantUtils.MINITUE;
+		    };
+
+		    LimitTimeUtil.getNumberWithNoPrefix = function (time) {
+		        if (time.charAt(0) == "0") return time.charAt(1);
+		        return time;
+		    };
+
+		    LimitTimeUtil.getChineseDateInfo = function (time) {
+		        if (time == null || time == "" || time == "null" || time==undefined || time=="undefined") return parent.getLocaleMsg("UI.BPM.MONITOR.034", '未设置');
+		        return LimitTimeUtil.getYearMonthDayInfo(time) + LimitTimeUtil.getHourMinitueInfo(time);
+		    };
+
+		    LimitTimeUtil.getLimitTimeInfo = function (time) {
+		        if (time == null || time == "" || time == "null" || time == undefined || time == "undefined") return parent.getLocaleMsg("UI.BPM.MONITOR.034", '未设置');
+		        return time;
+		    };
+
+            var TaskStatus={DONE:"done",UNDONE:"undone",DOING:"doing"};
+		    var SplitType = { AND: "1", OR: "2" };
+
+            function Composite(acti){
+            	this.hasParentDoing=false;
+		        this.hasResetPosition=false;
+		        //关联的分支环节，只有汇聚才有
+		        this.refSplitComp=null;
+		        //关联的节点
+		        this.refNode=null;
+		        //关联的环节
+		        this.act=acti;
+		        //父节点集合
+		        this.parents=new ArrayList();
+		        //子节点集合
+		        this.children=new ArrayList();
+		        this.hasedChild={};	
+		        //状态属性
+		        this.enabled=false;
+		        //关联分支环节列表
+		        this.refSplitNodes=new ArrayList();
+		        //关联的分支下节点的路径
+		        this.refSplitNodePath={};		
+	        }
+
+            Composite.prototype.addChild=function(comp){
+            	if(this.hasedChild[comp.act.procDefId+comp.act.defId]==null)
+			    {
+            		if (this.hasParentDoing ||( this.act.state == TaskStatus.DOING && this.act.type != NodeType.SUBFLOW_NODE_TYPE))
+	                {
+	                    comp.hasParentDoing = true;
+	                }
+				    comp.parents.addItem(this);
+				    this.children.addItem(comp);
+				    this.hasedChild[comp.act.procDefId+comp.act.defId]="setted";
+			    }
+            };
+
+            function DrawCanvas(container) {
+                this.id = container.getAttribute("id");
+                this.container = container;
+                this.nodes = new ArrayList();
+                this.lines = new ArrayList();
+                this.nodesManager = {};
+                this.linesManager = {};
+                this.factory = {};
+                this.infoContainers = new ArrayList();
+            };
+
+            DrawCanvas.prototype.nodeInstance = function (comp) {
+                var key = comp.act.defId;
+                var node = this.nodesManager[key + comp.act.x + comp.act.y];
+                if (!node) {
+                    node = this.factory.createNode(comp,this.container);
+                    this.nodesManager[key + comp.act.x + comp.act.y] = node;
+                    this.nodes.addItem(node);
+                    this.container.appendChild(node.graph);
+                }
+                return node;
+            };
+
+            DrawCanvas.prototype.lineInstance = function (fromNode, toNode) {
+                var key = fromNode.comp.act.defId + toNode.comp.act.defId;
+                var line = this.linesManager[key];
+                if (!line) {
+                    line = new Line(this, fromNode, toNode);
+                    fromNode.refLines.addItem(line);
+                    toNode.refLines.addItem(line);
+                    this.linesManager[key] = line;
+                    this.lines.addItem(line);
+                    if (!fromNode.visible || !toNode.visible)
+                        line.graph.style.display = "none";
+                    line.container = this.container;
+                }
+                return line;
+            };
+
+			DrawCanvas.prototype.containerInstance = function (container) {
+			    if (this.infoContainers.getItemIndex(container) == -1) {
+			        this.infoContainers.addItem(container);
+			    }
+			    return container;
+			};
+
+			DrawCanvas.prototype.drawAllLine = function () {
+			    for (var i = 0; i < this.lines.size(); i++) {
+			        var line = this.lines.getItem(i);
+			        line.drawSelf();
+			        this.container.appendChild(line.graph);
+			    }
+			};
+
+			DrawCanvas.prototype.drawAllNode = function () {
+			    for (var i = 0; i < this.nodes.size(); i++) {
+			        var node = this.nodes.getItem(i);
+			        node.drawSelf();
+			    }
+			};
+
+			DrawCanvas.prototype.drawAllContainers = function () {
+			    for (var i = 0; i < this.infoContainers.size(); i++) {
+			        var container = this.infoContainers.getItem(i);
+			        container.drawSelf();
+			        this.container.appendChild(container);
+			    }
+			};
+
+			DrawCanvas.prototype.draw = function () {
+			    this.drawAllNode();
+			    this.drawAllLine();
+//			    this.drawAllContainers();
+			};
+
+			var DrawCanvasManager = { canvasContainer: null, tabs:null,editerPanel: null, updateTitle: false,
+			    hasDrawedLine: {}, SIMPLE_CANVAS: "SIMPLE_CANVAS", COMPLEX_CANVAS: "COMPLEX_CANVAS",
+			    SUBFLOW_CANVAS: "SUBFLOW_CANVAS", PARENT_CANVAS: "PARENT_CANVAS"
+			};
+
+			DrawCanvasManager.parseAndDraw = function (canvas, proc, update) {
+			    if (proc.id != CompositeFacade.Current_Proc.id) {
+			        DrawCanvasManager.updateTitle = update;
+			        //控制是否显示父流程按钮，如果ReqProcId为空，说明当前流程没有父流程实例，父流程按钮不显示
+			        if (proc.reqProcId == null || proc.reqProcId == "" || proc.reqProcId == "null") {
+			            $("showParentProcessBtn").style.display="none";
+			        }
+
+			        if (DrawCanvasManager.updateTitle) {
+			            DrawCanvasManager.editerPanel.title += proc.name;
+			        }			    
+			        CompositeFacade.initCompositeFromProcess(proc);
+			    }
+		        var currentProc = new Object();
+		        currentProc.id = proc.id;
+		        currentProc.canvasId = canvas.id;
+		        currentProc.processId = proc.processId;
+		        currentProc.reqProcId = proc.reqProcId;
+		        currentProc.reqProcName = proc.reqProcName;
+		        if (proc.processId == null || proc.processId == "") {
+		            AppConfig.procInfoDic[proc.id] = currentProc;
+		        } else {
+		            AppConfig.procInfoDic[proc.processId] = currentProc;
+		        }
+		        AppConfig.canvasToProcDic[canvas.id]=currentProc;
+		        AppConfig.currentProc = currentProc;				
+		        if(AppConfig.isShowProcessInfoContainer){
+			        var processDiv=document.createElement("div");
+			        processDiv.setAttribute("class","processDiv");
+			        var endTimeInfo=proc.endTime?LimitTimeUtil.getChineseDateInfo(proc.endTime):parent.getLocaleMsg("UI.BPM.MONITOR.035", '未结束');
+			        processDiv.innerHTML=parent.getLocaleMsg("UI.BPM.MONITOR.036", '流程名称：')+proc.name
+			        +"&nbsp;&nbsp;|&nbsp;&nbsp;"+parent.getLocaleMsg("UI.BPM.MONITOR.037", '开始时间：')+LimitTimeUtil.getChineseDateInfo(proc.createTime)
+			        +"&nbsp;&nbsp;|&nbsp;&nbsp;"+parent.getLocaleMsg("UI.BPM.MONITOR.038", '发  起  人：')+proc.reqOrganName
+			        +"&nbsp;&nbsp;|&nbsp;&nbsp;"+parent.getLocaleMsg("UI.BPM.MONITOR.039", '结束时间：')+endTimeInfo;
+			        canvas.container.appendChild(processDiv);
+				    canvas.container.style.width = Number(CompositeFacade.MaxWidth())+ 310 + "px";
+				    $("iconList").style.width = canvas.container.style.width;
+		        }else{
+				    canvas.container.style.width = CompositeFacade.MaxWidth() + "px";
+				    $("iconList").style.width = canvas.container.style.width;
+				}
+			    canvas.container.style.height = CompositeFacade.MaxHeight() + "px";
+			    DrawCanvasManager.drawOnCanvas(canvas);
+			    canvas.draw();
+			}
+
+		    DrawCanvasManager.drawOnCanvas=function(canvas)
+		    {
+			    for(var i=0;i<CompositeFacade.roots.size();i++)
+			    {
+                    var com=CompositeFacade.roots.getItem(i);
+				    DrawCanvasManager.setLineAndNode(com,canvas);
+			    }
+		    }
+
+		    DrawCanvasManager.setLineAndNode = function (comp, drawCanvas) {
+		        var fromNode = drawCanvas.nodeInstance(comp);
+		        var children = comp.children;
+		        for (var i = 0; i < children.size(); i++) {
+		            var comtemp1 = children.getItem(i);
+		            var toNode = drawCanvas.nodeInstance(comtemp1);
+		            drawCanvas.lineInstance(fromNode, toNode);
+		        }
+		        for (var j = 0; j < children.size(); j++) {
+		            var comtemp2 = children.getItem(j);
+		            if (DrawCanvasManager.hasDrawedLine[comtemp2.act.defId + drawCanvas.id] == null) {
+		                DrawCanvasManager.hasDrawedLine[comtemp2.act.defId + drawCanvas.id] = "setted";
+		                DrawCanvasManager.setLineAndNode(comtemp2, drawCanvas);
+		            }
+		        }
+		    };
+
+		    DrawCanvasManager.changeSelectedCanvas = function (id) {			    
+		        var liId = id == null ? this.getAttribute("id") : id+"li";
+		        var liList = tabs.getElementsByTagName("li");
+		        for (var i = 0; i < liList.length; i++) {
+		            if (liList[i].getAttribute("id") != liId) {
+		                liList[i].setAttribute("class", "");
+		            } else {
+		                liList[i].setAttribute("class", "active");
+		            }
+		        }
+		        var divList = canvasContainer.getElementsByTagName("div")
+		        var canvasId = liId.substring(0, liId.length - 2);
+		        for (var i = 0; i < divList.length; i++) {
+		            if (divList[i].getAttribute("isCanvas") != "true") continue;
+		            if (divList[i].getAttribute("id") != canvasId) {
+		                divList[i].style.display = "none";
+		            } else {
+		                divList[i].style.display = "block";
+		            }
+		        }
+		        AppConfig.currentProc=AppConfig.canvasToProcDic[canvasId];
+		        if(AppConfig.currentProc&&AppConfig.isShowParentFlowViewButton)
+		        {
+			        if(AppConfig.currentProc.reqProcId){
+						$("showParentProcessBtn").style.display="block";
+				    }else{
+				    	$("showParentProcessBtn").style.display="none";
+				    }
+		        }
+		    };
+
+		    DrawCanvasManager.createNewCanvas = function (canvasId, title) {
+		        var div = document.createElement("div");
+		        div.setAttribute("id", canvasId);
+		        div.setAttribute("class", "canvas");
+		        div.setAttribute("isCanvas", "true");
+		        var canvas = new DrawCanvas(div);
+		        var newLi = document.createElement("li");
+		        newLi.setAttribute("id", canvasId + "li");
+		        newLi.innerHTML = "<a href=\"#\"onclick=\"DrawCanvasManager.changeSelectedCanvas('" +canvasId+ "')\">" + title + "</a>";
+//		        tabs.appendChild(newLi);
+		        tabs.insertBefore(newLi, tabs.childNodes[0]);
+		        DrawCanvasManager.canvasContainer.appendChild(div);
+		        DrawCanvasManager.changeSelectedCanvas(canvasId);
+		        return canvas;
+		    };
+
+		    DrawCanvasManager.initDrawCanvas = function (canvas, type) {
+		        if (type == DrawCanvasManager.SIMPLE_CANVAS) {
+		            canvas.factory = new SimpleNodeFactory(AppConfig.commonDecoratorManager.getSimpleDecoratorList());
+		        }
+		        else if (type == DrawCanvasManager.COMPLEX_CANVAS) {
+		            canvas.factory = new ComplexNodeFactory(AppConfig.commonDecoratorManager.getComplexDecoratorList());
+		        }
+		        else {
+		            if (AppConfig.isShowActInfoByComplexCanvas) {
+		                canvas.factory = new ComplexNodeFactory(AppConfig.commonDecoratorManager.getSubflowDecoratorList());
+		            }
+		            else {
+		                canvas.factory = new SimpleNodeFactory(AppConfig.commonDecoratorManager.getSubflowDecoratorList());
+		            }
+		        }
+		        return canvas;
+		    };
+
+			var CompositeFacade={comIndex:{},splitStack:"",executedFlag:"",roots:new ArrayList(),hasSettedComp:{},nodePathCache:{},
+            rootsChanged:false,Current_Proc:"",mostLeftX:99999,mostTopY:99999,mostBottomY : 500,mostRightX : 500,maxHeight:0,maxWidth:0};
+
+		    CompositeFacade.MostLeftX = function () {
+		        return CompositeFacade.mostLeftX - 5;
+		    };
+
+		    CompositeFacade.MostTopY = function () {
+		        return CompositeFacade.mostTopY - 5;
+		    };
+
+		    CompositeFacade.MostBottomY = function () {
+		        return CompositeFacade.mostBottomY;
+		    };
+
+		    CompositeFacade.MostRightX = function () {
+		        return CompositeFacade.mostRightX;
+		    };
+
+            CompositeFacade.MaxHeight = function () {
+		        return CompositeFacade.mostBottomY*AppConfig.yRate+ComplexContentNode.MaxDrawHeight;
+		    };
+
+		    CompositeFacade.MaxWidth = function () {
+		        return CompositeFacade.mostRightX*AppConfig.xRate+ComplexContentNode.MaxDrawWidth;
+		    };
+
+		    CompositeFacade.getRoot = function () {
+		        return CompositeFacade.roots;
+		    };
+
+            /**
+		     * 将流程信息构造成具有父子关系的图信息
+		     **/
+		    CompositeFacade.initCompositeFromProcess=function(proc){
+			    CompositeFacade.Current_Proc=proc;
+			    CompositeFacade.roots.removeAllItem();
+			    CompositeFacade.rootsChanged=true;
+			    CompositeFacade.comIndex={};		
+			    CompositeFacade.executedFlag={};
+			    CompositeFacade.splitStack=[];
+			    CompositeFacade.mostLeftX=99999;
+			    CompositeFacade.mostTopY=99999;
+			    //解析开始节点<br>
+			    for(var x=0;x<proc.StartGraphs.size();x++)
+			    {
+				    var start=proc.StartGraphs.getItem(x);
+				    var startAct=proc.ActivityDic[start.toActId];
+				    var root=new Composite(new Activity(null,proc.id,proc.name,NodeType.BEGIN_NODE_TYPE,start.x,start.y));
+				    var startCom=new Composite(startAct);
+				    CompositeFacade.comIndex[NodeType.BEGIN_NODE_TYPE+start.x+start.y]=root;
+				    CompositeFacade.comIndex[startCom.act.defId]=startCom;
+				    root.addChild(startCom);
+				    CompositeFacade.roots.addItem(root);
+			    }
+			    //解析迁移线的信息
+			    var preNode;
+			    for(var i=0;i<proc.Transitions.size();i++){
+				    var tran=proc.Transitions.getItem(i);
+				    if(tran.fromActId==tran.toActId) continue;
+				    if(CompositeFacade.comIndex[tran.fromActId] == null)
+				    {
+					    var fromAct=proc.ActivityDic[tran.fromActId];
+						if(fromAct.type != NodeType.BEGIN_NODE_TYPE){
+							CompositeFacade.comIndex[fromAct.defId]=new Composite(fromAct);	
+						}
+				    }
+				    if(CompositeFacade.comIndex[tran.toActId] == null)
+				    {
+					    var toAct=proc.ActivityDic[tran.toActId];
+						if(toAct.type != NodeType.END_NODE_TYPE){
+							CompositeFacade.comIndex[toAct.defId]=new Composite(toAct);
+						}
+				    }
+					if(CompositeFacade.comIndex[tran.fromActId] != null && CompositeFacade.comIndex[tran.toActId] != null){
+						CompositeFacade.comIndex[tran.fromActId].addChild(CompositeFacade.comIndex[tran.toActId]);
+					}
+			    }
+/*
+				var preNode;
+			    for(var i=0;i<proc.Transitions.size();i++){
+				    var tran=proc.Transitions.getItem(i);
+				    if(tran.fromActId==tran.toActId) continue;
+				    if(!CompositeFacade.comIndex[tran.fromActId])
+				    {
+					    var fromAct=proc.ActivityDic[tran.fromActId];
+					    CompositeFacade.comIndex[fromAct.defId]=new Composite(fromAct);
+				    }
+				    if(!CompositeFacade.comIndex[tran.toActId])
+				    {
+					    var toAct=proc.ActivityDic[tran.toActId];
+					    CompositeFacade.comIndex[toAct.defId]=new Composite(toAct);
+				    }
+				    CompositeFacade.comIndex[tran.fromActId].addChild(CompositeFacade.comIndex[tran.toActId]);				
+			    }
+*/				
+			    //解析结束点
+			    for(var j=0;j<proc.EndGraphs.size();j++){
+				    var end=proc.EndGraphs.getItem(j);
+				    var endCom=new Composite(new Activity(null,proc.id,proc.name,NodeType.END_NODE_TYPE,end.x,end.y));
+				    CompositeFacade.comIndex[NodeType.END_NODE_TYPE]=endCom;
+				    CompositeFacade.comIndex[end.fromActId].addChild(endCom);
+			    }
+			    //查找最左边的坐标和最上面的坐标
+			    for(var i=0;i<CompositeFacade.roots.size();i++)
+			    {
+                    var r=CompositeFacade.roots.getItem(i);
+				    CompositeFacade.findMostXAndMostY(r);
+			    }	
+		    }
+	
+		    /**
+		     * 设置节点的层次以及所处层次的深度
+		     * */
+		    CompositeFacade.findMostXAndMostY = function (root) {
+		        //记录当前的所有子节点，以便计算下一层次所有节点的个数
+		        var flagArr = new ArrayList();
+		        //获取根节点的所有子节点，开始遍历
+		        flagArr = root.children;
+		        CompositeFacade.mostLeftX = root.act.x > CompositeFacade.mostLeftX ? CompositeFacade.mostLeftX : root.act.x;
+		        CompositeFacade.mostRightX = root.act.x < CompositeFacade.mostRightX ? CompositeFacade.mostRightX : root.act.x;
+				CompositeFacade.mostTopY = root.act.y > CompositeFacade.mostTopY ? CompositeFacade.mostTopY : root.act.y;
+				CompositeFacade.mostBottomY = root.act.y < CompositeFacade.mostBottomY ? CompositeFacade.mostBottomY : root.act.y;		
+		        while (flagArr && flagArr.size() > 0) {
+		            var tempArr = new ArrayList();
+		            for (var i = 0; i < flagArr.size(); i++) {
+		                var temp = flagArr.getItem(i);
+		                for (var j = 0; j < temp.children.size(); j++) {
+		                    var tempCom = temp.children.getItem(j);
+		                    if (tempArr.getItemIndex(tempCom) == -1 && CompositeFacade.hasSettedComp[temp.act.procDefId+tempCom.act.defId] == null)
+		                        tempArr.addItem(tempCom);
+		                }
+		                CompositeFacade.hasSettedComp[temp.act.procDefId+temp.act.defId] = temp.act.defId;
+		                CompositeFacade.mostLeftX = temp.act.x > CompositeFacade.mostLeftX ? CompositeFacade.mostLeftX : temp.act.x;
+		                CompositeFacade.mostTopY = temp.act.y > CompositeFacade.mostTopY ? CompositeFacade.mostTopY : temp.act.y;
+		                CompositeFacade.mostRightX = temp.act.x < CompositeFacade.mostRightX ? CompositeFacade.mostRightX : temp.act.x;		      
+		                CompositeFacade.mostBottomY = temp.act.y < CompositeFacade.mostBottomY ? CompositeFacade.mostBottomY : temp.act.y;		
+		            }
+		            flagArr = tempArr;
+		        }
+				
+		    }
+		
+		    /**
+		     * 设置发散环节和汇聚环节之间的对应关系
+		     * 每个汇聚环节有refSplitType字段对应发散环节
+		     * */
+		    CompositeFacade.setSplitAndJoinTypeRelationship=function(root)
+		    {
+			    var child=root.children;
+			    if(child&&child.size()>0)
+			    {
+				    for(var i=0;i<child.size();i++)
+				    {
+                        var temp=child.getItem(i);
+					    if(!CompositeFacade.executedFlag[temp.act.defId])
+					    {
+						    CompositeFacade.executedFlag[temp.act.defId]=temp.act.defId;
+						    if(temp.act.type==NodeType.SPLIT_NODE_TYPE)
+						    {
+							    splitStack.push(temp);
+						    }
+						    if(temp.act.type==NodeType.JOIN_NODE_TYPE)
+						    {
+							    temp.refSplitComp=CompositeFacade.splitStack.pop();
+						    }
+						    CompositeFacade.setSplitAndJoinTypeRelationship(temp);
+					    }
+				    }
+			    }
+		    }
+		
+		    //初始化关联分支节点和路径信息
+		    CompositeFacade.initRefSplitNodesAndPath=function(){
+			    if(CompositeFacade.rootsChanged)
+			    {
+				    CompositeFacade.executedFlag={};
+				    CompositeFacade.nodePathCache={};
+				    for(var i=0;i<CompositeFacade.roots.size();i++)
+				    {
+                        var rt=CompositeFacade.roots.getItem(i);
+					    CompositeFacade.setRefSplitNodesAndPath(rt);
+				    }
+			    }
+			    CompositeFacade.rootsChanged=false;
+		    }
+		
+		    //增加设置环节关联的分支环节列表操作，用于判断环节之间的并存性
+		    CompositeFacade.setRefSplitNodesAndPath=function(root){
+			    var child=root.children;
+			    if(child&&child.size()>0)
+			    {
+				    for(var pc=0;pc<child.size();pc++)
+				    {
+					    var temp=child.getItem(pc);
+					    if(!CompositeFacade.executedFlag[temp.act.defId])
+					    {
+						    CompositeFacade.executedFlag[temp.act.defId]=temp.act.defId;
+						    for(var ck=0;ck<temp.children.size();ck++)
+						    {
+							    var ch=temp.children.getItem(ck);
+							    //如果当前节点是分支节点，那么遍历其所有子节点，并把当前节点添加到子节点的分支关联列表中
+							    if(temp.act.type==NodeType.SPLIT_NODE_TYPE)
+							    {
+								    var str=CompositeFacade.getSplitString(temp);
+								    //缓存不同分支节点的路径当前数
+								    CompositeFacade.nodePathCache[str]=ck;								
+								    if(ch.refSplitNodes.getItemIndex(str)==-1)
+								    {
+									    ch.refSplitNodes.addItem(str);
+									    ch.refSplitNodePath[str] = CompositeFacade.nodePathCache[str];
+								    }
+							    }
+							    //把当前节点自身关联的分支，增加到子节点的分支列表中
+							    for(var i=0;i<temp.refSplitNodes.length;i++)
+							    {
+								    if(temp.act.type==NodeType.JOIN_NODE_TYPE&&i==0)
+								    {
+									    i++;
+								    }
+								    if(i==temp.refSplitNodes.size())break;
+								    var p=temp.refSplitNodes.getItem(i);
+								    if(ch.refSplitNodes.getItemIndex(p)==-1)
+								    {
+									    ch.refSplitNodes.addItem(p);
+									    ch.refSplitNodePath[p]=temp.refSplitNodePath[p];
+								    }
+							    }
+						    }
+						    CompositeFacade.setRefSplitNodesAndPath(temp);
+					    }
+				    }
+			    }						
+		    }
+		
+		    CompositeFacade.isSplitAndType=function(val){
+			    var temp= val.split("|");
+			    return temp[1]==NodeType.SPLIT_NODE_TYPE&&temp[2]==SplitType.AND;
+		    }
+		
+		    CompositeFacade.isSplitOrType=function(val){
+			    var temp= val.split("|");
+			    return temp[1]==NodeType.SPLIT_NODE_TYPE&&temp[2]==SplitType.OR;
+			}
+
+			var StringUtil = {};
+			StringUtil.getValidValue = function (str, defaultValue) {
+			    if (str == null || str == undefined || str == "null" || str == "undefined") return defaultValue ? defaultValue : "";
+			    return str;
+			};
+		
+		    CompositeFacade.getSplitString=function(comp){
+			    return comp.act.defId+"|"+comp.act.type+"|"+comp.act.splitCode;
+		    }
+			
+			//流程定义信息XML解析
+            var ProcessDefInfoParser = function () {
+            };
+            ProcessDefInfoParser.prototype.parse = function (process, element) {
+				this.processInfo = process;
+            	var definitions = element.getElementsByTagName("definitions");
+				
+                for (var i = 0; i < definitions[0].childNodes.length; i++) {
+                	var child = definitions[0].childNodes[i];
+					if(child.nodeName == "process"){		
+						parseProcess(process, child);					
+                	}
+                	else if(child.nodeName == "bpmndi:BPMNDiagram"){
+                		parsebpmndi_BPMNDiagram(process, child);
+                	}
+                }
+            };
+			function parseProcess(process, element) {
+						
+				process.id = element.getAttribute("id");
+				process.procDefId = process.id;
+                process.name = element.getAttribute("name");
+                AppConfig.hasParentDoingDic[process.id]=false;
+                //解析process中的元素
+                for (var i = 0; i < element.childNodes.length; i++) {
+                    var child = element.childNodes[i];
+                    switch (child.nodeName) { 
+                    	case "laneSet": 
+                    		parseLaneSet(process, child);
+							process.isLane=true;
+                        	break; 
+                    	case "sequenceFlow": 
+                    		parseSequenceFlow(process, child);
+                        	break;
+                    	case "startEvent": 
+                    		parseStartEvent(process, child);
+                        	break; 
+                    	case "endEvent": 
+                    		parseEndEvent(process, child);
+                        	break;
+                    	case "userTask": 
+                    		parseUserTask(process, child);
+                        	break; 
+                    	case "callActivity": 
+                    		parseCallActivity(process, child);
+                        	break;
+                    	case "exclusiveGateway": 
+                    		parseExclusiveGateway(process, child);
+                        	break; 
+                    	case "parallelGateway": 
+                    		parseParallelGateway(process, child);
+                        	break;
+                    	case "inclusiveGateway": 
+                    		parseInclusiveGateway(process, child);
+                        	break;
+                    	case "complexGateway": 
+                    		parseComplexGateway(process, child);
+                        	break;
+                  	} 
+                }				
+				//处理startGraph和endGraph
+				for(var i=0;i<process.StartGraphs.size();i++){
+					var tmp = process.StartGraphs.getItem(i);
+					for(var j=0; j<process.Transitions.size(); j++){
+						var tran = process.Transitions.getItem(j);
+						if(tran.fromActId == tmp.ActDefId){
+							tmp.toActId = tran.toActId;
+						}
+					}
+				}			
+				for(var i=0;i<process.EndGraphs.size();i++){
+					var tmp = process.EndGraphs.getItem(i);
+					for(var j=0; j<process.Transitions.size(); j++){
+						var tran = process.Transitions.getItem(j);
+						if(tran.toActId == tmp.ActDefId){
+							tmp.fromActId = tran.fromActId;
+							var fromAct=process.ActivityDic[tran.fromActId];
+							fromAct.isEndAct=true;
+						}
+					}
+				}
+            }
+			function Lane() {
+            	this.id = "";
+            	this.name = "";
+                this.x = "";
+                this.y = "";
+            }
+            var tmpData = [];//用来暂存数据 以后对其属性添值           
+            var flowNodeRef = [];// [flowNodeRef]=lane.id 直接获取该节点所属的lane.id
+            function parseLaneSet(process, element) {
+            	//解析laneSet中的元素 lane
+                for (var i = 0; i < element.childNodes.length; i++){
+					if(element.childNodes[i].nodeName=="lane"){
+						var lane = element.childNodes[i];
+						var laneInfo = new Lane();
+						laneInfo.id = lane.getAttribute("id");
+						laneInfo.name = lane.getAttribute("name");
+						for(var j = 0; j < lane.childNodes.length; j++){
+							if(lane.childNodes[j].nodeType == "1" ){
+								flowNodeRef[lane.childNodes[j].firstChild.nodeValue] = laneInfo.id;
+							}
+						}
+						tmpData[laneInfo.id] = laneInfo;
+					}
+                }
+            }
+			function parseSequenceFlow(process, element) {
+				var tran = new Transition();
+				tran.id = element.getAttribute("id");
+				tran.fromActId = element.getAttribute("sourceRef");
+				tran.toActId = element.getAttribute("targetRef");
+				process.Transitions.addItem(tran); 
+            }
+			var tmpSpecialData = [];//用来存储start 和 end 节点的 activity 本解析将StartEvent解析成 startGraph 和 Activity两种节点
+			function parseStartEvent(process, element) {
+                var startGraphInfo = new StartGraph();
+                startGraphInfo.ActDefId = element.getAttribute("id");
+//				for(var i=0; i<process.Transitions.size(); i++){
+//					var tran = process.Transitions.getItem(i);
+//					if(tran.fromActId == startGraphInfo.ActDefId){
+//						startGraphInfo.toActId = tran.toActId;
+//					}
+//				}
+				process.StartGraphs.addItem(startGraphInfo);
+                tmpData[startGraphInfo.ActDefId]= startGraphInfo;
+				var actInfo = new Activity();
+				actInfo.defId = element.getAttribute("id");
+				actInfo.name = element.getAttribute("name");
+				actInfo.type = "beginNodeType";
+				actInfo.typeCode = "";
+				actInfo.procDefId = process.procDefId;
+				actInfo.procDefUniqueId = process.id;
+				actInfo.procDefName = process.name;
+				process.ActivityDic[actInfo.defId] = actInfo;
+                process.Activities.addItem(actInfo);
+                tmpSpecialData[actInfo.defId] = actInfo;    
+				
+            }
+			function parseEndEvent(process, element) {
+                var endGraphInfo = new EndGraph();
+                endGraphInfo.ActDefId = element.getAttribute("id");
+//				for(var i=0; i<process.Transitions.size(); i++){
+//					var tran = process.Transitions.getItem(i);
+//					if(tran.toActId == endGraphInfo.ActDefId){
+//						endGraphInfo.fromActId = tran.fromActId;
+//					}
+//				}
+				process.EndGraphs.addItem(endGraphInfo);
+                tmpData[endGraphInfo.ActDefId]= endGraphInfo;
+				
+				var actInfo = new Activity();
+				actInfo.defId = element.getAttribute("id");
+				actInfo.name = element.getAttribute("name");
+				actInfo.type = "endNodeType";
+				actInfo.typeCode = "";
+				actInfo.procDefId = process.procDefId;
+				actInfo.procDefUniqueId = process.id;
+				actInfo.procDefName = process.name;
+				process.ActivityDic[actInfo.defId] = actInfo;
+                process.Activities.addItem(actInfo);
+                tmpSpecialData[actInfo.defId] = actInfo;    
+  
+            }
+			function parseUserTask(process, element) {         
+                var userTask = element;
+				
+                var actInfo = new Activity();
+			    actInfo.defId = userTask.getAttribute("id");
+				actInfo.name = userTask.getAttribute("name");
+				actInfo.procDefId = process.procDefId;
+				actInfo.procDefUniqueId = process.id;
+                actInfo.typeCode = "0";
+				var participantNames = "";
+                var hasSplit = false;
+                for(var i=0; i<userTask.childNodes.length; i++){
+					if(userTask.childNodes[i].nodeType == "1"){
+						var child = userTask.childNodes[i];
+						if(child.nodeName == "potentialOwner"){
+							if(hasSplit){
+								participantNames = participantNames + ".";
+							} 
+							if(child.getElementsByTagName("resourceAssignmentExpression")){
+								var res = child.getElementsByTagName("resourceAssignmentExpression");
+								var expression = res[0].getElementsByTagName("expression");
+								
+								var partAll = expression[0].firstChild.nodeValue;
+								
+								var array = partAll.split(",");
+								var itemValue = String(array[2]);
+								
+								var startIdx = itemValue.indexOf("|");
+								participantNames = participantNames + itemValue.substr(Number(startIdx)+1);
+								hasSplit = true;
+							}
+						}
+    					//是否为多实例判断
+						else if(child.nodeName == "multiInstanceLoopCharacteristics"){
+							if(child.getElementsByTagName("loopCardinality")){
+								actInfo.isMultiInstance = true;
+							}
+                		}
+						else if(child.nodeName == "loushang:activityLimitAndWarn"){
+							actInfo.limitTimeInfo = actInfo.limitTimeInfo + child.getAttribute("limitTime");
+							var unit = child.getAttribute("unit");
+							
+							var chineseUnit = "";
+							if(unit == "Y" || unit == "y") {
+								chineseUnit = parent.getLocaleMsg("UI.BPM.MONITOR.203", '年');
+							}
+							else if(unit ==  "M") {
+								chineseUnit = parent.getLocaleMsg("UI.BPM.MONITOR.204", '月');
+							}
+							else if(unit == "D" || unit == "d") {
+								chineseUnit = parent.getLocaleMsg("UI.BPM.MONITOR.205", '工作日');
+							}
+							else if(unit == "H" || unit == "h") {
+								chineseUnit = parent.getLocaleMsg("UI.BPM.MONITOR.206", '小时');
+							}
+							else if(unit == "m") {
+								chineseUnit = parent.getLocaleMsg("UI.BPM.MONITOR.207", '分钟');
+							}
+							else if(unit == "S" || unit == "s") {
+								chineseUnit = parent.getLocaleMsg("UI.BPM.MONITOR.208", '秒');
+							}
+							else if (unit == "N") {
+								chineseUnit = parent.getLocaleMsg("UI.BPM.MONITOR.209", '自然日');
+							}
+							actInfo.limitTimeInfo += chineseUnit;
+						}
+						else if(child.nodeName == "loushang:activityAssignRuleType"){
+							if(child.getAttribute("ruleType") == "Preemption"){
+								actInfo.type = "taskNodeType";
+							}
+							else if(child.getAttribute("ruleType") == "Countersignature"){
+								actInfo.type = "counterSignatureType";
+							}
+							else if(child.getAttribute("ruleType") == "OrderCountersignature"){
+								actInfo.type = "counterSignatureOrderType";
+							}              
+						}
+						else if(child.nodeName == "loushang:activityTransitionRestriction"){
+
+							actInfo.splitCode = child.getAttribute("splitType");
+	//                		actInfo.joinCode = child.getAttribute["splitType"];//原版本没有此属性，flex版中含有
+						}
+					}
+                }
+                actInfo.participantNames = participantNames;
+                process.ActivityDic[actInfo.defId] = actInfo;
+	            process.Activities.addItem(actInfo);
+	            tmpData[actInfo.defId] = actInfo;
+            }
+			function parseCallActivity(process, element) {
+           	    var callActivity = element;
+	          	var actInfo = new Activity();
+	          	actInfo.defId = callActivity.getAttribute("id");
+	            actInfo.name = callActivity.getAttribute("name");
+	            actInfo.subProcessDefId = callActivity.getAttribute("calledElement");
+				actInfo.type = "subflowNodeType";
+                actInfo.typeCode = "2";
+				for(var i=0; i<callActivity.childNodes.length; i++){
+					if(callActivity.childNodes[i].nodeType == "1"){
+						var child = callActivity.childNodes[i];
+						if(child.nodeName == "loushang:subProcessDefInfo"){
+							actInfo.subProcessDefUniqueId = child.getAttribute("subProcDefUniqueId");
+							actInfo.subProcessName = child.getAttribute("subProcName");
+						}
+						else if(child.nodeName == "loushang:activityTransitionRestriction"){
+							actInfo.splitCode = child.getAttribute("splitType");
+//          	      		actInfo.joinCode = child.getAttribute["joinType"];//原版本没有此属性，flex版中含有
+						}
+						else if(child.nodeName == "loushang:subProcessDefInfo"){
+							actInfo.subProcessName = child.getAttribute("subProcName");
+							actInfo.subProcessDefUniqueId = child.getAttribute("subProcDefUniqueId");
+							
+						}
+					}
+				}
+				actInfo.procDefId = process.procDefId;
+				actInfo.procDefUniqueId = process.id;
+				actInfo.procDefName = process.name;
+				process.ActivityDic[actInfo.defId] = actInfo;
+	            process.Activities.addItem(actInfo);
+	            tmpData[actInfo.defId] = actInfo;  
+			}
+			function parseParallelGateway(process, element) {
+	          	var actInfo = new Activity();	          	
+	          	actInfo.defId = element.getAttribute("id");
+				
+	          	actInfo.name = element.getAttribute("name");
+	          	actInfo.typeCode = "3";				
+	          	var gatewayDirection = element.getAttribute("gatewayDirection");
+	          	if (gatewayDirection == "Converging") {
+	          		actInfo.type = "joinNodeType";
+//					actInfo.joinCode = "1";
+					actInfo.splitCode = "0";
+				}
+				else if (gatewayDirection == "Diverging") {
+					actInfo.type = "splitNodeType";
+//					actInfo.joinCode = "0";
+					actInfo.splitCode = "1";
+				}
+				else if (gatewayDirection == "Mixed") {
+					actInfo.type = "routeNodeType";
+//					actInfo.joinCode = "1";
+					actInfo.splitCode = "1";
+				}
+
+				actInfo.procDefId = process.procDefId;
+				actInfo.procDefUniqueId = process.id;
+	          	process.ActivityDic[actInfo.defId] = actInfo;
+	            process.Activities.addItem(actInfo);
+	            tmpData[actInfo.defId] = actInfo; 
+			}
+			function parseExclusiveGateway(process, element) {
+	          	var actInfo = new Activity();
+	          	actInfo.defId = element.getAttribute("id");
+	          	actInfo.name = element.getAttribute("name");
+	          	actInfo.typeCode = "3";
+	          	var gatewayDirection = element.getAttribute("gatewayDirection");
+	          	if (gatewayDirection == "Converging") {
+	          		actInfo.type = "joinNodeType";
+//					actInfo.joinCode = "2";
+					actInfo.splitCode = "0";
+				}
+				else if (gatewayDirection == "Diverging") {
+					actInfo.type = "splitNodeType";
+//					actInfo.joinCode = "0";
+					actInfo.splitCode = "2";
+				}
+				else if (gatewayDirection == "Mixed") {
+					actInfo.type = "routeNodeType";
+//					actInfo.joinCode = "2";
+					actInfo.splitCode = "2";
+				}
+				actInfo.procDefId = process.procDefId;
+				actInfo.procDefUniqueId = process.id;
+				process.ActivityDic[actInfo.defId] = actInfo;
+	            process.Activities.addItem(actInfo);
+	            tmpData[actInfo.defId] = actInfo; 
+			}
+			function parseInclusiveGateway(process, element){
+	          	var actInfo = new Activity();
+	          	actInfo.typeCode = "3";
+	          	actInfo.defId = element.getAttribute("id");
+	          	actInfo.name = element.getAttribute("name");
+	          	var gatewayDirection = element.getAttribute("gatewayDirection");
+	          	if (gatewayDirection == "Converging") {
+	          		actInfo.type = "joinNodeType";
+//					actInfo.joinCode = "2";
+					actInfo.splitCode = "0";
+				}
+				else if (gatewayDirection == "Diverging") {
+					actInfo.type = "splitNodeType";
+//					actInfo.joinCode = "0";
+					actInfo.splitCode = "2";
+				}
+				else if (gatewayDirection == "Mixed") {
+					actInfo.type = "routeNodeType";
+//					actInfo.joinCode = "2";
+					actInfo.splitCode = "2";
+				}
+
+				actInfo.procDefId = process.procDefId;
+				actInfo.procDefUniqueId = process.id;
+				process.ActivityDic[actInfo.defId] = actInfo;
+	            process.Activities.addItem(actInfo);
+	            tmpData[actInfo.defId] = actInfo; 
+			}
+			function parseComplexGateway(process, element) {
+	          	var actInfo = new Activity();
+	          	actInfo.defId = element.getAttribute("id");
+	          	actInfo.name = element.getAttribute("name");
+	          	actInfo.typeCode = "3";
+	          	var gatewayDirection = element.getAttribute("gatewayDirection");
+	          	if (gatewayDirection == "Converging") {
+	          		actInfo.type = "joinNodeType";
+//					actInfo.joinCode = "3";
+					actInfo.splitCode = "0";
+				}
+				else if (gatewayDirection == "Mixed") {
+					actInfo.type = "routeNodeType";
+//					actInfo.joinCode = "1";
+					actInfo.splitCode = "1";
+				}
+				actInfo.procDefId = process.procDefId;
+				actInfo.procDefUniqueId = process.id;
+				process.ActivityDic[actInfo.defId] = actInfo;
+	            process.Activities.addItem(actInfo);
+	            tmpData[actInfo.defId] = actInfo;
+			}
+            function getLane(nodeId){
+            	var laneId = flowNodeRef[nodeId];
+            	return tmpData[laneId];
+            }		
+			function parsebpmndi_BPMNDiagram(process, element) {
+           	   	for(var i=0;i<element.childNodes.length;i++){
+					if(element.childNodes[i].nodeName=="bpmndi:BPMNPlane"){
+						var BPMNPlane = element.childNodes[i];
+						for(var k = 0; k < BPMNPlane.childNodes.length; k++){
+							if(BPMNPlane.childNodes[k].nodeName=="bpmndi:BPMNShape"){
+								var BPMNShape = BPMNPlane.childNodes[k];
+//								var nodeId = BPMNShape.getAttribute("id");
+								var nodeId = BPMNShape.getAttribute("bpmnElement");
+								for(var o = 0; o < BPMNShape.childNodes.length; o++){
+									if(BPMNShape.childNodes[o].nodeName=="bpmndi:Bounds"){
+										var Bounds = BPMNShape.childNodes[o];
+										var x = Bounds.getAttribute("x");
+										var y = Bounds.getAttribute("y");
+										if(tmpData[nodeId] != null){	
+											if(process.isLane==true){
+												if(tmpData[nodeId] instanceof Lane){
+													tmpData[nodeId].x = x;
+													tmpData[nodeId].y = y;
+												}
+												else{
+													if((tmpData[nodeId] instanceof StartGraph)||(tmpData[nodeId] instanceof EndGraph)){	
+														tmpSpecialData[nodeId].x = Number(getLane(nodeId).x) + Number(x);
+														tmpSpecialData[nodeId].y = Number(getLane(nodeId).y) + Number(y);	
+													}
+													tmpData[nodeId].x = Number(getLane(nodeId).x) + Number(x);
+													tmpData[nodeId].y = Number(getLane(nodeId).y) + Number(y);
+												}
+											}else{
+												if((tmpData[nodeId] instanceof StartGraph)||(tmpData[nodeId] instanceof EndGraph)){	
+													tmpSpecialData[nodeId].x = Number(x);
+													tmpSpecialData[nodeId].y = Number(y);	
+												}
+												tmpData[nodeId].x = Number(x);
+												tmpData[nodeId].y = Number(y);
+											}	
+										}
+									}
+								}
+							}
+						}	
+					}
+				}
+            }
+			 //流程实例信息XML解析
+		    var ProcessInstanceInfoParser = function(){		    
+		    };
+		    ProcessInstanceInfoParser.prototype.parse = function(process, element) {
+	
+                for (var i = 0; i < element.childNodes.length; i++) {
+					if(element.childNodes[i].nodeType == "1"){
+						parseInsProcess(process, element.childNodes[i]);
+					}                    
+                }
+            };
+			function parseInsProcess(process, element){
+            	process.processId = element.getAttribute("processId");
+            	process.id = element.getAttribute("procDefUniqueId");
+            	process.createTime = element.getAttribute("procCreateTime");
+            	process.procCurrentState = element.getAttribute("procCurrentState");
+            	if(process.procCurrentState == "closed.completed" || process.procCurrentState == "closed.aborted" || process.procCurrentState == "closed.terminated" ){
+            		process.endTime = element.getAttribute("procCurrentSateTime");
+            		AppConfig.hasParentDoingDic[process.procDefId]=false;
+            	}else{
+            		AppConfig.hasParentDoingDic[process.procDefId]=true;
+            		process.endTime = "";
+            	}
+            	process.reqOrganName = element.getAttribute("procCreatorOrganName");
+//            	process.procCreatorOrganId = element.getAttribute("procCreatorOrganId");
+//            	process.procLimitTime = element.getAttribute("procLimitTime");
+                if (element.getAttribute("isSubFlow") == "true") {
+                	process.isSubFlow = true;
+				} else {
+					process.isSubFlow = false;
+				}
+                for(var i = 0; i < element.childNodes.length; i++){
+					if(element.childNodes[i].nodeType == "1"){					
+						var child = element.childNodes[i];
+						switch (child.nodeName) { 
+							case "activities": 
+								parseInsActivities(process, child);
+								break; 
+							case "transitions": 
+								parseInsTransitions(process, child);
+								break;
+							case "reqProcessInfo": 
+								parseInsReqProcessInfo(process, child);
+								break;
+						} 
+					}
+                } 
+             	// 更新各个环节的流程信息
+    			for (var tempKey in process.ActivityDic) {
+    				var tempAct=process.ActivityDic[tempKey];
+    				if (tempAct){
+    					tempAct.procDefUniqueId=process.id;
+    				}
+    			}
+            }
+			function organInfo() {
+				// 正办处理人
+				doingOrgans="";
+				// 已办处理人
+				doneOrgans="";
+				// 顺序会签环节时的后A续处理人
+				nextOrgans="";
+			}
+			function parseInsActivities(process, element) {		
+				var activities = element.getElementsByTagName("activity");
+            	for(var i = 0; i < activities.length; i++){
+            		var act = activities[i];
+            		var actInfo = process.ActivityDic[act.getAttribute("actDefId")];
+            		actInfo.defUniqueId = act.getAttribute("actDefUniqueId");
+            		actInfo.procDefUniqueId = process.id;
+					// 一个环节定义，可能有多个环节实例，其中有已办理的环节实例，有正办的环节实例；环节实例有可能未被启动
+					var obj = new organInfo();
+					// 是否有正办的环节实例
+					var hasDoingActIns=false;
+					// 是否有已办的环节实例
+					var hasDoneActIns=false;
+					// 是否有未办的环节实例
+					var hasUndoneActIns=false;
+					// 是否有委派
+        			var allHasAss=false;
+					var actInsId="";
+					var actEndTime="";
+					var actCreateTime="";
+					var actLimitTime="";
+					var instances = act.getElementsByTagName("instanceInfo");
+            		for(var j = 0; j < instances.length; j++){
+            			var instance = instances[j];
+            			actInsId = instance.getAttribute("activityId");
+            			var hasAss=false;
+						for(var k = 0; k < instance.childNodes.length; k++){
+            				if(instance.childNodes[k].nodeName == "assignmentInfo"){
+            					hasAss=true;
+            					allHasAss=true;
+            					parseAssignmentInfo(obj, instance.childNodes[k]);
+            				}
+            				else if(instance.childNodes[k].nodeName == "assignNextInfo"){
+            					var nextParties = instance.childNodes[k].getAttribute("nextParties");
+            					var nextArray = nextParties.split(";");
+            					if (nextArray != null) {
+									for (var m=0; m < nextArray.length; m++){
+										if (nextArray[m] != null && nextArray[m] != "") {
+											var nextOrganArray = String(nextArray[m]).split(",");
+											if (nextOrganArray[1] != null && nextOrganArray[1] != "") {
+												if (obj.nextOrgans != null && obj.nextOrgans != "") {
+													obj.nextOrgans = obj.nextOrgans + ",";
+												}
+												if (obj.nextOrgans == "undefined" || obj.nextOrgans == undefined) {
+													obj.nextOrgans = nextOrganArray[1];
+							    				}else {
+							    					obj.nextOrgans = obj.nextOrgans + nextOrganArray[1];
+							    				}
+											}
+										}
+									}
+            					}
+            				}
+            				else if(instance.childNodes[k].nodeName == "subProcessInfo"){
+            					var subProcess = instance.childNodes[k];
+            					actInfo.subProcessId = subProcess.getAttribute("subProcessId");
+            					actInfo.subProcessName = subProcess.getAttribute("subProcDefName");
+                                actInfo.subProcessDefUniqueId = subProcess.getAttribute("subProcDefUniqueId");
+            				}
+            			}
+            			var actCurrentState = instance.getAttribute("actCurrentState");
+            			// 人工环节
+            			if (actInfo.typeCode=="0") {
+            				// 环节实例正常办完,终止，中断，或被撤回，或被退回
+    						if (actCurrentState == "closed.completed" || 
+    								actCurrentState == "closed.aborted" || 
+    								actCurrentState == "closed.terminated") {
+    							// 人工环节并且没有委派时，环节未办
+    							if (!hasAss) {
+    								hasUndoneActIns=true;
+    							} else {
+    								hasDoneActIns=true;
+    							}
+            				}
+    						// 环节实例未被激活，环节未办
+    						else if (actCurrentState == "open.not_running.not_started") {
+    							hasUndoneActIns=true;
+            				}
+    						// 其他情况视为环节实例正办
+    						else {
+            					hasDoingActIns=true;
+            				}
+            			}
+            			// 子流程环节，发散环节，汇聚环节，虚环节
+            			else {
+            				// 环节实例正常办完,终止，中断，或被撤回，或被退回，环节已办
+    						if (actCurrentState == "closed.completed" || 
+    								actCurrentState == "closed.aborted" || 
+    								actCurrentState == "closed.terminated") {
+    							hasDoneActIns=true;
+            				}
+    						// 环节实例未被激活，环节未办
+    						else if (actCurrentState == "open.not_running.not_started") {
+    							hasUndoneActIns=true;
+            				}
+    						// 其他情况视为环节实例正办
+    						else {
+            					hasDoingActIns=true;
+            				}
+            			}
+            			// 将最新的环节实例的创建时间作为监控图任务到达时间
+            			if (instance.getAttribute("actCreateTime")>actCreateTime) {
+            				actCreateTime = instance.getAttribute("actCreateTime");
+            				actLimitTime = instance.getAttribute("actLimitTime");
+            			}
+            			// 将最新的环节实例的办结时间作为监控图任务办理时间
+            			if (hasDoneActIns && instance.getAttribute("actCurrentStateTime") > actEndTime) {
+            				actEndTime=instance.getAttribute("actCurrentStateTime");
+            			}
+            		}
+            		var actState = "";
+            		// 流程正常办结、终止、中断后，环节状态只可能是：未办 和  已办
+            		if (process.procCurrentState == "closed.completed" || 
+        					process.procCurrentState == "closed.aborted" || 
+        					process.procCurrentState == "closed.terminated") {
+            			// 到达当前环节，流程被终止,中断时
+        				// 1.当前环节为虚环节或汇聚环节，汇聚条件不满足，环节状态处于未办
+        				// 2.当前环节为子流程环节，汇聚条件不满足，环节状态处于未办
+        				// 3.当前环节为人工环节，没有人办理，环节状态处于未办
+						if (actInfo.typeCode=="0"){
+							if (!allHasAss) {
+								actState = "undone";
+							} else {
+								actState = "done";
+							}
+						}else {
+							if (!hasDoneActIns && !hasDoingActIns && hasUndoneActIns) {
+								actState = "undone";
+							} else {
+								actState = "done";
+							}
+						}
+            		}
+            		// 流程正在办理过程中，环节状态可能是：未办，正办， 已办，退回
+            		else {
+            			if (hasDoingActIns) {
+							actState = "doing";
+						}
+        				// 存在已经办理的环节实例
+        				else if (hasDoneActIns) {
+							actState = "done";
+						}
+        				// 存在未办理的环节实例
+        				else {
+							actState = "undone";
+						}
+            		}
+            		actInfo.instanceId=actInsId;
+            		actInfo.state = actState;
+            		actInfo.undoneOrganNames=obj.nextOrgans;
+            		actInfo.doingOrganNames=obj.doingOrgans;
+            		actInfo.doneOrganNames=obj.doneOrgans;
+            		actInfo.beginTime = actCreateTime;
+            		actInfo.limitTime = actLimitTime;
+            		actInfo.endTime = actEndTime;
+        			process.ActivityDic[actInfo.instanceId] = actInfo;//处理回退过程中会用到
+        			if (actInfo.state == TaskStatus.DOING && actInfo.type != NodeType.SUBFLOW_NODE_TYPE)
+	                {
+        				AppConfig.hasParentDoingDic[actInfo.procDefId]=true;
+	                }
+				}
+            }
+			function parseInsTransitions(process, element) {
+            	for(var i = 0; i < element.childNodes.length; i++){
+            		if(element.childNodes[i].nodeName == "transitionInstances"){
+            			var transitionInstance = element.childNodes[i].getElementsByTagName("transitionInstance");
+            			for(var j = 0; j < transitionInstance.length; j++){
+            				parseTransitionInstance(process, transitionInstance[j]);
+            			}
+            		}
+            		else if(element.childNodes[i].nodeName == "backTransitionInstances"){
+            			var backTransitionInstance = element.childNodes[i].getElementsByTagName("backTransitionInstance");
+            			for(var k = 0; k < backTransitionInstance.length; k++){
+            				parseBackTransitionInstance(process, backTransitionInstance[k]);
+            			}
+            		}
+            	}
+            }
+			
+			function parseInsReqProcessInfo(process, element) {
+            	process.reqProcId = element.getAttribute("reqProcessId");		              
+				process.reqProcName = element.getAttribute("reqProcDefName");
+				process.reqProcDefId = element.getAttribute("reqProcDefId");
+				process.reqProcDefUniqueId = element.getAttribute("reqProcDefUniqueId");
+            }
+			function parseAssignmentInfo(obj, element){
+    			var organName = element.getAttribute("organName");
+    			var actualOrganName = element.getAttribute("actualOrganName");
+    			var assState = element.getAttribute("assState");
+    			if (assState == "TASK_COMPLETED") {
+    				if (obj.doneOrgans != null && obj.doneOrgans != "" && obj.doneOrgans!="undefined") {
+    					obj.doneOrgans = obj.doneOrgans + ",";
+    				}
+    				if (obj.doneOrgans == "undefined" || obj.doneOrgans == undefined) {
+    					obj.doneOrgans = actualOrganName;
+    				}else {
+    					obj.doneOrgans = obj.doneOrgans + actualOrganName;
+    				}
+    			}
+    			else if (assState == "TASK_SENT") {
+    				if (obj.doingOrgans != null && obj.doingOrgans != "") {
+    					obj.doingOrgans = obj.doingOrgans + ",";
+    				}
+    				if (obj.doingOrgans == "undefined" || obj.doingOrgans==undefined) {
+    					obj.doingOrgans = organName;
+    				}else {
+    					obj.doingOrgans = obj.doingOrgans + organName;
+    				}
+    			}
+    		}
+			function parseTransitionInstance(process, element){
+    			var fromDefId = element.getAttribute("fromActDefId");
+    			var toDefId = element.getAttribute("toActDefId");
+    			var tmp = fromDefId + "#" + toDefId;
+    			process.TransitionInstanceDic[tmp]= "runed";
+    		}
+			function parseBackTransitionInstance(process, element){
+    			var fromDId = element.getAttribute("fromActDefId");
+    			var toId = element.getAttribute("toActDefId");
+    			tmp = fromDId + "#" + toId;
+    			process.BackTransitionInstances.addItem(tmp);			
+    		}
+
+            var XpdlRunningInfoDraw = function (container, process, type) {
+                this.nodeFactory = new NodeFactory(type);
+                for (var i = 0; i < process.Activities.size(); i++) {
+                    var act = process.Activities.getItem(i);
+					var node = this.nodeFactory.getNode(act);
+                    container.appendChild(node.graph);
+                    node.drawSelf();
+                }
+                for (var i = 0; i < process.StartGraphs.size(); i++) {
+                    var act = process.StartGraphs.getItem(i);
+                    var node = this.nodeFactory.getNode(act);
+                    container.appendChild(node.graph);
+                    node.drawSelf();
+                }
+                for (var i = 0; i < process.EndGraphs.size(); i++) {
+                    var act = process.EndGraphs.getItem(i);
+                    var node = this.nodeFactory.getNode(act);
+                    container.appendChild(node.graph);
+                    node.drawSelf();
+                }
+
+            };
+
+            var NodeType = { TASK_NODE_TYPE: "taskNodeType", SUBFLOW_NODE_TYPE: "subflowNodeType", SPLIT_NODE_TYPE: "splitNodeType" ,
+                JOIN_NODE_TYPE: "joinNodeType", COUNTER_SIGNATURE_TYPE: "counterSignatureType",
+                COUNTER_SIGNATURE_ORDER_TYPE: "counterSignatureOrderType", ROUTE_NODE_TYPE: "routeNodeType",
+                BEGIN_NODE_TYPE: "beginNodeType", END_NODE_TYPE: "endNodeType"
+            };
+
+            var NodeTypeCode = { TASK_NODE_TYPE: "0", ROUTE_NODE_TYPE: "3" };
+
+            var ConstantUtils={
+		        PARTICIPANT_INFO_NO_SUFFIX:parent.getLocaleMsg("UI.BPM.MONITOR.040", '参与者信息'),
+		        PARTICIPANT:parent.getLocaleMsg("UI.BPM.MONITOR.041", '参与者：'),
+		        CREATE_TIME:parent.getLocaleMsg("UI.BPM.MONITOR.042", '到达时间：'),
+		        HANDLE_TIME:parent.getLocaleMsg("UI.BPM.MONITOR.043", '办理时间：'),
+		        END_TIME:parent.getLocaleMsg("UI.BPM.MONITOR.044", '结束时间：'),
+		        HANDLE_PERSON_INFO_NO_SUFFIX:parent.getLocaleMsg("UI.BPM.MONITOR.045", '办理人信息'),
+		        LIMIT_TIME:parent.getLocaleMsg("UI.BPM.MONITOR.046", '限制时间：'),
+		        PROMISE_TIME:parent.getLocaleMsg("UI.BPM.MONITOR.047", '承诺时间：'),
+		        ACT_NAME:parent.getLocaleMsg("UI.BPM.MONITOR.048", '环节名称：'),
+		        HANDLE_PERSON:parent.getLocaleMsg("UI.BPM.MONITOR.049", '办理人：'),
+		        YEAR:"-",
+		        MONTH:"-",
+		        DAY:" ",
+		        HOUR:":",
+		        MINITUE:"",
+		        DONE_HANDLE_PERSON:parent.getLocaleMsg("UI.BPM.MONITOR.050", '已办理人：'),
+		        DOING_HANDLE_PERSON:parent.getLocaleMsg("UI.BPM.MONITOR.051", '正办理人：'),
+		        UNDONE_HANDLE_PERSON:parent.getLocaleMsg("UI.BPM.MONITOR.052", '未办理人：'),
+		        DONE_HANDLE_PERSON_NO_SUFFIX:parent.getLocaleMsg("UI.BPM.MONITOR.053", '已办理人信息'),
+		        DOING_HANDLE_PERSON_NO_SUFFIX:parent.getLocaleMsg("UI.BPM.MONITOR.054", '正办理人信息'),
+		        UNDONE_HANDLE_PERSON_NO_SUFFIX:parent.getLocaleMsg("UI.BPM.MONITOR.055", '未办理人信息'),
+		        ACT_NAME_TITLE:parent.getLocaleMsg("UI.BPM.MONITOR.056", '环节名称')
+		    };
+
+            var SelectedNodeManager={cache:new ArrayList(),selectedInfo:""};
+
+            SelectedNodeManager.addNode = function () {
+                var node = this.refNode;
+                if (SelectedNodeManager.isValidNode(node)) {
+                    if (!SelectedNodeManager.cache.getItemIndex(node) != -1) {
+                        SelectedNodeManager.cache.addItem(node);
+                        //为【当前选择环节】提示栏添加选中环节。
+                        SelectedNodeManager.selectedInfo = (SelectedNodeManager.selectedInfo == "" ? node.comp.act.name : selectedInfo + "," + node.comp.act.name);
+                    }
+                }
+                else {
+                    SelectedNodeManager.cache.removeAllItem();
+                    SelectedNodeManager.cache.addItem(node);
+                    SelectedNodeManager.selectedInfo = node.comp.act.name;
+                }
+                $("showSelectedBackActInfo").innerHTML = SelectedNodeManager.selectedInfo;              
+            };
+
+            SelectedNodeManager.isValidNode = function (node) {
+                if (SelectedNodeManager.cache.size() <= 0) return true;
+		        if (node.comp.refSplitNodes.size() <= 0) return false;
+		        for (var i = 0; i < SelectedNodeManager.cache.size(); i++) {
+		            var n = SelectedNodeManager.cache.getItem(i);
+		            if (n.comp.refSplitNodes.size() <= 0) return false;
+		            var comp = SelectedNodeManager.getNearlySplitString(n, node);
+		            if (comp == null) return false;
+		            if (CompositeFacade.isSplitAndType(comp)) {
+		                if (n.comp.refSplitNodePath[comp] == node.comp.refSplitNodePath[comp]) {
+		                    return false;
+		                }
+		            }
+		            if (CompositeFacade.isSplitOrType(comp)) {
+		                return false;
+		            }
+		        }
+		        return true;
+		     };
+		
+		     SelectedNodeManager.getNearlySplitString=function(n,m)
+		     {
+			    for(var i=0;i<n.comp.refSplitNodes.size();i++)
+			    {
+                    var comp=n.comp.refSplitNodes.getItem(i);
+				    if(m.comp.refSplitNodes.contains(comp))return comp;
+			    }
+			    return null;
+		     };
+
+		     SelectedNodeManager.confirmSelect = function () {
+		         var operateName;
+		         if (AppConfig.actionType == "back") {
+		             operateName = parent.getLocaleMsg("UI.BPM.MONITOR.057", '退回');
+		         }
+		         if (AppConfig.actionType == "send") {
+		             operateName = parent.getLocaleMsg("UI.BPM.MONITOR.058", '发送');
+		         }
+		         var args = [];
+		         args[0] = operateName;
+		         if (SelectedNodeManager.cache.size() <= 0) {
+		             alert(parent.getLocaleMsg("UI.BPM.MONITOR.059", '请先选择要{0}到的环节！',args));
+		             return;
+		         }
+		         var confirmMessage = parent.getLocaleMsg("UI.BPM.MONITOR.060", '确定要{0}到环节:',args);
+		         for (var i = 0; i < SelectedNodeManager.cache.size(); i++) {
+		             if (i != 0) {
+		                 confirmMessage += "，";
+		             }
+		             confirmMessage += SelectedNodeManager.cache.getItem(i).comp.act.name;
+		         }
+		         confirmMessage += "？";
+		         var ret = confirm(confirmMessage);
+		         if (ret) {
+		             var selectedActs = "[";
+		             for (var i = 0; i < SelectedNodeManager.cache.size(); i++) {
+		                 var node = SelectedNodeManager.cache.getItem(i);
+		                 if (selectedActs != "[") {
+		                     selectedActs = selectedActs + ",";
+		                 }
+		                 selectedActs = selectedActs + "{procDefUniqueId:'" + node.comp.act.procDefUniqueId + "',actDefId:'" + node.comp.act.defId
+				        + "',actName:'" + node.comp.act.name + "',procDefId:'" + node.comp.act.procDefId + "'}";
+		             }
+		             selectedActs += "]";
+		             parent.closeWindow(selectedActs);
+		         } else {
+		        	 parent.closeWindow(null);
+		         }
+		     };
+		
+		    SelectedNodeManager.resetSelect=function(){
+			        SelectedNodeManager.cache.removeAllItem();
+			        SelectedNodeManager.selectedInfo = "";
+			        $("showSelectedBackActInfo").innerHTML = SelectedNodeManager.selectedInfo;
+		    };
+
+		    var Decorate = function () { }
+		    Decorate.prototype.decorate = function (node) { return node; };
+
+		    var BackActionDecorate = function () {
+		        $("showSelectedBackActInfoContainer").style.display = "block";
+		        this.decorate = function (node) {
+		            CompositeFacade.initRefSplitNodesAndPath();
+		            if (node.comp.act.state == TaskStatus.DONE && !node.comp.hasParentDoing) {
+		                node.comp.enabled = true;
+		            }
+		            else {
+		                node.comp.enabled = false;
+		            }
+		            if (node.comp.act.typeCode === NodeTypeCode.TASK_NODE_TYPE) {
+		                if (node.comp.enabled) {
+		                    node.graph.onclick = SelectedNodeManager.addNode;
+		                }
+		            }
+		        };
+		    };
+
+		    var DetailInfoFactory = {};
+		    DetailInfoFactory.getDetailInfoWindow = function (node) {
+		        var detailInfoWindow = document.createElement("div");
+		        detailInfoWindow.setAttribute("state", node.comp.act.state);
+		        detailInfoWindow.style.position = "absolute";
+		        var table = document.createElement("table");
+		        table.innerHTML = "<tr><td>"+parent.getLocaleMsg("UI.BPM.MONITOR.048", '环节名称：')+"</td><td>" + node.comp.act.name + "</td></tr>";
+		        if (node.comp.act.type == NodeType.COUNTER_SIGNATURE_ORDER_TYPE) {
+		            if (node.comp.act.state == TaskStatus.DONE) {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.DONE_HANDLE_PERSON + "</td><td>" + node.comp.act.doneOrganNames + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.CREATE_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.beginTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.END_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.endTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.limitTime) + "</td></tr>";
+		            } else if (node.comp.act.state == TaskStatus.DOING) {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.DOING_HANDLE_PERSON + "</td><td>" + node.comp.act.doingOrganNames + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.UNDONE_HANDLE_PERSON + "</td><td>" + node.comp.act.undoneOrganNames + "</td></tr>";
+		                if (node.comp.act.doneOrganNames!=null && node.comp.act.doneOrganNames!=""){
+		                	table.innerHTML += "<tr><td>" + ConstantUtils.DONE_HANDLE_PERSON + "</td><td>" + node.comp.act.doneOrganNames + "</td></tr>";
+		                }
+		                table.innerHTML += "<tr><td>" + ConstantUtils.CREATE_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.beginTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.limitTime) + "</td></tr>";
+		            } else {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.PARTICIPANT + "</td><td>" + node.comp.act.participantNames + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getLimitTimeInfo(node.comp.act.limitTimeInfo) + "</td></tr>";
+		            }
+
+		        }
+		        else if (node.comp.act.type == NodeType.COUNTER_SIGNATURE_TYPE) {
+		            if (node.comp.act.state == TaskStatus.DONE) {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.DONE_HANDLE_PERSON + "</td><td>" + node.comp.act.doneOrganNames + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.CREATE_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.beginTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.END_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.endTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.limitTime) + "</td></tr>";
+		            } else if (node.comp.act.state == TaskStatus.DOING) {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.DOING_HANDLE_PERSON + "</td><td>" + node.comp.act.doingOrganNames + "</td></tr>";
+		                if (node.comp.act.doneOrganNames!=null && node.comp.act.doneOrganNames!=""){
+		                	table.innerHTML += "<tr><td>" + ConstantUtils.DONE_HANDLE_PERSON + "</td><td>" + node.comp.act.doneOrganNames + "</td></tr>";
+		                }
+		                table.innerHTML += "<tr><td>" + ConstantUtils.CREATE_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.beginTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.limitTime) + "</td></tr>";
+		            } else {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.PARTICIPANT + "</td><td>" + node.comp.act.participantNames + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getLimitTimeInfo(node.comp.act.limitTimeInfo) + "</td></tr>";
+		            }
+		        }
+		        else if (node.comp.act.type == NodeType.SUBFLOW_NODE_TYPE) {
+		            table.innerHTML += "<tr><td>"+parent.getLocaleMsg("UI.BPM.MONITOR.061", '子流程：')+"</td><td>" + node.comp.act.subProcessName + "</td></tr>";
+		            if (node.comp.act.state == TaskStatus.DONE) {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.CREATE_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.beginTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.END_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.endTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.limitTime) + "</td></tr>";
+		            } else if (node.comp.act.state == TaskStatus.DOING) {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.CREATE_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.beginTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.limitTime) + "</td></tr>";
+
+		            } else {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getLimitTimeInfo(node.comp.act.limitTimeInfo) + "</td></tr>";
+		            }
+		        }
+		        else {
+		            if (node.comp.act.state == TaskStatus.DONE) {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.DONE_HANDLE_PERSON + "</td><td>" + node.comp.act.doneOrganNames + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.CREATE_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.beginTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.END_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.endTime) + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.limitTime) + "</td></tr>";
+		            } else if (node.comp.act.state == TaskStatus.DOING) {
+		                var temp = node.comp.act.doingOrganNames;
+		                if (temp == null || temp == "") {
+		                    temp = node.comp.act.participantNames;
+		                }
+		                table.innerHTML += "<tr><td>" + ConstantUtils.DOING_HANDLE_PERSON + "</td><td>" + temp + "</td></tr>";
+		                if (node.comp.act.doneOrganNames!=null && node.comp.act.doneOrganNames!="") {
+		                	table.innerHTML += "<tr><td>" + ConstantUtils.DONE_HANDLE_PERSON + "</td><td>" + node.comp.act.doneOrganNames + "</td></tr>";
+		                }
+		                table.innerHTML += "<tr><td>" + ConstantUtils.CREATE_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.beginTime) + "</td></tr>";
+		                if (node.comp.act.doneOrganNames!=null && node.comp.act.doneOrganNames!=""){
+		                	table.innerHTML += "<tr><td>" + ConstantUtils.END_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.endTime) + "</td></tr>";
+		                }
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getChineseDateInfo(node.comp.act.limitTime) + "</td></tr>";
+		            } else {
+		                table.innerHTML += "<tr><td>" + ConstantUtils.PARTICIPANT + "</td><td>" + node.comp.act.participantNames + "</td></tr>";
+		                table.innerHTML += "<tr><td>" + ConstantUtils.LIMIT_TIME + "</td><td>" + LimitTimeUtil.getLimitTimeInfo(node.comp.act.limitTimeInfo) + "</td></tr>";
+		            }
+		        }
+		        detailInfoWindow.appendChild(table);
+		        node.container.appendChild(detailInfoWindow);
+		        return detailInfoWindow;
+		    };
+
+		    var MouseOverShowInfoDecorate = function () {
+		        this.decorate = function (node) {
+		            if (node.comp.act.typeCode == NodeTypeCode.TASK_NODE_TYPE || node.comp.act.type == NodeType.SUBFLOW_NODE_TYPE) {
+		                node.graph.onmouseover = function () {
+		                    var detailInfoWindow = MouseOverShowInfoDecorate.detailInfoCache[this.refNode.comp.act.procDefId+this.refNode.comp.act.defId];
+		                    if (!detailInfoWindow) {
+		                        detailInfoWindow = DetailInfoFactory.getDetailInfoWindow(this.refNode);
+		                        MouseOverShowInfoDecorate.detailInfoCache[this.refNode.comp.act.procDefId+this.refNode.comp.act.defId] = detailInfoWindow;
+		                    }
+		                    detailInfoWindow.style.display = "block";
+		                    detailInfoWindow.style.top = this.refNode.y;
+		                    detailInfoWindow.style.left = this.refNode.x + this.refNode.width;
+		                };
+		                node.graph.onmouseout = function () {
+		                    var detailInfoWindow = MouseOverShowInfoDecorate.detailInfoCache[this.refNode.comp.act.procDefId+this.refNode.comp.act.defId];
+		                    detailInfoWindow.style.display = "none";
+		                };
+		            }
+		        };
+		    };
+		    MouseOverShowInfoDecorate.detailInfoCache = {};
+
+		    var PropertyUrlDecorate = function () {
+		        this.decorate = function (node) {
+		            if (node.classType.indexOf("ComplexContentNode") != -1) {
+		                var setPropertyUrl = document.createElement("div");
+		                setPropertyUrl.setAttribute("class", "propertyUrl");
+		                setPropertyUrl.style.position = "absolute";
+		                setPropertyUrl.style.top = node.y + node.height - 15;
+		                setPropertyUrl.style.left = node.x + node.width - 85;
+		                setPropertyUrl.innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.062", '[设置环节属性]');
+		                setPropertyUrl.refNode = node;
+		                setPropertyUrl.onclick = function () {
+		                    var forwardToUrl = P$("rootUrl").value+"jsp/ecgap/dbflowmanager/eaaitem/itematepindex.jsp?schemeId=" + this.refNode.comp.act.procDefUniqueId +
+                             "&schemeName=" + this.refNode.comp.act.procDefName+ "&stepId=" + this.refNode.comp.act.defId + "&stepName=" + this.refNode.comp.act.name;
+		                    window.open(forwardToUrl, parent.getLocaleMsg("UI.BPM.MONITOR.063", '环节属性设置'));
+		                };
+		                node.container.appendChild(setPropertyUrl);
+		                //		                lbl.addEventListener(MouseEvent.CLICK, forwardToPropertySettingPage);
+		            }
+		        };
+		    };
+
+		    var ResetPositionDecorate = function () {
+		        this.decorate = function (node) {
+		            if (node.comp.hasResetPosition) return;
+		            node.y = node.y * AppConfig.yRate - CompositeFacade.MostTopY() * 2+AppConfig.rectify.y;
+		            node.setY(node.y);
+		            if (this.container != null) {
+		                node.x = node.x * AppConfig.xRate - CompositeFacade.MostLeftX() * 2 + this.container.width+AppConfig.rectify.x;
+		                node.setX(node.x);
+		            }
+		            else {
+		                node.x = node.x * AppConfig.xRate - CompositeFacade.MostLeftX() * 2+AppConfig.rectify.x;
+		                node.setX(node.x);
+		            }
+		        };
+		    };
+
+		    var ResetSimpleNodePositionDecorate = function () {
+		        this.decorate = function (node) {
+		            node.x = node.x - CompositeFacade.MostLeftX()+AppConfig.rectify.x;
+		            node.setX(node.x);
+		            node.y = node.y - CompositeFacade.MostTopY()+AppConfig.rectify.y;
+		            node.setY(node.y);
+		        };
+		    };
+
+		    var SendActionDecorate = function () {
+		        $("showSelectedBackActInfoContainer").style.display = "block";
+		        this.decorate = function (node) {
+		            CompositeFacade.initRefSplitNodesAndPath();
+		            if (node.comp.act.state == "" || node.comp.act.state==TaskStatus.UNDONE) {
+		                node.comp.enabled = true;
+		            }
+		            else {
+		                node.comp.enabled = false;
+		            }
+		            if (node.comp.act.typeCode === NodeTypeCode.TASK_NODE_TYPE) {
+		                if (node.comp.enabled) {
+		                    node.graph.onclick = SelectedNodeManager.addNode;
+		                }
+		            }
+		        };
+		    };
+
+		    var StartEndNodeAndLineDecorator = function () {
+		        this.decorate = function (node) {
+		            if (node.comp.act.type == NodeType.BEGIN_NODE_TYPE || node.comp.act.type == NodeType.END_NODE_TYPE) {
+		                node.visible = false;
+		                node.graph.style.display = "none";
+		            }
+		        };
+		    };
+
+		    var SubFlowDecorate = function () {
+			    this.decorate=function(node){
+					if(node.comp.act.type==NodeType.SUBFLOW_NODE_TYPE)
+					{
+						node.graph.onclick=SubFlowDecorate.showSubFlowInfo;
+					}	
+				};
+			};
+
+			SubFlowDecorate.showSubFlowInfo=function(){
+				var flag=false;
+				var node=this.refNode;
+				//判断当前流程的子流程是否已经显示过了
+				var subProcess=AppConfig.procInfoDic[node.comp.act.subProcessId]?
+						AppConfig.procInfoDic[node.comp.act.subProcessId]:AppConfig.procInfoDic[node.comp.act.subProcessDefUniqueId];
+				// 子流程环节未办时，查看信息根据定义ID获取
+				if (subProcess==null || subProcess==undefined){
+					subProcess=AppConfig.procInfoDic[node.comp.act.subProcessDefId]
+				}
+				if(subProcess)
+				{
+					DrawCanvasManager.changeSelectedCanvas(subProcess.canvasId);
+					return;
+				}
+
+				var subProcessDefUniqueId=node.comp.act.subProcessDefUniqueId;
+				if(node.comp.act.subProcessId!=null&&node.comp.act.subProcessId!=""&&node.comp.act.subProcessId!="null")
+				{
+					subProcessDefUniqueId=null;
+				}
+				var processDefInfo = parent.getProcessGraphDefModelInfo(node.comp.act.subProcessId, node.comp.act.subProcessDefId,
+                		subProcessDefUniqueId,null, null);
+                var processInstanceInfo = null;
+                if(node.comp.act.subProcessId != null && node.comp.act.subProcessId != ""){
+                	processInstanceInfo = parent.getProcessInstanceModelInfo(node.comp.act.subProcessId, null, null);
+                }
+                drawNewProcessRuningInfo(processDefInfo, processInstanceInfo, parent.getLocaleMsg("UI.BPM.MONITOR.061", '子流程：')+node.comp.act.subProcessName, 
+    	                DrawCanvasManager.SUBFLOW_CANVAS);
+			}
+
+            var DecorateManager={};
+
+            /**
+		     * 获取概要流程图的装饰类集合
+		     */ 
+		    DecorateManager.getSimpleDecoratorList=function(){
+			    var arr=new ArrayList();
+			    arr.addItem(new SubFlowDecorate());
+			    arr.addItem(new ResetSimpleNodePositionDecorate());
+			    if(AppConfig.actionType=="back")
+			    {
+				    arr.addItem(new BackActionDecorate());
+			    }
+			    if(AppConfig.actionType=="send")
+			    {
+				    arr.addItem(new SendActionDecorate());
+			    }
+			    if(AppConfig.isShowActInfoByMouseOver)
+			    {
+				    arr.addItem(new MouseOverShowInfoDecorate());
+			    }
+			    if(!AppConfig.isShowStartEndNode)
+			    {
+				    arr.addItem(new StartEndNodeAndLineDecorator());
+			    }
+			    return arr;		
+		    };
+				
+		    /**
+		     * 获取详细流程图的装饰类集合
+		     */ 
+		    DecorateManager.getComplexDecoratorList=function(){
+			    if(!AppConfig.isShowActInfoByComplexCanvas) return DecorateManager.getSimpleDecoratorList();
+			    var arr=new ArrayList();
+			    arr.addItem(new SubFlowDecorate());
+			    //重置环节坐标信息的装饰类
+
+			    arr.addItem(new ResetPositionDecorate());
+
+			    if(AppConfig.actionType=="back")
+			    {
+				    arr.addItem(new BackActionDecorate());
+			    }
+			    if(AppConfig.actionType=="send")
+			    {
+				    arr.addItem(new SendActionDecorate());
+			    }
+			    if(AppConfig.isShowActPropertyUrl)
+			    {
+				    arr.addItem(new PropertyUrlDecorate());
+			    }
+			    if(!AppConfig.isShowStartEndNode)
+			    {
+				    arr.addItem(new StartEndNodeAndLineDecorator());
+			    }
+			    return arr;	
+		    };
+				
+		    /**
+		     * 获取子流程环节的装饰类集合
+		     */
+		    DecorateManager.getSubflowDecoratorList=function(){
+			    return DecorateManager.getComplexDecoratorList();
+		    }
+
+            var AppConfig = {
+		        //是否显示图例说明中的顺序会签图标，默认显示
+		        isShowOrderCounterSign:true,
+		        //是否显示图例说明中的并序会签图标，默认显示
+		        isShowParallelCounterSign:true,
+		        //是否显示图例说明中的分支环节图标，默认显示
+		        isShowSplit:true,
+		        //是否显示图例说明中的汇聚环节图标，默认显示
+		        isShowJoin:true,
+		        //是否显示图例说明中的子流程环节图标，默认显示
+		        isShowSubflow:true,
+		        //是否在流程图中显示开始和结束节点，默认显示
+		        isShowStartEndNode:true,
+		        //是否显示图例说明中的环节图例说明，默认显示
+		        isShowIconDetailPanel:true,
+		        //是否显示概要流程图，默认显示
+		        isShowSimpleFlowView:true,
+		        //是否在详细流程图的环节上显示环节属性URL（Ecgap业务URL）以进行业务跳转，默认不显示
+		        isShowActPropertyUrl:false,
+		        //操作流程图的类型（用于跳转发送、退回的环节选择界面），默认不作为操作流程图
+		        actionType:"",
+		        //是否在鼠标移动到环节上时显示环节详细信息，默认为不显示
+		        isShowActInfoByMouseOver:false,
+		        //是否通过详细流程图显示环节信息（也就是是否显示详细流程图），默认显示
+		        isShowActInfoByComplexCanvas:true,
+		        //是否显示流程内容容器，默认为不显示
+		        isShowProcessInfoContainer:false,
+		        //是否显示返回按钮，默认显示
+		        isShowBackBtn:true,
+		        //是否显示父流程流转状态图按钮，默认不显示
+		        isShowParentFlowViewButton:false,
+		        //记录前台传递的配置参数值
+		        parentFlowViewConfig:false,
+                //复杂流程图的x坐标扩大比率
+		        xRate:2.25,
+		        //复杂流程图的y坐标扩大比率
+		        yRate:2,
+		        hasParentDoingDic:{},
+		        // 装饰类集合
+		        commonDecoratorManager: DecorateManager,
+		        // 字典（用于存储流程实例与流程相关信息及画布的对应关系）
+		        procInfoDic:{},
+		        // 用于存储当前流程信息
+		        currentProc:{},
+		        canvasToProcDic:{},
+		        rectify:{x:0,y:0}
+            };
+
+            AppConfig.init=function(isShowOrderCounterSign,isShowParallelCounterSign,isShowSplit,
+		        isShowJoin,isShowSubflow,isShowActPropertyUrl,actionType,isByMouseOver,
+		        projectType,isShowStartEndNode,isShowIconDetailPanel,isShowSimpleFlowView,isShowProcessInfo,
+		        isShowBackBtn,isShowParentFlowViewButton)
+		    {
+			        //默认显示的
+			        AppConfig.isShowOrderCounterSign=isShowOrderCounterSign!="false";
+			        AppConfig.isShowParallelCounterSign=isShowParallelCounterSign!="false";
+			        AppConfig.isShowSplit=isShowSplit!="false";
+			        AppConfig.isShowJoin=isShowJoin!="false";
+			        AppConfig.isShowSubflow=isShowSubflow!="false";
+			        AppConfig.isShowStartEndNode=isShowStartEndNode!="false";
+			        if(isShowIconDetailPanel=="false"){
+						$("iconList").style.display="none";
+						showSelectedBackActInfoContainer.style.top=1;
+				    }
+			        AppConfig.isShowSimpleFlowView=isShowSimpleFlowView!="false";
+			        if(isShowBackBtn=="false"){
+			        	$("backBtn").style.display="none";
+				    }
+			
+			        //需要显式指定才显示的内容（默认不显示）
+			        AppConfig.isShowActPropertyUrl=isShowActPropertyUrl=="true";
+			        AppConfig.actionType=actionType;
+			        AppConfig.isShowActInfoByMouseOver=isByMouseOver=="true";
+			        AppConfig.isShowProcessInfoContainer=isShowProcessInfo=="true";
+			        if(AppConfig.isShowProcessInfoContainer){
+			        	AppConfig.rectify={x:0,y:25};
+				    }
+			        AppConfig.isShowParentFlowViewButton=isShowParentFlowViewButton=="true";
+                    if(!AppConfig.isShowParentFlowViewButton){
+                    	$("showParentProcessBtn").style.display="none";
+                    }
+            
+			        if(projectType=="ecgap")
+			        {
+				        ConstantUtils.LIMIT_TIME=ConstantUtils.PROMISE_TIME;
+			        }
+			
+			        if(AppConfig.isShowActInfoByMouseOver)
+			        {
+				        AppConfig.isShowActInfoByComplexCanvas=false;
+			        }
+			}
+
+			var Node = function (canvas, comp) {
+			    this.width = comp.act.width;
+			    this.height = comp.act.height;
+			    this.comp = comp;
+			    this.graph = canvas;
+			    this.graph.refNode = this;
+			    this.refLines = new ArrayList();
+			    this.icon = this.getImage(this.comp.act);
+			    this.visible = true;
+			    this.x = Number(comp.act.x);
+			    this.y = Number(comp.act.y);
+			    this.setX(comp.act.x);
+			    this.setY(comp.act.y);
+			    this.classType = "Node";
+			};
+
+			Node.prototype.setY = function (y) {
+			    this.graph.style.top = y;
+			    for (var i = 0; i < this.refLines.size(); i++) {
+			        var line = this.refLines.getItem(i);
+			        line.drawSelf(true);
+			    }
+			};
+
+            Node.prototype.getY = function () {
+                return this.graph.style.top;
+            };
+
+            Node.prototype.setX = function (x) {
+                this.graph.style.left = x;
+                for (var i = 0; i < this.refLines.size(); i++) {
+                    var line = this.refLines.getItem(i);
+                    line.drawSelf(true);
+                }
+            };
+
+            Node.prototype.getX = function () {
+                return this.graph.style.left;
+            };
+
+            Node.prototype.getImage = function (model) {
+                if (model.type == NodeType.COUNTER_SIGNATURE_TYPE) {
+                    return $("node_countersignparallel");
+                }
+                else if (model.type == NodeType.SUBFLOW_NODE_TYPE) {
+                    return $("node_subflow");
+                }
+                else if (model.type == NodeType.SPLIT_NODE_TYPE) {
+                    if (model.typeCode == NodeTypeCode.TASK_NODE_TYPE) {
+                        return $("node_human"); 
+                    } else if (model.typeCode == NodeTypeCode.ROUTE_NODE_TYPE) {
+                        if (AppConfig.isShowSplit) {
+                            return $("node_split"); 
+                        }
+                        return $("node_route");
+                    }
+                    return $("node_split");
+                }
+                else if (model.type == NodeType.JOIN_NODE_TYPE) {
+                    if (model.typeCode == NodeTypeCode.TASK_NODE_TYPE) {
+                        return $("node_human");
+                    } else if (model.typeCode == NodeTypeCode.ROUTE_NODE_TYPE) {
+                        if (AppConfig.isShowJoin) {
+                            return $("node_join");
+                        }
+                        return $("node_route");
+                    }
+                    return $("node_join");
+                }
+                else if (model.type == NodeType.COUNTER_SIGNATURE_ORDER_TYPE) {
+                    return $("node_countersignorder");
+                }
+                else if (model.type == NodeType.BEGIN_NODE_TYPE) {
+                    return $("node_start");
+                }
+                else if (model.type == NodeType.END_NODE_TYPE) {
+                    return $("node_end");
+                }
+                else if (model.type == NodeType.TASK_NODE_TYPE) {
+                    return $("node_human");
+                }
+                else if (model.type == NodeType.ROUTE_NODE_TYPE) {
+                    return $("node_route");
+                }
+                return null;
+            };
+
+            var ContentNode = function (canvas, comp) {
+                this.radius = 0;
+                this.classType = "ContentNode";
+                this.fillRect = function (ctx) {
+                    ctx.fillStyle = NodeUtil.getStatusColor(this.comp);
+                    ctx.beginPath();
+                    ctx.moveTo(this.radius, 0);
+                    ctx.lineTo(this.width - this.radius, 0);
+                    ctx.quadraticCurveTo(this.width, 0, this.width, this.radius);
+                    ctx.lineTo(this.width, this.height - this.radius);
+                    ctx.quadraticCurveTo(this.width, this.height, this.height - this.radius, this.height);
+                    ctx.lineTo(this.radius, this.height);
+                    ctx.quadraticCurveTo(0, this.height, 0, this.height - this.radius);
+                    ctx.lineTo(0, this.radius);
+                    ctx.quadraticCurveTo(0, 0, this.radius, 0);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                Node.call(this, canvas, comp);
+            };
+
+            var NodeUtil={};
+
+            NodeUtil.getStatusColor=function(comp){
+            	var procDefId=comp.act.procDefId;
+			    if(comp.act.state==TaskStatus.DOING)return "#fbc048";//橘黄色
+			    // 如果流程正在办理，且为最后一个环节退回,最后一个环节已完成
+			    if (comp.act.state == TaskStatus.DONE && comp.act.isEndAct 
+			    		&& !comp.hasParentDoing && AppConfig.hasParentDoingDic[procDefId]) {
+			    	if (NodeUtil.isInBackTransitionRoutes(comp.act.defId))
+					    return "#db6ab8";//紫色
+				    return "#dedfcf";
+			    }
+			    if(comp.act.state == TaskStatus.DONE && !comp.hasParentDoing) return "#dedfcf";
+			    if(comp.act.state == TaskStatus.DONE && comp.hasParentDoing)
+			    {
+			        if (NodeUtil.isInBackTransitionRoutes(comp.act.defId))
+					    return "#db6ab8";
+				    return "#dedfcf";
+			    }
+			    if(comp.act.state==TaskStatus.UNDONE)return "#8ed587";
+			    return "#8ed587";//绿色
+			};
+
+			NodeUtil.getStatus = function (comp) {
+				var procDefId=comp.act.procDefId;
+			    if (comp.act.state == TaskStatus.DOING) return "doing";
+			    // 如果流程正在办理，且为最后一个环节退回,最后一个环节已完成
+			    if (comp.act.state == TaskStatus.DONE && comp.act.isEndAct 
+			    		&& !comp.hasParentDoing && AppConfig.hasParentDoingDic[procDefId]) {
+			    	if (NodeUtil.isInBackTransitionRoutes(comp.act.defId))
+					    return "back";
+				    return "done";
+			    }
+			    if (comp.act.state == TaskStatus.DONE && !comp.hasParentDoing) return "done";
+			    if (comp.act.state == TaskStatus.DONE && comp.hasParentDoing) {
+			        if (NodeUtil.isInBackTransitionRoutes(comp.act.defId))
+			            return "back";
+			        return "done";
+			    }
+			    if (comp.act.state == TaskStatus.UNDONE) return "undone";
+			    return "undone";
+			};
+
+			NodeUtil.isInBackTransitionRoutes = function (targetId) {
+			    if (CompositeFacade.Current_Proc.BackTransitionInstances.size() < 1) return false;
+			    var flag = {};
+				
+			    for (var i = 0; i < CompositeFacade.Current_Proc.BackTransitionInstances.size(); i++) {
+			        var tran = CompositeFacade.Current_Proc.BackTransitionInstances.getItem(i);
+					try {
+			            if (flag[tran] == null) {
+						    flag[tran] = tran;
+							var vals = tran.split("#");
+			                var comp = CompositeFacade.comIndex[vals[1]];
+			                if (NodeUtil.isInThisTransitionRoute(comp, vals[0], targetId, {}, false)) 				
+								return true;
+			            }
+			        }
+			        catch (e) { return false; }
+			    }
+			    return false;
+			};
+			
+			NodeUtil.isInThisTransitionRoute = function (comp, endId, targetId, executedFlag, hasFindTargetId) {
+			    var child = comp.children;
+			    if (child && child.size() > 0) {
+			        for (var i = 0; i < child.size(); i++) {
+			            var temp = child.getItem(i);
+		                if (temp.act.defId == targetId) {
+		                	hasFindTargetId = true;
+		                }
+		             	// 如果目标环节为 退回环节，返回
+		                if (hasFindTargetId && temp.act.defId == endId) {
+		                	return true;
+		                }
+		             	// 如果到达退回环节，跳出本次循环
+		                if (temp.act.defId == endId) {
+		                	continue; 
+		                }
+		                if (NodeUtil.isInThisTransitionRoute(temp, endId, targetId, executedFlag, hasFindTargetId)) {
+		                	return true;
+		                }
+			        }
+			    }
+			    return false;
+			};
+
+            ContentNode.prototype = Node.prototype;
+
+            var SimpleContentNode = function (canvas, comp) {
+                ContentNode.call(this, canvas, comp);
+                this.width = 90;
+                this.height = 50;
+                this.classType = "SimpleContentNode";
+                this.drawSelf = function () {
+                    var ctx = this.graph.getContext("2d");
+                    this.fillRect(ctx);
+                    ctx.drawImage(this.icon, 0, 0);
+                    ctx.fillStyle = "#09f";
+                    ctx.font = "13px Calibri";
+                    ctx.fillText(this.comp.act.name, 20, 15);
+                };
+            };
+
+            SimpleContentNode.prototype = ContentNode.prototype;
+
+            var ComplexContentNode = function (canvas, comp) {
+                ContentNode.call(this, canvas, comp);
+                this.width = 185;
+                this.height = 90;
+                this.classType = "ComplexContentNode";
+                this.drawSelf = function () {
+                    var ctx = this.graph.getContext("2d");
+                    this.fillRect(ctx);
+                    ctx.drawImage(this.icon, 0, 0);
+                    ctx.fillStyle = "#09f";
+                    ctx.font = "13px Calibri";
+                    ctx.fillText(this.comp.act.name, 20, 15);
+                };
+            };
+            ComplexContentNode.MaxDrawWidth = 185;
+            ComplexContentNode.MaxDrawHeight = 90;
+
+            ComplexContentNode.prototype = ContentNode.prototype;
+
+            var TaskComplexContentNode = function (canvas, comp) {
+                ComplexContentNode.call(this, canvas, comp);
+                this.classType = "TaskComplexContentNode";
+                var detailinfo="";
+                this.drawSelf = function () {
+                    var ctx = this.graph.getContext("2d");
+                    this.fillRect(ctx);
+                    ctx.drawImage(this.icon, 0, 0);
+                    ctx.fillStyle = "#09f";
+                    ctx.font = "13px Calibri";
+                    ctx.fillText(ConstantUtils.ACT_NAME+this.comp.act.name, 20, 15);
+                    if(this.comp.act.state==TaskStatus.DONE)
+			        {
+                    	var startY = 15;
+                    	// 多环节实例的场合，已办环节可能存在未完成的环节实例
+        				if (comp.act.doingOrganNames != null && comp.act.doingOrganNames != ""){
+        					ctx.fillText(ConstantUtils.DOING_HANDLE_PERSON+comp.act.doingOrganNames,2,startY+15);
+        					detailinfo+=ConstantUtils.DOING_HANDLE_PERSON+comp.act.doingOrganNames+"\n";
+        					startY = startY+15;
+        				}
+        				// 环节已办理人
+        				if (comp.act.doneOrganNames != null && comp.act.doneOrganNames !=""){
+        					ctx.fillText(ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames, 2, startY+15);
+        					detailinfo+=ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames+"\n";
+        					startY = startY+15;
+        				}
+        				ctx.fillText(ConstantUtils.CREATE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.beginTime),2,startY+15);
+				        ctx.fillText(ConstantUtils.HANDLE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.endTime),2,startY+30);
+				        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.limitTime),2,startY+45);
+				        canvas.setAttribute('title',detailinfo);
+				        return;
+			        }
+			        if(this.comp.act.state==TaskStatus.DOING)
+			        {
+				        var temp=comp.act.doingOrganNames;
+				        if(temp==null||temp=="")
+				        {
+					        temp=comp.act.participantNames;
+				        }
+				        ctx.fillText(ConstantUtils.DOING_HANDLE_PERSON+temp,2,30);
+				        detailinfo+=ConstantUtils.DOING_HANDLE_PERSON+temp+"\n";
+				        var doingY = 30;
+				     	// 流程退回，或者撤回时，正办的环节可能存在办结环节实例
+						if (comp.act.doneOrganNames != null && comp.act.doneOrganNames != ""){
+							ctx.fillText(ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames, 2, doingY+15);
+							detailinfo+=ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames+"\n";
+							doingY = doingY+15;
+						}
+				     
+				        ctx.fillText(ConstantUtils.CREATE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.beginTime),2,doingY+15);
+				        doingY = doingY+15;
+				        // 流程退回，或者撤回时，正办的环节可能存在办结环节实例
+						if (comp.act.doneOrganNames != null && comp.act.doneOrganNames != ""){
+							ctx.fillText(ConstantUtils.HANDLE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.endTime),2,doingY+15);
+							doingY = doingY+15;
+						}
+				        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.limitTime),2,doingY+15);
+				        canvas.setAttribute('title',detailinfo);
+				        return;	
+			        }	
+			        ctx.fillText(ConstantUtils.UNDONE_HANDLE_PERSON+comp.act.participantNames,2,30);
+			        detailinfo+=ConstantUtils.UNDONE_HANDLE_PERSON+comp.act.participantNames+"\n";
+			        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getLimitTimeInfo(comp.act.limitTimeInfo),2,45);
+			        canvas.setAttribute('title',detailinfo);
+			        return;                 
+                };
+            };
+
+            TaskComplexContentNode.prototype = ComplexContentNode.prototype;
+
+            var CounterSignatureOrderComplexContentNode = function (canvas, comp) {
+                ComplexContentNode.call(this, canvas, comp);
+                this.classType = "CounterSignatureOrderComplexContentNode";
+				var detailinfo="";
+                this.drawSelf = function () {
+                    var ctx = this.graph.getContext("2d");
+                    this.fillRect(ctx);
+                    ctx.drawImage(this.icon, 0, 0);
+                    ctx.fillStyle = "#09f";
+                    ctx.font = "13px Calibri";
+                    ctx.fillText(ConstantUtils.ACT_NAME+this.comp.act.name, 20, 15);
+                    if(comp.act.state==TaskStatus.DOING)
+			        {
+                    	var startY = 15;
+                    	if (comp.act.doingOrganNames != null && comp.act.doingOrganNames !="") {
+                    		ctx.fillText(ConstantUtils.DOING_HANDLE_PERSON+comp.act.doingOrganNames,2,startY+15);
+							detailinfo+=ConstantUtils.DOING_HANDLE_PERSON+comp.act.doingOrganNames+"\n";
+                    		startY=startY+15;
+                    	}
+                    	if (comp.act.undoneOrganNames != null && comp.act.undoneOrganNames != "") {
+                    		ctx.fillText(ConstantUtils.UNDONE_HANDLE_PERSON+comp.act.undoneOrganNames,2,startY+15);
+							detailinfo+=ConstantUtils.UNDONE_HANDLE_PERSON+comp.act.undoneOrganNames+"\n";
+                    		startY=startY+15;
+                    	}
+                    	if (comp.act.doneOrganNames != null && comp.act.doneOrganNames != "") {
+                    		ctx.fillText(ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames,2,startY+15);
+							detailinfo+=ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames+"\n";
+                    		startY=startY+15;
+                    	}
+				        ctx.fillText(ConstantUtils.CREATE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.beginTime),2,startY+15);
+				        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.limitTime),2,startY+30);
+			        }else if(comp.act.state==TaskStatus.DONE)
+			        {
+				        ctx.fillText(ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames,2,30);
+						detailinfo+=ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames+"\n";
+				        ctx.fillText(ConstantUtils.CREATE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.beginTime),2,45);
+				        ctx.fillText(ConstantUtils.HANDLE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.endTime),2,60);
+				        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.limitTime),2,75);
+			        }else 
+			        {
+				        ctx.fillText(ConstantUtils.UNDONE_HANDLE_PERSON+comp.act.participantNames,2,30);
+						detailinfo+=ConstantUtils.UNDONE_HANDLE_PERSON+comp.act.participantNames+"\n";
+				        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getLimitTimeInfo(comp.act.limitTimeInfo),2,45);
+			        }
+                };
+            };
+
+            CounterSignatureOrderComplexContentNode.prototype = ComplexContentNode.prototype;
+
+            var CounterSignatureComplexContentNode = function (canvas, comp) {
+                ComplexContentNode.call(this, canvas, comp);
+                this.classType = "CounterSignatureComplexContentNode";
+				var detailinfo="";
+                this.drawSelf = function () {
+                    var ctx = this.graph.getContext("2d");
+                    this.fillRect(ctx);
+                    ctx.drawImage(this.icon, 0, 0);
+                    ctx.fillStyle = "#09f";
+                    ctx.font = "13px Calibri";
+                    ctx.fillText(ConstantUtils.ACT_NAME+this.comp.act.name, 20, 15);
+                    if(comp.act.state==TaskStatus.DOING)
+			        {
+                    	var startY = 15;
+                    	if (comp.act.doingOrganNames != null && comp.act.doingOrganNames != "") {
+                    		ctx.fillText(ConstantUtils.DOING_HANDLE_PERSON+comp.act.doingOrganNames,2,startY+15);
+							detailinfo+=ConstantUtils.DOING_HANDLE_PERSON+comp.act.doingOrganNames+"\n";
+                    		startY=startY+15;
+                    	}
+                    	if (comp.act.doneOrganNames != null && comp.act.doneOrganNames != "") {
+                    		ctx.fillText(ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames,2,startY+15);
+							detailinfo+=ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames+"\n";
+                    		startY=startY+15;
+                    	}
+				        ctx.fillText(ConstantUtils.CREATE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.beginTime),2,startY+15);
+				        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.limitTime),2,startY+30);
+			        }else if(comp.act.state==TaskStatus.DONE)
+			        {
+				        ctx.fillText(ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames,2,30);
+						detailinfo+=ConstantUtils.DONE_HANDLE_PERSON+comp.act.doneOrganNames+"\n";
+				        ctx.fillText(ConstantUtils.CREATE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.beginTime),2,45);
+				        ctx.fillText(ConstantUtils.HANDLE_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.endTime),2,60);
+				        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getChineseDateInfo(comp.act.limitTime),2,75);
+			        }else
+			        {
+				        ctx.fillText(ConstantUtils.UNDONE_HANDLE_PERSON+comp.act.participantNames,2,30);
+						detailinfo+=ConstantUtils.UNDONE_HANDLE_PERSON+comp.act.participantNames+"\n";
+				        ctx.fillText(ConstantUtils.LIMIT_TIME+LimitTimeUtil.getLimitTimeInfo(comp.act.limitTimeInfo),2,45);
+			        }
+					canvas.setAttribute('title',detailinfo);
+                };
+            };
+
+            CounterSignatureComplexContentNode.prototype = ComplexContentNode.prototype;
+
+            var SpecialNode = function (canvas, comp) {
+                Node.call(this, canvas, comp);
+                this.width = 32;
+                this.height = 32;
+                this.classType = "SpecialNode";
+                this.drawSelf = function () {
+                    var ctx = this.graph.getContext("2d");
+                    ctx.drawImage(this.icon,0,0,32,32);
+                };
+            };
+            SpecialNode.prototype = Node.prototype;
+
+            var NodeFactory = function (decorators,type) {
+                if (type == DrawCanvasManager.SIMPLE_CANVAS) return new SimpleNodeFactory(decorators);
+                if (type == DrawCanvasManager.COMPLEX_CANVAS) return new ComplexNodeFactory(decorators);
+                return null;
+            };
+
+            var NodeFactoryBase = function () { this.decorators = new ArrayList(); };
+            NodeFactoryBase.prototype.createBaseNode = function () { };
+            NodeFactoryBase.prototype.createNode = function (comp,container) {
+                var baseNode = this.createBaseNode(comp,container);
+                for (var i = 0; i < this.decorators.size(); i++) {
+                    var decorator = this.decorators.getItem(i);
+                    decorator.decorate(baseNode);
+                }
+                return baseNode;
+            };
+
+            var SimpleNodeFactory = function (decorators) {
+                this.decorators = decorators;
+                this.createBaseNode = function (comp, container) {
+                    var canvas = document.createElement("canvas");
+                    canvas.style.position = "absolute";
+                    var node;
+                    switch (comp.act.type) {
+                        case "beginNodeType":
+                        case "endNodeType":
+                            node = new SpecialNode(canvas, comp);
+                            break;
+                        default:
+                            node = new SimpleContentNode(canvas, comp);
+                            break;
+
+                    }
+                    comp.refNode = node;
+                    node.container = container;
+
+                    canvas.setAttribute("width", node.width);
+                    canvas.setAttribute("height", node.height);
+                    return node;
+                }
+            };
+
+            SimpleNodeFactory.prototype = NodeFactoryBase.prototype;
+
+            var ComplexNodeFactory = function (decorators) {
+                this.decorators = decorators;
+                this.createBaseNode = function (comp, container) {
+                    var canvas = document.createElement("canvas");
+                    canvas.style.position = "absolute";
+                    var node;
+                    switch (comp.act.type) {
+                        case NodeType.TASK_NODE_TYPE:
+                            node = new TaskComplexContentNode(canvas, comp);
+                            break;
+                        case NodeType.COUNTER_SIGNATURE_ORDER_TYPE:
+                            node = new CounterSignatureOrderComplexContentNode(canvas, comp);
+                            break;
+                        case NodeType.COUNTER_SIGNATURE_TYPE:
+                            node = new CounterSignatureComplexContentNode(canvas, comp);
+                            break;
+                        case NodeType.BEGIN_NODE_TYPE:
+                        case NodeType.END_NODE_TYPE:
+                            node = new SpecialNode(canvas, comp);
+                            break;
+                        case NodeType.SPLIT_NODE_TYPE:
+                        case NodeType.JOIN_NODE_TYPE:
+						case NodeType.ROUTE_NODE_TYPE:
+                        case NodeType.SUBFLOW_NODE_TYPE:
+                            if (comp.act.typeCode == NodeTypeCode.TASK_NODE_TYPE) {
+                                node = new TaskComplexContentNode(canvas, comp);
+                                break;
+                            }
+                            node = new ComplexContentNode(canvas, comp);
+                            break;
+                        default:
+                            node = new SimpleContentNode(canvas, comp);
+                            break;
+                    }
+                    comp.refNode = node;
+                    node.container = container;
+                    canvas.setAttribute("width", node.width);
+                    canvas.setAttribute("height", node.height);
+                    return node;
+                };
+            };
+
+            ComplexNodeFactory.prototype = NodeFactoryBase.prototype;
+
+            var Point = function (x, y) {
+                this.x = x;
+                this.y = y;
+            };
+
+            var Rectangle = function (x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+            };
+
+            var LineState=
+	        {
+		        //完成线
+		        DONE_LINE:"DONE_LINE",
+		        //结束线
+		        UNDONE_LINE:"UNDONE_LINE"
+	        }
+	        var Line = function (parent, fromNode, toNode) {
+	            this.rectifyDistance = 20;
+	            this.fromNode = fromNode;
+	            this.toNode = toNode;
+	            this.fromPoint = null;
+	            this.toPoint = null; ;
+	            this.range = null;
+	            this.rectify = null;
+	            this.parent = parent;
+	            this.lineType = this.getLineType(fromNode.comp, toNode.comp, true);
+	            this.setFromPointAndToPoint();
+	            this.x = Math.min(this.fromPoint.x, this.toPoint.x);
+	            this.y = Math.min(this.fromPoint.y, this.toPoint.y);
+	            this.graph = this.initLineGraph();
+	            this.relativeFromPoint = new Point(Math.abs(this.fromPoint.x - this.x), Math.abs(this.fromPoint.y - this.y));
+	            this.relativeToPoint = new Point(Math.abs(this.toPoint.x - this.x), Math.abs(this.toPoint.y - this.y));
+	        };
+
+	        Line.prototype.initLineGraph = function () {
+	            var canvas = document.createElement("canvas")
+	            canvas.setAttribute("width", Math.abs(this.fromPoint.x - this.toPoint.x) + this.rectifyDistance);
+	            canvas.setAttribute("height", Math.abs(this.fromPoint.y - this.toPoint.y) + this.rectifyDistance);
+	            canvas.style.position = "absolute";
+//	            canvas.style.border = "1px solid #ff0000";
+	            canvas.style.left = this.x - this.rectifyDistance/2;
+	            canvas.style.top = this.y - this.rectifyDistance/2;
+	            var ctx = canvas.getContext("2d");
+	            ctx.translate(this.rectifyDistance/2, this.rectifyDistance/2);
+	            return canvas;
+	        };
+
+		    Line.prototype.getLineType = function (fromComp, toComp, flag) {
+		        if (CompositeFacade.Current_Proc) {
+		            if (fromComp.act.type == NodeType.BEGIN_NODE_TYPE && (toComp.act.state == TaskStatus.DOING || toComp.act.state == TaskStatus.DONE))
+		                return LineState.DONE_LINE;
+					if(fromComp.act.state == TaskStatus.DONE && (toComp.act.state == TaskStatus.DOING || toComp.act.state == TaskStatus.DONE))
+						return LineState.DONE_LINE;
+		            if (toComp.act.type == NodeType.END_NODE_TYPE && (fromComp.act.state == TaskStatus.DONE) && !fromComp.hasParentDoing)
+		               return LineState.DONE_LINE;
+		            var temp = fromComp.act.defId + "#" + toComp.act.defId;
+		            var x = CompositeFacade.Current_Proc.TransitionInstanceDic[temp];
+		            if (CompositeFacade.Current_Proc.TransitionInstanceDic[temp]) return LineState.DONE_LINE;
+		        }
+		        return LineState.UNDONE_LINE;
+		    };		
+
+            Line.prototype.setFromPointAndToPoint=function(){
+			    var tempFromPoint=new Point(this.fromNode.x+this.fromNode.width/2,this.fromNode.y+this.fromNode.height/2);
+			    var tempToPoint=new Point(this.toNode.x+this.toNode.width/2,this.toNode.y+this.toNode.height/2);
+			    //特殊处理开始几点
+			    if(this.fromNode.comp.act.type==NodeType.BEGIN_NODE_TYPE)
+			    {
+				    this.fromPoint=this.getIntersectPoint(new Rectangle(this.fromNode.x,this.fromNode.y,30,30),tempToPoint);
+			    }
+			    else
+			    {
+			        this.fromPoint = this.getIntersectPoint(new Rectangle(this.fromNode.x, this.fromNode.y, this.fromNode.width, this.fromNode.height), tempToPoint);
+			    }
+			    //特殊处理结束节点
+			    if(this.toNode.comp.act.type==NodeType.END_NODE_TYPE)
+			    {
+			        this.toPoint = this.getIntersectPoint(new Rectangle(this.toNode.x, this.toNode.y, 30, 30), tempFromPoint);
+			    }
+			    else
+			    {
+			        this.toPoint = this.getIntersectPoint(new Rectangle(this.toNode.x, this.toNode.y, this.toNode.width, this.toNode.height), tempFromPoint);
+			    }
+			}
+
+            /**
+		     * 获得一个矩形中心点到矩形外某点之间的连线与矩形的交点
+		     * 算法思路：
+		     * 以矩形外的某点为坐标原点，将图形分为四个象限，每个象限分两种情况，坐标轴上单独处理
+		     * 1.坐标轴的情况：
+		     * 	1.负x轴的情况
+		     * 	2.正x轴的情况
+		     * 	3.正y轴的情况
+		     * 	4.负y轴的情况
+		     * 2.象限情况：
+		     * 	2.1.第一象限：连线与矩形左边相交的情况；与矩形下边相交的情况
+		     *	2.2.第二象限：连线与矩形右边相交的情况；与矩形下边相交的情况
+		     * 	2.3.第三象限：连线与矩形右边相交的情况；与矩形上边相交的情况
+		     * 	2.4.第四象限：连线与矩形左边相交的情况；与矩形上边相交的情况
+		     * 
+		     * */
+		    Line.prototype.getIntersectPoint=function(fromNode,endPoint){
+			    //开始矩形的x坐标
+			    var x1=fromNode.x;
+			    //开始矩形的y坐标
+			    var y1=fromNode.y;
+			    //结束点的x坐标
+			    var x2=endPoint.x;
+			    //结束点的y坐标
+			    var y2=endPoint.y;
+			
+			    //开始矩形的中心点x坐标
+			    var fromCenterX=x1+fromNode.width/2;
+			    //开始矩形的中心点的y坐标
+			    var fromCenterY=y1+fromNode.height/2;
+			    //矩形和点之间的x坐标相对距离
+			    var dx=Math.abs(x1-x2);
+			    //矩形和点之间的y坐标相对距离
+			    var dy=Math.abs(y1-y2);
+			    //相对距离的正切值
+			    var tanDYX=dy/dx;
+			    //开始矩形的正切值
+			    var fromDYX=fromNode.height/fromNode.width;
+			
+			    var returnPoint=null;
+			    //y坐标相等的情况
+			    if(y1==y2&&x1<x2)
+			    {
+				    returnPoint= new Point(x1+fromNode.width,fromCenterY);
+			    }
+			    else if(y1==y2&&x1>x2)
+			    {
+				    returnPoint= new Point(x1,fromCenterY);
+			    }
+			    //x坐标相等的情况
+			    else if(x1==x2&&y1<y2)
+			    {
+				    returnPoint= new Point(fromCenterX,y1+fromNode.height);
+			    }
+			    else if(x1==x2&&y1>y2)
+			    {
+				    returnPoint= new Point(fromCenterX,y1);
+			    }
+			    //第一象限
+			    else if(x1<x2&&y1<y2)
+			    {
+				    if(fromDYX>=tanDYX)
+				    {
+					    returnPoint= new Point(x1+fromNode.width,fromCenterY+tanDYX*fromNode.width/2);
+				    }
+				    else
+				    {
+					    returnPoint= new Point(fromCenterX+dx/dy*fromNode.height/2,y1+fromNode.height);
+				    }
+				
+			    }
+			    //第二象限
+			    else if(x1>x2&&y1<y2)
+			    {
+				    if(fromDYX>=tanDYX)
+				    {
+					    returnPoint= new Point(x1,fromCenterY+tanDYX*fromNode.width/2);
+				    }
+				    else
+				    {
+					    returnPoint= new Point(fromCenterX-dx/dy*fromNode.height/2,y1+fromNode.height);
+				    }
+			    }
+			    //第三象限
+			    else if(x1<x2&&y1>y2)
+			    {
+				    if(fromDYX>=tanDYX)
+				    {
+					    returnPoint= new Point(x1+fromNode.width,fromCenterY-tanDYX*fromNode.width/2);
+				    }
+				    else
+				    {
+					    returnPoint= new Point(fromCenterX+fromNode.height/2*dx/dy,y1);
+				    }
+			    }
+			    //第四象限
+			    else if(x1>x2&&y1>y2)
+			    {
+				    if(fromDYX>=tanDYX)
+				    {
+					    returnPoint= new Point(x1,fromCenterY-fromNode.width/2*tanDYX);
+				    }
+				    else
+				    {
+					    returnPoint= new Point(fromCenterX-fromNode.height/2*dx/dy,y1);
+				    }
+	            }
+			    return returnPoint; 
+			};
+
+			Line.prototype.getLineColor = function () {
+			    if (this.lineType == LineState.DONE_LINE)
+			        return "#36b147";
+			    return "#aeaeae";
+            };
+
+			Line.prototype.drawSelf = function (isReset) {
+			    if (isReset) this.setFromPointAndToPoint();
+                var ctx = this.graph.getContext("2d");
+                ctx.strokeStyle = this.getLineColor();
+                ctx.lineWidth = 2;
+			    GraphicsUtil.drawLineArrow(ctx, this.relativeFromPoint.x, this.relativeFromPoint.y,
+                    this.relativeToPoint.x, this.relativeToPoint.y,this.getLineColor());
+            };
+
+			var GraphicsUtil = {};
+
+			GraphicsUtil.drawHead = function (ctx, x0, y0, x1, y1, x2, y2, lineColor) {
+			    ctx.save();
+			    ctx.fillStyle = lineColor;
+			    ctx.beginPath();
+			    ctx.moveTo(x0, y0);
+			    ctx.lineTo(x1, y1);
+			    ctx.lineTo(x2, y2);
+			    var cp1x, cp1y, cp2x, cp2y, backdist;
+			    var shiftamt = 5;
+			    if (x2 == x0) {
+			        // Avoid a divide by zero if x2==x0
+			        backdist = y2 - y0;
+			        cp1x = (x1 + x0) / 2;
+			        cp2x = (x1 + x0) / 2;
+			        cp1y = y1 + backdist / shiftamt;
+			        cp2y = y1 - backdist / shiftamt;
+			    } else {
+			        backdist = Math.sqrt(((x2 - x0) * (x2 - x0)) + ((y2 - y0) * (y2 - y0)));
+			        var xback = (x0 + x2) / 2;
+			        var yback = (y0 + y2) / 2;
+			        var xmid = (xback + x1) / 2;
+			        var ymid = (yback + y1) / 2;
+
+			        var m = (y2 - y0) / (x2 - x0);
+			        var dx = (backdist / (2 * Math.sqrt(m * m + 1))) / shiftamt;
+			        var dy = m * dx;
+			        cp1x = xmid - dx;
+			        cp1y = ymid - dy;
+			        cp2x = xmid + dx;
+			        cp2y = ymid + dy;
+			    }
+
+			    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x0, y0);
+			    ctx.fill();
+			    ctx.restore();
+			};
+
+            GraphicsUtil.drawLineArrow = function(ctx,x1,y1,x2,y2,lineColor)
+            {
+                angle=Math.PI/8;
+                d=20;
+
+                var dist=Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+                var ratio=(dist-d/3)/dist;
+                var tox, toy,fromx,fromy;
+
+                tox=x1+(x2-x1)*ratio;
+                toy=y1+(y2-y1)*ratio;
+
+                fromx=x1;
+                fromy=y1;
+
+                ctx.beginPath();
+                ctx.moveTo(fromx,fromy);
+                ctx.lineTo(tox,toy);
+                ctx.stroke();
+
+                var lineangle=Math.atan2(y2-y1,x2-x1);
+                var h=Math.abs(d/Math.cos(angle));
+
+                var angle1=lineangle+Math.PI+angle;
+                var topx=x2+Math.cos(angle1)*h;
+                var topy=y2+Math.sin(angle1)*h;
+                var angle2=lineangle+Math.PI-angle;
+                var botx=x2+Math.cos(angle2)*h;
+                var boty=y2+Math.sin(angle2)*h;
+                GraphicsUtil.drawHead(ctx, topx, topy, x2, y2, botx, boty, lineColor);
+            }
+
+    		function initProcessViewer() {
+//    		    AppConfig.isShowActInfoByMouseOver = true;
+//    		    AppConfig.isShowStartEndNode = false;
+    		    AppConfig.actionType = "send";
+                var xmlInfo=new DOMParser().parseFromString(runningInfo, "application/xml");
+                var process = new Process();
+			    var parser = new XpdlRunningInfoParser();
+			    parser.parse(process, xmlInfo);
+                DrawCanvasManager.canvasContainer = $("canvasContainer");
+                var canvas = DrawCanvasManager.createNewCanvas("simpleCanvas",parent.getLocaleMsg("UI.BPM.MONITOR.064", '概要流程图'));
+                DrawCanvasManager.initDrawCanvas(canvas,DrawCanvasManager.SIMPLE_CANVAS);
+                DrawCanvasManager.parseAndDraw(canvas, process, null);
+
+                var canvas = DrawCanvasManager.createNewCanvas("complexCanvas", parent.getLocaleMsg("UI.BPM.MONITOR.065", '详细流程图'));
+                DrawCanvasManager.initDrawCanvas(canvas, DrawCanvasManager.COMPLEX_CANVAS);
+                DrawCanvasManager.parseAndDraw(canvas, process, null);
+
+//                if (AppConfig.IsShowActInfoByComplexCanvas) { 
+//                    DrawCanvasManager.addNewNavigator(
+//                }
+//
+//    		    var drawContainer=document.getElementById("drawContainer");
+//    		    new XpdlRunningInfoDraw(drawContainer, process, "SIMPLE_CANVAS");
+            }
+
+            function drawNewProcessRuningInfo(processDefInfo, processInstanceInfo,title,type) {
+				var process = new Process();
+    			//对流程定义信息的实现            
+				var xmlDefInfo = new DOMParser().parseFromString(processDefInfo, "application/xml");
+                var parserDefInfo = new ProcessDefInfoParser();
+                parserDefInfo.parse(process, xmlDefInfo);
+				document.getElementById("introduceId").innerHTML =parent.getLocaleMsg("UI.BPM.MONITOR.086", '图例说明：')+ process.name;
+                //对流程实例信息的实现				
+                if(processInstanceInfo != null){
+					var xmlInstanceInfo = new DOMParser().parseFromString(processInstanceInfo, "application/xml");
+				    var parserInstanceInfo = new ProcessInstanceInfoParser();
+                    parserInstanceInfo.parse(process, xmlInstanceInfo);                	
+                }
+				
+                if (title == null) title = process.name;
+				var canvas = DrawCanvasManager.createNewCanvas(process.id+type, title);
+                DrawCanvasManager.initDrawCanvas(canvas, type);
+                DrawCanvasManager.parseAndDraw(canvas, process, null);
+            }
+			
+            function showParentProcess(){
+                var parentProc=AppConfig.procInfoDic[AppConfig.currentProc.reqProcId];
+				if(parentProc!=null)
+				{
+					DrawCanvasManager.changeSelectedCanvas(parentProc.canvasId);
+					return;
+				}
+				var processDefInfo = parent.getProcessGraphDefModelInfo(AppConfig.currentProc.reqProcId, null, null,null,null);
+                var processInstanceInfo = null;
+                if(AppConfig.currentProc.reqProcId != null && AppConfig.currentProc.reqProcId != ""){
+                	 processInstanceInfo = parent.getProcessInstanceModelInfo(AppConfig.currentProc.reqProcId, null,null);                  
+ 				}
+                drawNewProcessRuningInfo(processDefInfo, processInstanceInfo, parent.getLocaleMsg("UI.BPM.MONITOR.066", '父流程：')+AppConfig.currentProc.reqProcName, DrawCanvasManager.PARENT_CANVAS);
+            }
+
+            function init() {     
+            	handleResource();
+                AppConfig.init(P$("isShowOrderCounterSign").value,P$("isShowParallelCounterSign").value,
+                		P$("isShowSplit").value,P$("isShowJoin").value,
+                		P$("isShowSubflow").value,P$("isShowActPropertyUrl").value,
+                		P$("actionType").value,P$("isShowActInfoByMouseOver").value,
+                		P$("projectType").value,P$("isShowStartEndNode").value,
+                		P$("isShowIconDetailPanel").value,P$("isShowSimpleFlowView").value,
+                		P$("isShowProcessInfo").value,P$("isShowBackBtn").value,
+                		P$("isShowparentFlowViewButton").value);        
+                DrawCanvasManager.canvasContainer = $("canvasContainer");
+                //是否显示图例说明中的并序会签图标，默认显示
+                if(AppConfig.isShowParallelCounterSign)
+		        {
+                	$("icon_counterSignParallel").style.display="block";
+                	$("counterSignParallelId").style.display="block";
+		        }else{
+		        	$("icon_counterSignParallel").style.display="none";
+		        	$("counterSignParallelId").style.display="none";
+		        }
+                //是否显示图例说明中的顺序会签图标，默认显示
+                if(AppConfig.isShowOrderCounterSign)
+		        {
+                	$("icon_counterSignOrder").style.display="block";
+                	$("counterSignOrderId").style.display="block";
+		        }else{
+		        	$("icon_counterSignOrder").style.display="none";
+		        	$("counterSignOrderId").style.display="none";
+		        }
+                //是否显示图例说明中的子流程环节图标，默认显示
+                if(AppConfig.isShowSubflow)
+		        {
+                	$("icon_subflow").style.display="block";
+                	$("subflowId").style.display="block";
+		        }else{
+		        	$("icon_subflow").style.display="none";
+		        	$("subflowId").style.display="none";
+		        }
+                //是否显示图例说明中的分支环节图标，默认显示
+                if(AppConfig.isShowSplit)
+		        {
+                	$("icon_split").style.display="block";
+                	$("splitId").style.display="block";
+		        }else{
+		        	$("icon_split").style.display="none";
+		        	$("splitId").style.display="none";
+		        }
+                //是否显示图例说明中的汇聚环节图标，默认显示
+                if(AppConfig.isShowJoin)
+		        {
+                	$("icon_join").style.display="block";
+                	$("joinId").style.display="block";
+		        }else{
+		        	$("icon_join").style.display="none";
+		        	$("joinId").style.display="none";
+		        }
+				var processId = P$("processId").value;
+				var procDefId = P$("procDefId").value;
+                var procDefUniqueId = P$("procDefUniqueId").value;
+                var assignmentId = P$("assignmentId").value;
+                var pkDataField = P$("pkDataField").value; 
+ 				var processDefInfo = parent.getProcessGraphDefModelInfo(processId,procDefId,procDefUniqueId,assignmentId, pkDataField);
+				var processInstanceInfo = null;
+                if((processId != "null" && processId != "")||(assignmentId != "null" && assignmentId != "")||(pkDataField != "null")){
+					processInstanceInfo = parent.getProcessInstanceModelInfo(P$("processId").value, 
+                    		P$("assignmentId").value, P$("pkDataField").value);
+                }
+
+                if (AppConfig.isShowActInfoByComplexCanvas) {
+                    drawNewProcessRuningInfo(processDefInfo, processInstanceInfo,parent.getLocaleMsg("UI.BPM.MONITOR.065", '详细流程图'), DrawCanvasManager.COMPLEX_CANVAS);
+                }
+                if(AppConfig.isShowSimpleFlowView){
+                	drawNewProcessRuningInfo(processDefInfo, processInstanceInfo,parent.getLocaleMsg("UI.BPM.MONITOR.064", '概要流程图'), DrawCanvasManager.SIMPLE_CANVAS);
+	            }
+            }
+            
+            function handleResource(){
+            	document.getElementById("needResourceId").title = parent.getLocaleMsg("UI.BPM.MONITOR.067", '需要用到的资源文件');
+//            	document.getElementById("introduceId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.086", '图例说明');
+            	document.getElementById("backSuggestMessage").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.068", '当前选中环节：');
+            	document.getElementById("confirmBtn").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.069", '确定');
+            	document.getElementById("resetBtn").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.070", '重置');
+            	document.getElementById("transitionLineId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.071", '迁移线');
+            	document.getElementById("icon_transitionLine").alt = parent.getLocaleMsg("UI.BPM.MONITOR.071", '迁移线');
+            	document.getElementById("startNodeId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.072", '开始');
+            	document.getElementById("icon_start").alt = parent.getLocaleMsg("UI.BPM.MONITOR.072", '开始');
+            	document.getElementById("endNodeId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.073", '结束');
+            	document.getElementById("icon_end").alt = parent.getLocaleMsg("UI.BPM.MONITOR.073", '结束');
+            	document.getElementById("humanNodeId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.074", '人工环节');
+            	document.getElementById("icon_human").alt = parent.getLocaleMsg("UI.BPM.MONITOR.074", '人工环节');
+            	document.getElementById("counterSignParallelId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.075", '并行会签');
+            	document.getElementById("icon_counterSignParallel").alt = parent.getLocaleMsg("UI.BPM.MONITOR.075", '并行会签');
+            	document.getElementById("counterSignOrderId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.076", '顺序会签');
+            	document.getElementById("icon_counterSignOrder").alt = parent.getLocaleMsg("UI.BPM.MONITOR.076", '顺序会签');
+            	document.getElementById("subflowId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.077", '子流程');
+            	document.getElementById("icon_subflow").alt = parent.getLocaleMsg("UI.BPM.MONITOR.077", '子流程');
+            	document.getElementById("splitId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.078", '发散');
+            	document.getElementById("icon_split").alt = parent.getLocaleMsg("UI.BPM.MONITOR.078", '发散');
+            	document.getElementById("joinId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.079", '汇聚');
+            	document.getElementById("icon_join").alt = parent.getLocaleMsg("UI.BPM.MONITOR.079", '汇聚');
+            	document.getElementById("doneActId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.080", '已办环节');
+            	document.getElementById("doingActId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.081", '正办环节');
+            	document.getElementById("todoActId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.082", '待办环节');
+            	document.getElementById("backActId").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.083", '回退环节');
+            	document.getElementById("showParentProcessBtn").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.084", '查看父流程');
+            	document.getElementById("backBtn").innerHTML = parent.getLocaleMsg("UI.BPM.MONITOR.032", '返回');
+            }    
+
+	    </script>
+    </head>
+	<body onLoad="init()">
+		<div id="fullContainer" style="width:100%;height:100%;">
+            <div style="display:none" id="needResourceId" title="">
+                <img id="node_start" src="assets/canvasStart.png" alt=""/>
+                <img id="node_end" src="assets/canvasEnd.png" alt=""/>
+                <img id="node_route" src="assets/activityroute.png" alt=""/>
+                <img id="node_human" src="assets/activityhuman.png" alt=""/>
+                <img id="node_join" src="assets/join.gif" alt=""/>
+                <img id="node_split" src="assets/split.gif" alt=""/>
+                <img id="node_subflow" src="assets/activitysubflow.gif" alt=""/>
+                <img id="node_countersignorder" src="assets/counterSignature.gif" alt=""/>
+                <img id="node_countersignparallel" src="assets/counterSignature2.gif" alt=""/>
+            </div>
+            <div id="showSelectedBackActInfoContainer">
+                <div id="backSuggestMessage"></div>
+                <div id="showSelectedBackActInfo"></div>
+                <div class="backBtn" onClick="javascript:SelectedNodeManager.confirmSelect()" id="confirmBtn"></div>
+                <div class="backBtn" onClick="javascript:SelectedNodeManager.resetSelect()" id="resetBtn"></div>
+            </div>
+    		<div id="iconList" style="width:100%; height:50px; vertical-align:middle;" >
+				<div style="font-size:12px; font-weight:700; padding-left:15px; background:#B5C8E9; " id="introduceId"></div>
+				<div id="detailList" style="border:2px solid #B5C8E9; border-left:4px solid #B5C8E9; height:25px;">
+					<div><img id="icon_transitionLine" src="assets/transition_line.png" alt=""/></div>
+					<div class="icon_desc" id="transitionLineId"></div>         
+					<div><img id="icon_start" style="height:16px; width:14px;margin-top:3px;" src="assets/start.png" alt=""/></div>
+					<div class="icon_desc" id="startNodeId"></div>
+					<div><img id="icon_end" style="height:16px; width:16px; margin-top:3px;" src="assets/end.png" alt=""/></div>
+					<div class="icon_desc" id="endNodeId"></div>
+					<div><img id="icon_human" src="assets/activityhuman.png" alt=""/></div>
+					<div class="icon_desc" id="humanNodeId"></div>
+					<div><img id="icon_counterSignParallel" src="assets/counterSignature2.gif" alt=""/></div>
+					<div class="icon_desc" id="counterSignParallelId"></div>
+					<div><img id="icon_counterSignOrder" src="assets/counterSignature.gif" alt=""/></div>
+					<div class="icon_desc" id="counterSignOrderId"></div>
+					<div><img id="icon_subflow" src="assets/activitysubflow.gif" alt=""/></div>
+					<div class="icon_desc" id="subflowId"></div>
+					<div><img id="icon_split" src="assets/split.gif" alt=""/></div>
+					<div class="icon_desc" id="splitId"></div>
+					<div style="border:"><img id="icon_join" src="assets/join.gif" alt=""/></div>
+					<div class="icon_desc" id="joinId"></div>
+					<div><img id="icon_mark" src="assets/markLine.jpg" style="width:2px; margin-right:10px;" alt=""/></div>
+					<div><img id="icon_done" src="assets/task_done.png" alt=""/></div>
+					<div class="icon_desc" id="doneActId"></div>
+					<div><img id="icon_doing" src="assets/task_doing.png" alt=""/></div>
+					<div class="icon_desc" id="doingActId"></div>
+					<div><img id="icon_daiban" src="assets/task_daiban.png" alt=""/></div>
+					<div class="icon_desc" id="todoActId"></div>
+					<div><img id="icon_back" src="assets/is_back.png" alt=""/></div>
+					<div class="icon_desc" id="backActId"></div>
+					<div><img id="icon_mark" src="assets/markLine.jpg" style="width:2px; margin-right:10px;" alt=""/></div>
+					<div class="divbtn" id="showParentProcessBtn" onClick="showParentProcess()"></div>
+					<div class="divbtn" style=" margin-top:4px;" id="backBtn" onClick="parent.back()"><img src="assets/return.png" alt=""/></div>
+				</div>  
+            </div>
+            <div id="canvasContainer">	
+                <ul id="tabs">
+                </ul>
+            </div>
+            <div id="runningInfo" style="width:100%;height:100%;display:none"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+
+    <!-- 全局策略服务 -->
+    <service interface="org.loushang.bsp.api.globalpolicy.IGlobalPolicyService" refScaComponent="BspGlobalPolicyService.BspGlobalPolicyService" />
+     
+</SCAServices>

@@ -1,0 +1,29 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+s|Application{
+	font-family:Verdana;
+}
+
+mx|ToolTip
+{
+	color:#555;
+	font-size:16;
+	font-family:Verdana;
+	
+	padding-top:8;
+	padding-bottom:8;
+	padding-right:8;
+	padding-left:8;
+}
+
+
+mx|ButtonBar
+{
+	button-height:30px;
+}
+
+.phaseTextArea
+{
+	skinClass: ClassReference("component.graph.bpmn.drawing.skin.TextAreaSkin");
+}

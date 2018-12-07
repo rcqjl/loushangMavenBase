@@ -1,0 +1,101 @@
+form {
+	min-width: 740px;
+    padding-top: 20px;
+}
+.btn{
+	width:80px;
+	height:30px;
+}
+
+/*datatables无记录时的显示样式*/
+.table>tbody>tr>td.dataTables_empty {
+	height: 200px;
+	vertical-align: middle;
+}
+
+/*datatables表头中单元格底部边框的粗细设置*/
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+	border-bottom-width: 1px;
+}
+
+/*datatables表头中单元格底部边框的粗细设置*/
+.dbtn {
+	border-style: none;
+	background: transparent;
+}
+
+/*多条件搜索文字与图标距离的设置*/
+a > i {
+	margin-left: 5px;
+}
+
+/*高级搜索弹出框的大小*/
+div.popover {
+	min-width: 500px;
+}
+
+/*表单中表单组间距*/
+.form-group {
+	margin-bottom: 10px !important;
+}
+
+/***********************************************/
+
+.Validform_checktip {
+	font-size: 14px;
+    text-align: initial;
+}
+.Validform_right {
+    color: #3E99FF;
+}
+
+.container {
+    width: auto;
+    padding:0 15px;
+}
+
+.ue-form{
+	width:330px;
+	float:left;
+}
+
+.form-horizontal .control-label {
+    height: 34px;
+    line-height: 34px;
+}
+.col-xs-5 {
+    width: auto;
+}
+.chose > .ue-form {
+    border: 0;
+}
+.ue-right-top{
+	height: 30px;
+    line-height: 30px;
+    box-shadow: 0 0 0;
+    border-bottom: 1px solid #ccc;
+}
+@media (min-width: 768px){
+	.col-md-9 {
+	    width: 72%;
+	}
+}
+@media (min-width: 992px){
+	.col-md-9 {
+	    width: 80%;
+	}
+}
+
+.bread {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 10px;
+	text-align: left;
+	padding-bottom: 10px;
+	padding-left: 1%;
+	height: 31px;
+	line-height: 26px;
+	padding-top: 0px;
+}
+a, a:focus, a:hover, a:active{
+	color: #3e99ff;
+}

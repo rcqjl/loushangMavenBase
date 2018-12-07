@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+	<!-- 业务流程建模服务 -->
+	<service interface="org.loushang.workflow.businessprocessmodel.service.IBusinessProcessDefModelService" 
+		refScaComponent="businessProcessDefModelService.businessProcessDefModelService"/>
+	<!-- WfTask服务 -->
+	<service interface="org.loushang.workflow.api.IWfTaskContext" 
+		refScaComponent="wfTaskContext.wfTaskContext" >
+		<serviceName>org.loushang.workflow.api.wfTaskService</serviceName>
+	</service>
+	<!-- WfQuery服务 -->
+	<service interface="org.loushang.workflow.api.IWfQueryContext" 
+		refScaComponent="wfQueryContext.wfQueryContext" >
+		<serviceName>org.loushang.workflow.api.wfQueryService</serviceName>
+	</service>
+	<!-- AbstractXmlLoader服务 -->
+	<service interface="org.loushang.workflow.infoprocessmodel.transform.loader.IAbstractXmlLoader" 
+		refScaComponent="abstractXmlLoader.abstractXmlLoader" >
+		<serviceName>org.loushang.workflow.infoprocessmodel.abstractXmlLoaderService</serviceName>
+	</service>
+	<!-- jspFormWithPKCommonXmlHandler服务 -->
+	<service interface="org.loushang.workflow.infoprocessmodel.transform.IAbstractXmlHandler" 
+		refScaComponent="jspFormWithPKCommonXmlHandler.jspFormWithPKCommonXmlHandler" >
+		<serviceName>org.loushang.workflow.infoprocessmodel.JspFormWithPKCommonXmlHandlerService</serviceName>
+	</service>
+	<!-- 任务跳转服务 -->
+	<service interface="org.loushang.workflow.tasklist.forward.service.ITaskListDispatcherService" 
+		refScaComponent="taskListDispatcher.taskListDispatcher" >
+		<serviceName>org.loushang.workflow.tasklist.taskListDispatcherService</serviceName>
+	</service>
+	<!-- 流程监控人读服务 -->
+	<service interface="org.loushang.workflow.engine.processmonitor.service.IProcessMonitorQueryService" 
+		refScaComponent="processMonitorQuery.processMonitorQuery" >
+		<serviceName>org.loushang.workflow.engine.processMonitorQueryService</serviceName>
+	</service>
+	<!-- 待办任务读服务 -->
+	<service interface="org.loushang.workflow.tasklist.taskinfo.service.IDaiBanTaskQueryService" 
+		refScaComponent="daiBanTaskQuery.daiBanTaskQuery" >
+		<serviceName>org.loushang.workflow.tasklist.daiBanTaskQueryService</serviceName>
+	</service>
+	<!-- 已办任务读服务 -->
+	<service interface="org.loushang.workflow.tasklist.taskinfo.service.IYiBanTaskQueryService" 
+		refScaComponent="yiBanTaskQuery.yiBanTaskQuery" >
+		<serviceName>org.loushang.workflow.tasklist.yiBanTaskQueryService</serviceName>
+	</service>
+	<!-- 流程监控人写服务 -->
+	<service interface="org.loushang.workflow.engine.processmonitor.service.IProcessMonitorService" 
+		refScaComponent="processMonitor.processMonitor" >
+		<serviceName>org.loushang.workflow.engine.processMonitorService</serviceName>
+	</service>
+	<!-- 待办任务写服务 -->
+	<service interface="org.loushang.workflow.tasklist.taskinfo.service.IDaiBanTaskService" 
+		refScaComponent="daiBanTask.daiBanTask" >
+		<serviceName>org.loushang.workflow.tasklist.daiBanTaskService</serviceName>
+	</service>
+	<!-- 已办任务写服务 -->
+	<service interface="org.loushang.workflow.tasklist.taskinfo.service.IYiBanTaskService" 
+		refScaComponent="yiBanTask.yiBanTask" >
+		<serviceName>org.loushang.workflow.tasklist.yiBanTaskService</serviceName>
+	</service>
+	<!-- 出差代理委派关系查询服务 -->
+	<service interface="org.loushang.workflow.engine.assignment.service.IBizTripProxyAssignmentQueryService" 
+		refScaComponent="bizTripProxyAssignmentQuery.bizTripProxyAssignmentQuery" >
+		<serviceName>org.loushang.workflow.engine.tripProxyAssignmentQueryService</serviceName>
+	</service>
+	<!-- 出差代理委派关系写服务 -->
+	<service interface="org.loushang.workflow.engine.assignment.service.IBizTripProxyAssignmentService" 
+		refScaComponent="bizTripProxyAssignment.bizTripProxyAssignment" >
+		<serviceName>org.loushang.workflow.engine.tripProxyAssignmentService</serviceName>
+	</service>
+	<!-- 已归档的出差代理委派关系查询服务 -->
+	<service interface="org.loushang.workflow.engine.hist.assignmentend.service.IBizTripProxyAssignmentEndQueryService" 
+		refScaComponent="bizTripProxyAssignmentEndQuery.bizTripProxyAssignmentEndQuery" >
+		<serviceName>org.loushang.workflow.engine.tripProxyAssignmentEndQueryService</serviceName>
+	</service>
+	<!-- 已归档的出差代理委派关系写服务 -->
+	<service interface="org.loushang.workflow.engine.hist.assignmentend.service.IBizTripProxyAssignmentEndService" 
+		refScaComponent="bizTripProxyAssignmentEnd.bizTripProxyAssignmentEnd" >
+		<serviceName>org.loushang.workflow.engine.tripProxyAssignmentEndService</serviceName>
+	</service>
+	<service interface="org.loushang.workflow.processdefinition.dataref.domain.IProcessCreateDataRef" 
+		refScaComponent="processCreateDataRefDomain.processCreateDataRefDomain" >
+		<serviceName>org.loushang.workflow.processdefinition.processCreateDataRefService</serviceName>
+	</service>
+</SCAServices>

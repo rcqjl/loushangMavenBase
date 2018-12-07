@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_function" xmlns="http://www.loushang.com/sca/1.0">
+
+	<!-- 应用 -->
+	<component name="BspAppService">
+        <service name="BspAppService">
+            <interface.java interface="org.loushang.bsp.api.function.service.IAppService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.function.AppServiceImpl" />
+    </component>
+	<component name="AppDomain">
+		<service name="AppDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.function.domain.IAppDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.domain.support.AppDomain" />
+		<reference name="appDao" target="AppDao/AppDao" />
+	</component>
+	<component name="AppDao">
+		<service name="AppDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.function.dao.IAppDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.dao.jdbc.AppJdbcDao" />
+	</component>
+	
+	<!-- 模块 -->
+	<component name="BspModuleService">
+        <service name="BspModuleService">
+            <interface.java interface="org.loushang.bsp.api.function.service.IModuleService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.function.ModuleServiceImpl" />
+    </component>
+	<component name="ModuleDomain">
+		<service name="ModuleDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.function.domain.IModuleDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.domain.support.ModuleDomain" />
+		<reference name="moduleDao" target="ModuleDao/ModuleDao" />
+		<reference name="appDao" target="AppDao/AppDao" />
+		<reference name="functionDao" target="FunctionDao/FunctionDao" />
+		<reference name="operationDao" target="OperationDao/OperationDao" />
+	</component>
+	<component name="ModuleDao">
+		<service name="ModuleDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.function.dao.IModuleDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.dao.jdbc.ModuleJdbcDao" />
+	</component>
+	
+	<!-- 功能 -->
+	<component name="BspFunctionService">
+        <service name="BspFunctionService">
+            <interface.java interface="org.loushang.bsp.api.function.service.IFunctionService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.function.FunctionServiceImpl" />
+    </component>
+	<component name="FunctionDomain">
+		<service name="FunctionDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.function.domain.IFunctionDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.domain.support.FunctionDomain" />
+		<reference name="urlDao" target="UrlDao/UrlDao" />
+		<reference name="operationDao" target="OperationDao/OperationDao" />
+		<reference name="functionDao" target="FunctionDao/FunctionDao" />
+		<reference name="moduleDao" target="ModuleDao/ModuleDao" />
+	</component>
+	<component name="FunctionDao">
+		<service name="FunctionDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.function.dao.IFunctionDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.dao.jdbc.FunctionJdbcDao" />
+	</component>
+	
+	<!-- 操作 -->
+	<component name="BspOperationService">
+        <service name="BspOperationService">
+            <interface.java interface="org.loushang.bsp.api.function.service.IOperationService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.function.OperationServiceImpl" />
+    </component>
+	<component name="OperationDomain">
+		<service name="OperationDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.function.domain.IOperationDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.domain.support.OperationDomain" />
+		<reference name="operationDao" target="OperationDao/OperationDao" />
+		<reference name="urlsDao" target="UrlDao/UrlDao" />
+		<reference name="operationTypeDomain" target="OperationTypeDomain/OperationTypeDomain" />
+	</component>
+	<component name="OperationDao">
+		<service name="OperationDao">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.function.dao.IOperationDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.dao.jdbc.OperationJdbcDao" />
+	</component>	
+	<component name="OperationTypeDomain">
+	    <service name="OperationTypeDomain">
+	    	<interface.java interface="org.loushang.bsp.permit.pap.function.domain.IOperationTypeDomain"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.permit.pap.function.domain.support.OperationTypeDomain"/>
+    </component>
+	<component name="OperationTypeDao">
+	    <service name="OperationTypeDao">
+	    	<interface.java interface="org.loushang.bsp.permit.pap.function.dao.IOperationTypeDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.permit.pap.function.dao.jdbc.OperationTypeJdbcDao"/>
+    </component>
+
+	<!-- URL -->
+	<component name="BspUrlService">
+        <service name="BspUrlService">
+            <interface.java interface="org.loushang.bsp.api.function.service.IUrlService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.function.UrlServiceImpl" />
+    </component>
+	<component name="UrlDomain">
+		<service name="UrlDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.function.domain.IUrlDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.domain.support.UrlDomain" />
+	</component>
+	<component name="UrlDao">
+		<service name="UrlDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.function.dao.IUrlDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.dao.jdbc.UrlJdbcDao" />
+	</component>
+	
+	<!-- 预制菜单 -->	
+	<component name="BspPresetMenuService">
+        <service name="BspPresetMenuService">
+            <interface.java interface="org.loushang.bsp.api.function.service.IPresetMenuService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.function.PresetMenuServiceImpl" />
+    </component>
+
+	<!--功能资源导入导出Domain-->
+	<component name="ImportExportDomain">
+		<service name="ImportExportDomain">
+			<interface.java
+				interface="org.loushang.bsp.permit.pap.function.domain.IImportExportDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.function.domain.support.ImportExportDomain" />
+		<reference name="appDao" target="AppDao/AppDao" />
+		<reference name="urlDao" target="UrlDao/UrlDao" />
+		<reference name="moduleDao" target="ModuleDao/ModuleDao" />
+		<reference name="functionDao" target="FunctionDao/FunctionDao" />
+		<reference name="operationDao" target="OperationDao/OperationDao" />
+	</component>
+
+</composite>

@@ -1,0 +1,3 @@
+USER.STATUS=N:Enable,X:Disable
+USER.GENDER=M:Male,F:Female,N:Unknown
+USER.EDUCATION=0:Undergraduate,1:master's degree,2:Ph.D.

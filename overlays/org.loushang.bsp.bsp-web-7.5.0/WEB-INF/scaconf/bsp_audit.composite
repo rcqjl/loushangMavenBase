@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_user_policy" xmlns="http://www.loushang.com/sca/1.0">
+	<description>audit</description>
+	
+	<component name="AuditLogDomain">
+		<service name="AuditLogDomain">
+			<interface.java
+				interface="org.loushang.bsp.securitysupport.audit.domain.IAuditLogDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.securitysupport.audit.domain.support.AuditLogDomainImpl" />
+		<reference name="auditLogDao" target="AuditLogDao/AuditLogDao" />
+	</component>
+	
+	<component name="AuditLogDao">
+		<service name="AuditLogDao">
+			<interface.java
+				interface="org.loushang.bsp.securitysupport.audit.dao.IPubAuditLogDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSource" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.securitysupport.audit.dao.jdbc.PubAuditLogDao" />
+	</component>
+
+	<!-- 在线用户 -->
+    <component name="RTPubOnline">
+        <service name="RTPubOnline">
+            <interface.java interface="org.loushang.bsp.securitysupport.audit.domain.IOnline" />
+            <binding.sca />
+        </service>
+        <reference name="onlineDao" target="RTOnlineDao.RTOnlineDao" />
+        <implementation.java impl="org.loushang.bsp.securitysupport.audit.domain.support.OnlineImpl" />
+    </component>
+
+    <component name="RTOnlineDao">
+        <service name="RTOnlineDao">
+            <interface.java interface="org.loushang.bsp.securitysupport.audit.dao.IOnlineDao" />
+            <binding.sca />
+        </service>
+        <property name="dataSourceConf" value="dataSource" />
+        <implementation.java impl="org.loushang.bsp.securitysupport.audit.dao.jdbc.OnlineJdbcDao" />
+    </component>
+	
+	<!-- 安全审计接口 -->
+    <component name="BspAuditLogService">
+        <service name="BspAuditLogService">
+            <interface.java interface="org.loushang.bsp.api.audit.IAuditLogService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.audit.AuditLogServiceImpl" />
+    </component>
+    
+    <!-- 用户在线接口 -->
+    <component name="BspOnlineService">
+        <service name="BspOnlineService">
+            <interface.java interface="org.loushang.bsp.api.audit.IOnlineService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.audit.OnlineServiceImpl" />
+    </component>
+
+</composite>

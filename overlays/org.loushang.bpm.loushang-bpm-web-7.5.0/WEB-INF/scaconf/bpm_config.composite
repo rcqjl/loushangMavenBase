@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="propertyConfig" xmlns="http://www.loushang.com/sca/1.0">
+	<description>workflow module</description>
+	<component name="propertyConfigDao">
+		<service name="propertyConfigDao">
+			<interface.java interface="org.loushang.workflow.config.property.dao.IPropertyConfigDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.config.property.dao.jdbc.PropertyConfigJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="propertyConfigDomain">
+		<service name="propertyConfigDomain">
+			<interface.java interface="org.loushang.workflow.config.property.domain.IPropertyConfig"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.config.property.domain.support.PropertyConfigImpl"/>
+		<reference name="propertyConfigDao" target="propertyConfigDao/propertyConfigDao"/>
+	</component>
+</composite>

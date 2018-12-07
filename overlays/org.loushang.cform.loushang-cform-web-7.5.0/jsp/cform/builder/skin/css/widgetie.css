@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+/*修正IE浏览器下，设置了td的高度后，不能自适应高度的问题*/
+.cfTable td, .cfDynTable tbody td, .cfDynRow tbody td, {
+	height:auto;
+}

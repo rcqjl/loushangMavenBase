@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+
+	<component name="allParticipantperformanceComparedomain">
+		<service name="allParticipantperformanceComparedomain">
+			<interface.java interface="org.loushang.workflow.analysis.performance.domain.IAllParticipantperformanceCompare"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.performance.domain.support.AllParticipantperformanceCompareImpl"/>
+		<reference name="allParticipantperformanceCompareDao" target="allParticipantperformanceCompareDao/allParticipantperformanceCompareDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="allParticipantperformanceCompareDao">
+		<service name="allParticipantperformanceCompareDao">
+			<interface.java interface="org.loushang.workflow.analysis.performance.dao.IAllParticipantperformanceCompareDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.performance.dao.support.AllParticipantperformanceCompareJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="allProcessPerformanceComparedomain">
+		<service name="allProcessPerformanceComparedomain">
+			<interface.java interface="org.loushang.workflow.analysis.performance.domain.IAllProcessPerformanceCompare"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.performance.domain.support.AllProcessPerformanceCompareImpl"/>
+		<reference name="allProcessPerformanceCompareDao" target="allProcessPerformanceCompareDao/allProcessPerformanceCompareDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="allProcessPerformanceCompareDao">
+		<service name="allProcessPerformanceCompareDao">
+			<interface.java interface="org.loushang.workflow.analysis.performance.dao.IAllProcessPerformanceCompareDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.performance.dao.support.AllProcessPerformanceCompareJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="specifiedParticipantPerformanceAnalysedomain">
+		<service name="specifiedParticipantPerformanceAnalysedomain">
+			<interface.java interface="org.loushang.workflow.analysis.performance.domain.ISpecifiedParticipantPerformanceAnalyse"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.performance.domain.support.SpecifiedParticipantPerformanceAnalyseImpl"/>
+		<reference name="specifiedParticipantPerformanceAnalyseDao" target="specifiedParticipantPerformanceAnalyseDao/specifiedParticipantPerformanceAnalyseDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="specifiedParticipantPerformanceAnalyseDao">
+		<service name="specifiedParticipantPerformanceAnalyseDao">
+			<interface.java interface="org.loushang.workflow.analysis.performance.dao.ISpecifiedParticipantPerformanceAnalyseDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.performance.dao.support.SpecifiedParticipantPerformanceAnalyseJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="SpecifiedProcessPerformanceAnalysedomain">
+		<service name="SpecifiedProcessPerformanceAnalysedomain">
+			<interface.java interface="org.loushang.workflow.analysis.performance.domain.ISpecifiedProcessPerformanceAnalyse"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.performance.domain.support.SpecifiedProcessPerformanceAnalyseImpl"/>
+		<reference name="specifiedProcessPerformanceAnalyseDao" target="specifiedProcessPerformanceAnalyseDao/specifiedProcessPerformanceAnalyseDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="specifiedProcessPerformanceAnalyseDao">
+		<service name="specifiedProcessPerformanceAnalyseDao">
+			<interface.java interface="org.loushang.workflow.analysis.performance.dao.ISpecifiedProcessPerformanceAnalyseDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.analysis.performance.dao.support.SpecifiedProcessPerformanceAnalyseJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>	
+</composite>

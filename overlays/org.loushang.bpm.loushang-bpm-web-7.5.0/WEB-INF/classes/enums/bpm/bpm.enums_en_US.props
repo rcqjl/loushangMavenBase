@@ -1,0 +1,12 @@
+#任务标题定义:是否作为查询条件
+SUBJECT_DEF.IS_QUERY_CONDITION=0:Y,1:N
+#任务标题查询定义:查询条件域类型
+SUBJECT_QUERY_DEF.SUBJECT_FIELD_TYPE=0:Textbox,1:ComboBox,2:Common help,3:Date,4:DateTime
+#jsp表单域类型
+JSP_FORM_DATA_FIELD_TYPE=text:text,div:div,field:field,tabPanel:tabPanel,table:table
+#流程管理功能事件类型
+PROC_MANAGER_EVENT_TYPE=PROCESS_SUSPEND_EVENT:Process hang event,PROCESS_RESUME_EVENT:Process recover event,PROCESS_ABORT_EVENT:Process interrupt event,PROCESS_TERMINATE_EVENT:Process stop event,PROCESS_DELETE_EVENT:Process instance delete event,PROCESS_DEF_DELETE_EVENT:Process define delete event,ACTIVITY_SUSPEND_EVENT:Link hang event,ACTIVITY_RESUME_EVENT:Link recover event,ACTIVITY_ABORT_EVENT:Link interrupt event,ACTIVITY_TERMINATE_EVENT:Link stop event,ACTIVITY_START_EVENT:Link start event,RE_ASSIGNMENT_EVENT:Reappoint event,CANCEL_ASSIGNMENT_EVENT:Cancel delegate event
+#事件监听扩展发布方式
+LISTENER_TYPE=0:Local,1:HSF
+#出差代理设置:是否代理已有任务
+TRIP_PROXY.IS_PROXY_EXIST_TASK=1:Y,0:N

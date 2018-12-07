@@ -1,0 +1,176 @@
+@CHARSET "UTF-8";
+html {
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+form {
+	text-align: center;
+}
+.cfBody {
+	width: 100%;
+	font-size: 14px;
+	font-family: "宋体", sans-serif;
+	background-color: #f6f6f6;
+}
+.cfTitle {
+	font-family: 宋体;
+	font-size: 22px;
+	text-align: center;
+}
+.cfTable {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: 1px dotted #999;
+	margin: 10px auto;
+}
+.cfTable td {
+	height: 25px;
+	border: 1px dotted #999;
+	padding: 4px;
+	font-size: 14px;
+}
+.cfFieldLabel {
+	text-align: right;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.cfFieldInput {
+	text-align: left;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.cfTable td.selected {
+	background-color: #fffbc4;
+	border: 2px solid #ffcc62;
+}
+/*日期时间框*/
+.cfDateTime, .cfDate {
+	background-image: url(../images/widget/datetime.png);
+	background-position: 98% 50%;
+	background-repeat: no-repeat;
+	width: 90%;
+	height: 25px;
+	border: 1px;
+	border-style: double solid solid solid;
+	border-color: #CCC;
+	cursor: default;
+	display: inline;
+	color: #747474;
+	-webkit-box-shadow: inset 0.8px 1px 0px rgba(0, 45, 79, 0.38);
+	border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+/*单行文本*/
+.cfText {
+	width: 90%;
+	height: 25px;
+	border: 1px;
+	border-style: double solid solid solid;
+	border-color: #CCC;
+	cursor: default;
+	display: inline;
+	color: #747474;
+	-webkit-box-shadow: inset 0.8px 1px 0px rgba(0, 45, 79, 0.38);
+	border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+/*多行文本*/
+.cfTextArea, .cfLargeText {
+	width: 90%;
+	height: 80px;
+	border: 1px;
+	border-style: double solid solid solid;
+	border-color: #CCC;
+	color: #747474;
+	-webkit-box-shadow: inset 0.8px 1px 0px rgba(0, 45, 79, 0.38);
+	border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+/*单选框*/
+.cfRadio {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("../../pwidget/radio/radiobox.png") no-repeat scroll
+		center top transparent;
+	border-radius: 0px;
+	border: 0px solid white;
+	margin: 0 5px 0 0px;
+	text-shadow: 0 1px 0 rgb(240, 240, 240);
+	top: 0px;
+	border-radius: 100%;
+	bottom: 0px;
+	height: 25px;
+	position: relative;
+	vertical-align: middle;
+	width: 25px;
+	cursor: pointer;
+}
+/*单选框选中*/
+.cfRadio:checked::before {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("../../pwidget/radio/radioed.png") no-repeat scroll center
+		bottom transparent;
+	content: '';
+	display: block;
+	height: 25px;
+	width: 25px;
+}
+/*多选框*/
+.cfCheckBox {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("../../pwidget/checkbox/check.png") no-repeat scroll center
+		top transparent;
+	border-radius: 0px;
+	margin: 0 5px 0 0;
+	text-shadow: 0 1px 0 rgb(240, 240, 240);
+	top: 0px;
+	border: 0px solid white;
+	bottom: 0px;
+	height: 25px;
+	position: relative;
+	vertical-align: middle;
+	width: 25px;
+	cursor: pointer;
+}
+/*复选框选中*/
+.cfCheckBox:checked::before {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background: url("../../pwidget/checkbox/checked.png") no-repeat top left
+		transparent;
+	content: '';
+	display: block;
+	height: 25px;
+	width: 25px;
+}
+/*下拉框*/
+.cfSelectOne {
+	height: 30px;
+	width: 90%;
+	border: 1px solid #CCC;
+	color: #747474;
+	line-height: 25px;
+}
+/*隐藏域*/
+.cfHidden {
+	
+}
+/*加粗*/
+.cfBold {
+	font-weight: bold;
+}
+/*斜体*/
+.cfItalic {
+	font-style: italic;
+}
+/*下划线*/
+.cfUnderline {
+	text-decoration: underline;
+}

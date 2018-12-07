@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+	<!-- 流程关联CForm表单操作服务 -->
+	<service interface="org.loushang.cform.api.IProcForm" 
+		refScaComponent="cfProcForm.cfProcForm">
+		<serviceName>cfProcFormService</serviceName>
+	</service>
+
+	<!-- 流程关联CForm表单查询服务 -->
+	<service interface="org.loushang.cform.api.IProcFormQuery" 
+		refScaComponent="cfProcFormQuery.cfProcFormQuery">
+		<serviceName>cfProcFormQueryService</serviceName>
+	</service>
+	
+	<!-- flex查询表单数据 服务-->
+	<service interface="org.loushang.cform.procdef.util.IProcFormUtil" 
+		refScaComponent="cfProcFormUtilQuery.cfProcFormUtilQuery">
+		<serviceName>cfProcFormUtilQueryService</serviceName>
+	</service>
+	
+	<!--CForm表单核心模块解析发布类 服务-->
+	<service interface="org.loushang.workflow.infoprocessmodel.transform.IAbstractXmlHandler" 
+		refScaComponent="cfCommonXmlParserAndLoader.cfCommonXmlParserAndLoader">
+		<serviceName>cfCommonXmlParserAndLoaderService</serviceName>
+	</service>
+	
+	<!--流程定义删除事件监听  服务-->
+	<service interface="org.loushang.workflow.manage.event.IEventHandler" 
+		refScaComponent="cfProcessDefDeleteEvent.cfProcessDefDeleteEvent">
+		<serviceName>cfProcessDefDeleteEventService</serviceName>
+	</service>
+	
+	<!--流程实例删除事件监听  服务-->
+	<service interface="org.loushang.workflow.manage.event.IEventHandler" 
+		refScaComponent="cfProcessDeleteEvent.cfProcessDeleteEvent">
+		<serviceName>cfProcessDeleteEventService</serviceName>
+	</service>
+	
+	<!--流程模型定义 服务-->
+	<service interface="org.loushang.cform.procdef.html.domain.IProcDef" 
+		refScaComponent="cfProcDefDomain.cfProcDefDomain">
+		<serviceName>cfProcDefService</serviceName>
+	</service>
+	
+	<!--导入导出流程定义 服务-->
+	<service interface="org.loushang.workflow.infoprocessmodel.exchange.IModelExchange" 
+		refScaComponent="cfProcDefExchange.cfProcDefExchange">
+		<serviceName>cfProcDefExchangeService</serviceName>
+	</service>
+	
+</SCAServices>

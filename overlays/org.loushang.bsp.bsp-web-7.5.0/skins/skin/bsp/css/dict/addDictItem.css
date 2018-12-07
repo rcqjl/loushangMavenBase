@@ -1,0 +1,14 @@
+.container {
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 15px;
+}
+
+.Validform_input {
+    width: 46%;
+}
+
+.form-horizontal .control-label {
+	float: left;
+}

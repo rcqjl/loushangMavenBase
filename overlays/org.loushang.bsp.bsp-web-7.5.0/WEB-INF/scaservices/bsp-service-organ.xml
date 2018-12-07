@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+
+    <!-- 组织服务 -->
+    <service interface="org.loushang.bsp.api.organ.IOrganService" refScaComponent="OrganService.OrganService" />
+    
+    <!-- 组织管理服务 -->
+    <service interface="org.loushang.bsp.api.organ.IOrganMgmtService" refScaComponent="OrganMgmtService.OrganMgmtService" />
+    
+    <!-- 岗位服务 -->
+    <service interface="org.loushang.bsp.api.organ.IPositionService" refScaComponent="PositionService.PositionService" />
+    
+    <!-- 数据权限服务 -->
+    <service interface="org.loushang.bsp.api.organ.IUserDataPermitService" refScaComponent="UserDataPermitService.UserDataPermitService" />
+    
+     
+</SCAServices>

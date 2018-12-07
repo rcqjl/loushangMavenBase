@@ -1,0 +1,86 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+}
+#divProcessFormPropertyBody li {
+    float: left;
+    margin-bottom: 2px;
+}
+#procTab1{
+    text-align:center;
+    width: 22%;
+}
+#procTab2{
+    text-align: left;
+    width: 75%;
+}
+#divProcessFormPropertyBody a {
+    color:#A3A3A3;
+    font-size: 12px;
+    display: block;
+    padding:5px 6px 0px 6px;
+    height:20px;
+    border-bottom: 1px solid #CACACA;
+    text-decoration: none;
+}
+
+#divProcessFormPropertyBody a.on {
+    color:#464646;
+    background: #EEE;
+    border: 1px solid #CACACA;
+    border-bottom: 0px solid #CACACA;
+}
+
+#procTabs {
+    margin: 0px 5px 5px 5px;
+    padding: 0px;
+    width: 100%;
+}
+
+a:link,a:visited,a:hover,a:active {
+    color: black;
+}
+
+#procCon1,#procCon2 {
+    margin-top: 10px;
+}
+.propertyBodyArea{
+    padding:5px 10px 5px 10px;
+}
+.procCon1,.procCon2 {
+	margin: 5px 0px 8px 0px;
+}
+.procCon label {
+	height: 18px;
+	vertical-align: middle;
+	display: inline-block;
+}
+.procCon input {
+	text-align: left;
+    height: 24px;
+    line-height:24px;
+}
+.procCon1 input[type='text']{
+	width:172px;
+}
+.procCon2 input[type='text']{
+	width:140px;
+}
+.procCon input[type='text']{
+    background:#fff;
+    border:1px solid #CACACA;
+}
+.procCon input[type='button']{
+    position:absolute;
+    right:16px;
+    width:26px;
+    height:26px;
+    line-height:26px;
+    background:#EEE url(../images/skin_icons.png) no-repeat -62px -128px;
+    border:1px solid #B6B6B6;
+}

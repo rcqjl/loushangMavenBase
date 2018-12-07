@@ -1,0 +1,143 @@
+body{
+	overflow-x: hidden;
+}
+.bsp-required {
+    color: #f00;
+}
+div#footer {
+    position: absolute;
+    bottom: 35px;
+}
+button#insert {
+    position: absolute;
+    left: 350px;
+}
+.container-fluid {
+	margin-top:10px;
+}
+button#back {
+    margin-right: 10px;
+}
+.col-xs-3 {
+    text-align: right;
+}
+.Validform_checktip {
+    padding-top: 5px;
+}
+div#month {
+    width: 1366px;
+    height: 410px;
+    margin-bottom: 50px;
+}
+div.month123{
+    padding-left: 0px;
+    margin-left: -15px;
+}
+.editPage{
+	font-family:'微软雅黑';
+}
+/*编辑工作日历后台渲染的部分  */
+.calendarTitle{
+	width: 1366px;
+}
+.calendarTitle td {
+    width: 385px;
+    font-size: 18px;
+    color: #333;
+    padding-left: 100px;
+    font-weight: bold;
+    padding-left: 35px;
+    padding-bottom: 10px;
+}
+table.calendarContent {
+    width: 1366px;
+}
+table.calendarContent>tbody>tr>td {
+    width: 385px;
+    height: 360px;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: top;
+}
+table.calendarDay{
+    margin: 0 auto;
+    border-top: 1px solid #D0D0D0;
+}
+.btn-group.pull-right {
+    padding-bottom: 5px;
+}
+.calendarDay >tbody>tr>td {
+    width: 55px;
+    height: 55px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    border-bottom: 5px solid #fff;
+}
+.calendarDay td:hover{ 
+    background-color:#3e99ff;
+}
+#dayCheckbox {
+	display:none;
+}
+tr.week {
+	font-size: 14px;
+    color: #333;
+	pointer-events: none;
+}
+.month {
+	color:#3e99ff;
+	pointer-events: none;
+}
+td.kong {
+    pointer-events: none;
+}
+span.nongli {
+    display: block;
+    color: #D0D0D0;
+    font-size: 12px;
+}
+p.editTitle {
+    font-size: 30px;
+    color: #333;
+}
+p.editMessage {
+    font-size: 14px;
+    color: #999;
+}
+span.editYear,span.editOrgan {
+    margin-left: 20px;
+}
+button#save {
+    margin-top: 10px;
+}
+@media screen and (max-width: 1106px){
+	.calendarTitle{
+		width: 1024px;
+	}
+	table.calendarContent {
+	    width: 1024px;
+	}
+	.calendarDay >tbody>tr>td {
+	    width: 40px;
+	    height: 40px;
+	    font-size: 14px;
+	    color: #333;
+	    background-color: #fff;
+	    border-bottom: 5px solid #fff;
+	}
+	table.calendarContent>tbody>tr>td {
+	    width: 280px;
+	    height: 260px;
+	    font-size: 18px;
+	    text-align: center;
+	    vertical-align: top;
+	}
+	.calendarTitle td {
+    	width: 280px;
+    }
+    div#month {
+	    width: 1024px;
+	    height: 310px;
+    }
+}

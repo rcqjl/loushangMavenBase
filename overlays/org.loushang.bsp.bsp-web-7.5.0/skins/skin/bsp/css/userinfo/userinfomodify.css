@@ -1,0 +1,127 @@
+@CHARSET "UTF-8";
+
+.col-xs-10 {
+	height: 502px;
+}
+
+.form-horizontal {
+	margin-top: 40px;
+	padding-top: 0px;
+}
+.bread {
+	border-bottom: 1px solid #ddd; 
+    margin-bottom: 10px;
+    text-align: left;
+    padding-bottom: 10px; 
+	padding-left: 1%;
+    height: 31px;
+    padding-top: 5px;
+}
+a, a:focus, a:hover, a:active{
+	color: #3e99ff;
+}
+
+.btn {
+	width: 80px;
+	height: 30px;
+}
+
+.required {
+	line-height: 34px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+div.popover {
+	min-width: 500px;
+}
+
+.form-group {
+	margin-bottom: 6px !important;
+}
+
+.container {
+	width: auto;
+	padding: 0 15px;
+}
+
+.col-xs-10 {
+	min-width: 520px;
+	width: 100%;
+	background-color: #fff;
+	padding: 0 15px;
+}
+/* .col-md-8{
+	width:590px;
+} */
+.ue-form {
+	font-size: 12px;
+	width: 330px;
+	float: left;
+	height: 34px;
+	line-height: 34px;
+}
+
+.ue-form:hover, .ue-form:active {
+	box-shadow: 0 0 4px rgba(61, 152, 255, 6);
+}
+
+.chose .ue-form:hover {
+	box-shadow: 0 0 0;
+}
+
+.form-horizontal .control-label {
+	width: 20%;
+	height: 34px;
+	line-height: 34px;
+}
+
+.col-xs-5 {
+	width: auto;
+}
+
+.chose>.ue-form {
+	border: 0;
+}
+
+.ue-right-top {
+	height: 30px;
+	line-height: 30px;
+	box-shadow: 0 0 0;
+	border-bottom: 1px solid #ccc;
+}
+
+@media ( min-width : 768px) {
+	.col-md-9 {
+		width: 72%;
+	}
+}
+
+@media ( min-width : 992px) {
+	.col-md-9 {
+		width: 80%;
+	}
+}
+
+/* .col-md-9 {
+	    width: 71%;
+	} */
+input.btn.ue-btn-primary.reset {
+	background-color: #fff;
+	color: #999;
+	border: 1px solid #ddd;
+	margin-left: 10px;
+}
+
+input.btn.ue-btn-primary.reset:hover {
+	background-color: #4187cd;
+	color: #fff;
+	border: 0;
+}
+
+.col-xs-3 {
+	width: 15%;
+}
+
+.top {
+	padding-left: 1%;
+}

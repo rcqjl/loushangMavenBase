@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_authz_role_group" xmlns="http://www.loushang.com/sca/1.0">
+
+	<!-- 角色组 -->
+	<component name="RoleGroupDao">
+		<service name="RoleGroupDao">
+	    	<interface.java interface="org.loushang.bsp.permit.pap.rolegroup.dao.IRoleGroupDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.permit.pap.rolegroup.dao.jdbc.RoleGroupJdbcDao"/>	
+    </component>
+    
+	<component name="RoleGroupDomain">
+	    <service name="RoleGroupDomain">
+	    	<interface.java interface="org.loushang.bsp.permit.pap.rolegroup.domain.IRoleGroupDomain"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.permit.pap.rolegroup.domain.support.RoleGroupDomainImpl"/>	
+        <reference name="roleGroupDao" target="RoleGroupDao/RoleGroupDao"/>
+        <reference name="roleGroupScopeDao" target="RoleGroupScopeJdbcDao/RoleGroupScopeJdbcDao"/>
+         <reference name="roleDao" target="RoleDao/RoleDao"/>
+         <reference name="roleDomain" target="RoleDomain/RoleDomain"/>
+    </component>
+
+	<!-- 角色使用范围 -->
+	<component name="RoleGroupScopeJdbcDao">
+	    <service name="RoleGroupScopeJdbcDao">
+	    	<interface.java interface="org.loushang.bsp.permit.pap.rolegroup.dao.IRoleGroupScopeDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.permit.pap.rolegroup.dao.jdbc.RoleGroupScopeJdbcDao"/>
+    </component>
+	
+	<component name="BspRoleGroupService">
+        <service name="BspRoleGroupService">
+            <interface.java interface="org.loushang.bsp.api.rolegroup.IRoleGroupService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.rolegroup.RoleGroupServiceImpl" />
+    </component>
+	
+</composite>

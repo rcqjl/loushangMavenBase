@@ -1,0 +1,40 @@
+.container {
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 3px 0px 0px 0px;
+}
+
+.form-horizontal .control-label {
+	float: left;
+}
+
+.queryAllroles {
+	float: right;
+	margin-bottom: 5px;
+}
+
+.rolesum {
+	float: left;
+}
+
+.addreturn {
+	display: none;
+}
+
+.ui-dialog-header {
+	background-color: #fafafa;
+}
+
+.bread {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 40px;
+	text-align: left;
+	padding:0px 0px 7px 15px;
+}
+a, a:focus, a:hover, a:active{
+	color: #3e99ff;
+}
+.bread a:link {
+	color: #0ae;
+}

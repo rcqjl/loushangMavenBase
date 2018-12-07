@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service id="remoting-service" class="flex.messaging.services.RemotingService">
+
+	<adapters>
+		<adapter-definition id="java-object"
+			class="flex.messaging.services.remoting.adapters.JavaAdapter"
+			default="true" />
+	</adapters>
+
+	<default-channels>
+		<channel ref="my-amf" />
+	</default-channels>
+	<destination id="procDefUtil">
+		<properties>
+			<source>org.loushang.workflow.modeling.definition.flexutil.ProcessDefUtil
+			</source>
+		</properties>
+	</destination>
+
+	<destination id="bizProcessModelFlexUtil">
+		<properties>
+			<source>org.loushang.workflow.businessprocessmodel.flexutil.BusinessProcessModelFlexUtil
+			</source>
+		</properties>
+	</destination>
+
+	<destination id="infoProcessModelFlexUtil">
+		<properties>
+			<source>org.loushang.workflow.infoprocessmodel.flexutil.InfoProcessModelFlexUtil
+			</source>
+		</properties>
+	</destination>
+
+	<destination id="monitorFlexUtil">
+		<properties>
+			<source>org.loushang.workflow.monitor.flexutil.MonitorFlexUtil
+			</source>
+		</properties>
+	</destination>
+
+	<destination id="jspProcDefUtil">
+		<properties>
+			<source>org.loushang.workflow.modeling.definition.flexutil.JspProcessDefUtil
+			</source>
+		</properties>
+	</destination>
+	<destination id="cFormDefUtil">
+		<properties>
+			<source>
+				org.loushang.cform.procdef.util.ProcessDefUtil
+			</source>
+		</properties>
+	</destination>
+
+
+</service>

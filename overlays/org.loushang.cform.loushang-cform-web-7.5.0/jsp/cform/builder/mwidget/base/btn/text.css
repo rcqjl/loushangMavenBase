@@ -1,0 +1,8 @@
+.phone_widget_text {
+	height: 100%;
+    width: 75%;
+    border: 0;
+    margin-left: 1px;
+    font-size: 20px;
+    background: inherit;
+}

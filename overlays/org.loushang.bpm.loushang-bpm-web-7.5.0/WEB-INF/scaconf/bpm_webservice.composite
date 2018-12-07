@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+	<description>workflow module</description>
+	<!--Web服务定义-->
+	<component name="complexDataTypeDefDao">
+		<service name="complexDataTypeDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.dao.IComplexDataTypeDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.dao.jdbc.ComplexDataTypeDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="elementDefDao">
+		<service name="elementDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.dao.IElementDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.dao.jdbc.ElementDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="serviceDefDao">
+		<service name="serviceDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.dao.IServiceDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.dao.jdbc.ServiceDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="portDefDao">
+		<service name="portDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.dao.IPortDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.dao.jdbc.PortDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="bindingDefDao">
+		<service name="bindingDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.dao.IBindingDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.dao.jdbc.BindingDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="portTypeDefDao">
+		<service name="portTypeDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.dao.IPortTypeDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.dao.jdbc.PortTypeDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="operationDefDao">
+		<service name="operationDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.dao.IOperationDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.dao.jdbc.OperationDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="messageDefDao">
+		<service name="messageDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.dao.IMessageDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.dao.jdbc.MessageDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="webServiceDefDomain">
+		<service name="webServiceDefDomain">
+			<interface.java interface="org.loushang.workflow.webservice.wsdl.domain.IWebServiceDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.wsdl.domain.support.WebServiceDefImpl"/>
+		<reference name="complexDataTypeDefDao" target="complexDataTypeDefDao/complexDataTypeDefDao"/>
+		<reference name="elementDefDao" target="elementDefDao/elementDefDao"/>
+		<reference name="serviceDefDao" target="serviceDefDao/serviceDefDao"/>
+		<reference name="portDefDao" target="portDefDao/portDefDao"/>
+		<reference name="bindingDefDao" target="bindingDefDao/bindingDefDao"/>
+		<reference name="portTypeDefDao" target="portTypeDefDao/portTypeDefDao"/>
+		<reference name="operationDefDao" target="operationDefDao/operationDefDao"/>
+		<reference name="messageDefDao" target="messageDefDao/messageDefDao"/>
+	</component>
+	
+	<!--业务Web服务定义-->
+	<component name="businessServiceDefDao">
+		<service name="businessServiceDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.serviceadmin.businessservice.dao.IBusinessServiceDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.serviceadmin.businessservice.dao.support.BusinessServiceDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="businessServiceDefDomain">
+		<service name="businessServiceDefDomain">
+			<interface.java interface="org.loushang.workflow.webservice.serviceadmin.businessservice.domain.IBusinessServiceDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.serviceadmin.businessservice.domain.support.BusinessServiceDefImpl"/>
+		<reference name="businessServiceDefDao" target="businessServiceDefDao/businessServiceDefDao"/>
+		<reference name="webServiceDefDomain" target="webServiceDefDomain/webServiceDefDomain"/>
+	</component>
+	
+	<!--流程Web服务定义-->
+	<component name="processServiceDefDao">
+		<service name="processServiceDefDao">
+			<interface.java interface="org.loushang.workflow.webservice.serviceadmin.processservice.dao.IProcessServiceDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.serviceadmin.processservice.dao.support.ProcessServiceDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processServiceDefDomain">
+		<service name="processServiceDefDomain">
+			<interface.java interface="org.loushang.workflow.webservice.serviceadmin.processservice.domain.IProcessServiceDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.serviceadmin.processservice.domain.support.ProcessServiceDefImpl"/>
+		<reference name="processServiceDefDao" target="processServiceDefDao/processServiceDefDao"/>
+		<reference name="webServiceDefDomain" target="webServiceDefDomain/webServiceDefDomain"/>
+		<reference name="processDefServiceRefDao" target="processDefServiceRefDao/processDefServiceRefDao"/>
+		<reference name="activityDefOperationRefDao" target="activityDefOperationRefDao/activityDefOperationRefDao"/>
+	</component>
+	
+	<component name="processDefServiceRefDao">
+		<service name="processDefServiceRefDao">
+			<interface.java interface="org.loushang.workflow.webservice.serviceadmin.processservice.dao.IProcessDefServiceRefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.serviceadmin.processservice.dao.support.ProcessDefServiceRefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="activityDefOperationRefDao">
+		<service name="activityDefOperationRefDao">
+			<interface.java interface="org.loushang.workflow.webservice.serviceadmin.processservice.dao.IActivityDefOperationRefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.serviceadmin.processservice.dao.support.ActivityDefOperationRefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!--引擎服务-->
+	<component name="engineServiceDomain">
+		<service name="engineServiceDomain">
+			<interface.java interface="org.loushang.workflow.webservice.servicecall.engineservice.IEngineService"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.servicecall.engineservice.EngineServiceImpl"/>
+	</component>
+	
+	<!--流程执行服务-->
+	<component name="processServiceExecutionDomain">
+		<service name="processServiceExecutionDomain">
+			<interface.java interface="org.loushang.workflow.webservice.servicecall.processservice.IProcessServiceExecution"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.servicecall.processservice.ProcessServiceExecutionImpl"/>
+	</component>
+	
+	<!--流程信息查询服务-->
+	<component name="processServiceInfoQueryUtilDomain">
+		<service name="processServiceInfoQueryUtil">
+			<interface.java interface="org.loushang.workflow.webservice.util.IProcessServiceInfoQueryUtil"/>
+			<binding.ws/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.webservice.util.ProcessServiceInfoQueryUtilImpl"/>
+		<reference name="processDefinitionDomain" target="processDefinitionDomain/processDefinitionDomain"/>
+		<reference name="processDao" target="processDao/processDao"/>
+		<reference name="activityDao" target="activityDao/activityDao"/>
+		<reference name="assignmentDao" target="assignmentDao/assignmentDao"/>
+		<reference name="processDefServiceRefDao" target="processDefServiceRefDao/processDefServiceRefDao"/>
+		<reference name="activityDefOperationRefDao" target="activityDefOperationRefDao/activityDefOperationRefDao"/>
+		<reference name="serviceDefDao" target="serviceDefDao/serviceDefDao"/>
+		<reference name="portDefDao" target="portDefDao/portDefDao"/>
+		<reference name="operationDefDao" target="operationDefDao/operationDefDao"/>
+		<reference name="messageDefDao" target="messageDefDao/messageDefDao"/>
+	</component>
+</composite>

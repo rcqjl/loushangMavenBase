@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+
+    <!-- 安全接口 -->
+    <service interface="org.loushang.bsp.share.permit.security.provider.ISecurityProvider" refScaComponent="securityProvider.securityProvider" />
+
+    <!-- 菜单接口 -->
+    <service interface="org.loushang.bsp.share.menu.provider.IMenuProvider" refScaComponent="MenuProvider.MenuProvider" />
+	
+    <!--组织结构对外接口 -->
+    <service interface="org.loushang.bsp.share.organization.provider.IOrganProvider" refScaComponent="OrganProvider.OrganProvider" />
+	
+	<!--业务流水号 -->
+    <service interface="org.loushang.bsp.share.id.provider.IIdProvider" refScaComponent="IdProvider.IdProvider" />
+	
+    <!--工作日历 -->
+    <service interface="org.loushang.bsp.share.workCalendar.provider.IWorkdayProvider" refScaComponent="WorkdayProvider.WorkdayProvider" />
+
+    <!--字典 -->
+    <service interface="org.loushang.bsp.share.dict.provider.IDictProvider" refScaComponent="dictProvider.dictProvider" />
+
+</SCAServices>

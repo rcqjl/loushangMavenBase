@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCAServices>
+
+    <!-- 用户策略服务 -->
+    <service interface="org.loushang.bsp.api.userpolicy.IUserPolicyService" refScaComponent="BspUserPolicyService.BspUserPolicyService" />
+     
+</SCAServices>

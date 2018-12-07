@@ -1,0 +1,64 @@
+.content {
+	height: 440px;
+}
+
+.head {
+	height: 40px;
+	background-color: #fafafa;
+}
+
+.head-content-left {
+	float: left;
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+	padding: 8px 10px 10px;
+}
+
+.body {
+	height: 350px;
+	border-bottom: 1px solid #ddd;
+}
+
+.body-content-left {
+	float: left;
+	width: 100%;
+	height: 350px;
+}
+
+.foot {
+	float: right;
+	padding: 9px;
+}
+
+.menuAuthHead {
+	width: 240px;
+	margin: 15px 10px 5px 20px;
+}
+
+.tab-pane {
+	height: 350px;
+}
+
+.menAuthBody {
+	height: 310px;
+}
+
+.ztree li span.button.app_ico_open,.ztree li span.button.app_ico_close,.ztree li span.button.app_ico_docu
+	{
+	background: url(../../img/function_tree.png);
+}
+
+.ztree li span.button.module_ico_open,.ztree li span.button.module_ico_close,.ztree li span.button.module_ico_docu
+	{
+	background: url(../../img/function_tree.png) -16px 0px;
+}
+
+.ztree li span.button.function_ico_open,.ztree li span.button.function_ico_close,.ztree li span.button.function_ico_docu
+	{
+	background: url(../../img/function_tree.png) -32px 0px;
+}
+
+.ztree li span.button.operation_ico_docu {
+	background: url(../../img/function_tree.png) -48px 0px;
+}

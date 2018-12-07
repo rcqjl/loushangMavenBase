@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="loushang:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="loushang.war">
+      <element id="artifact" artifact-name="loushang:war exploded" />
+    </root>
+  </artifact>
+</component>

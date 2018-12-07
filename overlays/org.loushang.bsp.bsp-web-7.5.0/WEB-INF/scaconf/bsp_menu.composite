@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_menu" xmlns="http://www.loushang.com/sca/1.0">
+    <description>menu</description>
+
+	<component name="MenuTypeDao">
+	    <service name="MenuTypeDao">
+	    	<interface.java interface="org.loushang.bsp.menu.dao.IMenuTypeDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.menu.dao.jdbc.MenuTypeJdbcDao"/>	
+    </component>
+    
+    <component name="MenuStruDao">
+	    <service name="MenuStruDao">
+	    	<interface.java interface="org.loushang.bsp.menu.dao.IMenuStruDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.menu.dao.jdbc.MenuStruJdbcDao"/>	
+    </component>
+    
+    <component name="MenuItemDao">
+	    <service name="MenuItemDao">
+	    	<interface.java interface="org.loushang.bsp.menu.dao.IMenuItemDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.menu.dao.jdbc.MenuItemJdbcDao"/>	
+    </component>
+    
+    <component name="CollectMenuDao">
+		<service name="CollectMenuDao">
+			<interface.java interface="org.loushang.bsp.menu.dao.ICollectMenuDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.menu.dao.jdbc.CollectMenuJdbcDao" />
+	</component>
+    
+    <component name="MenuTypeMapDao">
+	    <service name="MenuTypeMapDao">
+	    	<interface.java interface="org.loushang.bsp.menu.dao.IMenuTypeMapDao"/>
+        	<binding.sca/>
+        </service>
+        <property name="dataSourceConf" value="dataSource"/>
+        <implementation.java impl="org.loushang.bsp.menu.dao.jdbc.MenuTypeMapDao"/>	
+    </component>
+    
+    <component name="PopularMenuDao">
+    	<service name="PopularMenuDao">    									
+    		<interface.java interface="org.loushang.bsp.menu.dao.IPopularMenuDao" />
+    		<binding.sca/>
+    	</service>
+    	<property name="dataSourceConf" value="dataSource"/>
+    	<implementation.java impl="org.loushang.bsp.menu.dao.jdbc.PopularMenuJdbcDao"/>	
+    </component> 
+    
+    
+    
+    
+     <component name="MenuTypeDomain">
+	    <service name="MenuTypeDomain">
+	    	<interface.java interface="org.loushang.bsp.menu.domain.IMenuTypeDomain"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.menu.domain.support.MenuTypeDomainImpl"/>	
+       	<reference name="imenuTypeDao" target="MenuTypeDao/MenuTypeDao"/>
+        <reference name="menuStruDao" target="MenuStruDao/MenuStruDao"/>
+        <reference name="menuItemDao" target="MenuItemDao/MenuItemDao"/>
+    </component>
+
+     <component name="MenuStruDomain">
+	    <service name="MenuStruDomain">
+	    	<interface.java interface="org.loushang.bsp.menu.domain.IMenuStruDomain"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.menu.domain.support.MenuStruDomainImpl"/>	
+        <reference name="imenuStruDao" target="MenuStruDao/MenuStruDao"/>
+        <reference name="imenuItemDao" target="MenuItemDao/MenuItemDao"/>
+    </component>
+  
+     <component name="MenuItemDomain">
+	    <service name="MenuItemDomain">
+	    	<interface.java interface="org.loushang.bsp.menu.domain.IMenuItemDomain"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.menu.domain.support.MenuItemDomainImpl"/>	
+        <reference name="imenuItemDao" target="MenuItemDao/MenuItemDao"/>
+        <reference name="imenuStruDao" target="MenuStruDao/MenuStruDao"/>
+    </component>
+  
+     <component name="MenuTypeMapDomain">
+	    <service name="MenuTypeMapDomain">
+	    	<interface.java interface="org.loushang.bsp.menu.domain.IMenuTypeMapDomain"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.menu.domain.support.MenuTypeMapDomain"/>	
+        <reference name="menuTypeMapDao" target="MenuTypeMapDao/MenuTypeMapDao"/>
+    </component>
+    
+ 	<component name="RTPresetMenuDomain">
+        <service name="RTPresetMenuDomain">
+            <interface.java interface="org.loushang.bsp.menu.domain.IMenuDomain" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.menu.domain.support.PresetMenuDomain" />
+        <reference name="menuTypeDomain" target="MenuTypeDomain/MenuTypeDomain" />
+        <reference name="menuStruDomain" target="MenuStruDomain/MenuStruDomain" />
+    </component>
+    
+    <component name="RTBizMenuDomain">
+        <service name="RTBizMenuDomain">
+            <interface.java interface="org.loushang.bsp.menu.domain.IMenuDomain" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.menu.domain.support.BizMenuDomainImpl" />
+        <reference name="menuTypeDomain" target="MenuTypeDomain/MenuTypeDomain" />
+        <reference name="menuStruDomain" target="MenuStruDomain/MenuStruDomain" />
+    </component>
+    
+    <component name="MenuManagerDomain">
+	    <service name="MenuManagerDomain">
+	    	<interface.java interface="org.loushang.bsp.menu.domain.IMenuManager"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.menu.domain.support.MenuManagerSupport"/>
+        <reference name="presetMenuDomain" target="RTPresetMenuDomain/RTPresetMenuDomain" />
+        <reference name="bizMenuDomain" target="RTBizMenuDomain/RTBizMenuDomain" />
+    </component>
+    
+    <component name="FavouriteMenuDomain">
+	    <service name="FavouriteMenuDomain">
+	    	<interface.java interface="org.loushang.bsp.menu.domain.IFavouriteMenuDomain"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.menu.domain.support.FavouriteMenuDomainImpl"/>
+        <reference name="favouriteMenuDao" target="CollectMenuDao/CollectMenuDao" />
+    </component>
+    
+
+ 
+ 
+    <component name="MenuService">
+	    <service name="MenuService">
+	    	<interface.java interface="org.loushang.bsp.api.menu.IMenuService"/>
+        	<binding.sca/>
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.menu.MenuServiceImpl"/>	
+    </component>  
+
+	
+	<!-- 菜单角色权限树 -->
+	<component name="MenuTreeRoleAuthorizeDomainWrapper">
+		<service name="MenuTreeRoleAuthorizeDomainWrapper">
+			<interface.java
+				interface="org.loushang.bsp.menu.domain.IMenuTreeRoleAuthorizeDomainWrapper" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.menu.domain.support.MenuTreeRoleAuthorizeDomainWrapper" />
+	</component>
+	
+</composite>

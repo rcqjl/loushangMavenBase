@@ -1,0 +1,2 @@
+#流程监控配置（0：使用旧的概要、详细图模式（虚环节图标是圆角矩形）；1：使用新图（没有概要图，可能有泳道图，虚环节图标是菱形，名称为网关））
+PROCESS_MONITOR_VIEWER_CONFIG=0:Use the old summary and detailed graph mode(The icon of virtual link is rounded rectangle),1:Use new graph(no summary graph and may have swimlanes, and the icon of virtual link is diamond,and the name is gateway)

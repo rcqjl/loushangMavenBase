@@ -1,0 +1,97 @@
+/*
+ * 设置组件属性时，弹出框内部的样式
+ *
+ */
+
+.property-horizontal .property-item {
+	margin-bottom: 15px;
+	font-size: 14px;
+}
+
+.property-item .itme-label {
+	width: 20%;
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	color: #666;
+	font-weight: 400;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	line-height: 1.42857143;
+}
+
+.property-item .item-div {
+	width: 60%;
+	display: inline-block;
+	padding-left: 15px;
+}
+
+.property-input {
+	font-size: 14px;
+	min-width: 100px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 12px;
+	border: 1px solid #ddd;
+	border-radius: 0;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.required {
+	color: red;
+	line-height: 30px;
+	font-size: 20px;
+	position: absolute;
+	right: 4px;
+}
+
+.property-horizontal .checkbox, .property-horizontal .radio {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.checkbox label {
+	min-height: 20px;
+	margin-bottom: 0;
+	font-weight: 400;
+	cursor: pointer;
+	display: inline-block;
+	max-width: 100%;
+}
+
+input[type=checkbox], input[type=radio] {
+	height: 17px;
+	width: 17px;
+	margin-right: 5px;
+	position: relative;
+	top: -2px;
+	cursor: pointer;
+}
+
+input[type=checkbox]:before, input[type=radio]:before {
+	content: '';
+	display: block;
+	background-image: url(../images/help/help.png);
+	background-repeat: no-repeat;
+	width: 18px;
+	height: 18px;
+}
+
+input[type=checkbox]:before {
+	background-position: -20px -20px;
+}
+
+input[type=checkbox]:checked:before {
+	background-position: 0px -20px;
+}
+
+input[type=radio]:before {
+	background-position: -20px 0px;
+}
+
+input[type=radio]:checked:before {
+	background-position: 0px 0px;
+}

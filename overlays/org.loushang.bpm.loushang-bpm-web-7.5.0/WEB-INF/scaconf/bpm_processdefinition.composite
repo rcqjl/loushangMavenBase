@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="workflow" xmlns="http://www.loushang.com/sca/1.0">
+    <description>workflow module</description>
+ 
+    <!--流程定义相关-->
+	<component name="processDefDao">
+		<service name="processDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IProcessDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ProcessDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processLimitDefDao">
+		<service name="processLimitDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IProcessLimitDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ProcessLimitDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processWarnDefDao">
+		<service name="processWarnDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IProcessWarnDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ProcessWarnDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+		
+	<component name="processWarnMsgDefDao">
+		<service name="processWarnMsgDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IProcWarnMsgDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ProcWarnMsgDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processMonitorDefDao">
+		<service name="processMonitorDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IProcessMonitorDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ProcessMonitorDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processCreateDataRefDao">
+		<service name="processCreateDataRefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dataref.dao.IProcessCreateDataRefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dataref.dao.support.ProcessCreateDataRefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processCreateDataRefDomain">
+		<service name="processCreateDataRefDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.dataref.domain.IProcessCreateDataRef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dataref.domain.support.ProcessCreateDataRefImpl"/>
+	</component>
+	
+	<!--环节定义相关-->
+	<component name="activityDefDao">
+		<service name="activityDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActivityDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActivityDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="activityLimitDefDao">
+		<service name="activityLimitDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActivityLimitDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActivityLimitDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="activityWarnDefDao">
+		<service name="activityWarnDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActivityWarnDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActivityWarnDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+		<!-- 环节预警消息定义 -->
+	<component name="activityWarnMsgDefDao">
+		<service name="activityWarnMsgDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActWarnMsgDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActWarnMsgDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="activityParticipantRefDefDao">
+		<service name="activityParticipantRefDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActivityParticipantRefDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActivityParticipantRefDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="activityDefSourceUrlRefDao">
+		<service name="activityDefSourceUrlRefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.IActivityDefSourceUrlRefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.ActivityDefSourceUrlRefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="taskUrlDynamicParameterDefDao">
+		<service name="taskUrlDynamicParameterDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.ITaskUrlDynamicParameterDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.TaskUrlDynamicParameterDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="activityDefSourceUrlRefDomain">
+		<service name="activityDefSourceUrlRefDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.domain.IActivityDefSourceUrlRef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.domain.support.ActivityDefSourceUrlRefImpl"/>
+		<reference name="activityDefSourceUrlRefDao" target="activityDefSourceUrlRefDao/activityDefSourceUrlRefDao"/>
+	</component>
+		
+	<!--图形相关-->
+	<component name="actDefGraphDao">
+		<service name="actDefGraphDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.graph.dao.IActDefGraphDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.graph.dao.support.ActDefGraphJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="startDefGraphDao">
+		<service name="startDefGraphDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.graph.dao.IStartDefGraphDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.graph.dao.support.StartDefGraphJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="endDefGraphDao">
+		<service name="endDefGraphDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.graph.dao.IEndDefGraphDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.graph.dao.support.EndDefGraphJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!--相关数据相关-->
+	<component name="dataFieldDefDao">
+		<service name="dataFieldDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IDataFieldDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.DataFieldDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+		
+	<component name="actPkDataFieldDefDao">
+		<service name="actPkDataFieldDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.IActPkDataFieldDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.ActPkDataFieldDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="dataFieldMappingDefDao">
+		<service name="dataFieldMappingDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IDataFieldMappingDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.DataFieldMappingDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!--参与者定义-->
+	<component name="participantDefDao">
+		<service name="participantDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IParticipantDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ParticipantDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+
+    <!--迁移定义-->
+	<component name="transitionDefDao">
+		<service name="transitionDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.ITransitionDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.TransitionDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+   <!--任务分配规则相关-->
+	<component name="assignRuleTypeDefDao">
+		<service name="assignRuleTypeDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IAssignRuleTypeDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.AssignRuleTypeDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="assignRuleInTurnDefDao">
+		<service name="assignRuleInTurnDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IAssignRuleInTurnDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.AssignRuleInTurnDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!--web服务相关-->
+	<component name="actOperationInvocationDefDao">
+		<service name="actOperationInvocationDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.IActOperationInvocationDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.ActOperationInvocationDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+
+	<component name="actOutputMessageValueDefDao">
+		<service name="actOutputMessageValueDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.IActOutputMessageValueDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.ActOutputMessageValueDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="actServiceInvocationDefDomain">
+		<service name="actServiceInvocationDefDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.domain.IActServiceInvocationDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.domain.support.ActServiceInvocationDef"/>
+		<reference name="actOperationInvocationDefDao" target="actOperationInvocationDefDao/actOperationInvocationDefDao"/>
+		<reference name="actOutputMessageValueDefDao" target="actOutputMessageValueDefDao/actOutputMessageValueDefDao"/>
+	</component>
+	
+	<component name="processDefSourceRefDao">
+		<service name="processDefSourceRefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.IProcessDefSourceRefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.ProcessDefSourceRefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="processDefSourceSubjectRefDao">
+		<service name="processDefSourceSubjectRefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.IProcessDefSourceSubjectRefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.ProcessDefSourceSubjectRefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!--表单按钮Dao-->
+	<component name="actDefJspButtonDao">
+		<service name="actDefJspButtonDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.jspformrelevant.dao.IActDefJspButtonDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.jspformrelevant.dao.support.ActDefJspButtonJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+		<!--表单域Dao-->
+	<component name="actDefJspFieldDao">
+		<service name="actDefJspFieldDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.jspformrelevant.dao.IActDefJspFieldDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.jspformrelevant.dao.support.ActDefJspFieldJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<!-- 默认任务列表定义 -->
+	<component name="defaultSubjectDefDao">
+		<service name="defaultSubjectDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.defaultsubjectdef.dao.IDefaultSubjectDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.defaultsubjectdef.dao.jdbc.DefaultSubjectDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="defaultSubjectQueryDefDao">
+		<service name="defaultSubjectQueryDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.defaultsubjectdef.dao.IDefaultSubjectQueryDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.defaultsubjectdef.dao.jdbc.DefaultSubjectQueryDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="defaultSubjectDefDomain">
+		<service name="defaultSubjectDefDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.defaultsubjectdef.domain.IDefaultSubjectDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.defaultsubjectdef.domain.support.DefaultSubjectDefImpl"/>
+		<reference name="defaultSubjectDefDao" target="defaultSubjectDefDao/defaultSubjectDefDao"/>
+		<reference name="defaultSubjectQueryDefDao" target="defaultSubjectQueryDefDao/defaultSubjectQueryDefDao"/>
+	</component>
+	
+	<!-- 系统全局层次任务列表定义 -->
+	<component name="sysSubjectDefDao">
+		<service name="sysSubjectDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.ISysSubjectDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.jdbc.SysSubjectDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="sysSubjectQueryDefDao">
+		<service name="sysSubjectQueryDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.ISysSubjectQueryDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.jdbc.SysSubjectQueryDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="sysSubjectQueryCommonHelpDefDao">
+		<service name="sysSubjectQueryCommonHelpDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.ISysSubjectQueryCommonHelpDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.jdbc.SysSubjectQueryCommonHelpDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="sysSubjectQuerySelectDefDao">
+		<service name="sysSubjectQuerySelectDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.ISysSubjectQuerySelectDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.jdbc.SysSubjectQuerySelectDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="sysSubjectScDefDao">
+		<service name="sysSubjectScDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.ISysSubjectScDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.dao.jdbc.SysSubjectScDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+    <component name="sysSubjectDefDomain">
+		<service name="sysSubjectDefDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.domain.ISysSubjectDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.syssubjectdef.domain.support.SysSubjectDefImpl"/>
+		<reference name="sysSubjectDefDao" target="sysSubjectDefDao/sysSubjectDefDao"/>
+		<reference name="sysSubjectQueryDefDao" target="sysSubjectQueryDefDao/sysSubjectQueryDefDao"/>
+		<reference name="sysSubjectQueryCommonHelpDefDao" target="sysSubjectQueryCommonHelpDefDao/sysSubjectQueryCommonHelpDefDao"/>
+		<reference name="sysSubjectQuerySelectDefDao" target="sysSubjectQuerySelectDefDao/sysSubjectQuerySelectDefDao"/>
+		<reference name="sysSubjectScDefDao" target="sysSubjectScDefDao/sysSubjectScDefDao"/>
+	</component>
+	
+	<!-- 流程定义层次任务列表定义 -->
+	<component name="procSubjectDefDao">
+		<service name="procSubjectDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.IProcSubjectDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.jdbc.ProcSubjectDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="procSubjectQueryDefDao">
+		<service name="procSubjectQueryDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.IProcSubjectQueryDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.jdbc.ProcSubjectQueryDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="procSubjectQueryCommonHelpDefDao">
+		<service name="procSubjectQueryCommonHelpDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.IProcSubjectQueryCommonHelpDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.jdbc.ProcSubjectQueryCommonHelpDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<!-- 流程定义层次查询条件下拉框定义 -->
+	<component name="procSubjectQuerySelsctDefDao">
+		<service name="procSubjectQuerySelsctDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.IProcSubjectQuerySelectDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.jdbc.ProcSubjectQuerySelectDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+    <component name="procSubjectDefDomain">
+		<service name="procSubjectDefDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.domain.IProcSubjectDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.domain.support.ProcSubjectDefImpl"/>
+		<reference name="infoProcessDefModelDao" target="infoProcessDefModelDao/infoProcessDefModelDao"/>
+		<reference name="procSubjectDefDao" target="procSubjectDefDao/procSubjectDefDao"/>
+		<reference name="procSubjectScTypeDefDao" target="procSubjectScTypeDefDao/procSubjectScTypeDefDao"/>
+		<reference name="procSubjectTableDefDao" target="procSubjectTableDefDao/procSubjectTableDefDao"/>
+		<reference name="procSubjectColumnDefDao" target="procSubjectColumnDefDao/procSubjectColumnDefDao"/>
+		<reference name="procSubjectQueryDefDao" target="procSubjectQueryDefDao/procSubjectQueryDefDao"/>
+		<reference name="procSubjectQueryCommonHelpDefDao" target="procSubjectQueryCommonHelpDefDao/procSubjectQueryCommonHelpDefDao"/>
+		<reference name="procSubjectQuerySelsctDefDao" target="procSubjectQuerySelsctDefDao/procSubjectQuerySelsctDefDao"/>
+	</component>
+	
+	
+	<!-- 流程定义层次任务列表标题来源定义 -->
+	<component name="procSubjectScTypeDefDao">
+		<service name="procSubjectScTypeDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.IProcSubjectScTypeDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.jdbc.ProcSubjectScTypeDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 流程定义层次的任务列表业务信息来源关联业务表定义 -->
+	<component name="procSubjectTableDefDao">
+		<service name="procSubjectTableDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.IProcSubjectTableDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.jdbc.ProcSubjectTableDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 流程定义层次的任务列表业务信息来源关联业务表字段定义 -->
+	<component name="procSubjectColumnDefDao">
+		<service name="procSubjectColumnDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.IProcSubjectColumnDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.procsubjectdef.dao.jdbc.ProcSubjectColumnDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="procTypeSubjectDefDao">
+		<service name="procTypeSubjectDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.IProcTypeSubjectDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.jdbc.ProcTypeSubjectDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="procTypeSubjectQueryDefDao">
+		<service name="procTypeSubjectQueryDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.IProcTypeSubjectQueryDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.jdbc.ProcTypeSubjectQueryDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="procTypeSubjectTableDefDao">
+		<service name="procTypeSubjectTableDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.IProcTypeSubjectTableDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.jdbc.ProcTypeSubjectTableDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+		
+	<component name="procTypeSubjectColumnDefDao">
+		<service name="procTypeSubjectColumnDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.IProcTypeSubjectColumnDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.jdbc.ProcTypeSubjectColumnDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	
+	<component name="procTypeSubjectScTypeDefDao">
+		<service name="procTypeSubjectScTypeDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.IProcTypeSubjectScTypeDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.jdbc.ProcTypeSubjectScTypeDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="procTypeSubjectQueryCommonHelpDefDao">
+		<service name="procTypeSubjectQueryCommonHelpDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.IProcTypeSubjectQueryCommonHelpDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.jdbc.ProcTypeSubjectQueryCommonHelpDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+
+	<component name="procTypeSubjectQuerySelectDefDao">
+		<service name="procTypeSubjectQuerySelectDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.IProcTypeSubjectQuerySelectDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.dao.jdbc.ProcTypeSubjectQuerySelectDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="procTypeSubjectDefDomain">
+		<service name="procTypeSubjectDefDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.domain.IProcTypeSubjectDef"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.tasklist.proctypesubjectdef.domain.support.ProcTypeSubjectDefImpl"/>
+		<reference name="procTypeSubjectDefDao" target="procTypeSubjectDefDao/procTypeSubjectDefDao"/>
+		<reference name="procTypeSubjectScTypeDefDao" target="procTypeSubjectScTypeDefDao/procTypeSubjectScTypeDefDao"/>
+		<reference name="procTypeSubjectTableDefDao" target="procTypeSubjectTableDefDao/procTypeSubjectTableDefDao"/>
+		<reference name="procTypeSubjectColumnDefDao" target="procTypeSubjectColumnDefDao/procTypeSubjectColumnDefDao"/>
+		<reference name="procTypeSubjectQueryDefDao" target="procTypeSubjectQueryDefDao/procTypeSubjectQueryDefDao"/>
+		<reference name="procTypeSubjectQueryCommonHelpDefDao" target="procTypeSubjectQueryCommonHelpDefDao/procTypeSubjectQueryCommonHelpDefDao"/>
+		<reference name="procTypeSubjectQuerySelectDefDao" target="procTypeSubjectQuerySelectDefDao/procTypeSubjectQuerySelectDefDao"/>
+	</component>
+	
+	<!-- 流程扩展属性定义 -->
+	<component name="procExtAttrDefDao">
+		<service name="procExtAttrDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.ext.procdef.dao.IProcExtAttrDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.ext.procdef.dao.jdbc.ProcExtAttrDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 环节组扩展属性定义 -->
+	<component name="actSetExtAttrDefDao">
+		<service name="actSetExtAttrDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.ext.actsetdef.dao.IActSetExtAttrDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.ext.actsetdef.dao.jdbc.ActSetExtAttrDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 环节扩展属性定义 -->
+	<component name="actExtAttrDefDao">
+		<service name="actExtAttrDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.ext.actdef.dao.IActExtAttrDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.ext.actdef.dao.jdbc.ActExtAttrDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 环节组定义 -->
+	<component name="actSetDefDao">
+		<service name="actSetDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActSetDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActSetDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+		<!-- 环节组限时定义 -->
+	<component name="actSetLimitDefDao">
+		<service name="actSetLimitDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActSetLimitDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActSetLimitDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+		<!-- 环节组预警定义 -->
+	<component name="actSetWarnDefDao">
+		<service name="actSetWarnDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActSetWarnDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActSetWarnDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<!-- 环节组预警消息定义 -->
+	<component name="actSetWarnMsgDefDao">
+		<service name="actSetWarnMsgDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActSetWarnMsgDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActSetWarnMsgDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!-- 环节关联环节组定义 -->
+	<component name="actSetRefDefDao">
+		<service name="actSetRefDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActSetRefDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActSetRefDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<!--流程定义domain层-->
+	<component name="processDefinitionDomain">
+		<service name="processDefinitionDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.domain.IProcessDefinition"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.domain.support.ProcessDefinitionImpl"/>
+		
+		<reference name="processDefDao" target="processDefDao/processDefDao"/>
+		<reference name="processLimitDefDao" target="processLimitDefDao/processLimitDefDao"/>
+		<reference name="processWarnDefDao" target="processWarnDefDao/processWarnDefDao"/>
+		<reference name="processMonitorDefDao" target="processMonitorDefDao/processMonitorDefDao"/>
+		<reference name="processCreateDataRefDao" target="processCreateDataRefDao/processCreateDataRefDao"/>
+		<reference name="processDefSourceRefDao" target="processDefSourceRefDao/processDefSourceRefDao"/>
+		<reference name="processDefSourceSubjectRefDao" target="processDefSourceSubjectRefDao/processDefSourceSubjectRefDao"/>
+		<reference name="procExtAttrDefDao" target="procExtAttrDefDao/procExtAttrDefDao"/>
+		<reference name="procSubjectDataFieldDefDao" target="procSubjectDataFieldDefDao/procSubjectDataFieldDefDao"/>
+		
+		<reference name="actSetDefDao" target="actSetDefDao/actSetDefDao"/>
+		<reference name="actSetExtAttrDefDao" target="actSetExtAttrDefDao/actSetExtAttrDefDao"/>
+		<reference name="actSetRefDefDao" target="actSetRefDefDao/actSetRefDefDao"/>
+		<reference name="actSetLimitDefDao" target="actSetLimitDefDao/actSetLimitDefDao"/>
+		<reference name="actSetWarnDefDao" target="actSetWarnDefDao/actSetWarnDefDao"/>
+		
+		<reference name="activityDefDao" target="activityDefDao/activityDefDao"/>
+		<reference name="activityLimitDefDao" target="activityLimitDefDao/activityLimitDefDao"/>
+		<reference name="activityWarnDefDao" target="activityWarnDefDao/activityWarnDefDao"/>
+		<reference name="actPartRefDefDao" target="activityParticipantRefDefDao/activityParticipantRefDefDao"/>
+		<reference name="activityDefSourceUrlRefDao" target="activityDefSourceUrlRefDao/activityDefSourceUrlRefDao"/>
+		<reference name="actDefGraphDao" target="actDefGraphDao/actDefGraphDao"/>
+		<reference name="startDefGraphDao" target="startDefGraphDao/startDefGraphDao"/>
+		<reference name="endDefGraphDao" target="endDefGraphDao/endDefGraphDao"/>
+		<reference name="actExtAttrDefDao" target="actExtAttrDefDao/actExtAttrDefDao"/>
+		
+		<reference name="procHighExecuteMappingDao" target="procHighExecuteMappingDao/procHighExecuteMappingDao"/>
+		<reference name="actHighExecuteMappingDao" target="actHighExecuteMappingDao/actHighExecuteMappingDao"/>
+		<reference name="complexGatewayRuleDefDao" target="complexGatewayRuleDefDao/complexGatewayRuleDefDao"/>
+		
+		<reference name="participantDefDao" target="participantDefDao/participantDefDao"/>
+		
+		<reference name="transitionDefDao" target="transitionDefDao/transitionDefDao"/>
+		
+		<reference name="dataFieldDefDao" target="dataFieldDefDao/dataFieldDefDao"/>
+		<reference name="actPkDataFieldDefDao" target="actPkDataFieldDefDao/actPkDataFieldDefDao"/>
+		
+		<reference name="assignRuleTypeDefDao" target="assignRuleTypeDefDao/assignRuleTypeDefDao"/>
+		<reference name="assignRuleInTurnDefDao" target="assignRuleInTurnDefDao/assignRuleInTurnDefDao"/>
+		
+		<reference name="processServiceDefDomain" target="processServiceDefDomain/processServiceDefDomain"/>
+		<reference name="actOperationInvocationDefDao" target="actOperationInvocationDefDao/actOperationInvocationDefDao"/>
+		<reference name="actOutputMessageValueDefDao" target="actOutputMessageValueDefDao/actOutputMessageValueDefDao"/>
+		
+		<reference name="actDefFormDao" target="actDefFormDao/actDefFormDao"/>
+		<reference name="actDefJspFormDao" target="actDefJspFormDao/actDefJspFormDao"/>
+		<reference name="actDefFormAclDao" target="actDefFormAclDao/actDefFormAclDao"/>
+		<reference name="actDefActionDao" target="actDefActionDao/actDefActionDao"/>
+		<reference name="actDefActionEndDao" target="actDefActionEndDao/actDefActionEndDao"/>
+		<reference name="actDefActionYiBanDao" target="actDefActionYiBanDao/actDefActionYiBanDao"/>
+		<reference name="actionDependDao" target="actionDependDao/actionDependDao"/>
+		<reference name="actDefPrintTemplateDao" target="actDefPrintTemplateDao/actDefPrintTemplateDao"/>
+		<reference name="actDefSuggestDao" target="actDefSuggestDao/actDefSuggestDao"/>
+		<reference name="dataFieldMappingDefDao" target="dataFieldMappingDefDao/dataFieldMappingDefDao"/>
+		<reference name="actDefJspFieldDao" target="actDefJspFieldDao/actDefJspFieldDao"/>
+		<reference name="actDefJspButtonDao" target="actDefJspButtonDao/actDefJspButtonDao"/>
+							
+		<reference name="procSubjectDefDao" target="procSubjectDefDao/procSubjectDefDao"/>
+		<reference name="procSubjectScTypeDefDao" target="procSubjectScTypeDefDao/procSubjectScTypeDefDao"/>
+		<reference name="procSubjectTableDefDao" target="procSubjectTableDefDao/procSubjectTableDefDao"/>
+		<reference name="procSubjectColumnDefDao" target="procSubjectColumnDefDao/procSubjectColumnDefDao"/>
+		<reference name="procSubjectQueryDefDao" target="procSubjectQueryDefDao/procSubjectQueryDefDao"/>
+		
+		<reference name="taskUrlDynamicParameterDefDao" target="taskUrlDynamicParameterDefDao/taskUrlDynamicParameterDefDao"/>
+		
+		<reference name="infoProcPermissionConfigDao" target="infoProcPermissionConfigDao/infoProcPermissionConfigDao"/>
+		<reference name="infoProcDataRefDefDomain" target="infoProcDataRefDefDomain/infoProcDataRefDefDomain"/>
+	</component>
+	
+	<component name="procHighExecuteMappingDao">
+		<service name="procHighExecuteMappingDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IProcHighExecuteMappingDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ProcHighExecuteMappingJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actHighExecuteMappingDao">
+		<service name="actHighExecuteMappingDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IActHighExecuteMappingDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ActHighExecuteMappingJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="multiInstanceRuleDefDao">
+		<service name="multiInstanceRuleDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IMultiInstanceRuleDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.MultiInstanceRuleDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="processTimerEventDao">
+		<service name="processTimerEventDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.event.dao.IProcessTimerEventDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.event.dao.support.ProcessTimerEventJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="complexGatewayRuleDefDao">
+		<service name="complexGatewayRuleDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.dao.IComplexGatewayRuleDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.dao.support.ComplexGatewayRuleDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actDataFieldDefDao">
+		<service name="actDataFieldDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.IActDataFieldDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.ActDataFieldDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="actTimerEventDefDao">
+		<service name="actTimerEventDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.event.dao.IActTimerEventDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.event.dao.support.ActTimerEventJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="procSubjectDataFieldDefDao">
+		<service name="procSubjectDataFieldDefDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.sourceref.dao.IProcSubjectDataFieldDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.sourceref.dao.support.ProcSubjectDataFieldDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	<component name="procAndGraphDefModelDao">
+		<service name="procAndGraphDefModelDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.procandgraphdefmodel.dao.IProcAndGraphDefModelDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.procandgraphdefmodel.dao.support.ProcAndGraphDefModelJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	
+	 <component name="procAndGraphDefModelDomain">
+		<service name="procAndGraphDefModelDomain">
+			<interface.java interface="org.loushang.workflow.processdefinition.procandgraphdefmodel.domain.IProcAndGraphDefModel"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.procandgraphdefmodel.domain.support.ProcAndGraphDefModelImpl"/>
+	</component>
+</composite>

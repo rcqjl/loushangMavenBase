@@ -1,0 +1,184 @@
+html,body{
+	font-size: 12px;
+	font-family:"宋体";
+}
+
+
+/*本页面*/
+.floatDiv{
+	
+	width: 498px;
+	/* background-color:#F6F6F6; */
+}
+.floatHeader{
+	width:360px;
+	height:50px;
+}
+.floatContent{
+	width:458px;
+	height:270px;
+	margin:20px auto 0px auto;
+	border:solid 1px #dcdcdc;
+	background-color:#fafafa;
+}
+.floatFooter{
+	width:458px;
+	margin:15px auto;
+}
+.floatFooter > div{
+	border:1px solid #dcdcdc;
+	display:none;
+}
+.floatLeftDiv{
+	width:140px;
+	height:270px;
+	float:left;
+	border-right:1px dotted #969696;
+}
+.floatRightDiv{
+	width:317px;
+	height:265px !important;
+	height:270px;
+	padding-top:5px;
+	float:left;
+	overflow: auto;
+}
+.floatConfirmDiv{
+	width:100%;
+	height:60px;
+	float:left;
+	overflow-y: scroll;
+}
+.floatConfirm{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	color: #fff;
+	background-color: #538FD8;
+	border:none;
+	display: block;
+	position: absolute;
+	right: 20px;
+	bottom: 15px;
+}
+.floatConfirm:HOVER{
+	background-color:#5596e1;
+}
+.areaDiv{
+	float:left;
+    width: 140px;
+    height: 30px;
+}
+.areaDiv input{
+	display: inline-block;
+	position: relative;
+	margin: 7px 5px 7px 10px;
+	
+}
+.areaDiv label{
+	display: inline-block;
+	position: relative;
+	top: -3px;
+}
+.floatConfirmDiv > div{
+	float: left;
+	height: 30px;
+	line-height:30px;
+	border: none;
+	text-align: left;
+	float:left;
+	margin:0px 0px 0px 15px;
+	color:#666;
+}
+.floatConfirmDiv > div:HOVER{
+	color:#333;
+}
+.union{
+	float:left;
+	width: 250px;
+	height:25px;
+	top: 15px;
+	position: relative;
+}
+.union label{
+	height: 25px;
+	display: inline-block;
+}
+.union input{
+	width: 146px;
+	height: 24px;
+	background:#FFF;
+	border: 1px solid rgb(223, 224, 219);
+	margin-left: 5px;
+}
+.delImage{
+	display:inline-block;
+	width: 16px;
+	height: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -96px -16px transparent;
+	margin:0px auto;
+	float:right;
+	position:relative;
+	top:7px;
+}
+.delImage:HOVER{
+	background-position: -96px 0px;
+}
+.chosen{
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	font-size: 14px;
+	background: #f5f5f5;
+	font-weight: 700;
+	border-bottom: 1px solid #dcdcdc;
+}
+.chosen label{
+	margin-left:15px;
+}
+.labell{
+	display: inline-block;
+	height: 14px;
+	width: 16px;
+	background: url("../images/skin_icons.png") no-repeat scroll -32px -16px transparent;
+	margin: 0px 0px 0px 10px;
+}
+#tree{
+	left: -10px;
+	top:5px;
+	position: relative;
+}
+
+input[type="button"],button{
+	font-size: 15px;
+	font-family: "宋体";
+	text-align: center;
+	height: 30px;
+	padding: 0px 15px;
+	margin: 0px 5px 0px 0px;
+	color: #fff;
+}
+.confirm{
+	background-color: #538FD8;
+	border:none;
+}
+.cancel{
+	background-color: #AAAAAA;
+	border:none;
+}
+.confirm:HOVER{
+	background-color:#5596e1;
+}
+.cancel:HOVER{
+	background-color: #b4b4b4;
+}
+#buttonArea{
+	text-align: right;
+	position: absolute;
+	bottom: 20px;
+	right: 15px;
+	display: block;
+	border: none;
+}

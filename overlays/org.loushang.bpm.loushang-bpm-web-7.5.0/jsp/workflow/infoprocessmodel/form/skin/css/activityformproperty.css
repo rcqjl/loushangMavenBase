@@ -1,0 +1,95 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+html,body {
+    font-size: 12px;
+    font-family: "宋体";
+}
+.propertyBodyArea{
+	padding:5px 10px 5px 10px;
+}
+#tabs {
+	margin: 0px 5px 5px 5px;
+	height: 22px;
+	width: 100%;
+}
+#tabContainer a {
+	color:#A3A3A3;
+	display: block;
+    padding:5px 6px 0px 6px;
+	height:20px;
+	border-bottom: 1px solid #CACACA;
+	text-decoration: none;
+}
+
+#tabContainer a.on {
+	color:#464646;
+	background: #EEE;
+	border: 1px solid #CACACA;
+	border-bottom: 0px solid #CACACA;
+}
+.tab{
+	float: left;
+	margin: 0px;
+	text-align: center;
+	margin-bottom: 2px;
+}
+.wfFormTab{
+    width: 20%;
+}
+.wfAdvTab{
+    width: 20%;
+}
+.wfTelFormTab{
+    width:28%;
+}
+.wfPadFormTab{
+    width: 28%;
+}
+a:link,a:visited,a:hover,a:active {
+	color: black;
+}
+.con {
+	margin: 8px 0 0 5px;
+	width:100%;
+}
+.con div{
+	margin:5px 0 8px 0; 
+	height:24px;
+}
+.con label {
+	margin-left:
+	height: 18px;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.con1 label{
+	height: 18px;
+	line-height: 18px;
+	width: 55px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: right;
+	margin-right: 5px;
+}
+
+.con1 select {
+	width: 156px;
+	vertical-align: middle;
+	height:24px;
+	border:1px solid #B6B6B6;
+	text-align:left;
+	background-color: #fff;
+}
+.con1 input[type="button"] {
+    position: absolute;
+    right: 16px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    background: url('../images/skin_icons.png') no-repeat scroll -62px -128px #EEE;
+    border: 1px solid #B6B6B6;
+}

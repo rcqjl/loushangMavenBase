@@ -1,0 +1,10 @@
+#流程定义按钮配置:是否显示
+PROC_DEF_BUTTON_CONF_VISIBLE=1:是,0:否
+#流程定义按钮配置:是否设置流程类型
+PROC_DEF_BUTTON_CONF_SET_PROC_TYPE=1:是,0:否
+#流程定义权限配置
+PROC_DEF_PERMISSION_CONFIG=0:不进行权限控制,1:本单位内的权限控制,2:本单位及上级单位的权限控制,3:本单位及下属单位的权限控制,4:按照BSP的组织权限控制,5:多租户模型的权限控制
+#解析类发布方式
+XML_PARSER_TYPE=0:本地类,1:高速服务
+#插件种类
+ITEM_TYPE=0:flex版本,1:html版本

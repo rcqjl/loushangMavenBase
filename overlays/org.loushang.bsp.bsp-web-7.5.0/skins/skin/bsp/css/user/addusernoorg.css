@@ -1,0 +1,121 @@
+body {
+	margin-left: 0px;
+	margin-left: 15px;
+	line-height: 1.9;
+}
+
+.Validform_input {
+	width: 48%;
+}
+
+.required {
+	top: 0;
+}
+
+.form_height {
+	margin-top: 30px;
+	margin-left: 60px;
+}
+
+.form_adduser {
+	margin-top: 30px;
+}
+
+.dropdown {
+	display: inline-block;
+}
+
+.table tbody tr td {
+	vertical-align: middle;
+	text-align: center;
+}
+
+.button {
+	margin-left: 5px !important;
+}
+
+.button-spacing {
+	margin-bottom: 6px;
+}
+
+@media ( max-width :992px) {
+	.min {
+		width: 200px;
+	}
+}
+
+.pg {
+	margin-top: 14px;
+	height: 280px;
+}
+
+.gg {
+	padding-left: 0px;
+	margin-top: 15px;
+}
+
+.text-right {
+	padding-left: 0px;
+	width: 85px;
+}
+
+.bread {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 10px;
+	text-align: left;
+	padding-bottom: 10px;
+	padding-left: 1%;
+	height: 31px;
+	line-height: 26px;
+	padding-top: 0px;
+}
+
+a, a:focus, a:hover, a:active{
+	color: #3e99ff;
+}
+
+.hint {
+	height: 10px;
+	border-top: 1px solid #ddd;
+	margin-top: 70px;
+}
+
+#copyuserId {
+	display: none;
+}
+
+li {
+	color: #7B7B7B;
+	font-size: 13px;
+}
+
+.ue-tabs>li>a {
+	font-size: 14px;
+	margin-right: 6px;
+}
+
+#addForm {
+	margin-left: 40px;
+}
+
+.hideheight {
+	margin-bottom: 0px;
+}
+
+.down {
+	margin-top: 4px;
+}
+
+#isUseIp {
+	margin-top: 5px;
+}
+
+.container-fluid {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.issys-hint {
+	font-size: 12px;
+	color: #999999;
+}

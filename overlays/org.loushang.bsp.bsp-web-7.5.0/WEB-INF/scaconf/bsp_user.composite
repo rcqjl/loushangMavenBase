@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_user" xmlns="http://www.loushang.com/sca/1.0">
+	<description>user</description>
+	<component name="BspUserDao">
+		<service name="BspUserDao">
+			<interface.java interface="org.loushang.bsp.permit.pap.user.dao.IUserDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.user.dao.jdbc.UserJdbcDao" />
+	</component>
+	
+	<component name="BspUserDomain">
+		<service name="BspUserDomain">
+			<interface.java interface="org.loushang.bsp.permit.pap.user.domain.IUserDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.permit.pap.user.domain.support.UserDomainImpl" />
+		<reference name="userDao" target="BspUserDao/BspUserDao" />
+		<reference name="bspEncoder" target="BspEncoder/BspEncoder" />
+	</component>
+	
+	<!-- 用户接口 -->
+    <component name="BspUserService">
+        <service name="BspUserService">
+            <interface.java interface="org.loushang.bsp.api.user.IUserService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.user.UserServiceImpl" />
+    </component>
+    
+	<!-- 用户数据接收 -->
+	<component name="BspUserReceiver">
+		<service name="BspUserReceiver">
+			<interface.java
+				interface="org.loushang.bsp.share.permit.security.provider.IUserReceiver" />
+			<binding.sca />
+		</service>
+		<implementation.java
+			impl="org.loushang.bsp.sharesupport.security.provider.UserReceiverImpl" />
+	</component>
+    
+    <!-- 安全接口 -->
+    <component name="BspSecurityProvider">
+        <service name="BspSecurityProvider">
+            <interface.java interface="org.loushang.bsp.share.permit.security.provider.ISecurityProvider" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.sharesupport.permit.security.provider.SecurityProviderImp" />
+    </component>
+    
+    <!-- BSP Encoder -->
+    <component name="BspEncoder">
+        <service name="BspEncoder">
+            <interface.java interface="org.loushang.bsp.security.encoding.IBspEncoder" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.security.encoding.BspEncoder" />
+        <reference name="encoder" target="BspMD5PasswordEncoder/BspMD5PasswordEncoder" />
+        <reference name="asymPwdEncoder" target="BspAsymPasswordEncoder/BspAsymPasswordEncoder" />
+    </component>
+    
+    <!-- 不可逆密码加密 -->
+    <component name="BspMD5PasswordEncoder">
+        <service name="BspMD5PasswordEncoder">
+            <interface.java interface="org.loushang.bsp.security.encoding.PasswordEncoder" />
+            <binding.sca />
+        </service>
+        <implementation.java
+            impl="org.loushang.bsp.security.encoding.Md5PasswordEncoder" />
+    </component>
+    
+    <!-- 非对称密码加密 -->
+    <component name="BspAsymPasswordEncoder">
+        <service name="BspAsymPasswordEncoder">
+            <interface.java interface="org.loushang.bsp.security.encoding.PasswordEncoder" />
+            <binding.sca />
+        </service>
+        <implementation.java
+            impl="org.loushang.bsp.security.encoding.AsymPasswordEncoder" />
+    </component>
+
+</composite>

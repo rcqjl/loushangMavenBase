@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="jspformconfig" xmlns="http://www.loushang.com/sca/1.0">
+	<description>workflow module</description>
+	<component name="jspFormDefDomain">
+		<service name="jspFormDefDomain">
+			<interface.java interface="org.loushang.workflow.jspform.formdef.domain.IJspFormDefDomain"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.jspform.formdef.domain.support.JspFormDefDomain"/>
+	</component>
+	<component name="jspFormDefDao">
+		<service name="jspFormDefDao">
+			<interface.java interface="org.loushang.workflow.jspform.formdef.dao.IJspFormDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.jspform.formdef.dao.support.JspFormDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="jspFormActionDomain">
+		<service name="jspFormActionDomain">
+			<interface.java interface="org.loushang.workflow.jspform.formdef.action.domain.IJspFormActionDefDomain"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.jspform.formdef.action.domain.support.JspFormActionDefDomain"/>
+	</component>	
+	<component name="jspFormActionDao">
+		<service name="jspFormActionDao">
+			<interface.java interface="org.loushang.workflow.jspform.formdef.action.dao.IJspFormActionDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.jspform.formdef.action.dao.support.JspFormActionDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>	
+	<component name="jspFormFieldDomain">
+		<service name="jspFormFieldDomain">
+			<interface.java interface="org.loushang.workflow.jspform.formdef.field.domain.IJspFormFieldDefDomain"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.jspform.formdef.field.domain.support.JspFormFieldDefDomain"/>
+	</component>
+	<component name="jspFormFieldDao">
+		<service name="jspFormFieldDao">
+			<interface.java interface="org.loushang.workflow.jspform.formdef.field.dao.IJspFormFieldDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.jspform.formdef.field.dao.support.JspFormFieldDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>	
+	<component name="jspFormRequestUrlDomain">
+		<service name="jspFormRequestUrlDomain">
+			<interface.java interface="org.loushang.workflow.jspform.formdef.requesturl.domain.IJspFormRequestUrlDefDomain"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.jspform.formdef.requesturl.domain.support.JspFormRequestUrlDefDomain"/>
+	</component>
+	<component name="actDefJspFormDao">
+		<service name="actDefJspFormDao">
+			<interface.java interface="org.loushang.workflow.processdefinition.jspformrelevant.dao.IActDefJspFormDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.processdefinition.jspformrelevant.dao.support.ActDefJspFormDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<component name="jspFormRequestUrlDao">
+		<service name="jspFormRequestUrlDao">
+			<interface.java interface="org.loushang.workflow.jspform.formdef.requesturl.dao.IJspFormRequestUrlDefDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java impl="org.loushang.workflow.jspform.formdef.requesturl.dao.support.JspFormRequestUrlDefJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<!-- 任务转向URL定义-->
+	<component name="taskListForwardUrlDao">
+		<service name="taskListForwardUrlDao">
+			<interface.java interface="org.loushang.workflow.jspform.tasklistforward.dao.ITaskListForwardUrlDao"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.workflow.jspform.tasklistforward.dao.support.TaskListForwardUrlJdbcDao"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+	<!-- 任务转向URL定义-->
+	<component name="taskListForwardUrlDomain">
+		<service name="taskListForwardUrlDomain">
+			<interface.java interface="org.loushang.workflow.jspform.tasklistforward.domain.ITaskListForwardUrlDomain"/>
+			<binding.sca/>
+		</service>
+		<implementation.java
+			impl="org.loushang.workflow.jspform.tasklistforward.domain.support.TaskListForwardUrlDomain"/>
+		<property name="dataSourceConf" value="dataSource"/>
+	</component>
+</composite>

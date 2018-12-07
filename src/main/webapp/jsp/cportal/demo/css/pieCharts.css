@@ -1,0 +1,60 @@
+div[data_widgetid=pieCharts] .panel-heading{
+	border-bottom: 2px solid #f5bd42;
+}
+div#pie-charts {
+    position: absolute;
+    left:0px;
+}
+.legend{
+	position: absolute;
+	right: 0px;
+	width: 36%;
+	height: 270px
+}
+.le1 {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #3bafd9;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.le2 {
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 14px;
+    height: 14px;
+    background-color: #8bc253;
+    border-radius: 3px;
+}
+.le3 {
+    margin-right: 5px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #e9583e;
+    border-radius: 3px;
+}
+.l-t{
+	font-size: 12px;
+	font-family: simsun;
+	color: #666;
+	margin-right: 10px;
+}
+.l-s{
+	font-size: 30px;
+	font-family: microsoft yahei;
+	color: #666;
+}
+.pie-table{
+	width:100%;
+ 	margin-top: 15px;
+}
+.pie-table tr{
+    border-bottom: 1px solid #e7e9ee;
+    height: 40px;
+    color: #999999;
+}

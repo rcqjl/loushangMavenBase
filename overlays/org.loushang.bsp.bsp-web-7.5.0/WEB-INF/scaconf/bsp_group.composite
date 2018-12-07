@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="bsp_user_policy" xmlns="http://www.loushang.com/sca/1.0">
+	<description>group</description>
+	
+	<component name="GroupDomain">
+		<service name="GroupDomain">
+			<interface.java interface="org.loushang.bsp.group.domain.IGroupDomain" />
+			<binding.sca />
+		</service>
+		<implementation.java impl="org.loushang.bsp.group.domain.impl.GroupDomain" />
+		<reference name="groupDao" target="GroupDao/GroupDao" />
+		<reference name="userGroupDao" target="UserGroupDao/UserGroupDao" />
+	</component>
+
+	<component name="GroupDao">
+		<service name="GroupDao">
+			<interface.java interface="org.loushang.bsp.group.dao.IGroupDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java impl="org.loushang.bsp.group.dao.jdbc.GroupDao" />
+	</component>
+	
+	<component name="UserGroupDao">
+		<service name="UserGroupDao">
+			<interface.java interface="org.loushang.bsp.group.dao.IUserGroupDao" />
+			<binding.sca />
+		</service>
+		<property name="dataSourceConf" value="dataSource" />
+		<implementation.java impl="org.loushang.bsp.group.dao.jdbc.UserGroupDao" />
+	</component>
+	
+	<!-- 用户组接口 -->
+    <component name="BspGroupService">
+        <service name="BspGroupService">
+            <interface.java interface="org.loushang.bsp.api.group.IGroupService" />
+            <binding.sca />
+        </service>
+        <implementation.java impl="org.loushang.bsp.apisupport.group.GroupServiceImpl" />
+        <reference name="groupDomain" target="GroupDomain/GroupDomain" />
+    </component>
+
+</composite>

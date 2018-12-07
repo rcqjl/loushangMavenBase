@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+
+/*container*/
+.cp-colorpicker-container{
+	display: none;
+	position: absolute;
+	border: 1px solid gray;
+	background-color: white;
+	padding: 5px;
+	font-size: 12px;
+	color: #454545;
+	line-height: 18px;
+	font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti;
+	z-index: 10;
+	width: 200px;
+}
+
+.cp-colorpicker-topbar{
+}
+
+.cp-colorpicker-preview{
+	float: left;
+	height: 20px;
+	border: 1px inset black;
+	margin-left: 1px;
+	width: 128px;
+}
+.cp-colorpicker-nocolor{
+	float: right;
+	margin-right: 1px;
+	font-size: 12px;
+	line-height: 14px;
+	height: 14px;
+	width: auto!important;
+	width: 60px;
+	border: 1px solid #333;
+	font-size: 12px;
+	padding: 3px 5px;
+	cursor: pointer;
+}
+
+.cp-colorpicker-box{
+	width: 100%;
+	border-collapse : collapse;
+}
+.cp-colorpicker-theme-title, .cp-colorpicker-standard-title{
+	border-bottom: 1px solid #DDD;
+	font-size: 13px;
+	line-height: 25px;
+	color: #39C;
+	
+}
+.cp-colorpicker-theme-title{
+	padding-top: 2px;	
+}
+.cp-colorpicker-boxfirstrow{
+	height: 30px;
+}
+.cp-colorpicker-colorcell{
+	width: 14px;
+	height: 14px;
+	display: block;
+	margin: 0;
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+}
+a.cp-colorpicker-colorcell{
+	margin: 0px;
+}

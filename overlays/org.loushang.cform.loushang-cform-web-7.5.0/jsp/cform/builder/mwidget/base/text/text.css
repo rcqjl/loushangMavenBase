@@ -1,0 +1,8 @@
+.phone_widget_text input {
+	height: 54px;
+	width: 65%;
+	border: 0;
+	font-size: 20px;
+	background: inherit;
+	float: right;
+}
